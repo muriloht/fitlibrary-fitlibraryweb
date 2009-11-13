@@ -1,0 +1,23 @@
+|''xpath''|//b|''in''|<a><b>xyz</b></a>|''is''|xyz|
+
+|''xpath''|//b|''in''|<a><b>xyz</b></a>|'''is'''|xyz|
+
+|''xpath''|//b|''in''|<a><b>xyz<c/></b></a>|''is''|xyz|
+
+|''xpath''|count(//b)|''in''|<a><b>xyz<c/></b></a>|''is''|1|
+
+|''xpath''|//b|''in''|<a><b>xyz</b></a>|''is not''|x|
+
+ * The name space does not have to be specified if it's used in the xml but not in the xpath:
+
+|''xpath''|//g|''in''|<root xmlns:n="urn:n"><n:f>xyz</n:f><g>GG</g></root>|'''is'''|GG|
+
+|''xpath''|!-//request/attribute::LocationCode-!|''in''|<request xmlns:f="http://services.isis.airnz.com/CalendarPriceRQ/3/3" b="b" !-LocationCode-!="OOL">in<!-StartDate-!>2009-08-09Z</!-StartDate-!><!-EndDate-!>2009-08-11Z</!-EndDate-!></request>|''is''|OOL|
+
+
+ * The name space has to be specified if it's used in the xpath:
+
+|''name space''|n|
+
+|''xpath''|//n:f|''in''|<root xmlns:n="urn:n"><n:f>xyz</n:f></root>|''is''|xyz|
+

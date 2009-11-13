@@ -1,0 +1,104 @@
+!2 Note
+ * See ^HowSpecsWork
+>SpecSetUp
+>SuiteSetUp
+
+!3 Selecting the driver to use:
+|''start spider with''|firefox|
+
+where the driver is "firefox" or "htmlunit"
+!3 Page Access:
+|^SpecifyGetUrl|''Go to a URL''|
+|^SpecifyTitleIs|''Check the title of the current page''|
+|^SpecifyUrlIs|''Check the URL of the current page''|
+|^SpecifyBackAndForward|''Move forwards and backwards''|
+#
+!3 Text in Input, !-TextArea-! & Other Elements
+|>SpecifyTextOf|''Check the text of a text field, text area, etc''|
+|^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
+|>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
+|^SpecifyPlainTextOfMatches|''Pattern match for text generally.''|
+|^SpecifyMultiLineTextMatches|''Where matching is applied to each of the lines''|
+|^SpecifyWithSetText||
+|^SpecifyOptionallyWithSetText|''Quietly does nothing if the xpath element is missing''|
+|^SpecifyWithAddText||
+|^SpecifyWaitingForTextElementToBeCreated|''A text element is created by Javascript''|
+#
+!3 General Text Anywhere in the Page
+|^SpecifyPageContainsText|
+|^SpecifyPageContainsRegularExpression|
+|^SpecifyPageContainsExcludingHtmlWhitespaceTokens|
+|^SpecifyPageSubstringFromTo|
+!3 General Elements: Existence, Value, Attributes, and Count
+|^SpecifyElementExists|
+|^SpecifyElementDoesNotExist|
+|^SpecifyElementValue|
+|^SpecifyElementType|
+|^SpecifyElementAttributes|
+|^SpecifyElementCount|
+|>SpecifyTheAttributeOfChildrenOfTypeOfElement|
+#
+!3 Checkbox, Radio, Select
+!anchor checkbox
+|^SpecifyCheckbox|
+|^SpecifyRadio|
+|^SpecifySelect|''Select a specific option of a select''|
+|>SpecifyOptionallySelect|''Optionally select a specific option of a select''|
+|^SpecifyMultiSelect|''Select several options of a multi select''|
+#
+!3 Tables
+|^SpecifyWholeTable|
+|^SpecifyTableParts|
+|^SpecifyHandlingChangesToTable|
+#
+!3 Link Traversal
+|>SpecifyClick|
+|^SpecifyClickOnNamedLink|
+|^SpecifyTraversalFails|
+#
+!3 Form Submit
+|^SpecifyFormSubmit|
+#
+!3 Frames:
+|^SpecifyFrames|
+|^SpecifyIframes|
+#
+!3 Windows (Select and Close):
+|^SpecifyWindows|
+#
+!3 Cookies
+|^SpecifyCookies|
+#
+!3 Within a Context
+|^SpecifyWithinContext|
+#
+!3 Screen Dump
+ * Only works with htmlunit and Selenium
+|^SpecifyScreenDump|
+#
+!3 XPath
+|^SpecifyXpath|
+#
+!3 !-JavaScript-!
+|^SpecifyJavaScript|
+#
+!3 Lookup
+|^SpecifyLookup|
+#
+!3 Other Locators
+|^SpecifyLocators|
+#
+!3 General Error Checking
+|^SpecifyGeneralErrorChecking|
+#
+!3 For Each (''experimental'')
+|^ForEach|
+#
+!3 Switching Driver
+|>SpecifyZzRestartWith|
+#
+!3 Polling a url until a condition is met
+|^SpecifyPollUrl|
+#
+!3 Finding an element which lacks a suitable locator for xpath
+|^SpecifyFindElement|

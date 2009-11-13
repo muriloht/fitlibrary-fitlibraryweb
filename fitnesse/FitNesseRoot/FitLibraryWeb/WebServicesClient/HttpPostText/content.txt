@@ -1,0 +1,7 @@
+|''post text''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''with''|Fahrenheit=33|
+
+|''xml in response same as''|<string>0.555555555555556</string>|
+
+|''xpath''|string|''in response''|'''is'''|0.555555555555556|
+
+|''xpath''|string|''in response''|'''matches'''|.*56|

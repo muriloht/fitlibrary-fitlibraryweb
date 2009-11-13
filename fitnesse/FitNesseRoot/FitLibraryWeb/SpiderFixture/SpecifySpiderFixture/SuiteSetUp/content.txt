@@ -1,0 +1,8 @@
+!*< def
+!define driver {htmlunit}
+*!
+!|fitlibrary.spider.specify.SpecifySpiderSuite|
+
+|''start spider on port''|${FITNESSE_PORT}|''with''| ${driver} |
+
+|''select or''| ${driver} |

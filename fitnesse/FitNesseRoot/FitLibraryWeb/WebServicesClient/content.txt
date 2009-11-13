@@ -1,0 +1,56 @@
+!3 Examples
+#
+For examples, see ^HttpPostText and ^HttpPostTextFromFile.
+
+For further examples, see the MockWebServices
+
+For some simple specifications, see ^SpecifyWs (these make use of mock web services, as discussed at <FitLibraryWeb.MockWebServices).
+#
+!3 Commands
+#
+ * To start it:
+
+!|fitlibrary.ws.WebServicesClientFixture|
+
+ * Specify a proxy (prior to any calls):
+
+|''proxy url''|http://proxy|''with port''|8099|
+
+ * To post a web service call with XML (such as SOAP):
+
+|''post''|http://localhost:8081|''with''|<in>one</in>|
+
+ * To post the call and check the response:
+
+|''post''|http://localhost:8081|''with''|<in>one</in>|'''is'''|<out>two</out>|
+
+ * To post xml from a file:
+
+|''post soap''|http://localhost:8081|''from file''|a/b.xml|'''is'''|<out>two</out>|
+
+ * To post plain text (ie, not XML):
+
+|''post text''|http://localhost:8081|''with''|Fahrenheit=33|'''is'''|<string>0.555555555555556</string>|
+
+ * To post plain text from a file:
+
+|''post text''|http://localhost:8081|from file''|a/b.txt|'''is'''|<string>0.555555555555556</string>|
+
+ * To use an xpath to pull information out of the last response:
+
+|''xpath''|//ab//cd|''in response''|'''contains''|tax|
+
+ * To check for the existence of an element in the last response, using xpath:
+
+|''xpath''|//ab//cd|''exists in response''|
+
+ * To XML diff the last response against expected XML:
+
+|''xml in response same as''|<a><b>B</b></a>|
+
+#
+!3 Implementation
+#
+This is based on the apache open-source system ''!-HttpClient-!''.
+
+See http://hc.apache.org/httpclient-3.x/ for further details.

@@ -1,0 +1,12 @@
+!*< def
+!define html ({{{<input type="text" id="in" value="t"/>
+<p name="pp" value="ppp">bla</p>}}})
+*!
+
+|''keywords''|firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''element value''|//input/attribute::type|'''is'''|text|

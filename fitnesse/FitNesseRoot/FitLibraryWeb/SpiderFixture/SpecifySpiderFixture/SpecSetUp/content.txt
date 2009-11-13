@@ -1,0 +1,13 @@
+|''spider''|
+
+|''firefox profile''|network.proxy.autoconfig_url|''as string''|http://edp2/pacfiles/FT3.pac|
+|''firefox profile''|network.proxy.type|''as integer''|2|
+|''firefox profile''|app.update.enabled|''as boolean''|false|
+|''firefox profile''|extensions.update.enabled|''as boolean''|false|
+|''firefox profile''|layout.spellcheckDefault|''as integer''|0|
+|''firefox profile''|browser.formfill.enable|''as boolean''|false|
+
+|''save html in''|test.html|''for port''|${FITNESSE_PORT}|
+
+|''zero report counts''|
+

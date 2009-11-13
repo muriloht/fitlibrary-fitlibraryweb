@@ -1,0 +1,18 @@
+!3 We can http ''get'' from a url.
+ * Mock the response:
+
+|''mock soap on port''|8081|
+|''matches URL''|/abc|
+|''response''|<out>two</out>|
+
+|''select''|client|
+
+ * Now carry out the http ''get'' of interest:
+
+|''get http''|http://localhost:8081/abc|'''is'''|<out>two</out>|
+
+ * Verify that the mock server completed correctly:
+
+|''select''|server|
+
+|''close''|

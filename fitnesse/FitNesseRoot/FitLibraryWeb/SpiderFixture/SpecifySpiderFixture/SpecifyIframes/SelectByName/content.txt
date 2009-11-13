@@ -1,0 +1,15 @@
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
+
+|''text of''|//dv[@id='d1']|'''is'''|white one|
+|'''not'''|''element''|//dv[@id='dr']|''exists''|
+|'''not'''|''element''|//dv[@id='dg']|''exists''|
+
+|''frame by name''|green|
+
+|'''not'''|''element''|//dv[@id='d1']|''exists''|
+|'''not'''|''element''|//dv[@id='dr']|''exists''|
+|''text of''|//dv[@id='dg']|'''is'''|greening |
+
+|''page source''|'''contains'''|greening|

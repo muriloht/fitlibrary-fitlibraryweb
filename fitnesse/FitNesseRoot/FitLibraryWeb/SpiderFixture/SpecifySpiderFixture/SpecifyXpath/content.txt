@@ -1,0 +1,7 @@
+^ByPosition
+^ById
+^ByName
+^ByPositionAndId
+
+>InvalidXpathInHtmlUnit
+^InvalidXpathInFireFox

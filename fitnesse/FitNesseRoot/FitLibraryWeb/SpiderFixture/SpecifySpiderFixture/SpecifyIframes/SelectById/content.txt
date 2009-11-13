@@ -1,0 +1,11 @@
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
+#
+!3 It's possible to select a frame or iframe by id
+#
+|''frame by name''|redId|
+
+|'''not'''|''element''|//dv[@id='d1']|''exists''|
+|'''not'''|''element''|//dv[@id='dg']|''exists''|
+|''text of''|//dv[@id='dr']|'''is'''|reddening|

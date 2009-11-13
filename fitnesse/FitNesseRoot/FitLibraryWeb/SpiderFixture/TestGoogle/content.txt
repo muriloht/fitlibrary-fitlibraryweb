@@ -1,0 +1,28 @@
+!|fitlibrary.spider.SpiderFixture|
+
+|''get url''|http://www.google.co.nz|
+
+|''title''|'''is'''|Google|
+
+|''url''|'''is'''|http://www.google.co.nz|
+
+|''page source''|'''contains'''|Search|
+
+|''with''|//input[@name="q"]|''set text''|djhasdaksdasd|
+
+|''click''|//input[@name="btnG"]|
+
+|''title''|'''becomes'''|djhasdaksdasd - Google Search|
+
+|''url''|'''is'''|http://www.google.co.nz/search?hl=en&q=djhasdaksdasd&btnG=Google+Search&meta=|
+
+|''page contains text''|djhasdaksdasd|
+
+|''with''|//input[@name="q"]|''set text''|air new zealand|
+
+|''click''|//input[@name="btnG"]|
+
+|''title''|'''is'''|air new zealand - Google Search|
+
+|''page contains regular expression''|New.*Zealand|
+

@@ -1,0 +1,227 @@
+/*
+ * Copyright (c) 2009 Rick Mugridge, www.RimuResearch.com
+ * Kindly donated by Air New Zealand in October 2009.
+ * Released under the terms of the GNU General Public License version 2 or later.
+*/
+/*
+ * NOTE: This is incomplete. 
+ * There is a WebDriver implementation of this in progress in October 2009, which will likely replace this code here.
+ */
+package fitlibrary.spider.selenium;
+
+import java.net.URL;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.Stack;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.Speed;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.internal.FindsById;
+import org.openqa.selenium.internal.FindsByLinkText;
+import org.openqa.selenium.internal.FindsByName;
+import org.openqa.selenium.internal.FindsByXPath;
+
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
+
+import fitlibrary.exception.FitLibraryException;
+
+public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText, 
+								FindsByXPath, FindsByName, SearchContext {
+	protected Selenium selenium;
+	protected Stack<String> forwards = new Stack<String>();
+	
+	public SeleniumDriver(String serverHost, int serverPort, String browserStartCommand, String browserURL) {
+		selenium = new DefaultSelenium(serverHost,serverPort,browserStartCommand,browserURL);
+		selenium.start();
+	}
+	public Selenium getSelenium() {
+		return selenium;
+	}
+	public void get(String url) {
+		selenium.open(url);
+		clearForwards();
+	}
+	public void clearForwards() {
+		forwards.clear();
+	}
+	public String getCurrentUrl() {
+		return selenium.getLocation();
+	}
+	public String getPageSource() {
+		return selenium.getHtmlSource();
+	}
+	public String getTitle() {
+		return selenium.getTitle();
+	}
+	public boolean getVisible() {
+		notYetImplemented();
+		return false;
+	}
+	public void setVisible(boolean visible) {
+		notYetImplemented();
+	}
+	public void close() {
+		selenium.close();
+	}
+	public Options manage() {
+		return new Options() {
+			public void addCookie(Cookie cookie) {
+				String options = "path="+cookie.getPath();
+				if (cookie.getDomain() != null)
+					options += ", domain="+cookie.getDomain();
+				selenium.createCookie(cookie.getName()+"="+cookie.getValue(),options);
+			}
+			public void deleteAllCookies() {
+				notYetImplemented();
+			}
+			public void deleteCookie(Cookie cookie) {
+				selenium.deleteCookie(cookie.getName(), cookie.getPath());
+			}
+			public void deleteCookieNamed(String name) {
+				notYetImplemented();
+				// The following doesn't work:
+				selenium.deleteCookie(name,"path=/");
+			}
+			public Set<Cookie> getCookies() {
+				String cookies = selenium.getCookie();
+				Set<Cookie> set = new HashSet<Cookie>();
+				for (String s: cookies.split(";")) {
+					String[] keyValue = s.split("=");
+					if (keyValue.length == 2)
+						set.add(new Cookie(keyValue[0].trim(),keyValue[1].trim(),"",null));
+				}
+				return set;
+			}
+			public Speed getSpeed() {
+				return Speed.SLOW; // Could decode the timeout speed in SLOW, etc
+			}
+			public void setSpeed(Speed speed) {
+				selenium.setSpeed(""+speed.getTimeOut());
+			}
+		};
+	}
+	public Navigation navigate() {
+		return new Navigation() {
+			public void back() {
+				forwards.push(getCurrentUrl());
+				selenium.goBack();
+			}
+			public void forward() {
+				if (forwards.isEmpty())
+					throw new FitLibraryException("Can't go forward as haven't gone back");
+				selenium.open(forwards.pop());
+			}
+			public void to(String url) {
+				selenium.open(url);
+			}
+			public void to(URL url) {
+				to(url.toString()); // Assume that will do the trick - 685 introduces this
+			}
+			public void refresh() {
+				selenium.refresh();
+			}
+		};
+	}
+	public void quit() {
+		selenium.stop();
+	}
+	public TargetLocator switchTo() {
+		return new TargetLocator() {
+			public WebElement activeElement() {
+				notYetImplemented();
+				return null;
+			}
+			public WebDriver defaultContent() {
+				selenium.selectWindow(null);
+				return SeleniumDriver.this;
+			}
+			public WebDriver frame(int frameNumber) {
+				selenium.selectFrame("index="+frameNumber);
+				return SeleniumDriver.this;
+			}
+			public WebDriver frame(String frameName) {
+				try {
+					selenium.selectFrame("//frame[@name=\""+frameName+"\"]");
+					return SeleniumDriver.this;
+				} catch (Exception e) {
+					throw new FitLibraryException(""+e);
+				}
+			}
+			public WebDriver window(String windowName) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					//
+				}
+				selenium.openWindow("",windowName);
+				System.out.println("Windows: "+Arrays.asList(selenium.getAllWindowNames()));
+				selenium.waitForPopUp(windowName,"100");
+				selenium.selectWindow(windowName);
+				return SeleniumDriver.this;
+			}
+		};
+	}
+	public WebElement findElement(By by) {
+		return by.findElement((SearchContext)this);
+	}
+	public List<WebElement> findElements(By by) {
+		return by.findElements((SearchContext)this);
+	}
+	public WebElement findElementById(String id) {
+		return new SeleniumWebElement(this,id);
+	}
+	public List<WebElement> findElementsById(String arg0) {
+		notYetImplemented();
+		return null;
+	}
+	public WebElement findElementByLinkText(String linkText) {
+		return new SeleniumWebElement(this,"link="+linkText);
+	}
+	public List<WebElement> findElementsByLinkText(String linkText) {
+		notYetImplemented();
+		return null;
+	}
+	public WebElement findElementByXPath(String xPath) {
+		return new SeleniumWebElement(this,"xpath="+xPath);
+	}
+	public List<WebElement> findElementsByXPath(String xPath) {
+		notYetImplemented();
+		return null;
+	}
+	public WebElement findElementByName(String name) {
+		return new SeleniumWebElement(this,"name="+name);
+	}
+	public List<WebElement> findElementsByName(String arg0) {
+		notYetImplemented();
+		return null;
+	}
+	protected void notYetImplemented() {
+		throw new FitLibraryException("Not yet implemented in Selenium Driver");
+	}
+	public Selenium selenium() {
+		return selenium;
+	}
+	public String getWindowHandle() {
+		notYetImplemented();
+		return null;
+	}
+	public Set<String> getWindowHandles() {
+		notYetImplemented();
+		return null;
+	}
+	public WebElement findElementByPartialLinkText(String arg0) {
+		notYetImplemented();
+		return null;
+	}
+	public List<WebElement> findElementsByPartialLinkText(String arg0) {
+		notYetImplemented();
+		return null;
+	}
+}

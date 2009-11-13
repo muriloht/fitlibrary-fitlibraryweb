@@ -1,0 +1,18 @@
+See the ^DocuMentation for details of SpiderFixture.
+
+|^DocuMentation|''How to use SpiderFixture''|
+
+|^SpecifySpiderFixture|''Specifications of spider fixture''|
+
+|''Examples against web sites:''|
+|^TestGoogle|
+|^TestAmazon|
+
+ * A general fixture that's used by SpiderFixture for pattern matching on multiple lines:
+
+|^SpecifyMatchingStringFixture|
+
+!**< def
+!define COLLAPSE_SETUP {true}
+!define COLLAPSE_TEARDOWN {true}
+*!

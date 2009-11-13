@@ -1,0 +1,24 @@
+The fixtures (code and documentation) in FitLibraryWeb were kindly donated by '''Air New Zealand''' in October 2009.
+
+It is based on developments by Rick Mugridge and others at '''Air New Zealand''' from May 2008 to October 2009.
+
+FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrary-!'' open-source project.
+
+It depends on jdk1.6 for ''com.sun.net.httpserver.*'' for Http servers.
+
+|''Web testing, through a variety of browsers''|>SpiderFixture|
+|''xml diff, transform, etc''|>XmlProcessing|
+|''Emulating a web services client''|>WebServicesClient|
+|''Mocking one or more web services''|>MockWebServices|
+|''Recording web services''|>RecordWebServicesDocs|
+|''Running a shell/command''|>ShellFixture|
+|''Using templates (for xmls, etc)''|>TemplateFixture|
+|''Creating arbitrary dates''|>CreateDate|
+|''Database access (a ''!-DoFixture-! ''wrapper for dbfit)''|>DatabaseFixtures|
+|''Checking the contents of email''|>ElectronicMail|
+|''Checking the contents of a PDF''|>PdfDocument|
+
+!*> paths
+!path fitlibrary.jar
+!path lib/*.jar
+*!

@@ -1,0 +1,11 @@
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
+
+|''page contains text''|whitening|
+
+|'''not'''|''page contains text''|reddening|
+
+|''frame''|0|
+
+|''page contains text''|reddening|

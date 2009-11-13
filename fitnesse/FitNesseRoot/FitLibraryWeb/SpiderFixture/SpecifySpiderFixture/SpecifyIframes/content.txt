@@ -1,0 +1,9 @@
+>SpecSetUp
+^SelectByPosition
+^SelectByName
+^SelectDefault
+^SelectionFails
+^SelectByXpath
+^SelectById
+^SelectChangesTitleInHtmlUnit
+^SelectDoesNotChangeTitleInFirefox

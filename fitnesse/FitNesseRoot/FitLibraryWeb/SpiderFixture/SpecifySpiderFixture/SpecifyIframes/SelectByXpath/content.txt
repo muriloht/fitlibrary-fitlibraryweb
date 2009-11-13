@@ -1,0 +1,7 @@
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
+
+!3 It's not possible, currently, to select a frame or iframe by id
+
+|'''reject'''|''frame by name''|//iframe[@id='redId']|

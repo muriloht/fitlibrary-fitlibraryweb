@@ -1,0 +1,9 @@
+|''mock soap on port''|8081|
+|''xpath''|!-//request/attribute::a-!|''is''|A|
+|''xpath''|//request/attribute::b|''is''|b|
+|''xpath''|//start|''is''|now|
+|''response''|<response>out</response>|
+
+|''to''|http://localhost:8081/service|''post''|${soap}<request xmlns:f="http://services.isis.airnz.com/CalendarPriceRQ/3/3" b="b" a="A">in<start>now</start></request>${endSoap}|'''is'''|<response>out</response>|
+
+|''close''|

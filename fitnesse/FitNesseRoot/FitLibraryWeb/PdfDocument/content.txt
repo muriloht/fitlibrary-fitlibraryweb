@@ -1,0 +1,62 @@
+The ''!-PDFDocument-!'' fixture allows for the text within a PDF file to be checked.
+#
+!2 Example
+#
+|!-fitlibrary.PDFDocument-!|
+|''open''|Submission.pdf|
+|''text''|''contains''|Thanks for your submission|
+|''number of pages''|'''is'''|2|
+|''select page''|1|
+|''paragraph below heading''|Follow Up:|'''is'''|We will contact you in the next few days to provide feedback on your submission.|
+|''select page''|2|
+|''text''|''contains''|Fine print details|
+|''paragraph below heading''|LEGAL|'''is'''|Please follow all legal requirements to the letter.|
+|''paragraph below heading''|UPDATES|'''is'''|Changes to these requirements may be made by us at any time.|
+|''show pdf as image''|
+|''close PDF file''|
+#
+!2 Commands
+#
+ * Start the fixture:
+
+|!-fitlibrary.PDFDocument-!|
+
+ * Open a PDF file:
+
+|''open''|Submission.pdf|
+
+ * Check that the string appears somewhere in the text in the whole document:
+
+|''text''|''contains''|Thanks for your submission|
+
+ * Confirm the number of pages:
+
+|''number of pages''|''is''|2|
+
+ * Select a specific page:
+
+|''select page''|1|
+
+ * Select the text below a given heading and up to the next heading (can also use '''contains''' and '''matches''':
+
+|''paragraph below heading''|Follow Up:|''is''|We will contact you in the next few days to provide feedback on your submission.|
+
+|''select page''|2|
+
+ * Check that the string appears somewhere in the text of the second page:
+
+|''text''|''contains''|Fine print details|
+
+ * Dump an image of the PDF and include it in the storytest report:
+
+|''show pdf as image''|
+
+ * Finish processing the pdf by closing the file:
+
+|''close PDF file''|
+#
+!2 Implementation
+#
+This makes use of the apache open-source ''pdfbox'' system.
+
+See http://incubator.apache.org/pdfbox/ for further details.

@@ -1,0 +1,48 @@
+!*< def
+!define html ({{{  <dv id="nothing"></dv>
+  <tt id="onlySpacesInText">   </tt>
+  <dv id="withText">green</dv>
+  <tt id="withMultiTextNL">yellow\n
+ orange</tt>
+  <tt id="withMultiTextCR">yellow\rorange</tt>
+  <tt id="withMultiTextBR">yellow <br>orange</tt>
+  <tt id="withMultiTextBR2">yellow <br/>orange</tt>}}})
+*!
+
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''text of''|//dv[@id="nothing"]|''matches lines''|
+
+|''text of''|//tt[@id="onlySpacesInText"]|''matches lines''|
+
+|''text of''|//dv[@id="withText"]|''matches lines''|
+|green|
+
+|''text of''|//dv[@id="withText"]|''matches lines''|
+|gr.*n|
+
+ * \n is replaced by a space:
+
+|''text of''|//tt[@id="withMultiTextNL"]|''matches lines''|
+|yellow orange|
+
+  * \r is replaced by a space:
+
+|''text of''|//tt[@id="withMultiTextCR"]|''matches lines''|
+|yellow orange|
+
+ * <br> is replaced with a line separator:
+
+|''text of''|//tt[@id="withMultiTextBR"]|''matches lines''|
+|yellow|
+|orange|
+
+ * <br/> is replaced with a line separator:
+
+|''text of''|//tt[@id="withMultiTextBR2"]|''matches lines''|
+|yellow|
+|orange|

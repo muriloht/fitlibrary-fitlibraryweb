@@ -1,0 +1,44 @@
+!*< def
+!define html ({{{<input type="text" id="nothing"/>
+<input type="text" id="withValue" value="red"/>
+<input type="text" id="disabled" value="blue" disabled="true"/>
+<input type="text" id="onlySpacesInText">   </input>
+<input type="text" id="withText">green</input>}}})
+*!
+The ''!-SpiderFixture-!'' storytests/specs are written to be as self-contained as possible. So that contents of the html being accessed are included in the storytest.
+!3 An Example
+Consider the [[!-WithInputText storytest-!][<FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyTextOf.WithInputText]] which starts as follows:
+
+|''spider''|
+
+|''save html in''|test.html|
+
+|''with html''|${html}|
+
+|''text of''|//input[@id="nothing"]|''is''||
+
+|''text of''|//input[@id="withValue"]|''is''|red|
+!3 What Happens
+Each ''!-SpiderFixture-!'' storytest/spec runs within a suite.
+
+1. The first table runs a fresh copy of ''!-SpiderFixture-!''.
+
+2. The second table specifies the file name where the (following) html is to be saved (here, "test.html").
+
+ . This is saved within the ''files'' directory of !-FitNesse-! (ie, in "!-FitNesseRoot/files-!").
+
+ . It's saved there so that various web drivers can access that page through !-FitNesse-!, at http://localhost:${FITNESSE_PORT}/files/test.html
+
+ . If you click on the above link, you'll see that it includes the html from the last storytest that was run.
+
+ . The port number of ${FITNESSE_PORT} is the current port that you're using with !-FitNesse-! (defined by a symbolic variable in !-FitNesse-!)
+
+3. The third table specifies the html that is to be written into the test html file.
+
+ . The contents of the html is defined using a ''!-!define-!'' so that it can be formatted nicely. Edit this page to see how that's defined.
+
+ . This action also automatically does a ''get url'' on that page, so that subsequent actions can work from there.
+!3 Handling tables
+The html that's given in such a storytest can't contain the following tags because they are interpreted by ''!-FitLibrary-!'', giving odd errors:{{{<table>...</table>}}}
+So instead we use:{{{<t-table >...</t-table >}}} and these are tranlsated before writing to the file.
+

@@ -1,0 +1,10 @@
+^RespondToClick
+^ChangeDomOnClick
+^RespondToAddedText
+^RespondToSelectionChange
+^RespondToAddedTestNested
+^RespondToAddedTextMoo
+^RespondToAddedTextOnDomReadyInMoo
+^RespondToAddedTextPeriodicalInMoo
+
+^ExecuteJavaScript

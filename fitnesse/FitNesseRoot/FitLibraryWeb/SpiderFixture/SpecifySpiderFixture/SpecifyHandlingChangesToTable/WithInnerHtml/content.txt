@@ -1,0 +1,21 @@
+!*< def
+!define to {setTimeout('addInput()', 20)}
+!define fn {function addInput()}
+!define body {  document.getElementById("t").innerHTML = "<td id='d'>green</td>";}
+!define html ({{{<script type="text/javascript">
+${fn}{
+  ${body}
+}
+</script>
+<input type="button" id="ok" value="OK" onclick="javascript:${to}"/>
+<t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}})
+*!
+|''keywords''|firefox|
+!2 htmlunit can't handle this particular change through javascript
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''click''|ok|
+
+|''text of''|d|'''becomes'''|green|

@@ -1,0 +1,9 @@
+|''keywords''|firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
+
+|''title''|'''is'''|White|
+
+|''frame by name''|green|
+
+|''title''|'''is'''|White|

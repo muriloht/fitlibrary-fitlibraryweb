@@ -1,0 +1,27 @@
+!*< xml
+!define sameAs {|''xml''|<first><xml/></first>|''same as''|<second><xml/></second>|
+}
+!define similarTo {|''xml''|<first><xml/></first>|''similar to''|<second><xml/></second>|
+}
+!define transform {|''transform''|<first><xml/></first>|''with''|xslt contents|
+}
+!define exists {|''xpath''|//xpath|''exists in''|<first><xml/></first>|
+}
+!define in {|''xpath''|//first|''in''|<first>red</first>|''is''|red|
+}
+!define match {|''xpath''|//first|''in''|<first>red</first>|''matches''|r.d|
+}
+*!
+!3 Xml Processing
+|^XmlSameAs|''Checks the two lots of xml are the same''|${sameAs}|
+|^XmlSameAsWithNameSpace|''Checks the two lots of xml are the same''|''but where name spaces are used''|
+|^XmlSimilarTo|''Checks the two lots of xml are the same''|${similarTo}|
+|>TransformWith|''Transforms the given xml with the xslt''|${transform}|
+|>XpathExistsIn|''Checks for the existence of the element referenced by the xpath expression''|${exists}|
+|>XpathInIs|''Checks the value of the evaluated xpath expression''|${in}|
+|>XpathInMatches|''Checks if value of the evaluated xpath expression matches the regular expression''|${match}|
+|>VariousErrorMessage|''Show various error messages when things go wrong''|
+#
+!3 Implementation
+#
+''!-XmlDoFixture-!'' is a thin layer on top of xmlUnit. See http://xmlunit.sourceforge.net/ for further details.

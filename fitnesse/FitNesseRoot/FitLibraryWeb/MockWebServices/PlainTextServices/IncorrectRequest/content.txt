@@ -1,0 +1,8 @@
+ * A request/response is consumed even if it doesn't match
+|''mock on port''|8081|
+|''matches request''|in|
+|''response''|out|
+
+|'''reject'''|''to''|http://localhost:8081/service|''post''|wrong|
+
+|''close with errors''|'''is'''|2|

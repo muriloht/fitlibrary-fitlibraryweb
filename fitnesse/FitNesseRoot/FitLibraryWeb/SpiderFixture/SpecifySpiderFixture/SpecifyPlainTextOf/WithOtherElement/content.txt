@@ -1,0 +1,39 @@
+!**< def
+!define html ({{{  <dv id="nothing"></dv>
+  <tt id="onlySpacesInText">   </tt>
+  <dv id="withText">green</dv>
+  <tt id="withMultiText">yellow\n
+orange</tt>
+  <tt id="withMultiTextCR">yellow\rorange</tt>
+  <tt id="withMultiTextBR">yellow<br/>orange</tt>}}})
+**!
+
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''plain text of''|//dv[@id="nothing"]|''is''||
+
+|''plain text of''|//tt[@id="onlySpacesInText"]|''is''||
+
+|''plain text of''|//dv[@id="withText"]|''is''|green|
+
+|''plain text of''|//dv[@id="withText"]|''matches''|gr.*n|
+
+ * \n in text gets converted into a space:
+
+|''plain text of''|//tt[@id="withMultiText"]|''is''|yellow orange|
+
+ * \r in text gets converted into a space:
+
+|''plain text of''|//tt[@id="withMultiTextCR"]|''is''|yellow orange|
+
+ * <br/> in text gets removed (and Selenium adds a space between):
+
+|''plain text of''|//tt[@id="withMultiTextBR"]|''matches''|yellow.*orange|
+
+|''plain text of''|//tt[@id="withMultiText"]|''matches''|yellow.orange|
+
+ * Note that ''plain text of'' and ''text of'' are the same in Selenium

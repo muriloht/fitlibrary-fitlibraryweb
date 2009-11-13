@@ -1,0 +1,9 @@
+|''mock on port''|8081|
+|''matches request''|in|
+|''response''|out|
+
+|''to''|http://localhost:8081/service|''post''|in|'''is'''|out|
+
+|'''reject'''|''to''|http://localhost:8081/service|''post''|in two|
+
+|''close with errors''|'''is'''|1|

@@ -1,0 +1,26 @@
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyFrames.SpecSetUp
+
+ * With a frameset, the first frame is selected automatically.
+ * The current title and url are of that first frame, rather than of the loaded html containing the frameset.
+|''url''|'''matches'''|.*/files/red.html|
+
+|''page contains text''|reddening|
+
+ * Select second frame:
+|''frame''|1|
+
+|''page contains text''|greening|
+
+|''url''|'''matches'''|.*/files/green.html |
+
+|''page contains text''|greening|
+
+ * Select first frame:
+|''frame''|0|
+
+|''url''|'''matches'''|.*/files/red.html|
+
+|''page contains text''|reddening|
+

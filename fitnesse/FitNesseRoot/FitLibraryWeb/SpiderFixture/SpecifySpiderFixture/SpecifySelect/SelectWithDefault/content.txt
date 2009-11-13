@@ -1,0 +1,37 @@
+!*< def
+!define html ({{{<select name="colour">
+  <option value=""></option>
+  <option selected="selected" value="red">Red</option>
+  <option>Green</option>
+  <option id ='blue'>Blue</option>
+  <option id='black'>Black</option>
+  <option value='yellow'>Yellow</option>
+  <OPTION VALUE="VIOLET">Violet</OPTION>
+</select>}}})
+*!
+
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''option of''|//select[@name="colour"]|''is''|red|
+
+|''with''|//select[@name="colour"]|''select option''|Black|
+
+|''option of''|//select[@name="colour"]|''is''|Black|
+
+|reject|''with''|//select[@name="colour"]|''select option''|Missing|
+
+ * If an option has a value, that's used instead:
+
+|''with''|//select[@name="colour"]|''select option''|yellow|
+
+|''option of''|//select[@name="colour"]|''is''| yellow |
+
+ * And case doesn't matter:
+
+|''with''|//select[@name="colour"]|''select option''| VIOLET |
+
+|''option of''|//select[@name="colour"]|''is''| VIOLET |

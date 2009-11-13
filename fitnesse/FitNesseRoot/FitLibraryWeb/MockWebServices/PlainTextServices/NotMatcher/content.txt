@@ -1,0 +1,14 @@
+!3 Distinct term tables are alternatives, and can be used in either order
+|''mock on port''|8081|
+|''not matches request''|in|
+|''response''|not out|
+
+|''mock on port''|8081|
+|''matches request''|in|
+|''response''|out|
+
+|''to''|http://localhost:8081/service|''post''|in|'''is'''|out|
+
+|''to''|http://localhost:8081/service|''post''|not in|'''is'''|not out|
+
+|''close''|

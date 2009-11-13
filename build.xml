@@ -1,0 +1,79 @@
+<project name="fitlibraryEnterprise" default="jar" basedir=".">
+	<property name="package.name" value="fitlibraryWeb" />
+
+	<property name="here" value="${basedir}" />
+	<property name="release.version" value="${start.DSTAMP}" />
+	<property name="jar.name" value="${package.name}.jar" />
+	<property name="src.jar.name" value="${package.name}Src.jar" />
+
+	<property name="home" value="${user.home}\My Documents" />
+	<property name="working" value="${home}/work" />
+	<property name="fitnesse.home" value="${working}/fitnesse" />
+	<property name="lib.home" value="${fitnesse.home}/lib" />
+	<property name="lib.src" value="${lib.home}/src" />
+	<property name="test.src" value="test" />
+	<property name="bin" value="bin" />
+
+<!--  ==================== Compilation Control Options ==================== -->
+	<property name="compile.debug" value="true" />
+	<property name="compile.deprecation" value="false" />
+	<property name="compile.optimize" value="true" />
+
+	<!-- ==================== Jar Target ================================== -->
+	<target name="jar" depends="compile, jar-only" description="Create ${name} jar file in local FitNesseServer directory"/>
+	
+	<!-- ==================== Clean Target ==================================== -->
+
+<target name="clean" description="Delete old build directory">
+	<delete dir="${bin}" />
+	<mkdir dir="${bin}" />
+</target>
+	<!-- ==================== Compile Target ================================== -->
+<target name="compile" depends="clean" description="Compile Java sources">
+	<javac srcdir="src" 
+	       destdir="${bin}" 
+	       extdirs=""
+	       debug="${compile.debug}"
+	       deprecation="${compile.deprecation}"
+	       optimize="${compile.optimize}">
+	       <classpath>
+	            <pathelement location="${fitnesse.home}/fitlibrary.jar"/>
+	            <pathelement location="${fitnesse.home}/fitnesse.jar"/>
+		    <fileset dir="${lib.home}">
+			<include name="**/*.jar"/>
+			<exclude name="**/${package.name}.jar"/>
+		    </fileset>
+	       </classpath>
+	</javac>
+</target>
+<!-- ==================== Jar-only Target ================================== -->
+    <target name="jar-only">
+	    <echo message="Create ${package.name} jar file in local FitNesse"/>
+	    <jar destfile="${lib.home}/${package.name}.jar" basedir="bin"   />
+	    <mkdir dir="${lib.src}" />
+	<jar jarfile="${lib.src}/${src.jar.name}">
+	  <fileset dir="src"/>
+	  <fileset dir="test"/>
+	</jar>
+    </target>
+
+<!-- ==================== JUnit Target ================================== -->
+	<target name="junit" description="run the junit tests">
+		<junit fork="yes" showoutput="no" haltonfailure="yes" haltonerror="yes" printsummary="yes" outputtoformatters="false">
+			<classpath>
+				<dirset dir="${bin}">
+					<include name="**"/>
+				</dirset>
+				<fileset dir="${lib.home}">
+					<include name="**/*.jar"/>
+					<exclude name="**/${name}.jar"/>
+				</fileset>
+		  	</classpath>
+			<batchtest fork="no" haltonfailure="no" haltonerror="yes" filtertrace="no">
+				<fileset dir="${test.src}">
+				  <include name="**/Test*.java"/>
+				</fileset>
+			</batchtest>
+	    </junit>
+	</target>
+</project>
