@@ -2,7 +2,8 @@
  * See ^HowSpecsWork
 >SpecSetUp
 >SuiteSetUp
-
+>TearDown
+#
 !3 Selecting the driver to use:
 |''start spider with''|firefox|
 
@@ -12,11 +13,14 @@ where the driver is "firefox" or "htmlunit"
 |^SpecifyTitleIs|''Check the title of the current page''|
 |^SpecifyUrlIs|''Check the URL of the current page''|
 |^SpecifyBackAndForward|''Move forwards and backwards''|
+|^SpecifyRefresh|''Move forwards and backwards''|
+
 #
 !3 Text in Input, !-TextArea-! & Other Elements
 |>SpecifyTextOf|''Check the text of a text field, text area, etc''|
 |^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
 |>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
+|>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved.''|  
 |^SpecifyPlainTextOfMatches|''Pattern match for text generally.''|
 |^SpecifyMultiLineTextMatches|''Where matching is applied to each of the lines''|
 |^SpecifyWithSetText||
@@ -39,7 +43,6 @@ where the driver is "firefox" or "htmlunit"
 |>SpecifyTheAttributeOfChildrenOfTypeOfElement|
 #
 !3 Checkbox, Radio, Select
-!anchor checkbox
 |^SpecifyCheckbox|
 |^SpecifyRadio|
 |^SpecifySelect|''Select a specific option of a select''|
@@ -73,7 +76,7 @@ where the driver is "firefox" or "htmlunit"
 |^SpecifyWithinContext|
 #
 !3 Screen Dump
- * Only works with htmlunit and Selenium
+ * Only works with htmlunit
 |^SpecifyScreenDump|
 #
 !3 XPath
@@ -82,8 +85,10 @@ where the driver is "firefox" or "htmlunit"
 !3 !-JavaScript-!
 |^SpecifyJavaScript|
 #
-!3 Lookup
+!3 Lookup & String matching
 |^SpecifyLookup|
+|^SpecifyMatchingStringFixture|
+
 #
 !3 Other Locators
 |^SpecifyLocators|

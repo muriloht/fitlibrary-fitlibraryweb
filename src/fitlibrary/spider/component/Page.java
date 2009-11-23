@@ -45,6 +45,10 @@ public class Page extends SpiderComponent {
 		webDriver().navigate().forward();
 		return true;
 	}
+	public boolean refresh() {
+		webDriver().navigate().refresh();
+		return true;
+	}
 	public String getTitle() {
 		try {
 			String title = webDriver().getTitle();

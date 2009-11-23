@@ -1,5 +1,8 @@
 package fitlibrary.spider.element;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.openqa.selenium.WebElement;
 
 import fit.Parse;
@@ -18,6 +21,11 @@ public class TextElement extends SpiderElement {
 	}
 	public String plainTextOf(String locator) {
 		return tagless(collectText(findElement(locator), true));
+	}
+	public String innerHtmlOf(String locator) {
+		WebElement element = findElement(locator);
+		Object escaped = spiderFixture().executeJavaScriptWith("return arguments[0].innerHTML;", element);
+		return lowerCaseTags(Parse.unescape(escaped.toString()));
 	}
 	public MultiLineMatchFixture textOfMatchesLines(String locator) {
 		// Doesn't wait for Javascript to alter existing values
@@ -120,6 +128,18 @@ public class TextElement extends SpiderElement {
 			s = s.substring(0, pos) + s.substring(endPos + 1);
 		}
 		return s;
+	}
+	private String lowerCaseTags(String html) {
+		Pattern patt = Pattern.compile("(</?[A-Z]+/?>)", Pattern.DOTALL);
+		Matcher m = patt.matcher(html);
+		StringBuffer sb = new StringBuffer(html.length());
+		while (m.find()) {
+			String text = m.group(1);
+			text = text.toLowerCase();
+			m.appendReplacement(sb, Matcher.quoteReplacement(text));
+		}
+		m.appendTail(sb);
+		return sb.toString();
 	}
 	public static String crLfRemoved(String s) {
 		return s.replaceAll("\\r?\\n", "");

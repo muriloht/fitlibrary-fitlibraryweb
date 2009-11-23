@@ -96,7 +96,10 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 			return expected == false;
 		}
 	}
-	
+	public Object executeJavaScriptWith(String script, Object param) {
+		JavascriptExecutor js = (JavascriptExecutor) webDriver();
+		return js.executeScript(script, param);
+	}
 	// --------- PAGE MANAGEMENT: ---------
 	public boolean getUrl(final String url) throws Exception {
 		return page().getUrl(url);
@@ -116,7 +119,9 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public void pollUrl(final Row row, final TestResults testResults) throws Exception {
 		page().pollUrl(row, testResults);
 	}
-	
+	public void refreshPage() {
+		page().refresh();
+	}
 	// --------- DIAGNOSTICS: ---------
 	public void showErrorDiagnosticsAtWhenPageContains(String xpath, String pattern) {
 		page().showErrorDiagnosticsAtWhenPageContains(xpath, pattern);
@@ -210,7 +215,9 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public boolean withAddText(final String locator, final String s) {
 		return textElement.withAddText(locator, s);
 	}
-	
+	public String innerHtmlOf(String locator) {
+		return textElement.innerHtmlOf(locator);
+	}
 	// --------- GENERAL ELEMENTS: EXISTENCE, ATTRIBUTES, VALUES, TEXT, COUNT ---------
 	public boolean elementExists(String locator) {
 		return elementWithAttributes.elementExists(locator);
