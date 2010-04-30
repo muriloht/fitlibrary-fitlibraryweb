@@ -15,10 +15,7 @@ import fit.Fixture;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.spider.SpiderElementFixture;
 import fitlibrary.spider.SpiderFixture;
-import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
-import fitlibrary.traverse.workflow.caller.CallManager;
-import fitlibrary.utility.TestResults;
 
 public class WebElementSelector extends DoTraverse {
 	private final SpiderFixture spiderFixture;
@@ -36,13 +33,6 @@ public class WebElementSelector extends DoTraverse {
 		if (elements.size() != 1)
 			throw new FitLibraryException("The following elements are still selected: "+descriptions());
 		return new SpiderElementFixture(elements.get(0),spiderFixture);
-	}
-	@Override
-	@SuppressWarnings("unused")
-	public void show(Row row, TestResults testResults) throws Exception {
-		String descriptions = descriptions();
-		row.addCell(descriptions).shown();
-		CallManager.addShow(row);
 	}
 	private String descriptions() {
 		StringBuilder stringBuilder = new StringBuilder();
@@ -94,6 +84,9 @@ public class WebElementSelector extends DoTraverse {
 				String value = element.getAttribute(attribute);
 				return value != null && compiled.matcher(value).matches();
 			}});
+	}
+	public void show() {
+		getRuntimeContext().currentRow().addShow(descriptions());
 	}
 	private void filter(Filter filter) {
 		Iterator<WebElement> iterator = elements.iterator();

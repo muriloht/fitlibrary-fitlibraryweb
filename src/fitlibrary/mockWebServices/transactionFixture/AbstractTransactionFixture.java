@@ -79,9 +79,7 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 	}
 	protected abstract boolean isXml();
 
-	@Override
 	public void tearDown() throws Exception {
-		super.tearDown();
 		addToSequence();
 		Term term = mockingWebServices.or(port,sequentialTerm,insertAtEnd);
 		showAfterTable("terms = "+term);

@@ -1,13 +1,13 @@
 package fitlibrary.spider.component;
 
-import fitlibrary.closure.CalledMethodTarget;
+import fitlibrary.closure.ICalledMethodTarget;
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.runResults.TestResults;
 import fitlibrary.spider.SpiderFixture;
 import fitlibrary.spider.polling.PollForWithError;
 import fitlibrary.spider.utility.Diagnostics;
 import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.table.Row;
-import fitlibrary.utility.TestResults;
 
 public class Page extends SpiderComponent {
 	public static final String POLL_URL_TIMEOUT = "pollUrl";
@@ -68,7 +68,7 @@ public class Page extends SpiderComponent {
 	}
 	public void pollUrl(final Row row, final TestResults testResults) throws Exception {
 		final String url = row.text(1, spiderFixture);
-		final CalledMethodTarget target = spiderFixture.findMethodFromRow(row, 3, 4);
+		final ICalledMethodTarget target = spiderFixture.findMethodFromRow(row, 3, 0);
 
 		ensureWithError(new PollForWithError() {
 			public String error() {
@@ -77,8 +77,8 @@ public class Page extends SpiderComponent {
 			public boolean matches() {
 				try {
 					webDriver().get(url);
-					Object result = target.invokeForSpecial(row.rowFrom(4),
-							testResults, true, row.cell(0));
+					Object result = target.invokeForSpecial(row.fromAt(4),
+							testResults, true, row.at(0));
 					if (result instanceof Boolean) {
 						return ((Boolean) result).booleanValue();
 					}
@@ -89,7 +89,7 @@ public class Page extends SpiderComponent {
 						"Can only use an action that returns a boolean");
 			}
 		}, POLL_URL_TIMEOUT);
-		row.cell(1).pass(testResults);
+		row.at(1).pass(testResults);
 	}
 	// DIAGNOSTICS
 	public void showErrorDiagnosticsAtWhenPageContains(String xpath,

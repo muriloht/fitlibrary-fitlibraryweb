@@ -39,7 +39,7 @@ public class TemplateFixture extends DoTraverse {
 	}
 	private void processTemplate(String fileName, Writer writer) throws Exception {
 		Template template = Velocity.getTemplate(fileName);
-		VelocityContext context = new VelocityContext(runtime().dynamicVariables().getMap());
+		VelocityContext context = new VelocityContext(getDynamicVariables().getMap());
 		template.merge(context, writer);
 	}
 }

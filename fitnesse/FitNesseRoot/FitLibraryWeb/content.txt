@@ -19,6 +19,10 @@ It depends on jdk1.6 for ''com.sun.net.httpserver.*'' for Http servers.
 |''Checking the contents of a PDF''|>PdfDocument|
 
 !*> paths
-!path fitlibrary.jar
+!path ../bin
+#!path fitlibrary.jar
+!path ../../fitlibrary/bin
 !path lib/*.jar
 *!
+
+!define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}

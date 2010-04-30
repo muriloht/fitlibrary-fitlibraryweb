@@ -5,11 +5,11 @@
 */
 package fitlibrary.service;
 
-import fit.Fixture;
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.runResults.TestResults;
 import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
-import fitlibrary.utility.TestResults;
+import fitlibrary.typed.TypedObject;
 
 public abstract class ServicingFixture extends DoTraverse {
 	protected long defaultTimeout = 2500;
@@ -20,9 +20,9 @@ public abstract class ServicingFixture extends DoTraverse {
 		return service;
 	}
 	@Override
-	public Object interpretRow(Row row, TestResults testResults, Fixture fixtureByName) {
+	public TypedObject interpretRow(Row row, TestResults testResults) {
 		try {
-			return super.interpretRow(row, testResults, fixtureByName);
+			return super.interpretRow(row, testResults);
 		} catch (Exception e) {
 			throw new FitLibraryException(""+e);
 		}

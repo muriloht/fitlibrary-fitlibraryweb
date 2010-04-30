@@ -47,7 +47,6 @@
 |''becomes timeout''|3000|
 
 |''close''|
-|''title''|'''becomes'''|WOne Title|
 
 |''close''|
 |''title''|'''becomes'''|WFrom|

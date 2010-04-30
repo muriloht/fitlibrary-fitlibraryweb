@@ -9,10 +9,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fitlibrary.runResults.TestResults;
 import fitlibrary.spider.SpiderFixture;
 import fitlibrary.table.Row;
 import fitlibrary.utility.StringUtility;
-import fitlibrary.utility.TestResults;
 
 public class SpecifySpiderFixture extends SpiderFixture {
 	private String testFileName;
@@ -40,7 +40,8 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		s = StringUtility.replaceString(s,"\\n","\n");
 		s = StringUtility.replaceString(s,"\\r","\r");
 		s = StringUtility.replaceString(s,"\\t","\t");
-		writeFile(new File("FitNesseRoot/files/"+testFileName), s);
+		writeFile(FITNESSE_DIFFERENCES.getLocalFile(testFileName).getFile(),s);
+//		writeFile(new File("FitNesseRoot/files/"+testFileName), s);
 		selectInitialWindow();
 		getUrl("http://localhost:"+portNo+"/files/"+testFileName);
 		return true;
@@ -63,7 +64,8 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		if (split.length > 1)
 			throw new RuntimeException("fix");
 		String fileName2 = split[split.length-1];
-		writeFile(new File("FitNesseRoot/files/"+fileName2), html);
+		writeFile(FITNESSE_DIFFERENCES.getLocalFile(fileName2).getFile(),html);
+//		writeFile(new File("FitNesseRoot/files/"+fileName2), html);
 		return true;
 	}
 }

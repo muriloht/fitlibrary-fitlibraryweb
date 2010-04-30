@@ -55,7 +55,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		return new FlexSpiderFixture(webDriver());
 	}
 	public boolean startSpiderWith(String theDriver) {
-		runtime().dynamicVariables().put("webDriver.driver", theDriver);
+		setDynamicVariable("webDriver.driver", theDriver);
 		return true;
 	}
 	public boolean useFirefoxProfile(String profileName) {
@@ -140,10 +140,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 			boolean shutDownBrowserAutomatically) {
 		this.shutDownAutomatically = shutDownBrowserAutomatically;
 	}
-	@Override
 	public void tearDown() throws Exception {
-		// System.out.println("SpiderFixture.tearDown()");
-		super.tearDown();
 		tearDownDriver();
 	}
 	public void tearDownDriver() {
@@ -231,5 +228,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	}
 	public TextInPage getTextInPage() {
 		return textInPage;
+	}
+	@Override
+	public int getTimeout(String name) {
+		return super.getTimeout(name);
 	}
 }

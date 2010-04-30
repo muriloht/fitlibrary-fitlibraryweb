@@ -60,6 +60,8 @@
 					<include name="**" />
 
 				</dirset>
+				<pathelement location="${fitnesse.dir}/fitnesse.jar" />
+				<pathelement location="${fitnesse.dir}/fitlibrary.jar" />
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
 
@@ -76,7 +78,7 @@
 	</target>
 
 	<target name="start-fitnesse">
-		<java jar="${lib}/fitnesse.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
+		<java jar="fitnesse.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
 			<arg value="-r" />
 			<arg value="FitNesseRoot" />
 			<arg value="-p" />
@@ -98,7 +100,7 @@
 	<target name="stop-fitnesse">
 		<java classname="fitnesse.Shutdown" fork="true">
 			<classpath>
-				<fileset dir="${lib}">
+				<fileset dir=".">
 					<include name="fitnesse.jar" />
 				</fileset>
 			</classpath>
@@ -142,9 +144,9 @@
 				<arg value="${showpassesinreport}" />
 
 				<classpath>
-					<pathelement location="${fitnesse.dir}/fitlibraryWeb.jar" />
+					<pathelement location="${fitnesse.dir}/fitnesse.jar" />
+					<pathelement location="${fitnesse.dir}/fitlibrary.jar" />
 					<fileset dir="${lib}">
-						<include name="**/fitlibrary.jar" />
 						<include name="**/*.jar" />
 					</fileset>
 				</classpath>

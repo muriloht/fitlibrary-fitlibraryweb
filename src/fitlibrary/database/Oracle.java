@@ -19,10 +19,8 @@ public class Oracle extends DoFixture {
 	public void connectWithUserAndPasswordTo(String host, String username, String password, String database) throws SQLException {
 		oracle.connect(host, username, password, database);
 	}
-	@Override
 	public void tearDown() throws Exception {
 		try {
-			super.tearDown();
 			oracle.close();
 		} catch (Exception e) {
 			//
