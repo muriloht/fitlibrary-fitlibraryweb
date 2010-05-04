@@ -5,11 +5,10 @@
 	<property name="bin" value="${home}/bin" />
 	<property name="test.src" value="${home}/test" />
 	<property name="fitnesse.dir" value="${home}/fitnesse" />
-	<property name="port" value="8080" />
+	<property name="port" value="8990" />
 
 	<!-- batch runner properties -->
-	<property name="showpassesinreport" value="showpasses" />
-	<!-- set any value here to switch this on, leave blank to switch off -->
+	<property name="showpassesinreport" value="showpasses" />	<!-- true or false -->
 	<property name="results-dir" value="${home}/runnerResults" />
 	<property name="timeout" value="600000" />
 	<!-- 10 mins default timeout -->
@@ -18,9 +17,9 @@
 
 	<target name="jar-no-test" depends="clean, compile">
 		<echo message="Create FitLibraryWeb jar file in local FitNesse" />
-		<jar destfile="${fitnesse.dir}/fitlibraryWeb.jar" basedir="bin" />
+		<jar destfile="${lib}/fitlibraryWeb.jar" basedir="bin" />
 		<echo message="Create source zip file" />
-		<zip destfile="${fitnesse.dir}/fitlibraryWebSrc.zip">
+		<zip destfile="${lib}/src/fitlibraryWebSrc.zip">
 			<fileset dir="src" />
 		</zip>
 	</target>
@@ -34,8 +33,10 @@
 
 		<javac srcdir="${src}" destdir="${bin}">
 			<classpath>
+				<fileset dir="${fitnesse.dir}">
+					<include name="*.jar" />
+				</fileset>
 				<fileset dir="${lib}">
-
 					<include name="**/*.jar" />
 				</fileset>
 			</classpath>
@@ -43,6 +44,9 @@
 		<javac srcdir="${test.src}" destdir="${bin}">
 
 			<classpath>
+				<fileset dir="${fitnesse.dir}">
+					<include name="*.jar" />
+				</fileset>
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
 				</fileset>
@@ -64,7 +68,6 @@
 				<pathelement location="${fitnesse.dir}/fitlibrary.jar" />
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
-
 				</fileset>
 			</classpath>
 			<batchtest fork="yes" haltonfailure="yes" haltonerror="yes" filtertrace="no">
@@ -113,7 +116,16 @@
 	</target>
 
 	<target name="batch-run-spider-specifications">
+	        <echo message="FitNesse has to be running first on port ${port}" />
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
+	</target>
+
+	<target name="batch-run-xml-specifications">
+		<batch-run suite="FitLibraryWeb.XmlProcessing" />
+	</target>
+
+	<target name="batch-run-template-specifications">
+		<batch-run suite="FitLibraryWeb.TemplateFixtureg" />
 	</target>
 
 	<target name="restful-run-spider-specifications">
@@ -138,10 +150,11 @@
 		<!-- 10 mins default timeout -->
 		<sequential>
 			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="${fitnesse.dir}" timeout="@{timeout}" failonerror="true">
-				<arg value="@{suite}" />
-				<arg value="." />
-				<arg value="${results-dir}" />
-				<arg value="${showpassesinreport}" />
+				<arg value="-suiteName"/>     <arg value="@{suite}" />
+				<arg value="-fitNesseDiry"/>  <arg value="." />
+				<arg value="-resultsDiry"/>   <arg value="${results-dir}" />
+				<arg value="-showPasses"/>    <arg value="${showpassesinreport}" />
+				<arg value="-port"/>          <arg value="${port}" />
 
 				<classpath>
 					<pathelement location="${fitnesse.dir}/fitnesse.jar" />
