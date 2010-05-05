@@ -39,9 +39,7 @@ public class MockWebServicesFixture extends DoTraverse {
 	public void sleep(int time) throws InterruptedException {
 		Thread.sleep(time);
 	}
-	@Override
 	public void tearDown() throws Exception {
-		super.tearDown();
 		mockingWebServices.close(100);
 	}
 }

@@ -10,7 +10,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-
 public class TestCreateDateTime {
 	CreateDate createDate = new CreateDate(1243987143111L); // Fix the date/time for theses tests
 	

@@ -12,7 +12,7 @@ public class SpecifySpiderSuite extends SuiteFixture {
 	SpecifySpiderFixture spider;
 	
 	public boolean startSpiderOnPortWith(int portNo, String driver) {
-		runtime().dynamicVariables().put(SpiderFixture.WEB_DRIVER_VARIABLE_NAME,driver);
+		setDynamicVariable(SpiderFixture.WEB_DRIVER_VARIABLE_NAME,driver);
 		spider = new SpecifySpiderFixture(portNo);
 		return true;
 	}

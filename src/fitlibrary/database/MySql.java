@@ -19,10 +19,8 @@ public class MySql extends DoFixture {
 	public void connectWithUserAndPasswordTo(String host, String username, String password, String database) throws SQLException {
 		mySql.connect(host, username, password, database);
 	}
-	@Override
 	public void tearDown() throws Exception {
 		try {
-			super.tearDown();
 			mySql.rollingback();
 		} catch (NullPointerException e) {
 			//

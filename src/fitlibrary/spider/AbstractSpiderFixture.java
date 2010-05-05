@@ -21,6 +21,7 @@ import com.thoughtworks.selenium.Selenium;
 
 import fit.Parse;
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.runResults.TestResults;
 import fitlibrary.spider.component.Frame;
 import fitlibrary.spider.component.Page;
 import fitlibrary.spider.component.SpiderWindow;
@@ -39,7 +40,6 @@ import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.WebElementSelector;
 import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
-import fitlibrary.utility.TestResults;
 
 public abstract class AbstractSpiderFixture extends DoTraverse {
 	private static final String CHECKING_TIMEOUT = "checking";

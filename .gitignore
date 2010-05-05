@@ -1,3 +1,9 @@
 bin
 PDFBox.log
-
+fitnesse/FitNesseRoot/files/testResults
+fitnesse/FitNesseRoot/files/*.html
+fitnesse/FitNesseRoot/RecentChanges
+fitnesse/FitNesseRoot/ErrorLogs
+runnerResults
+testPropertyFile.txt
+velocity.log

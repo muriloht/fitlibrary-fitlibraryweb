@@ -13,7 +13,7 @@ public class SpiderSuite extends SuiteFixture {
 	
 	public boolean startSpiderWith(String driver) {
 		spider = new SpiderFixture();
-		runtime().dynamicVariables().put("webDriver.driver",driver);
+		setDynamicVariable("webDriver.driver",driver);
 		return true;
 	}
 	public boolean startSpider() {

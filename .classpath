@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="lib" path="fitnesse/lib/fitlibrary.jar" sourcepath="fitnesse/lib/src/fitlibrarySrc.zip"/>
+	<classpathentry kind="lib" path="fitnesse/fitlibrary.jar" sourcepath="fitnesse/lib/src/fitlibrarySrc.zip"/>
 	<classpathentry kind="lib" path="fitnesse/lib/junit-4.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/mail.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/webdriver-all.jar"/>
@@ -18,7 +18,8 @@
 	<classpathentry kind="lib" path="fitnesse/lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/pdfbox-0.8.0-incubating.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/fitnesse.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/velocity-1.6.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/fitnesse.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

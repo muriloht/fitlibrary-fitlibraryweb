@@ -8,10 +8,10 @@ package fitlibrary.spider;
 import java.util.regex.Pattern;
 
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.runResults.TestResults;
 import fitlibrary.table.Row;
 import fitlibrary.table.Table;
 import fitlibrary.traverse.Traverse;
-import fitlibrary.utility.TestResults;
 
 public class LookupFixture extends Traverse {
 	private String[] header;
@@ -19,13 +19,13 @@ public class LookupFixture extends Traverse {
 
 	@Override
 	public Object interpretAfterFirstRow(Table table, TestResults testResults) {
-		Row headerRow = table.row(1);
+		Row headerRow = table.at(1);
 		int headerRowSize = headerRow.size();
 		boolean aLookup = analyseHeaders(headerRow, headerRowSize);
 		if (!aLookup)
 			throw new FitLibraryException("No header with '?'");
 		if (!matchInTable(table, headerRowSize))
-			table.row(0).cell(0).error(testResults, "No match");
+			table.at(0).at(0).error(testResults, "No match");
 		return null;
 	}
 	private boolean analyseHeaders(Row headerRow, int headerRowSize) {
@@ -44,7 +44,7 @@ public class LookupFixture extends Traverse {
 	}
 	private boolean matchInTable(Table table, int headerRowSize) {
 		for (int rowNo = 2; rowNo < table.size(); rowNo++) {
-			Row row = table.row(rowNo);
+			Row row = table.at(rowNo);
 			if (row.size() != headerRowSize)
 				throw new FitLibraryException("Row needs to be "+headerRowSize+" cells wide");
 			if (matchRow(row)) {
@@ -65,6 +65,6 @@ public class LookupFixture extends Traverse {
 	private void updateVariables(Row row) {
 		for (int cell = 0; cell < row.size(); cell++)
 			if (!matchOn[cell])
-				runtime().dynamicVariables().put(header[cell], row.text(cell,this));
+				getDynamicVariables().put(header[cell], row.text(cell,this));
 	}
 }

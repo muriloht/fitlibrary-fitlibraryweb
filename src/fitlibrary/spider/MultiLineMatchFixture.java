@@ -7,11 +7,12 @@ package fitlibrary.spider;
 
 import java.util.regex.Pattern;
 
+import fitlibrary.runResults.TestResults;
 import fitlibrary.table.Cell;
 import fitlibrary.table.Row;
 import fitlibrary.table.Table;
+import fitlibrary.table.TableFactory;
 import fitlibrary.traverse.Traverse;
-import fitlibrary.utility.TestResults;
 
 public class MultiLineMatchFixture extends Traverse {
 	private Object[] lines;
@@ -22,10 +23,10 @@ public class MultiLineMatchFixture extends Traverse {
 	@Override
 	public Object interpretAfterFirstRow(Table table, TestResults testResults) {
 		if (lines.length == 0 && table.size() == 1)
-			table.row(0).cell(0).pass(testResults);
+			table.at(0).at(0).pass(testResults);
 		for (int rowNo = 1; rowNo < table.size(); rowNo++) {
-			Row row = table.row(rowNo);
-			Cell cell = row.cell(0);
+			Row row = table.at(rowNo);
+			Cell cell = row.at(0);
 			if (row.size() > 1) {
 				cell.error(testResults, "extra cell(s)");
 				return null;
@@ -43,11 +44,11 @@ public class MultiLineMatchFixture extends Traverse {
 				cell.actualElementMissing(testResults);
 		}
 		for (int i = table.size()-1; i < lines.length; i++) {
-			Cell cell = new Cell();
+			Cell cell = TableFactory.cell("");
 			cell.unexpected(testResults,"\""+lines[i].toString()+"\"");
-			Row row = new Row();
-			row.addCell(cell);
-			table.addRow(row);
+			Row row = TableFactory.row();
+			row.add(cell);
+			table.add(row);
 		}
 		return null;
 	}
