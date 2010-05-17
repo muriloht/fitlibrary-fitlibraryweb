@@ -1,1 +1,1 @@
-|shut down|
+|''shut down with screen dump on failure''|

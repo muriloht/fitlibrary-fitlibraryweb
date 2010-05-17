@@ -87,7 +87,7 @@ where the driver is "firefox" or "htmlunit"
 #
 !3 Lookup & String matching
 |^SpecifyLookup|
-|^SpecifyMatchingStringFixture|
+|SpecifyMatchingStringFixture|
 
 #
 !3 Other Locators

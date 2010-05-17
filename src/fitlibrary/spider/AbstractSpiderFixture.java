@@ -81,6 +81,11 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public void shutDown() {
 		spiderFixture.tearDownDriver();
 	}
+	public void shutDownWithScreenDumpOnFailure() {
+		if (getRuntimeContext().getTestResults().problems())
+			screenDump();
+		spiderFixture.tearDownDriver();
+	}
 	
 	// --------- JAVASCRIPT execution: ---------
 	public Object executeJavaScript(String s) {

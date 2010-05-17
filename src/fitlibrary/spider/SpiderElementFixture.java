@@ -19,6 +19,7 @@ public class SpiderElementFixture extends AbstractSpiderFixture {
 		this.spiderFixture = spiderFixture;
 		setElementFinder(new ElementFinder());
 		setSpiderFixture(spiderFixture);
+		setRuntimeContext(spiderFixture.getRuntimeContext());
 	}
 	class ElementFinder implements Finder {
 		public WebElement findElement(String locator) {

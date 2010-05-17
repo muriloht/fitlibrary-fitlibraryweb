@@ -386,6 +386,10 @@ Note that Firefox and htmlUnit differ in their behaviour with opening popups.
  * This shows a screen dump or the html source, as well as displaying the html to sys out:
 
 |'''show'''|''screen dump''|
+
+To include a screen dump on shutdown if there were any errors:
+
+|''shut down with screen dump on failure''|
 ----
 **********!
 #
@@ -477,6 +481,10 @@ If the page matches the regular expression, the text of the given xpath element 
  * Shut down spider
 
 |''shut down''|
+
+ * shut down after taking a screen dump if there were errors:
+
+|''shut down with screen dump on failure''|
 !anchor changes
 ----
 **********!
