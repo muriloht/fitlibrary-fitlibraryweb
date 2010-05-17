@@ -6,7 +6,6 @@
 package fitlibrary.pdf;
 
 import java.io.IOException;
-import java.text.MessageFormat;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.util.PDFTextStripper;
@@ -32,24 +31,6 @@ class PDFParagraphStripper extends PDFTextStripper {
 		
 		// this seems to be the best method to override as it is called just after the text is pulled off the output stream and added to the page objects. 
 		// We can extract fonts and text and figure out when paragraphs are changing.
-		
-		String message = MessageFormat.format("font = {0}, y = {1}, height = {2}, font height = {3} ---> {4}", 
-				textPosition.getFont().getBaseFont(),
-				textPosition.getY(),
-				textPosition.getFontSize(),
-				textPosition.getHeight(),
-				textPosition.getCharacter());
-		
-		System.out.println(message);
-		
-//		if (textPosition.getCharacter().startsWith("0800")) {
-//			System.out.println("------------------------------- here is the baddie ----------------------------------");
-//			System.out.println(textPosition.getCharacter());
-//			for (byte b: textPosition.getCharacter().getBytes()) {
-//				System.out.println(b);
-//			}
-//			System.out.println("-------------------------------------------------------------------------------------");
-//		}
 		
 		processPossibleParagraphOrHeading(textPosition);
 	}
