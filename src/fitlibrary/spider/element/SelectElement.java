@@ -55,6 +55,9 @@ public class SelectElement extends SpiderElement {
 	public boolean withSelectOption(String locator, String option) {
 		return selectOption(locator, option, true);
 	}
+	public boolean withSelectText(String locator, String text) {
+		return selectTextThroughChildren(locator, text);
+	}
 	public boolean withSelectOptionAt(String locator, int index) {
 		try {
 			final WebElement webElement = childrenOf(locator, "option").get(index);
@@ -115,6 +118,20 @@ public class SelectElement extends SpiderElement {
 								optionElement.toggle();
 							}
 						}
+						return true;
+					}
+				}
+				return false;
+			}
+		});
+	}
+	private boolean selectTextThroughChildren(final String locator, final String textRequired) {
+		return ensureMatches(new PollForMatches() {
+			public boolean matches() {
+				for (WebElement optionElement : childrenOf(locator, "option")) {
+					String text = optionElement.getText();
+					if (text != null && text.equalsIgnoreCase(textRequired)) {
+						optionElement.setSelected();
 						return true;
 					}
 				}

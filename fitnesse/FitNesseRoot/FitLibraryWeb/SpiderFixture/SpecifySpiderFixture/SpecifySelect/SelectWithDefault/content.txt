@@ -6,6 +6,7 @@
   <option id ='blue'>Blue</option>
   <option id='black'>Black</option>
   <option value='yellow'>Yellow</option>
+  <option value='punk'>Pink</option>
   <OPTION VALUE="VIOLET">Violet</OPTION>
 </select>}}})
 *!
@@ -35,3 +36,7 @@
 |''with''|//select[@name="colour"]|''select option''| VIOLET |
 
 |''option of''|//select[@name="colour"]|''is''| VIOLET |
+
+* select by text 
+
+|''with''|//select[@name="colour"]|''select text''| Pink |

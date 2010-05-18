@@ -298,6 +298,9 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public boolean withSelectOptionAt(String locator, int index) {
 		return selectElement.withSelectOptionAt(locator, index);
 	}
+	public boolean withSelectText(String locator, String text) {
+		return selectElement.withSelectText(locator, text);
+	}
 	public boolean withAddSelection(String locator, String option) {
 		return selectElement.withAddSelection(locator, option);
 	}
