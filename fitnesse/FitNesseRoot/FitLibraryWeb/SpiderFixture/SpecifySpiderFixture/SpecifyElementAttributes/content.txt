@@ -18,6 +18,8 @@
 
 |'''not'''|''attribute''|class|''of''|//p|''exists''|
 
+|'''not'''|''attribute''|className|''of''|//p|''exists''|
+
 |'''not'''|''attribute''|enabled|''of''|//p|''exists''|
 
 |'''not'''|''attribute''|unknwon|''of''|//p|''exists''|

@@ -37,6 +37,6 @@
 
 |''option of''|//select[@name="colour"]|''is''| VIOLET |
 
-* select by text 
+* select by text
 
 |''with''|//select[@name="colour"]|''select text''| Pink |

@@ -1,12 +1,13 @@
-See the ^DocuMentation for details of SpiderFixture.
+|^SpiderTutorial|''A tutorial on using SpiderFixture''|
 
 |^DocuMentation|''How to use SpiderFixture''|
 
-|^SpecifySpiderFixture|''Specifications of spider fixture''|
+|^SpecifySpiderFixture|''Specifications of SpiderFixture''|
 
 |''Examples against web sites:''|
 |^TestGoogle|
 |^TestAmazon|
+|^TestTemplateSuite|
 
  * A general fixture that's used by SpiderFixture for pattern matching on multiple lines:
 

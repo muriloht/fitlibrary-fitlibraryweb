@@ -18,11 +18,6 @@ import fitlibrary.exception.FitLibraryException;
 import fitlibrary.traverse.workflow.DoTraverse;
 
 public class TemplateFixture extends DoTraverse {
-//	public TemplateFixture() throws Exception {
-//		Properties props = new Properties();
-//		props.put("file.resource.loader.path", "");  // Permit absolute file names
-//		Velocity.init(props);
-//	}
 	public String getTemplate(String fileName) {
 		try {
 			StringWriter stringWriter = new StringWriter();

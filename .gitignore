@@ -7,3 +7,6 @@ fitnesse/FitNesseRoot/ErrorLogs
 runnerResults
 testPropertyFile.txt
 velocity.log
+folderRunner/reports
+folderRunner/tests/files/css
+folderRunner/tests/files/images

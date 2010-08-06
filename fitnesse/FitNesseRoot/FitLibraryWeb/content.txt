@@ -18,12 +18,19 @@ It depends on jdk1.6 for ''com.sun.net.httpserver.*'' for Http servers.
 |''Checking the contents of email''|>ElectronicMail|
 |''Checking the contents of a PDF''|>PdfDocument|
 
-!*> paths
+|!2 ^WhatIsNew|
+
+^CheckFolderRunner
+
+!*> paths and defines
 #!path ../bin
 !path lib/fitlibraryweb.jar
 !path fitlibrary.jar
 #!path ../../fitlibrary/bin
 !path lib/*.jar
+!define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
+!define REGRACE_LINK {false}
+!define REGRACE_TOC {false}
+
 *!
 
-!define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}

@@ -1,5 +1,5 @@
 !*< def
-!define html ({{{  
+!define html ({{{
   <tt id="withTag">yellow <B>orange</B></tt>
   <table><tr><td class="bodyCopy"><p>This text will be preserved with <b>bold</b> tags and <em>emphasis</em> tags etc</p></td></tr></table>
   <table><tr><td class="bodyUpper"><P>This text will be preserved with <B>bold</B> tags and <EM>emphasis</EM> tags etc</P></td></tr></table>}}})

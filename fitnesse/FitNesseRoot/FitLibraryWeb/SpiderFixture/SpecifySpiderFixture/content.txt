@@ -20,13 +20,12 @@ where the driver is "firefox" or "htmlunit"
 |>SpecifyTextOf|''Check the text of a text field, text area, etc''|
 |^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
 |>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
-|>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved.''|  
+|>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved.''|
 |^SpecifyPlainTextOfMatches|''Pattern match for text generally.''|
 |^SpecifyMultiLineTextMatches|''Where matching is applied to each of the lines''|
 |^SpecifyWithSetText||
 |^SpecifyOptionallyWithSetText|''Quietly does nothing if the xpath element is missing''|
 |^SpecifyWithAddText||
-|^SpecifyWaitingForTextElementToBeCreated|''A text element is created by Javascript''|
 #
 !3 General Text Anywhere in the Page
 |^SpecifyPageContainsText|
@@ -82,9 +81,6 @@ where the driver is "firefox" or "htmlunit"
 !3 XPath
 |^SpecifyXpath|
 #
-!3 !-JavaScript-!
-|^SpecifyJavaScript|
-#
 !3 Lookup & String matching
 |^SpecifyLookup|
 |SpecifyMatchingStringFixture|
@@ -102,8 +98,11 @@ where the driver is "firefox" or "htmlunit"
 !3 Switching Driver
 |>SpecifyZzRestartWith|
 #
-!3 Polling a url until a condition is met
-|^SpecifyPollUrl|
+!3 Handling Delays and !-JavaScript-!
+|>SpecifyWaitingForElementToBeCreated|''An element is created by Javascript after a delay''|
+|^SpecifyWaitingForChange|''An element, etc is changed by JavaScript after a delay''|
+|^SpecifyPollUrl|''Polling a url until a condition is met''|
+|^SpecifyJavaScript|
 #
 !3 Finding an element which lacks a suitable locator for xpath
 |^SpecifyFindElement|

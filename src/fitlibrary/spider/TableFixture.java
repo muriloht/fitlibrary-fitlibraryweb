@@ -50,26 +50,11 @@ public class TableFixture extends Traverse {
 			}
 		}
 	}
-//	private void missingExpectedRows(Table table, TestResults testResults) {
-//		for (int rowNo = table.size(); rowNo < array.size()+1; rowNo++) {
-//			List<String> actualRow = array.get(rowNo-1);
-//			String[] cells = new String[actualRow.size()];
-//			for (int colNo = 0; colNo < actualRow.size(); colNo++)
-//				cells[colNo] = actualRow.get(colNo).toString();
-//			ParseUtility.addRowToTable(table.parse, cells);
-//			Row lastRow = table.lastRow();
-//			for (int i = 0; i < lastRow.size(); i++) {
-//				Cell cell = lastRow.at(i);
-//				cell.fail(testResults);
-//				cell.parse.body += "<i> extra</i>";
-//			}
-//		}
-//	}
 	private void matchRow(Row expectedRow, List<String> actualRow, TestResults testResults) {
 		for (int colNo = 0; colNo < expectedRow.size() && colNo < actualRow.size(); colNo++) {
 			Cell cell = expectedRow.at(colNo);
 			String actualText = actualRow.get(colNo);
-			String expectedText = resolve(cell.text());
+			String expectedText = resolve(cell.text()).first;
 			if (expectedText.equals(actualText))
 				cell.pass(testResults);
 			else
@@ -78,25 +63,6 @@ public class TableFixture extends Traverse {
 		missingActualCellValues(expectedRow, actualRow, testResults);
 		missingExpectedCellValues(expectedRow, actualRow, testResults);
 	}
-//	private void matchRow(Row expectedRow, List<String> actualRow, TestResults testResults) {
-//		for (int colNo = 0; colNo < expectedRow.size() && colNo < actualRow.size(); colNo++) {
-//			Cell cell = expectedRow.at(colNo);
-//			String actualText = actualRow.get(colNo);
-//			String expectedText = runtime().dynamicVariables().resolve(cell.text());
-//			if (expectedText.equals(actualText))
-//				cell.pass(testResults);
-//			else {
-//				if (expectedText.equals(cell.text())) // No @{property} involved:
-//					cell.fail(testResults,actualText.toString(),this);
-//				else {
-//					cell.fail(testResults);
-//					cell.parse.body = cell.parse.body+"<i>: " + expectedText + "<hr/>But was</i>"+": "+actualText;
-//				}
-//			}
-//		}
-//		missingActualCellValues(expectedRow, actualRow, testResults);
-//		missingExpectedCellValues(expectedRow, actualRow, testResults);
-//	}
 	private void missingExpectedCellValues(Row expectedRow, List<String> actualRow, TestResults testResults) {
 		for (int colNo = expectedRow.size(); colNo < actualRow.size(); colNo++) {
 			Cell cell = TableFactory.cell(actualRow.get(colNo));
@@ -104,13 +70,6 @@ public class TableFixture extends Traverse {
 			cell.actualElementMissing(testResults);
 		}
 	}
-//	private void missingExpectedCellValues(Row expectedRow, List<String> actualRow, TestResults testResults) {
-//		for (int colNo = expectedRow.size(); colNo < actualRow.size(); colNo++) {
-//			Parse extraCell = new Parse("td",actualRow.get(colNo)+"<i> extra</i>",null,null);
-//			new Cell(extraCell).fail(testResults);
-//			expectedRow.parse.parts.last().more = extraCell;
-//		}
-//	}
 	private void missingActualCellValues(Row expectedRow, List<String> actualRow, TestResults testResults) {
 		for (int colNo = actualRow.size(); colNo < expectedRow.size(); colNo++)
 			expectedRow.at(colNo).actualElementMissing(testResults);

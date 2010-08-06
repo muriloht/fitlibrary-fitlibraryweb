@@ -100,11 +100,11 @@ Note that any text changes are (optionally) verified to have occurred (see AutoC
 
  * Check whether some text (or a pattern) occurs anywhere in the source of the page (includes the html)  ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPageContainsText]]).
 
-|''page contains text''|spagetti|
+|''page source''|'''contains'''|spread|
 
  * Matching with a pattern ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPageContainsRegularExpression]]):
 
-|''page contains regular expression''|spag*ti|
+|''page source''|'''matches'''|spag*ti|
 
 To use special characters, such as !-|-! in regular expressions, escape the characters as follows (but without spaces between "!" and "-" and between "-" and "!"):
 
@@ -477,6 +477,10 @@ If the page matches the regular expression, the text of the given xpath element 
 **********!
 #
 !*****> Shut down
+
+ * Don't shutdown automatically: handy if you want to see what may have gone wrong:
+
+|''shutdown browser automatically''|false|
 
  * Shut down spider
 
