@@ -1,0 +1,11 @@
+5 August 2010
+
+Changes:
+
+ * SpiderFixture :
+  * A substantial tutorial on SpiderFixture has been included
+  * The specs related to handling delays have been expanded
+ * PdfDocument:
+  * PdfDocument has been revised to handle a wider range of PDFs. 
+  * Documentation of what is does has been expanded.
+  * It uses a more recent release of pdfbox

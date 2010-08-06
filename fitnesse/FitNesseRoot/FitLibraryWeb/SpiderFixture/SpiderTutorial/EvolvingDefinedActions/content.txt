@@ -1,0 +1,35 @@
+!1 Part Three
+#
+Let's now see how ''defined actions'' need to evolve.
+
+Consider the storytest from the previous tutorial:
+
+|''define actions at''|..FitLibraryWeb.SpiderFixture.SpiderTutorial.DefinedActions.UsingDefinedActions.DefinedActions|
+
+|''suite test on port''|${FITNESSE_PORT}|
+
+|''check suite''|!-TemplateFixture-!|''passes''|
+
+|''check suite''|!-XmlProcessing-!|''passes''|
+
+We'd also like to use it to run the ''!-SpiderFixture-!'' storytests. We could try using:
+
+|''check suite''|!-SpiderFixture-!|''passes''|
+
+If you run that, however, you'll see that it fails. That's because .FitLibraryWeb.SpiderFixture is not a ''suite'' page, and that the suite we want to run is at .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.
+
+We can't fix it by using the following:
+
+|''check suite''|!-SpiderFixture.SpecifySpiderFixture-!|''passes''|
+
+That's because the passing check is incorrect for two reasons (as shown in the expansion above after running this storytest):
+
+ * The page name is incorrect
+ * Some of the pages in the suite are ignored (some storytests are only run for a particular browser being used with ''!-SpiderFixture-!'')
+
+So we need a variation on ''check suite passes'':
+
+ * We need to pass in the "prefix" page as well
+ * We need to ignore the ''ignored'' count
+
+Let's do that [[on this page][^AddDefinedAction]].

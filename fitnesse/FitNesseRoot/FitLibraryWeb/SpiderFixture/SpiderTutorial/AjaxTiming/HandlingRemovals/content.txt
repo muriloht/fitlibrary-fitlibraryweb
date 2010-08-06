@@ -1,0 +1,55 @@
+[[The web page is here][files/delaysWithAjax.html]]
+
+We're going to create a new button and then click it to delete it.
+
+Let's try it and see...
+
+|''define actions at''|.FitLibraryWeb.SpiderFixture.SpiderTutorial.AjaxTiming.HandlingChanges.DefinedActions|
+
+|''ajax on port''|${FITNESSE_PORT}|
+
+|''checking timeout''|6000|
+
+|''get url''|http://localhost:@{fitNessePort}/files/delaysWithAjax.html|
+
+|''click''|addButton|
+
+|''element''|button0|''exists''|
+
+|''click''| button0 |
+
+|''element''|button0|''does not exist''|
+
+The last action checks that the element doesn't exist.
+
+ * If the element currently exists, spider is prepared to wait.
+ * If the element is removed within the timeout period, the action passes
+ * If the element remains for the whole timeout period, it fails
+
+We can verify the timeout with the following because that button will remain. Hence the following fails:
+
+|''element''| addButton |''does not exist''|
+
+!2 Exercise
+#
+Extend the above storytest to add and remove several buttons
+#
+!2 Invisible Elements
+#
+Note that this does '''not''' deal with elements that remain but become invisible. We'll extend this tutorial in future to cover that. In the meantime:
+
+ * There is currently no simple way to tell whether an element is visible or not
+ * An element may become invisible due to changes to two aspects of that element or any ancestor element in the HTML:
+  1 The style
+  1 The inherited style through css, due to changes of any element or of the css itself
+ * So it's necessary to understand the means by which an element becomes invisible and to check explicitly for that change. For example:
+  * If the style or class of the element is changed to hide it, check for that change
+  * If the style or class of an ancestor of that element is changed to hide a set of elements, check for that change in the ancestor
+ * Note that there are several different ways in which an element (and its descendents) can become invisible, so it's necessary to know exactly how it changes
+
+!1 Next
+#
+That's the end of the tutorial.  See [[Wrap Up][<SpiderTutorial.WrapUp]] for a wrap up.
+
+
+

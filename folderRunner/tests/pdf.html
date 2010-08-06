@@ -1,0 +1,164 @@
+<html>
+<body>
+Here's the pdf file that this storytest looks at: <a href="/files/pdf/eg.pdf">http://files/pdf/eg.pdf</a>.<br/><br/><ul> 
+	<li>It's worth reading this as it is a document that discusses the issues in accessing text from PDFs.</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>fitlibrary.pdf.PDFDocument</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>open</i></td> 
+<td>pdf/eg.pdf</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>number of pages</i></td> 
+<td><b>is</b></td> 
+<td>2</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>select all pages</i></td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><b>show</b></td> 
+<td><i>text</i></td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>We can check that the whole document contains some specific text:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>contains</i></td> 
+<td>PDF</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>contains</i></td> 
+<td>PDF Format</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>contains</i></td> 
+<td>PDF Format PDFs do not retain paragraph</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>We can use pattern matching if we want to ignore parts of the document:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>matches</i></td> 
+<td>PDF Format PDFs do not .* paragraph</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>The footer appears twice (and it is added in the middle of the main text):</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>matches</i></td> 
+<td>Extracting Paragraphs from PDFs.*Extracting Paragraphs from PDFs</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>The flow of text from one column to the next is captured here (luckily, but not between pages):</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>text</i></td> 
+<td><i>matches</i></td> 
+<td>If the space between that line and the previous one is larger than a space threshhold</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>We can use the paragraph structure to select a relative paragraph:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>paragraph below heading</i></td> 
+<td>pdfbox</td> 
+<td><b>contains</b></td> 
+<td>extracts the text elements</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>paragraph after containing</i></td> 
+<td>Limitations</td> 
+<td><b>contains</b></td> 
+<td>a simple approach</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>Show the text with breaks between the paragraphs, to make it easier to see the results:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>show</td> 
+<td>paragraphed text</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>We can match some of the paragraphs:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>paragraphs from</td> 
+<td>0</td> 
+<td>to</td> 
+<td>6</td> 
+</tr> 
+<tr><td colspan="4">Extracting Paragraphs from PDF Files</td> 
+</tr> 
+<tr><td colspan="4">PDF Format</td> 
+</tr> 
+<tr><td colspan="4">PDFs do not retain paragraph, heading, etc information. Instead, a PDF encodes a rendered form of a document, rather like the individual characters that are rendered on a screen. A PDF file can be thought of as containing a sequence of pieces of information. Each piece of text is located at a particular (x,y,z) position, along with font information.</td> 
+</tr> 
+<tr><td colspan="4">Depending on the application writing the PDF file, a word may be added as a single word, or it may be added as several substrings. Some applications tend to add each of the characters of a word separately.</td> 
+</tr> 
+<tr><td colspan="4">Space characters are not (usually) added to the file, as they don't add anything to the rendering.</td> 
+</tr> 
+<tr><td colspan="4">pdfbox</td> 
+</tr> 
+<tr><td colspan="4">PDFDocument uses pdfbox to do much of the work. pdfbox extracts the text elements from a PDF file, taking account of columns of text and pages. pdfbox works out where to add spaces, and is configured by PDFDocument to add a space at the end of each line.</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>show</td> 
+<td>text</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>select page</i></td> 
+<td>2</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>show</td> 
+<td>paragraphed text</td> 
+</tr> 
+</table> 
+<br/><ul> 
+	<li>This shows the affect of customising the heuristics:</li> 
+</ul> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td colspan="2"><i>customise</i></td> 
+</tr> 
+<tr><td><i>basic paragraph drop</i></td> 
+<td>4</td> 
+</tr> 
+<tr><td><i>height space factor</i></td> 
+<td>0.5</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td>show</td> 
+<td>paragraphed text</td> 
+</tr> 
+</table> 
+<br/><table border="1" cellspacing="0"> 
+<tr><td><i>close PDF file</i></td> 
+</tr> 
+</table> 
+</body></html>

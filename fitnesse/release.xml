@@ -1,0 +1,74 @@
+<project name="project" default="release" basedir=".">
+
+        <tstamp prefix="start"/>
+
+	<property name="release.version" value="${start.DSTAMP}" />
+
+	<property name="home" value="${user.home}/My Documents" />
+	<property name="work" value="${home}/work" />
+
+
+<!--  ==================== Where the files come from ==================== -->
+	<property name="here" value="${basedir}" />
+
+<!--  ==================== Release Location ==================== -->
+	<property name="creations.home" value="${home}/Creations" />
+	<property name="release" value="${creations.home}/FitLibraryWeb${release.version}" />
+	<property name="release.zip.file" value="FitLibraryWeb${release.version}.zip" />
+
+		
+<!-- ==================== Release Target ================================== -->
+
+	<target name="release" depends="releasePages" description="Release software">
+		<echo message="This assumes that a build of the jar has already been carried out!"/>
+		<copy todir="${release}/fitnesse">
+			<fileset dir="${here}">
+				<include name="fitlibrary.jar" />
+				<include name="runFitNesseDirectlyForWeb.bat" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="${release}/fitnesse/lib" />
+		<copy todir="${release}/fitnesse/lib">
+			<fileset dir="${here}/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+
+		<mkdir dir="${release}/fitnesse/lib/src" />
+		<copy todir="${release}/fitnesse/lib/src">
+			<fileset dir="${here}/lib/src">
+				<include name="fitlibrarySrc.zip" />
+				<include name="fitlibraryWebSrc.zip" />
+			</fileset>
+		</copy>
+
+		<copy todir="${release}">
+			<fileset file="../releaseWebREAD-ME.html" />
+		</copy>
+		<copy todir="${release}/folderRunner">
+			<fileset dir="../folderRunner" />
+		</copy>
+		<copy todir="${release}/fitNesse/FitNesseRoot/files/pdf">
+			<fileset dir="${here}/FitNesseRoot/files/pdf" />
+		</copy>
+		<copy todir="${release}/fitNesse/FitNesseRoot/files">
+			<fileset dir="${here}/FitNesseRoot/files">
+				<include name="mootools-1.2.3-core-nc.js" />
+				<include name="*.html" />
+                        </fileset>
+		</copy>
+
+		<zip basedir="${release}" destfile="${creations.home}/${release.zip.file}"/>
+	</target>
+
+<!-- ==================== Release Pages Target ================================== -->
+
+	<target name="releasePages" description="Release FitNesse Pages">
+		<mkdir dir="${release}" />
+		<copy todir="${release}/fitnesse/FitNesseRoot/FitLibraryWeb">
+			<fileset dir="${here}/fitNesseRoot/FitLibraryWeb" />
+		</copy>
+	</target>
+
+</project>
