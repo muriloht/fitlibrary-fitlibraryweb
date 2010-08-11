@@ -68,3 +68,4 @@ And we touch on handling invisible elements, but don't cover this in detail.
 |!2 [[Part 6][^HandlingWindows]]|${tut6}|
 |!2 [[Part 7][^AjaxTiming]]|${tut7}|
 |!2 [[Part 8][^WrapUp]]|${tut8}|
+|!2 [[Part 9][<SpiderFixture.DocuMentation.FirefoxProfiles]]|Firefox profiles|
