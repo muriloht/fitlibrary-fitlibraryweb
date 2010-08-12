@@ -4,6 +4,7 @@ Changes:
 
  * SpiderFixture:
   * Added ability to check whether an element is visible or not
+  * Extended tutorial to cover visibility
 #
 !2 5 August 2010
 #
