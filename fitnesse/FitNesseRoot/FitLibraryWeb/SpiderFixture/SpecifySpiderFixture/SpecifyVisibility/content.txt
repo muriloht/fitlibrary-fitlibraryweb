@@ -1,0 +1,29 @@
+!*< def
+!define html ({{{<input type="text" id="in"/>
+<div id="divv">
+  <q id='q1'/>
+</div>
+<p name="pp" style="display:none">bla
+  <q id='q2'/>
+</p>}}})
+*!
+
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''element''|in|''visible''|
+
+|''element''|divv|''visible''|
+
+|''element''|q1|''visible''|
+
+|''element''|//p[@name="pp"]|''invisible''|
+
+|''element''|q2|''invisible''|
+
+ * The following will succeed if it's not visible OR if the xpath is incorrect, so better to use ''invisible'':
+
+|'''not'''|''element''|//input[@id="missing"]|''visible''|

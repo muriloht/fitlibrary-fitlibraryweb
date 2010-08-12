@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.RenderedWebElement;
 import org.openqa.selenium.Speed;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -101,6 +102,9 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 			return expected == false;
 		}
 	}
+	// The following can pass out an element, such as:
+	// executeJavaScriptWith("document.drawSquare(argument[0])",element);
+	// Also see TextElement.innherHtmlOf()
 	public Object executeJavaScriptWith(String script, Object param) {
 		JavascriptExecutor js = (JavascriptExecutor) webDriver();
 		return js.executeScript(script, param);
@@ -251,6 +255,12 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	}
 	public WebElementSelector findElementFromWithTagWhere(String locator, String tag) {
 		return elementWithAttributes.findElementFromWithTagWhere(locator, tag);
+	}
+	public boolean elementVisible(String locator) {
+		return ((RenderedWebElement)findElement(locator)).isDisplayed();
+	}
+	public boolean elementInvisible(String locator) {
+		return !((RenderedWebElement)findElement(locator)).isDisplayed();
 	}
 	
 	// --------- CHECKBOX ---------

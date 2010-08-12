@@ -3,14 +3,14 @@
 Let's try running this as a test. If we can watch both the fireFox browser test page and the report being rolled out here, we'll see:
 
  * That the tables of the report here are displayed once they have finished running.
- * The last table takes about 5 seconds before it is displayed, due to the default delay of the test page.
+ * The last table takes about 1 second before it is displayed, due to the default delay of the test page.
  * The last table is only displayed once the ''title'' has been changed in the test page
 
 |''define actions at''|.FitLibraryWeb.SpiderFixture.SpiderTutorial.AjaxTiming.HandlingChanges.DefinedActions|
 
 |''ajax on port''|${FITNESSE_PORT}|
 
-|''becomes timeout''|6000|
+|''becomes timeout''|2000|
 
 |''get url''|http://localhost:@{fitNessePort}/files/delaysWithAjax.html|
 
@@ -26,12 +26,12 @@ We have made two changes to the storytest:
 
 1. The last table contains '''becomes''' instead of '''is'''.
 
- * This means that ''!-FitLibrary-!'' checks the ''title'' action (or any other) repeatedly for up to 10 seconds or until it changes to be the expected value.
+ * This means that ''!-FitLibrary-!'' checks the ''title'' action (or any other) repeatedly for up to 2 seconds or until it changes to be the expected value.
 
 2. We have inserted a new, third table above.
 
- * This specifies the timeout period for '''becomes''' of 10 seconds.
- * It needs to be longer than the 5 seconds delay we expect from our test page.
+ * This specifies the timeout period for '''becomes''' of 2 seconds.
+ * It needs to be longer than the 1 second delay we expect from our test page.
 
 In this case, we could make the '''becomes''' timeout much longer if we wish; the ''title'' check will still only take 5 seconds.
 

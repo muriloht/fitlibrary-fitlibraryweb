@@ -8,15 +8,17 @@
 |''start spider with''|firefox|
 
 where the driver is "firefox" or "htmlunit"
+#
 !3 Page Access:
+#
 |^SpecifyGetUrl|''Go to a URL''|
 |^SpecifyTitleIs|''Check the title of the current page''|
 |^SpecifyUrlIs|''Check the URL of the current page''|
 |^SpecifyBackAndForward|''Move forwards and backwards''|
 |^SpecifyRefresh|''Move forwards and backwards''|
-
 #
 !3 Text in Input, !-TextArea-! & Other Elements
+#
 |>SpecifyTextOf|''Check the text of a text field, text area, etc''|
 |^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
 |>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
@@ -28,11 +30,14 @@ where the driver is "firefox" or "htmlunit"
 |^SpecifyWithAddText||
 #
 !3 General Text Anywhere in the Page
+#
 |^SpecifyPageContainsText|
 |^SpecifyPageContainsRegularExpression|
 |^SpecifyPageContainsExcludingHtmlWhitespaceTokens|
 |^SpecifyPageSubstringFromTo|
+#
 !3 General Elements: Existence, Value, Attributes, and Count
+#
 |^SpecifyElementExists|
 |^SpecifyElementDoesNotExist|
 |^SpecifyElementValue|
@@ -40,8 +45,10 @@ where the driver is "firefox" or "htmlunit"
 |^SpecifyElementAttributes|
 |^SpecifyElementCount|
 |>SpecifyTheAttributeOfChildrenOfTypeOfElement|
+|^SpecifyVisibility|
 #
 !3 Checkbox, Radio, Select
+#
 |^SpecifyCheckbox|
 |^SpecifyRadio|
 |^SpecifySelect|''Select a specific option of a select''|
@@ -49,60 +56,77 @@ where the driver is "firefox" or "htmlunit"
 |^SpecifyMultiSelect|''Select several options of a multi select''|
 #
 !3 Tables
+#
 |^SpecifyWholeTable|
 |^SpecifyTableParts|
 |^SpecifyHandlingChangesToTable|
 #
 !3 Link Traversal
+#
 |>SpecifyClick|
 |^SpecifyClickOnNamedLink|
 |^SpecifyTraversalFails|
 #
 !3 Form Submit
+#
 |^SpecifyFormSubmit|
 #
 !3 Frames:
+#
 |^SpecifyFrames|
 |^SpecifyIframes|
 #
 !3 Windows (Select and Close):
+#
 |^SpecifyWindows|
 #
 !3 Cookies
+#
 |^SpecifyCookies|
 #
 !3 Within a Context
+#
 |^SpecifyWithinContext|
 #
 !3 Screen Dump
+#
  * Only works with htmlunit
 |^SpecifyScreenDump|
 #
 !3 XPath
+#
 |^SpecifyXpath|
 #
 !3 Lookup & String matching
+#
 |^SpecifyLookup|
 |SpecifyMatchingStringFixture|
 
 #
 !3 Other Locators
+#
 |^SpecifyLocators|
 #
 !3 General Error Checking
+#
 |^SpecifyGeneralErrorChecking|
 #
 !3 For Each (''experimental'')
+#
 |^ForEach|
 #
 !3 Switching Driver
+#
 |>SpecifyZzRestartWith|
 #
 !3 Handling Delays and !-JavaScript-!
+#
 |>SpecifyWaitingForElementToBeCreated|''An element is created by Javascript after a delay''|
-|^SpecifyWaitingForChange|''An element, etc is changed by JavaScript after a delay''|
+|^SpecifyWaitingForChange|''An element, etc is changed by Javascript after a delay''|
+|^SpecifyWaitingForChangeInVisibility|''The visibility of an element is changed by Javascript after a delay''|
 |^SpecifyPollUrl|''Polling a url until a condition is met''|
 |^SpecifyJavaScript|
 #
 !3 Finding an element which lacks a suitable locator for xpath
+#
 |^SpecifyFindElement|

@@ -1,0 +1,109 @@
+!*< def
+!define on {setTimeout('makeVisible()', 50)}
+!define makeVisible {function makeVisible()}
+!define body {  document.getElementById("pp").style.display='block';}
+
+!define off {setTimeout('makeInvisible()', 50)}
+!define makeInvisible {function makeInvisible()}
+!define body2 {  document.getElementById("pp").style.display='none';}
+
+!define unhide {setTimeout('unhide()', 50)}
+!define unhidden {function unhide()}
+!define body3 {  document.getElementById("pp2").style.visibility='visible';}
+
+!define hide {setTimeout('hide()', 50)}
+!define hidden {function hide()}
+!define body4 {  document.getElementById("pp2").style. visibility ='hidden';}
+
+!define html ({{{<script type="text/javascript">
+${makeVisible}{
+  ${body}
+}
+${makeInvisible}{
+  ${body2}
+}
+${unhidden}{
+  ${body3}
+}
+${hidden}{
+  ${body4}
+}
+</script>
+<input type="button" id="on" value="ON"
+onclick="javascript:${on}"/>
+
+<input type="button" id="off" value="OFF"
+onclick="javascript:${off}"/>
+
+<p id="pp" style="display:none">bla
+  <q id='qq'/>
+</p>
+
+<input type="button" id="unhide" value="UNHIDE"
+onclick="javascript:${unhide}"/>
+
+<input type="button" id="hide" value="HIDE"
+onclick="javascript:${hide}"/>
+
+<p id="pp2" style="visibility:hidden">bla
+  <q id='qq2'/>
+</p>}}})
+*!
+
+|''keywords''|htmlunit,firefox|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+ * We can vary visiblity through changes to ''display''
+
+|''element''|pp|''invisible''|
+
+|''element''|qq|''invisible''|
+
+|''click''|on|
+
+|''element''|pp|''invisible''|
+
+|''element''|qq|''invisible''|
+
+|''element''|pp|''visible''|'''becomes'''|true|
+
+|''element''|qq|''visible''|'''becomes'''|true|
+
+|''click''|off|
+
+|''element''|pp|''visible''|
+
+|''element''|qq|''visible''|
+
+|''element''|pp|''visible''|'''becomes'''|false|
+
+|''element''|qq|''visible''|'''becomes'''|false|
+
+ * We can vary visiblity through changes to ''visibility''
+
+|''element''|pp2|''invisible''|
+
+|''element''|qq2|''invisible''|
+
+|''click''|unhide|
+
+|''element''|pp2|''invisible''|
+
+|''element''|qq2|''invisible''|
+
+|''element''|pp2|''visible''|'''becomes'''|true|
+
+|''element''|qq2|''visible''|'''becomes'''|true|
+
+|''click''|hide|
+
+|''element''|pp2|''visible''|
+
+|''element''|qq2|''visible''|
+
+|''element''|pp2|''visible''|'''becomes'''|false|
+
+|''element''|qq2|''visible''|'''becomes'''|false|

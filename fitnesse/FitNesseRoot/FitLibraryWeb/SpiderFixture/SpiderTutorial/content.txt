@@ -46,7 +46,8 @@ And how this applies to any HTML elements with sub-structure
  * Delays in changes to the current page due to ajax:
   * There's a delay before an element appears
   * There's a delay before the text, etc of an element changes
-  * There's a delay before an element disappears
+  * There's a delay before an element is removed
+  * There's a delay before an element is made visible or invisible
 
 Along the way, we also use spider actions to:
 

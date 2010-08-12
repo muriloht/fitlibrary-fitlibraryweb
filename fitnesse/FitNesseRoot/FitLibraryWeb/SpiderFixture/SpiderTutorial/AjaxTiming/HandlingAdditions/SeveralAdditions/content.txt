@@ -6,7 +6,7 @@ Here's the result. There are some suggested exercises below.
 
 |''ajax on port''|${FITNESSE_PORT}|
 
-|''checking timeout''|6000|
+|''checking timeout''|2000|
 
 |''get url''|http://localhost:@{fitNessePort}/files/delaysWithAjax.html|
 
@@ -43,4 +43,4 @@ Here's the result. There are some suggested exercises below.
  * Change the storytest to alter the delay period, with an action that first clicks on one of the ''delay'' radio buttons to change it
  * Introduce ''defined actions'' to avoid repetition
 
-Finally, let's look at handling the delayed removal of elements, [[on this page][<AjaxTiming.HandlingRemovals]]
+Let's look at handling the delayed removal of elements, [[on this page][<AjaxTiming.HandlingRemovals]]
