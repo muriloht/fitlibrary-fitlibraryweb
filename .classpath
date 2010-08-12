@@ -7,6 +7,7 @@
 	<classpathentry kind="lib" path="fitnesse/lib/mail.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/webdriver-all.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.4.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/jna.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jmock-2.5.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jmock-junit4-2.5.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/joda-time-1.6.jar"/>

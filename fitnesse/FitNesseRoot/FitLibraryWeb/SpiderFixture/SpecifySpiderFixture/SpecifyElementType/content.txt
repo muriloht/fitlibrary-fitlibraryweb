@@ -5,6 +5,8 @@
 
 |''keywords''|firefox|
 
+!2 Not available in htmlunit and ie
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|

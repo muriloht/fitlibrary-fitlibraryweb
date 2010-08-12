@@ -11,7 +11,7 @@
   <tt id="withSpace">yellow orange</tt>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

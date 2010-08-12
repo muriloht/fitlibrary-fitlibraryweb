@@ -17,7 +17,7 @@ ${fn}{
 <t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

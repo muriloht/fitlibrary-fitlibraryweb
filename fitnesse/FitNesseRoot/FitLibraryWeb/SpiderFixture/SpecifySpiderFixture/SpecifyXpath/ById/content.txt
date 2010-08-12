@@ -5,7 +5,7 @@
 </div>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -16,3 +16,10 @@
 |''text of''|//p[@id="green"]|''is''|green|
 
 |''text of''|//p[@id="Green"]|''is''|Green|
+
+
+|''text of''|red|''is''|red|
+
+|''text of''|green|''is''|green|
+
+|''text of''|Green|''is''|Green|

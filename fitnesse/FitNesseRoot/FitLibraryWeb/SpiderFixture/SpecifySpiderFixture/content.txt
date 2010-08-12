@@ -4,10 +4,10 @@
 >SuiteSetUp
 >TearDown
 #
-!3 Selecting the driver to use:
-|''start spider with''|firefox|
+!3 Selecting the driver to use: (was firefox)
+|''start spider with''|ie|
 
-where the driver is "firefox" or "htmlunit"
+where the driver is "firefox" or "htmlunit" or "ie"
 #
 !3 Page Access:
 #

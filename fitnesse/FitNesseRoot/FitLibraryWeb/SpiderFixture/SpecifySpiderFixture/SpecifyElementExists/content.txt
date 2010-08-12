@@ -4,7 +4,7 @@
 <p name="pp">bla</p>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -13,8 +13,6 @@
 |''element''|//input[@id="in"]|''exists''|
 
 |''element''|//dv[@id="divv"]|''exists''|'''is'''|true|
-
-|''element''|//p[@name="pp"]|''exists''|
 
 |''element''|name=pp|''exists''|
 

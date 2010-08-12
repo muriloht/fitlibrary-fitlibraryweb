@@ -10,6 +10,8 @@
 
 |''keywords''|htmlunit, firefox|
 
+!2 Not supported by IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''make file''|other.html|''from''|${target}|

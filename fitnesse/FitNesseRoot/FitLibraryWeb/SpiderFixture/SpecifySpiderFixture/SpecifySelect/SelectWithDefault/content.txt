@@ -1,5 +1,5 @@
 !*< def
-!define html ({{{<select name="colour">
+!define html ({{{<select id="colour">
   <option value=""></option>
   <option selected="selected" value="red">Red</option>
   <option>Green</option>
@@ -11,32 +11,34 @@
 </select>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
+
+!2 Not supported by IE
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|
 
-|''option of''|//select[@name="colour"]|''is''|red|
+|''option of''|colour|''is''|red|
 
-|''with''|//select[@name="colour"]|''select option''|Black|
+|''with''|colour|''select option''|Black|
 
-|''option of''|//select[@name="colour"]|''is''|Black|
+|''option of''|colour|''is''|Black|
 
-|reject|''with''|//select[@name="colour"]|''select option''|Missing|
+|reject|''with''|colour"|''select option''|Missing|
 
  * If an option has a value, that's used instead:
 
-|''with''|//select[@name="colour"]|''select option''|yellow|
+|''with''|colour|''select option''|yellow|
 
-|''option of''|//select[@name="colour"]|''is''| yellow |
+|''option of''|colour|''is''| yellow |
 
  * And case doesn't matter:
 
-|''with''|//select[@name="colour"]|''select option''| VIOLET |
+|''with''|colour|''select option''| VIOLET |
 
-|''option of''|//select[@name="colour"]|''is''| VIOLET |
+|''option of''|colour|''is''| VIOLET |
 
 * select by text
 
-|''with''|//select[@name="colour"]|''select text''| Pink |
+|''with''|colour|''select text''| Pink |

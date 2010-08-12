@@ -3,7 +3,7 @@
   <pre name='me', id='pr'>abc</pre>}}})
 *!
 
-|''keywords''|firefox|
+|''keywords''|firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

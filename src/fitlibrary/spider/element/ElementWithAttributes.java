@@ -68,7 +68,8 @@ public class ElementWithAttributes extends SpiderElement {
 		try {
 			return ensureMatches(new PollForMatches() {
 				public boolean matches() {
-					return findElement(locator).getAttribute(attributeName) != null;
+					String attribute = findElement(locator).getAttribute(attributeName);
+					return attribute != null && !attribute.isEmpty();
 				}
 			});
 		} catch (RuntimeException e) {

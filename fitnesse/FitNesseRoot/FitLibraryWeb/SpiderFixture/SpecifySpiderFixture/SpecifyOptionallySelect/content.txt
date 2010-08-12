@@ -1,5 +1,5 @@
 !*< def
-!define html ({{{<select name="colour">
+!define html ({{{<select id="colour">
   <option selected="selected">Red</option>
   <option>Green</option>
   <option>Blue</option>
@@ -12,16 +12,18 @@ This allows for web actions that only apply in some circumstances.
 
 |''keywords''|htmlunit,firefox|
 
+!2 Not supported by IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|
 
-|''option of''|//select[@name="colour"]|''is''|Red|
+|''option of''|colour|'''is'''|Red|
 
-|''optionally with''|//select[@name="colour"]|''select option''||
+|''optionally with''|colour|''select option''||
 
-|''option of''|//select[@name="colour"]|''is''|Red|
+|''option of''|colour|'''is'''|Red|
 
-|''optionally with''|//select[@name="colour"]|''select option''|Black|
+|''optionally with''|colour|''select option''|Black|
 
-|''option of''|//select[@name="colour"]|''is''|Black|
+|''option of''|colour|'''is'''|Black|

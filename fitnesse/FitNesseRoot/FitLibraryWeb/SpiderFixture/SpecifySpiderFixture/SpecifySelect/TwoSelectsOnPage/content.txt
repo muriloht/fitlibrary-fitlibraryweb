@@ -1,31 +1,31 @@
 !*< def
-!define html ({{{<select name="colour" class="dps">
+!define html ({{{<select id="colour" class="dps">
   <option value=""></option>
   <option value="RED">Red</option>
 </select>
-<select name="pax_1.title" class="dps">
+<select id="pax_1.title" class="dps">
   <option value=""></option>
   <option value="RED">Red</option>
   <option value='GREEN'>Green</option>
 </select>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|
 
-|''option of''|//select[@name="colour"]|''is''||
+|''option of''|colour|''is''||
 
-|''with''|//select[@name="colour"]|''select option''|RED|
+|''with''|colour|''select option''|RED|
 
-|''option of''|//select[@name="colour"]|''is''|RED|
+|''option of''|colour|''is''|RED|
 
-|''option of''|//select[@name="pax_1.title"]|''is''||
+|''option of''|pax_1.title|''is''||
 
-|''with''|//select[@name="pax_1.title"]|''select option''|GREEN|
+|''with''|pax_1.title|''select option''|GREEN|
 
-|''option of''|//select[@name="pax_1.title"]|''is''| GREEN |
+|''option of''|pax_1.title|''is''| GREEN |
 
-|''option of''|//select[@name="colour"]|''is''|RED|
+|''option of''|colour|''is''|RED|

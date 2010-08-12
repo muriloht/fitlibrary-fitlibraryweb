@@ -6,7 +6,7 @@
 *!
 
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

@@ -11,7 +11,8 @@ ${fn}{
 <t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}})
 *!
 |''keywords''|firefox|
-!2 htmlunit can't handle this particular change through javascript
+
+!2 IE and htmlunit can't handle this particular change through javascript
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|

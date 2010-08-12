@@ -10,6 +10,8 @@ orange</tt>
 
 |''keywords''|htmlunit,firefox|
 
+!2 Not supported in IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|

@@ -1,5 +1,6 @@
 !*< def
 !define driver {htmlunit}
+Can be firefox, htmlunit, ie
 *!
 !|fitlibrary.spider.specify.SpecifySpiderSuite|
 

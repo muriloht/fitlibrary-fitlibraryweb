@@ -1,4 +1,4 @@
-|''keywords''|htmlunit|
+|''keywords''|htmlunit,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyIframes.SpecSetUp
 

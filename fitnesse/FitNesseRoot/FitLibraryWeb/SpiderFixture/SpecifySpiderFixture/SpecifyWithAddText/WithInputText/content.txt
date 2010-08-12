@@ -6,6 +6,8 @@
 
 |''keywords''|htmlunit,firefox|
 
+!2 Not supported with IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|

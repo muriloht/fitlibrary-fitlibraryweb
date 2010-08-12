@@ -1,5 +1,5 @@
 !*< def
-!define html ({{{<select name="colour" multiple="yes">
+!define html ({{{<select id="colour" multiple="yes">
   <option value="red" selected="selected">Red</option>
   <option value="green">Green</option>
   <option value="blue">Blue</option>
@@ -9,18 +9,20 @@
 
 |''keywords''|htmlunit,firefox|
 
+!2 Not supported by IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''with html''|${html}|
 
 |''title''|'''is'''||
 
-|''option list of''|//select[@name="colour"]|'''is'''|red|
+|''option list of''|colour|'''is'''|red|
 
-|''with''|//select[@name="colour"]|''add selection''|black|
+|''with''|colour|''add selection''|black|
 
-|''option list of''|//select[@name="colour"]|'''is'''|red, black|
+|''option list of''|colour|'''is'''|red, black|
 
-|''with''|//select[@name="colour"]|''remove selection''|red|
+|''with''|colour|''remove selection''|red|
 
-|''option list of''|//select[@name="colour"]|'''is'''|black|
+|''option list of''|colour|'''is'''|black|

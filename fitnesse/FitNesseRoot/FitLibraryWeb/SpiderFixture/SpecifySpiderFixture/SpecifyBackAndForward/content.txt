@@ -7,7 +7,7 @@
     <a id = "one" href="other.html">Link</a>
   </body>}}})
 *!
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

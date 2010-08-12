@@ -7,7 +7,6 @@ For example, with the table below, the values taken in turn are as follows:
 This means that the following table only succeeds for the first value of the list.
 
 As ''for each'' is run, the results for each run of the second row are added to the report table.
-|''keywords''|htmlunit,firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

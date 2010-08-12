@@ -112,7 +112,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 			} else if ("firefox".equals(driver))
 				webDriver = fireFoxDriver();
 			else if ("ie".equals(driver))
-				webDriver = ieDriver();
+				webDriver = new InternetExplorerDriver();
 			// else if ("safari".equals(driver))
 			// webDriver = safariDriver();
 			else
@@ -129,9 +129,6 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		if (dynamicVariable != null)
 			return dynamicVariable;
 		return byDefault;
-	}
-	private WebDriver ieDriver() {
-		return new InternetExplorerDriver();
 	}
 	// private WebDriver safariDriver() {
 	// return new SafariDriver();

@@ -1,5 +1,7 @@
 |''keywords''|htmlunit,firefox|
 
+!2 Not supported in IE
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyFrames.SpecSetUp
 
 |''frame by name''|through.r|

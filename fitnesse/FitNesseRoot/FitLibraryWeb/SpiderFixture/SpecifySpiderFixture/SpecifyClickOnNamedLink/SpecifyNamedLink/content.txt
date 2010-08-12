@@ -6,7 +6,7 @@
 <a title="Mr Sir" href="other.html">Link2</a> }}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
