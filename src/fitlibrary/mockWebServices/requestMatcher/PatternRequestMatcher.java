@@ -15,9 +15,11 @@ public class PatternRequestMatcher extends FussyRequestMatcher {
 	public PatternRequestMatcher(String pattern) {
 		this.pattern = pattern;
 	}
+	@Override
 	public String getExpected() {
 		return "match '"+pattern+"'";
 	}
+	@Override
 	public boolean match(HttpMessage request) {
 		return Pattern.compile(pattern,Pattern.DOTALL).matcher(request.getContents()).matches();
 	}

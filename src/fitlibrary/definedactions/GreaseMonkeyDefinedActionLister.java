@@ -13,11 +13,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 import fitlibrary.DoFixture;
-import fitlibrary.log.Log;
+import fitlibrary.log.FixturingLogger;
 
 public class GreaseMonkeyDefinedActionLister extends DoFixture {
+	static Logger logger = FixturingLogger.getLogger(GreaseMonkeyDefinedActionLister.class);
 
 	public boolean showAndListDefinedActionsForGreaseMonkey(
 			File pathToDefinedActionsDir) {
@@ -34,7 +36,7 @@ public class GreaseMonkeyDefinedActionLister extends DoFixture {
 			showAfterTable(builder.toString());
 			return true;
 		} catch (IOException e) {
-			Log.error(e);
+			logger.error(e);
 			return false;
 		}
 	}
@@ -43,7 +45,7 @@ public class GreaseMonkeyDefinedActionLister extends DoFixture {
 		return (action.equals("click") || action.equals("get url"));
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	public List<String> listDefinedActions(File pathToDefinedActionsDir)
 			throws IOException {
 		List<String> returnList = new ArrayList<String>();
@@ -107,7 +109,8 @@ public class GreaseMonkeyDefinedActionLister extends DoFixture {
 		return returnList;
 	}
 
-	private String extractDefinedActionNameFromTable(String line) {
+	private String extractDefinedActionNameFromTable(String lineInitial) {
+		String line = lineInitial;
 		line = line.replace("'''", "");
 		line = line.replace("''", "");
 		int posofSecondBar = line.indexOf("|", 1);
@@ -128,7 +131,7 @@ public class GreaseMonkeyDefinedActionLister extends DoFixture {
 		return path;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	protected Iterator createLineListerForFile(File file) throws IOException {
 		return FileUtils.lineIterator(file);
 	}

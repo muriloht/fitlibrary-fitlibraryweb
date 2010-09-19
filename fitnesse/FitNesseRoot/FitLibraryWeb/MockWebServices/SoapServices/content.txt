@@ -1,9 +1,0 @@
-!*> xml
-!define soapAttr ({{{<soap:Envelope xmlns:soap="urn:f"><soap:Body stuff="a">}}})
-!define soap ({{{<soap:Envelope xmlns:soap="urn:f"><soap:Body>}}})
-!define endSoap ({{{</soap:Body></soap:Envelope>}}})
-*!
-
-|!contents|
-
-

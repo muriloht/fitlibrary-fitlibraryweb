@@ -8,7 +8,6 @@ package fitlibrary.ws.mock.requestMatcher;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.HashMap;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -97,6 +96,6 @@ public class TestAndRequestMatcher {
 		assertThat(matcher.not().match(request), equalTo(false));
 	}
 	private static ReplyMessage msg(String s) {
-		return new ReplyMessage(new HashMap<String, String>(),s);
+		return new ReplyMessage(s);
 	}
 }

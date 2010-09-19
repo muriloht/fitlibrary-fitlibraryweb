@@ -15,9 +15,11 @@ public class LiteralResponder extends SimpleResponder {
 		super(resultCode);
 		this.response = contents;
 	}
+	@Override
 	public String getContents() {
 		return response;
 	}
+	@Override
 	public boolean isOK() {
 		return true;
 	}

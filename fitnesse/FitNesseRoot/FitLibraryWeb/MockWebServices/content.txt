@@ -8,7 +8,4 @@ There may also be problems with calling a web service that has serious impacts, 
 A reasonable approach to these problems is to mock the web service to each of those other systems. This means that the test defines how another system should respond. Because the test is written to test certain behaviour, it's often OK to work out what specific ways the other systems should respond. There are techniques that help in defining the mock behaviour, as we discuss in ^MockWebServicesDocs. We also highlight some of the (fundamental) limitations of this approach.
 
 |!3 ^MockWebServicesDocs|''Documentation for mocking web services''|
-|!3 ^PlainTextServices|''Specifications for mocking plain text web services''|
-|!3 ^SoapServices|''Specifications for mocking SOAP and XML-based web services''|
-
-This depends, for its Http server, on com.sun.net.httpserver.* in jdk1.6.
+|!3 ^SpecifiCations|''Storytests that specify/text mock web services''|

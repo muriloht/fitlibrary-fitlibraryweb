@@ -17,9 +17,11 @@ public class AndRequestMatcher extends FussyRequestMatcher {
 		this.first = first;
 		this.second = second;
 	}
+	@Override
 	public String getExpected() {
 		return first.getExpected() + " and " + second.getExpected();
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 		return first.match(request) && second.match(request);
 	}

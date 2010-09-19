@@ -17,9 +17,11 @@ public class OrRequestMatcher extends FussyRequestMatcher {
 		this.first = first;
 		this.second = second;
 	}
+	@Override
 	public String getExpected() {
 		return first.getExpected() + " or " + second.getExpected();
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 		return first.match(request) || second.match(request);
 	}

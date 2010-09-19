@@ -31,12 +31,15 @@ public class RecordToFilesLogger implements Logger {
 		resultsFolder = new File(folder,selectFileName(formattedDateTime()));
 		resultsFolder.mkdirs();
 	}
+	@Override
 	public void error(String s) {
 		displayingLogger.error(s);
 	}
+	@Override
 	public void log(String s) {
 		displayingLogger.log(s);
 	}
+	@Override
 	public void responded(String context, HttpMessage request, HttpMessage response, int portNo) {
 		boolean first = first(portNo);
 		String fileName = "Port"+portNo+"Response"+nextResponseNo(portNo);
@@ -45,7 +48,6 @@ public class RecordToFilesLogger implements Logger {
 		writeFile(diry, REQUEST_FILENAME, request);
 		writeFile(diry, RESPONSE_FILENAME, response);
 
-		File summaryFile = new File(resultsFolder,"storytest"+portNo+".txt");
 		String s = "";
 		if (first)
 			s = "!*> diry\n"+
@@ -60,6 +62,7 @@ public class RecordToFilesLogger implements Logger {
 			"|matches request from file|${diry}/!-"+fileName+"/"+REQUEST_FILENAME+"-!|\n"+
 			"|response from file|${diry}/!-"+fileName+"/"+RESPONSE_FILENAME+"-!|\n";
 		
+		File summaryFile = new File(resultsFolder,"storytest"+portNo+".txt");
 		try {
 			FileWriter fileWriter = new FileWriter(summaryFile,true);
 			IOUtils.write(s, fileWriter);
@@ -93,6 +96,7 @@ public class RecordToFilesLogger implements Logger {
 			error("Problem writing file: "+e);
 		}
 	}
+	@Override
 	public void unused(int portNo, String expected) {
 		displayingLogger.unused(portNo,expected);
 	}

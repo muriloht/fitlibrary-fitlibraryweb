@@ -1,6 +1,6 @@
 !2 Profiles in Firefox
 #
-A profile in Firefox is where your personal configuration is stored (i.e. bookmarks, proxy settings etc). 
+A profile in Firefox is where your personal configuration is stored (i.e. bookmarks, proxy settings etc).
 
 When Firefox is installed, a profile called ''default'' is created.
 
@@ -10,7 +10,7 @@ It is possible to create new profiles using the ''-profileManager'' command lin
 
 You can see a list of all these properties by typing
 {{{    about:config
-}}}into the URL bar. 
+}}}into the URL bar.
 
 Firefox will show in bold any changes you have made from the default profile setting.
 
@@ -23,7 +23,7 @@ For further information on Firefox profiles see http://support.mozilla.com/en-US
 #
 Before ''!-SpiderFixture-!'' opens the browser, it will create a brand new profile just as if you had installed Firefox for the first time.
 
- * You can use Spider's ''firefox profile'' call to directly manipulate those same ''about:config'' properties. 
+ * You can use Spider's ''firefox profile'' call to directly manipulate those same ''about:config'' properties.
 
 Here's an example of some of the properties I use:
 
@@ -53,6 +53,6 @@ Sometimes it's necessary to use an existing profile because some of Firefox's o
 
 When you do this, ''!-Spiderfixture-!'' creates a copy of this profile.
 
- * You can reconfigure it further using ''firefox profile'' options and it will have a separate session / cookies etc. 
+ * You can reconfigure it further using ''firefox profile'' options and it will have a separate session / cookies etc.
 
 Darren

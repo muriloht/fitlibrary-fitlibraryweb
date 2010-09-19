@@ -18,15 +18,18 @@ public abstract class SimpleResponder implements Responder {
 	public SimpleResponder(int resultCode) {
 		this.resultCode = resultCode;
 	}
+	@Override
 	public String getUri() {
 		return "";
 	}
+	@Override
 	public String contentsOf(String line) {
 		return line;
 	}
 	public void setContentIsXml(boolean contentIsXml) {
 		this.contentIsXml = contentIsXml;
 	}
+	@Override
 	public Map<String, String> getHeaders() {
 		HashMap<String, String> hashMap = new HashMap<String, String>();
 		if (contentIsXml) {
@@ -35,6 +38,7 @@ public abstract class SimpleResponder implements Responder {
 		hashMap.put("Server", "MockingServer");
 		return hashMap;
 	}
+	@Override
 	public int getResultCode() {
 		return resultCode ;
 	}

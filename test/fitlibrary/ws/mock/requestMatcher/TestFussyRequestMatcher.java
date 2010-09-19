@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -30,17 +29,21 @@ public class TestFussyRequestMatcher {
 	Mockery context = new JUnit4Mockery();
 	final RequestMatcher first = context.mock(RequestMatcher.class,"first");
 	private RequestMatcher failingMatcher = new FussyRequestMatcher() {
+		@Override
 		public String getExpected() {
 			return null;
 		}
+		@Override
 		public boolean match(@SuppressWarnings("hiding") HttpMessage request) throws IOException {
 			return false;
 		}
 	};
 	private RequestMatcher passingMatcher = new FussyRequestMatcher() {
+		@Override
 		public String getExpected() {
 			return null;
 		}
+		@Override
 		public boolean match(@SuppressWarnings("hiding") HttpMessage request) throws IOException {
 			return true;
 		}
@@ -83,6 +86,6 @@ public class TestFussyRequestMatcher {
 		assertThat(passingMatcher.not().match(request), equalTo(false));
 	}
 	private static ReplyMessage msg(String s) {
-		return new ReplyMessage(new HashMap<String, String>(),s);
+		return new ReplyMessage(s);
 	}
 }

@@ -23,8 +23,8 @@ import fitlibrary.mockWebServices.responder.Responder;
 import fitlibrary.mockWebServices.term.LeafTerm;
 import fitlibrary.mockWebServices.term.RepeatingTerm;
 import fitlibrary.mockWebServices.term.SequentialTerm;
-import fitlibrary.mockWebServices.term.Term;
 
+// Pass the Term across to the MockingWebServices on tearDown().
 public abstract class AbstractTransactionFixture extends DoFixture {
 	protected int port;
 	protected MockingWebServices mockingWebServices;
@@ -81,8 +81,7 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 
 	public void tearDown() throws Exception {
 		addToSequence();
-		Term term = mockingWebServices.or(port,sequentialTerm,insertAtEnd);
-		showAfterTable("terms = "+term);
+		mockingWebServices.or(port,sequentialTerm,insertAtEnd);
 	}
 	private void addToSequence() {
 		if (responders.isEmpty()) {

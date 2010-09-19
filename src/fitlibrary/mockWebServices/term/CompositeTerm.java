@@ -27,6 +27,7 @@ public abstract class CompositeTerm extends AbstractTerm {
 			terms.add(0, term);
 		term.setComposite(this);
 	}
+	@Override
 	public synchronized boolean available() {
 		for (Term term : terms)
 			if (term.available()) 
@@ -36,6 +37,7 @@ public abstract class CompositeTerm extends AbstractTerm {
 	public synchronized boolean isEmpty() {
 		return terms.isEmpty();
 	}
+	@Override
 	public synchronized void logUnused(int portNo, Logger logger) {
 		for (Term term: terms)
 			term.logUnused(portNo,logger);

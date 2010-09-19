@@ -14,9 +14,11 @@ public class XmlRequestMatcher extends FussyRequestMatcher {
 	public XmlRequestMatcher(String xml) {
 		this.xml = xml;
 	}
+	@Override
 	public String getExpected() {
-		return "to match '"+xml+"'";
+		return "to match XML("+xml+")";
 	}
+	@Override
 	public boolean match(HttpMessage request) {
 		XmlDoFixture xmlDoFixture = new XmlDoFixture();
 		xmlDoFixture.nameSpace("soap");

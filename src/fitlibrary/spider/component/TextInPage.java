@@ -14,6 +14,7 @@ public class TextInPage extends SpiderComponent {
 	public boolean pageContainsText(final String text) {
 		try {
 			boolean match = ensureMatches(new PollForMatches() {
+				@Override
 				public boolean matches() {
 					return passed(HtmlTextUtility.crLfRemoved(pageSource()).contains(text),
 							text, text);
@@ -35,6 +36,7 @@ public class TextInPage extends SpiderComponent {
 	public boolean pageContainsTextIgnoreHtmlBreakingTokens(final String text) {
 		try {
 			boolean ensureMatches = ensureMatches(new PollForMatches() {
+				@Override
 				public boolean matches() {
 					String src = pageSourceCleaned();
 
@@ -52,6 +54,7 @@ public class TextInPage extends SpiderComponent {
 	}
 	public boolean pageContainsRegularExpression(final String regEx) {
 		boolean ensureMatches = ensureMatches(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				return patternMatchesAcrossLines(pageSource(), regEx);
 			}

@@ -21,6 +21,7 @@ public class FirefoxVariation extends DriverVariation {
 	@Override
 	public void checkTitleOfNewPage(final String url) throws Exception {
 		spiderFixture.ensureNoException(new PollForNoException<Boolean>() {
+			@Override
 			public Boolean act() {
 				if (spiderFixture.getTitle() != null)
 					return true;

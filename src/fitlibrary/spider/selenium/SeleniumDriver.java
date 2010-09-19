@@ -44,6 +44,7 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 	public Selenium getSelenium() {
 		return selenium;
 	}
+	@Override
 	public void get(String url) {
 		selenium.open(url);
 		clearForwards();
@@ -51,12 +52,15 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 	public void clearForwards() {
 		forwards.clear();
 	}
+	@Override
 	public String getCurrentUrl() {
 		return selenium.getLocation();
 	}
+	@Override
 	public String getPageSource() {
 		return selenium.getHtmlSource();
 	}
+	@Override
 	public String getTitle() {
 		return selenium.getTitle();
 	}
@@ -64,31 +68,39 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 		notYetImplemented();
 		return false;
 	}
+	@SuppressWarnings("unused")
 	public void setVisible(boolean visible) {
 		notYetImplemented();
 	}
+	@Override
 	public void close() {
 		selenium.close();
 	}
+	@Override
 	public Options manage() {
 		return new Options() {
+			@Override
 			public void addCookie(Cookie cookie) {
 				String options = "path="+cookie.getPath();
 				if (cookie.getDomain() != null)
 					options += ", domain="+cookie.getDomain();
 				selenium.createCookie(cookie.getName()+"="+cookie.getValue(),options);
 			}
+			@Override
 			public void deleteAllCookies() {
 				notYetImplemented();
 			}
+			@Override
 			public void deleteCookie(Cookie cookie) {
 				selenium.deleteCookie(cookie.getName(), cookie.getPath());
 			}
+			@Override
 			public void deleteCookieNamed(String name) {
 				notYetImplemented();
 				// The following doesn't work:
 				selenium.deleteCookie(name,"path=/");
 			}
+			@Override
 			public Set<Cookie> getCookies() {
 				String cookies = selenium.getCookie();
 				Set<Cookie> set = new HashSet<Cookie>();
@@ -99,53 +111,67 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 				}
 				return set;
 			}
+			@Override
 			public Speed getSpeed() {
 				return Speed.SLOW; // Could decode the timeout speed in SLOW, etc
 			}
+			@Override
 			public void setSpeed(Speed speed) {
 				selenium.setSpeed(""+speed.getTimeOut());
 			}
 		};
 	}
+	@Override
 	public Navigation navigate() {
 		return new Navigation() {
+			@Override
 			public void back() {
 				forwards.push(getCurrentUrl());
 				selenium.goBack();
 			}
+			@Override
 			public void forward() {
 				if (forwards.isEmpty())
 					throw new FitLibraryException("Can't go forward as haven't gone back");
 				selenium.open(forwards.pop());
 			}
+			@Override
 			public void to(String url) {
 				selenium.open(url);
 			}
+			@Override
 			public void to(URL url) {
 				to(url.toString()); // Assume that will do the trick - 685 introduces this
 			}
+			@Override
 			public void refresh() {
 				selenium.refresh();
 			}
 		};
 	}
+	@Override
 	public void quit() {
 		selenium.stop();
 	}
+	@Override
 	public TargetLocator switchTo() {
 		return new TargetLocator() {
+			@Override
 			public WebElement activeElement() {
 				notYetImplemented();
 				return null;
 			}
+			@Override
 			public WebDriver defaultContent() {
 				selenium.selectWindow(null);
 				return SeleniumDriver.this;
 			}
+			@Override
 			public WebDriver frame(int frameNumber) {
 				selenium.selectFrame("index="+frameNumber);
 				return SeleniumDriver.this;
 			}
+			@Override
 			public WebDriver frame(String frameName) {
 				try {
 					selenium.selectFrame("//frame[@name=\""+frameName+"\"]");
@@ -154,6 +180,7 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 					throw new FitLibraryException(""+e);
 				}
 			}
+			@Override
 			public WebDriver window(String windowName) {
 				try {
 					Thread.sleep(100);
@@ -168,36 +195,46 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 			}
 		};
 	}
+	@Override
 	public WebElement findElement(By by) {
 		return by.findElement((SearchContext)this);
 	}
+	@Override
 	public List<WebElement> findElements(By by) {
 		return by.findElements((SearchContext)this);
 	}
+	@Override
 	public WebElement findElementById(String id) {
 		return new SeleniumWebElement(this,id);
 	}
+	@Override
 	public List<WebElement> findElementsById(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByLinkText(String linkText) {
 		return new SeleniumWebElement(this,"link="+linkText);
 	}
+	@Override
 	public List<WebElement> findElementsByLinkText(String linkText) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByXPath(String xPath) {
 		return new SeleniumWebElement(this,"xpath="+xPath);
 	}
+	@Override
 	public List<WebElement> findElementsByXPath(String xPath) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByName(String name) {
 		return new SeleniumWebElement(this,"name="+name);
 	}
+	@Override
 	public List<WebElement> findElementsByName(String arg0) {
 		notYetImplemented();
 		return null;
@@ -208,18 +245,22 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 	public Selenium selenium() {
 		return selenium;
 	}
+	@Override
 	public String getWindowHandle() {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public Set<String> getWindowHandles() {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByPartialLinkText(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public List<WebElement> findElementsByPartialLinkText(String arg0) {
 		notYetImplemented();
 		return null;

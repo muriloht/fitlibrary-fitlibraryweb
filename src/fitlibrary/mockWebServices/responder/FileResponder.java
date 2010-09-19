@@ -20,6 +20,7 @@ public class FileResponder extends SimpleResponder {
 		if (!new File(fileName).exists())
 			throw new FitLibraryException("File doesn't exist: "+fileName);
 	}
+	@Override
 	public String getContents() {
 		try {
 			return readFile();
@@ -39,6 +40,7 @@ public class FileResponder extends SimpleResponder {
 		reader.close();
 		return result;
 	}
+	@Override
 	public boolean isOK() {
 		return true;
 	}

@@ -15,6 +15,7 @@ public class OrTerm extends CompositeTerm {
 	public OrTerm(Term... ts) {
 		super(ts);
 	}
+	@Override
 	public synchronized Responder matchRequest(HttpMessage request) throws IOException {
 		for (Term term : terms) {
 			if (term.available()) {

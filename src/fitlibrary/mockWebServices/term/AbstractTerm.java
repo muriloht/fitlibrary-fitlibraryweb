@@ -8,6 +8,7 @@ package fitlibrary.mockWebServices.term;
 public abstract class AbstractTerm implements Term {
 	private Object compositeTerm = null;
 
+	@Override
 	public synchronized void setComposite(Term compositeTerm) {
 		if (this.compositeTerm  != null)
 			throw new RuntimeException("Cannot allow a term to be in more than one composite; otherwise we'll get deadlock.");

@@ -12,5 +12,6 @@ import fitlibrary.ws.message.HttpMessage;
 public interface Responder extends HttpMessage {
 	String contentsOf(String line);
 	Map<String, String> getHeaders();
+	@Override
 	int getResultCode();
 }

@@ -130,7 +130,8 @@ public class ElectronicMail {
 		return findAttachment(attachmentFileName) != null;
 	}
 
-	private Part findAttachment(String attachmentFileName) {
+	private Part findAttachment(String attachmentFileNameInitial) {
+		String attachmentFileName = attachmentFileNameInitial;
 		attachmentFileName = attachmentFileName.toLowerCase();
 
 		try {

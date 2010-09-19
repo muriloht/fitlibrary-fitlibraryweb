@@ -1,0 +1,11 @@
+!|fitlibrary.http.HttpClientFixture|
+
+|''http get''|http://localhost:8093/handlingWindows.html|
+
+|'''show'''|''headers''|
+
+|''headers include''|
+|''name''|''value''|
+|Content-Type|text/html|
+
+|'''show'''|''reply escaped''|

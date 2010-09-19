@@ -15,9 +15,11 @@ public class UriRequestMatcher extends FussyRequestMatcher {
 	public UriRequestMatcher(String uri) {
 		this.uri = uri;
 	}
+	@Override
 	public String getExpected() {
-		return "URL["+uri+"]";
+		return "to match URL["+uri+"]";
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 		return request.getUri().equals(uri);
 	}

@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class SimpleConnectionCreator implements ConnectionCreator {
+	@Override
 	public URLConnection openConnection(URL url) throws IOException {
 		return url.openConnection();
 	}

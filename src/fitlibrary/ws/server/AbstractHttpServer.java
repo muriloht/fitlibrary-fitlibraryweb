@@ -40,7 +40,7 @@ public abstract class AbstractHttpServer {
 			is.close();
 			logger().log("Received: " + trimmed(contents));
 			Map<String, String> headerMap = getHeaderMap(exchange);
-			return new PostMessage(exchange.getResponseCode(),requestURI.toString(),headerMap,contents,ContentType.XML);
+			return new PostMessage(exchange.getResponseCode(),requestURI.toString(),contents,ContentType.SOAP12);
 		}
 		private String trimmed(String contents) {
 			if (contents.length() < FIRST_PART+3)

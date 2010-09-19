@@ -1,0 +1,6 @@
+^PostText
+^SoapV11
+^SoapV12
+^PostTextWithProxy
+^SoapV11WithProxy
+^SoapV12WithProxy

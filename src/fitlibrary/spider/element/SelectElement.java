@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 
+import fitlibrary.log.FixturingLogger;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.polling.PollForMatches;
 import fitlibrary.spider.polling.PollForWithError;
 
 public class SelectElement extends SpiderElement {
+	static Logger logger = FixturingLogger.getLogger(SelectElement.class);
+	
 	public SelectElement(AbstractSpiderFixture spiderFixture) {
 		super(spiderFixture);
 	}
@@ -63,9 +67,11 @@ public class SelectElement extends SpiderElement {
 			final WebElement webElement = childrenOf(locator, "option").get(index);
 			webElement.setSelected();
 			ensureBecomes(new PollForWithError() {
+				@Override
 				public boolean matches() {
 					return webElement.isSelected();
 				}
+				@Override
 				public String error() {
 					return "Not selected correctly";
 				}
@@ -107,8 +113,10 @@ public class SelectElement extends SpiderElement {
 	private boolean selectOptionThroughChildren(final String locator,
 			final String option, final boolean select) {
 		return ensureMatches(new PollForMatches() {
+			@Override
 			public boolean matches() {
-				for (WebElement optionElement : childrenOf(locator, "option")) {
+				List<WebElement> childrenOf = childrenOf(locator, "option");
+				for (WebElement optionElement : childrenOf) {
 					String value = optionElement.getValue();
 					if (value != null && value.equalsIgnoreCase(option)) {
 						if (select != optionElement.isSelected()) {
@@ -127,6 +135,7 @@ public class SelectElement extends SpiderElement {
 	}
 	private boolean selectTextThroughChildren(final String locator, final String textRequired) {
 		return ensureMatches(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				for (WebElement optionElement : childrenOf(locator, "option")) {
 					String text = optionElement.getText();

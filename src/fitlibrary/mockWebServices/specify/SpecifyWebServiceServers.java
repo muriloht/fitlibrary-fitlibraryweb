@@ -6,16 +6,17 @@
 package fitlibrary.mockWebServices.specify;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import fitlibrary.mockWebServices.logger.MockLogger;
 import fitlibrary.ws.MockWebServicesFixture;
-import fitlibrary.ws.WebServicesClientFixture;
 
 public class SpecifyWebServiceServers extends MockWebServicesFixture {
 	private static final String FIT_NESSE_ROOT_FILES_SOAP = "FitNesseRoot/files/soap";
-	protected WebServicesClientFixture client = new WebServicesClientFixture();
 	
 	public SpecifyWebServiceServers() {
 		File file = new File(FIT_NESSE_ROOT_FILES_SOAP);
@@ -26,30 +27,17 @@ public class SpecifyWebServiceServers extends MockWebServicesFixture {
 					f.delete();
 		}
 	}
-	public String toPost(String uri, String request) throws Exception {
-		String response = client.postingSoapWith(uri,request);
-		return unwrapSoap(response);
-	}
-	private String unwrapSoap(String response) {
-		String HEAD = "<soap:Body>";
-		int header = response.indexOf(HEAD);
-		if (header < 0)
-			return response;
-		int trailer = response.indexOf("</soap:Body>");
-		if (trailer < 0)
-			return response;
-		return response.substring(header+HEAD.length(),trailer);
-	}
 	public void createSoapFileWith(String fileName, String contents) throws IOException {
 		File file = new File(FIT_NESSE_ROOT_FILES_SOAP);
 		file.mkdirs();
-		FileWriter fileWriter = new FileWriter(new File(file,fileName));
-		fileWriter.write(contents);
-		fileWriter.close();
+		FileUtils.writeStringToFile(new File(file,fileName), contents, "utf-8");
 	}
-	public int closeWithErrors() {
+	public int closeWithErrors() throws IOException {
 		MockLogger logger = mockingWebServices.close(100);
 		showAfterTable(logger.report());
 		return logger.errorCount();
+	}
+	public void startLogging() {
+		Logger.getRootLogger().setLevel(Level.ALL);
 	}
 }

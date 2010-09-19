@@ -13,79 +13,63 @@ import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 
 import fitlibrary.exception.FitLibraryException;
-import fitlibrary.mockWebServices.logger.ClockedLogger;
 import fitlibrary.ws.message.ContentType;
-import fitlibrary.ws.message.PostMessage;
-import fitlibrary.ws.message.ReplyMessage;
-import fitlibrary.ws.server.RealWebService;
-import fitlibrary.xml.XmlDoFixture;
+import fitlibrary.ws.server.WebService;
+import fitlibrary.ws.soap.Soap;
 
-public class WebServicesClientFixture extends XmlDoFixture {
-	private String lastResponse = "";
-	private String proxyHost = "";
-	private int proxyPortNo = 0;
+public class WebServicesClientFixture extends WebService {
 
-	public boolean proxyUrlWithPort(String proxy, int portNo) {
-		this.proxyHost = proxy;
-		this.proxyPortNo = portNo;
-		return true;
-	}
-	public String getHttp(String url) {
-		return getHttp(url, 0);
+	public String toPostText(String url, String s) {
+		try {
+			return postHttp(url, s, ContentType.PLAIN);
+		} catch (Exception e) {
+			throw new FitLibraryException(e.getMessage());
+		}
 	}
 	public String postTextWith(String url, String s) {
-		try {
-			return postingTextWith(url, s);
-		} catch (Exception e) {
-			throw new FitLibraryException(e.getMessage());
-		}
+		showAfterTable("Deprecated: use |''to''|"+url+"|''post text''|"+s+"| instead");
+		return toPostText(url,s);
 	}
 	public String postWith(String url, String xmlOut) {
+		showAfterTable("Deprecated: use |''to''|"+url+"|''post soap11''|"+xmlOut+"| instead");
+		return toPostSoap11(url,xmlOut);
+	}
+	public String toPostSoap11(String url, String xmlOut) {
 		try {
-			return postingSoapWith(url, xmlOut);
+			reply = Soap.unwrap11(postHttp(url, Soap.wrap11(xmlOut), ContentType.SOAP11)).trim();
+			return reply;
 		} catch (Exception e) {
 			throw new FitLibraryException(e.getMessage());
 		}
 	}
-	public String postingTextWith(String url, String xmlOut) {
-		return postHttp(url, xmlOut, ContentType.PLAIN,0);
+	public String toPostSoap12(String url, String xmlOut) {
+		try {
+			reply = Soap.unwrap12(postHttp(url, Soap.wrap12(xmlOut), ContentType.SOAP12)).trim();
+			return reply;
+		} catch (Exception e) {
+			throw new FitLibraryException(e.getMessage());
+		}
 	}
-	public String postingTextWithAndTimeOut(String url, String xmlOut, int timeoutInMilliseconds) {
-		return postHttp(url, xmlOut, ContentType.PLAIN,timeoutInMilliseconds);
-	}
-	public String postingSoapWith(String url, String xmlOut) {
-		return postHttp(url, xmlOut, ContentType.XML,0);
+	public String postingTextWithAndTimeOut(String url, String text, int timeoutInMilliseconds) {
+		timeout(timeoutInMilliseconds);
+		return postHttp(url, text,ContentType.PLAIN);
 	}
 	public String postTextFromFile(String url, String fileName) {
 		return postFromFile(url,fileName,ContentType.PLAIN);
 	}
 	public String postSoapFromFile(String url, String fileName) {
-		return postFromFile(url,fileName,ContentType.XML);
+		return postFromFile(url,fileName,ContentType.SOAP12);
 	}
 	public String postFromFile(String url, String fileName, ContentType contentType) {
 		try {
-			return postHttp(url,readFile(fileName),contentType,0);
+			return postHttp(url,readFile(fileName),contentType);
 		} catch (Exception e) {
 			throw new FitLibraryException(e.getMessage());
 		}
 	}
-	private String getHttp(String url, int timeoutInMilliseconds) {
-		try {
-			RealWebService realWebService = new RealWebService(url,new ClockedLogger());
-			if (timeoutInMilliseconds > 0)
-				realWebService.setSocketTimeout(timeoutInMilliseconds);
-			if (!"".equals(proxyHost))
-				realWebService.setProxy(proxyHost, proxyPortNo);
-			PostMessage postMessage = new PostMessage(url,"",ContentType.PLAIN);
-			ReplyMessage reply = realWebService.get(postMessage);
-			if (!reply.isOK())
-				throw new FitLibraryException("Error");
-			if (reply.getResultCode() != 200)
-				throw new FitLibraryException("Error: "+reply.getResultCode()+": "+reply.getContents());
-			return reply.getContents();
-		} catch (Exception e) {
-			throw new FitLibraryException(e.getMessage());
-		}
+	public String postHttp(String url, String contents, ContentType contentType) {
+		httpPost(url, contents, contentType.getContentType(), "utf-8");
+		return getReply();
 	}
 	private String readFile(String fileName) throws IOException {
 		InputStream inputStream = new FileInputStream(new File(fileName));
@@ -94,32 +78,5 @@ public class WebServicesClientFixture extends XmlDoFixture {
 		} finally {
 			inputStream.close();
 		}
-	}
-	private String postHttp(String url, String contents, ContentType contentType, int timeoutInMilliseconds) {
-		try {
-			RealWebService realWebService = new RealWebService(url,new ClockedLogger());
-			if (timeoutInMilliseconds > 0)
-				realWebService.setSocketTimeout(timeoutInMilliseconds);
-			if (!"".equals(proxyHost))
-				realWebService.setProxy(proxyHost, proxyPortNo);
-			PostMessage postMessage = new PostMessage(url,contents,contentType);
-			ReplyMessage reply = realWebService.post(postMessage);
-			if (!reply.isOK())
-				throw new FitLibraryException("Error");
-			if (reply.getResultCode() != 200)
-				throw new FitLibraryException("Error: "+reply.getResultCode()+": "+reply.getContents());
-			return reply.getContents();
-		} catch (Exception e) {
-			throw new FitLibraryException(e.getMessage());
-		}
-	}
-	public String xpathInResponse(String xPathExpression) {
-		return xpathIn(xPathExpression, lastResponse);
-	}
-	public boolean xpathExistsInResponse(String xPathExpression) {
-		return xpathExistsIn(xPathExpression,lastResponse);
-	}
-	public boolean xmlInResponseSameAs(String expectedXml) {
-		return xmlSameAs(lastResponse, expectedXml);
 	}
 }

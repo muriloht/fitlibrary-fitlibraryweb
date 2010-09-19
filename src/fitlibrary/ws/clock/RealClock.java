@@ -11,6 +11,7 @@ import org.joda.time.format.DateTimeFormatter;
 
 
 public class RealClock implements Clock {
+	@Override
 	public String dateTime() {
 		DateTimeFormatter format = DateTimeFormat.forPattern("HH:mm:ss");
 		return new DateTime().toString(format);

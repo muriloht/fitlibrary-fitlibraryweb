@@ -51,14 +51,16 @@ public class TextElement extends SpiderElement {
 	}
 	public boolean withSetText(final String locator, final String s) {
 		final WebElement element = findElement(locator);
-		if (!element.isEnabled()) // Due to bugs in HtmlUnit (clears a disabled
-			return true;          // text field) and in Selenium
+		if (!element.isEnabled()) // Due to bugs in HtmlUnit (clears a disabled text field) and in Selenium
+			return true;
 		element.clear();
 		element.sendKeys(whiteSpace(s));
 		ensureBecomes(new PollForWithError() {
+			@Override
 			public boolean matches() {
-				return textOf(locator).equals(whiteSpace(s));
+				return textOf(locator).equals(NLandTABasSpace(s));
 			}
+			@Override
 			public String error() {
 				return "Text wasn't changed correctly, it's '"
 						+ element.getText() + "'";
@@ -73,9 +75,11 @@ public class TextElement extends SpiderElement {
 		}
 		element.sendKeys(whiteSpace(s));
 		ensureBecomes(new PollForWithError() {
+			@Override
 			public boolean matches() {
 				return textOf(locator).endsWith(whiteSpace(s));
 			}
+			@Override
 			public String error() {
 				return "Text wasn't changed correctly, it's '"
 						+ element.getText() + "'";
@@ -106,6 +110,9 @@ public class TextElement extends SpiderElement {
 	}
 	protected static String whiteSpace(String s) {
 		return StringUtility.replaceAll(s, "\\n", "\n").replaceAll("\\t", "\t");
+	}
+	protected static String NLandTABasSpace(String s) {
+		return StringUtility.replaceAll(s, "\\n", " ").replaceAll("\\t", " ");
 	}
 	private String tagless(String text) {
 		String s = text;

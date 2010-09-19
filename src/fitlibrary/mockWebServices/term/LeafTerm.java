@@ -7,7 +7,6 @@ package fitlibrary.mockWebServices.term;
 
 import java.io.IOException;
 
-import fit.Fixture;
 import fitlibrary.mockWebServices.requestMatcher.RequestMatcher;
 import fitlibrary.mockWebServices.responder.ErrorResponder;
 import fitlibrary.mockWebServices.responder.Responder;
@@ -23,9 +22,11 @@ public class LeafTerm extends AbstractTerm {
 		this.requestMatcher = requestMatcher;
 		this.responder = responder;
 	}
+	@Override
 	public synchronized boolean available() {
 		return available;
 	}
+	@Override
 	public synchronized Responder matchRequest(HttpMessage request) throws IOException {
 		if (requestMatcher.match(request)) {
 			available = false;
@@ -33,12 +34,13 @@ public class LeafTerm extends AbstractTerm {
 		}
 		return ErrorResponder.create();
 	}
+	@Override
 	public synchronized void logUnused(int portNo, Logger logger) {
 		if (available)
 			logger.unused(portNo,requestMatcher.getExpected());
 	}
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+"["+Fixture.escape(requestMatcher.getExpected())+"]";
+		return getClass().getSimpleName()+"["+requestMatcher.getExpected()+"]";
 	}
 }

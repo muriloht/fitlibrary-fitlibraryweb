@@ -13,6 +13,7 @@ public class MockClock implements Clock {
 	public void setTime(long time) {
 		this.time = time;
 	}
+	@Override
 	public String dateTime() {
 		return time + " ";
 	}

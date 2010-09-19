@@ -10,6 +10,7 @@ public class Frame extends SpiderComponent {
 	}
 	public boolean frame(final int frameNo) {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				webDriver().switchTo().frame(frameNo);
 				return true;
@@ -21,6 +22,7 @@ public class Frame extends SpiderComponent {
 	}
 	public boolean frameByName(final String frameName) {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				webDriver().switchTo().frame(frameName);
 				return true;
@@ -32,6 +34,7 @@ public class Frame extends SpiderComponent {
 	}
 	public boolean defaultFrame() {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				webDriver().switchTo().defaultContent();
 				return true;

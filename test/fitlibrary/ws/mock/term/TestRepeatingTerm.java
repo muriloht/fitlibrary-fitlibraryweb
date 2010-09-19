@@ -8,7 +8,6 @@ package fitlibrary.ws.mock.term;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.HashMap;
 
 import org.jmock.Expectations;
 import org.jmock.Mockery;
@@ -49,6 +48,6 @@ public class TestRepeatingTerm {
 		repeatingTerm.logUnused(1,logger);
 	}
 	private static ReplyMessage msg(String s) {
-		return new ReplyMessage(new HashMap<String, String>(),s);
+		return new ReplyMessage(s);
 	}
 }

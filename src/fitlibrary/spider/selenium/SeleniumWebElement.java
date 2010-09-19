@@ -31,9 +31,11 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 		this.driver = driver;
 		this.locator = locator;
 	}
+	@Override
 	public String getAttribute(String attributeName) {
 		return selenium.getAttribute(locator+"@"+attributeName); // Not correct
 	}
+	@Override
 	public String getValue() {
 		try {
 			return selenium.getValue(locator);
@@ -41,17 +43,21 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			return "";
 		}
 	}
+	@Override
 	public boolean isEnabled() {
 		return selenium.isEditable(locator);
 	}
+	@Override
 	public boolean isSelected() {
 		return selenium.isChecked(locator);
 	}
+	@Override
 	public void setSelected() {
 		if (!selenium.isEditable(locator))
 			return;
 		selenium.check(locator);
 	}
+	@Override
 	public boolean toggle() {
 		if (!selenium.isEditable(locator))
 			return selenium.isChecked(locator);
@@ -62,6 +68,7 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			selenium.check(locator);
 		return !checked;
 	}
+	@Override
 	public String getText() {
 		try {
 			return selenium.getText(locator).replaceAll("\r","");
@@ -70,11 +77,13 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			return "";
 		}
 	}
+	@Override
 	public void clear() {
 		if (!selenium.isEditable(locator))
 			return;
 		selenium.type(locator,"");
 	}
+	@Override
 	public void sendKeys(CharSequence... seq) {
 		if (!selenium.isEditable(locator))
 			return;
@@ -85,6 +94,7 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			s += c.toString();
 		selenium.type(locator,s);
 	}
+	@Override
 	public void click() {
 		try {
 			selenium.click(locator);
@@ -107,14 +117,17 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 //			return selenium.isElementPresent("//a[@id='"+locatorAsExplicitId()+"']");
 //		return selenium.isElementPresent("//a[@id='"+locator+"']");
 //	}
+	@Override
 	public void submit() {
 		selenium.submit(locator);
 		selenium.waitForPageToLoad("1000");
 		driver.clearForwards();
 	}
+	@Override
 	public WebElement findElement(By by) {
 		return by.findElement(this);
 	}
+	@Override
 	public List<WebElement> findElements(By arg0) {
 		notYetImplemented();
 		return null;
@@ -126,20 +139,25 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			list.add(new SeleniumWebElement(driver,locator+"//"+childType+"["+(i+1)+"]"));
 		return list;
 	}
+	@Override
 	public WebElement findElementById(String id) {
 		return driver.findElementById(id);
 	}
+	@Override
 	public List<WebElement> findElementsById(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByLinkText(String linkText) {
 		return driver.findElementByLinkText(linkText);
 	}
+	@Override
 	public List<WebElement> findElementsByLinkText(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByXPath(String xPath) {
 //		System.out.println("findElementByXPath "+locator+" with "+xPath);
 		String xPathWithoutDot = xPath.substring(1);
@@ -156,13 +174,16 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 			relativeLocator = "xpath=id('"+locator+"')"+xPathWithoutDot;
 		return new SeleniumWebElement(driver,relativeLocator);
 	}
+	@Override
 	public List<WebElement> findElementsByXPath(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByName(String name) {
 		return driver.findElementByName(name);
 	}
+	@Override
 	public List<WebElement> findElementsByName(String arg0) {
 		notYetImplemented();
 		return null;
@@ -191,14 +212,17 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 	private boolean locatorByLink() {
 		return locator.startsWith("link=");
 	}
+	@Override
 	public String getElementName() {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public WebElement findElementByPartialLinkText(String arg0) {
 		notYetImplemented();
 		return null;
 	}
+	@Override
 	public List<WebElement> findElementsByPartialLinkText(String arg0) {
 		notYetImplemented();
 		return null;

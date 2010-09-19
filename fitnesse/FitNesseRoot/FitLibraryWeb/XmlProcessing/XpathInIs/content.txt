@@ -12,7 +12,11 @@
 
 |''xpath''|//g|''in''|<root xmlns:n="urn:n"><n:f>xyz</n:f><g>GG</g></root>|'''is'''|GG|
 
-|''xpath''|!-//request/attribute::LocationCode-!|''in''|<request xmlns:f="http://services.isis.airnz.com/CalendarPriceRQ/3/3" b="b" !-LocationCode-!="OOL">in<!-StartDate-!>2009-08-09Z</!-StartDate-!><!-EndDate-!>2009-08-11Z</!-EndDate-!></request>|''is''|OOL|
+ * The empty name space is removed from any tag before processing
+
+|''xpath''|//g|''in''|<root xmlns="urn:n"><f>xyz</f><g>GG</g></root>|'''is'''|GG|
+
+|''xpath''|!-//request/attribute::LocationCode-!|''in''|<request xmlns:f="http://services.com/Reservation/3/3" b="b" !-LocationCode-!="OOL">in<!-StartDate-!>2009-08-09Z</!-StartDate-!><!-EndDate-!>2009-08-11Z</!-EndDate-!></request>|''is''|OOL|
 
 
  * The name space has to be specified if it's used in the xpath:

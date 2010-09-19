@@ -71,9 +71,11 @@ public class Page extends SpiderComponent {
 		final ICalledMethodTarget target = spiderFixture.findMethodFromRow(row, 3, 0);
 
 		ensureWithError(new PollForWithError() {
+			@Override
 			public String error() {
 				return "Condition not satisfied";
 			}
+			@Override
 			public boolean matches() {
 				try {
 					webDriver().get(url);

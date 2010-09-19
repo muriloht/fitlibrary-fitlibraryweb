@@ -13,7 +13,7 @@ For a start, we'll ignore the details of the request and simply specify the resp
 
 Eg:
 
-!|nz.co.airnz.fixture.ws.MockWebServicesFixture|
+!|fitlibrary.ws.MockWebServicesFixture|
 
 |''mock on port''|8081|
 |''response''|<count>44</count>|
@@ -65,7 +65,7 @@ The close will fail if 4 requests for oranges have not been received.
 !3 6. Alternative requests
 So far, we've assumed that we're only interested in a specific request. What if we want to provide counts for apples and oranges? We can do that with two table, as follows:
 
-!|nz.co.airnz.fixture.ws.MockWebServicesFixture|
+!|fitlibrary.ws.MockWebServicesFixture|
 
 |''mock on port''|8081|
 |''matches request''|<item>oranges</item>|

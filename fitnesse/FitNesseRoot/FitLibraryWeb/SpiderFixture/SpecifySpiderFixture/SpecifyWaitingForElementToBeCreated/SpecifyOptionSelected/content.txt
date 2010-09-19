@@ -13,7 +13,7 @@ onclick="javascript:${to}"/>
 <select id='22'></select>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|firefox|
 
 !2 Not supported in IE
 

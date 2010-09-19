@@ -22,15 +22,19 @@ public class SpiderElementFixture extends AbstractSpiderFixture {
 		setRuntimeContext(spiderFixture.getRuntimeContext());
 	}
 	class ElementFinder implements Finder {
+		@Override
 		public WebElement findElement(String locator) {
 			return findElement(by(locator));
 		}
+		@Override
 		public WebElement findElement(By by) {
 			return webElement.findElement(by);
 		}
+		@Override
 		public List<WebElement> findElements(String locator) {
 			return webElement.findElements(by(locator));
 		}
+		@Override
 		public WebElement findOption(String locator, String option,
 				AbstractSpiderFixture abstractSpiderFixture)
 		{

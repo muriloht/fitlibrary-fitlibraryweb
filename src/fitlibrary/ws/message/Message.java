@@ -5,40 +5,28 @@
 */
 package fitlibrary.ws.message;
 
-import java.util.Map;
 
 public abstract class Message implements HttpMessage {
-	private Map<String, String> headerMap;
 	private String contents;
 	private int resultCode;
 
-	public Message(Map<String, String> headerMap, String contents) {
-		this(200,headerMap,contents);
-	}
-	public Message(int resultCode, Map<String, String> headerMap, String contents) {
+	public Message(int resultCode, String contents) {
 		this.resultCode = resultCode;
-		this.headerMap = headerMap;
 		this.contents = contents;
 	}
-	public Map<String, String> getHeaderMap() {
-		return headerMap;
-	}
+	@Override
 	public String getUri() {
 		return "";
 	}
+	@Override
 	public String getContents() {
 		return contents;
 	}
-	public String getHeader() {
-		StringBuilder s = new StringBuilder();
-		for (String key : headerMap.keySet())
-			s.append(key+":"+headerMap.get(key)+"\n");
-		s.append("\n");
-		return s.toString();
-	}
+	@Override
 	public boolean isOK() {
 		return true;
 	}
+	@Override
 	public int getResultCode() {
 		return resultCode;
 	}

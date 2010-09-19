@@ -23,22 +23,28 @@ public class ClockedLogger implements MockLogger {
 	public ClockedLogger(Clock clock) {
 		this.clock = clock;
 	}
+	@Override
 	public void error(String s) {
 		logError("Error: "+s);
 	}
+	@Override
 	public void unused(int portNo, String s) {
 		logError("Unused on "+portNo+": "+s);
 		unusedCount ++;
 	}
+	@Override
 	public void log(String s) {
 		logs.append(clock.dateTime()+" "+escape(s)+"\n");
 	}
+	@Override
 	public boolean hasErrors() {
 		return errorCount > 0;
 	}
+	@Override
 	public int errorCount() {
 		return errorCount;
 	}
+	@Override
 	public String report() {
 		return 	"Requests = "+requests+
 				"\nErrors = "+(errorCount-unusedCount)+
@@ -50,6 +56,7 @@ public class ClockedLogger implements MockLogger {
 		log(s);
 		errorCount++;
 	}
+	@Override
 	public void responded(String context, HttpMessage request, HttpMessage response, int portNo) {
 		requests ++;
 		String contents = response.getContents().trim();

@@ -21,6 +21,7 @@ public class ElementWithAttributes extends SpiderElement {
 	public boolean elementExists(final String locator) {
 		if (isSelenium()) {
 			return ensureMatches(new PollForMatches() {
+				@Override
 				public boolean matches() {
 					return selenium().isElementPresent(locator);
 				}
@@ -29,6 +30,7 @@ public class ElementWithAttributes extends SpiderElement {
 		}
 		try {
 			ensureNoException(new PollForNoException<WebElement>() {
+				@Override
 				public WebElement act() {
 					return finder().findElement(locator);
 				}
@@ -43,6 +45,7 @@ public class ElementWithAttributes extends SpiderElement {
 	public boolean elementDoesNotExist(final String locator) {
 		// Poll until we get an exception
 		return ensureMatches(new PollForMatches() {
+			@Override
 			public boolean matches() {
 				try {
 					finder().findElement(locator);
@@ -67,6 +70,7 @@ public class ElementWithAttributes extends SpiderElement {
 			final String locator) {
 		try {
 			return ensureMatches(new PollForMatches() {
+				@Override
 				public boolean matches() {
 					String attribute = findElement(locator).getAttribute(attributeName);
 					return attribute != null && !attribute.isEmpty();

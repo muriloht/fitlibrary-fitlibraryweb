@@ -5,6 +5,9 @@ For examples, see ^HttpPostText and ^HttpPostTextFromFile.
 For further examples, see the MockWebServices
 
 For some simple specifications, see ^SpecifyWs (these make use of mock web services, as discussed at <FitLibraryWeb.MockWebServices).
+
+^SpecifiCations
+
 #
 !3 Commands
 #
@@ -38,7 +41,7 @@ For some simple specifications, see ^SpecifyWs (these make use of mock web servi
 
  * To use an xpath to pull information out of the last response:
 
-|''xpath''|//ab//cd|''in response''|'''contains''|tax|
+|''xpath''|//ab//cd|''in response''|'''contains'''|tax|
 
  * To check for the existence of an element in the last response, using xpath:
 

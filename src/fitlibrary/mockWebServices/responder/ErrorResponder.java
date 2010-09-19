@@ -15,9 +15,11 @@ public class ErrorResponder extends SimpleResponder {
 	private ErrorResponder() {
 		//
 	}
+	@Override
 	public String getContents() {
 		return ERROR_RESPONSE;
 	}
+	@Override
 	public boolean isOK() {
 		return false;
 	}

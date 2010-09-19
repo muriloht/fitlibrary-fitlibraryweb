@@ -19,18 +19,22 @@ public class DisplayingLogger implements Logger {
 	public DisplayingLogger() {
 		this(new RealClock());
 	}
+	@Override
 	public synchronized void error(String s) {
 		System.err.println(clock.dateTime()+" RecordingLogger Error: "+s);
 	}
+	@Override
 	public synchronized void responded(String context, HttpMessage request, HttpMessage response, int portNo) {
 		System.out.println(clock.dateTime()+context+":");
 		System.out.println("RX\n"+request+"\nEND-RX");
 		System.out.println("TT\n"+response+"\nEND-TX");
 	}
+	@Override
 	public synchronized void log(String s) {
 		if (noisy)
 			System.err.println(clock.dateTime()+" "+s);
 	}
+	@Override
 	public void unused(int portNo, String expected) {
 		log("Unused "+portNo+": "+expected);
 	}

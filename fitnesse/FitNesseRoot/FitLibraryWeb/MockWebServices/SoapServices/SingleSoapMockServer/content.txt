@@ -1,9 +1,0 @@
-|''mock soap on port''|8081|
-|''matches URL''|/service|
-|''matches request''|${soapAttr}<request a="a" b="b">in</request>${endSoap}|
-|''response''|<response>out</response>|
-
-
-|''to''|http://localhost:8081/service|''post''|${soapAttr}<request b="b" a="a">in</request>${endSoap}|'''is'''|<response>out</response>|
-
-|''close''|

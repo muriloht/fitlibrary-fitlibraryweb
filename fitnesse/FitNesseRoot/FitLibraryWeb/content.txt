@@ -8,7 +8,8 @@ It depends on jdk1.6 for ''com.sun.net.httpserver.*'' for Http servers.
 
 |''Web testing, through a variety of browsers''|>SpiderFixture|
 |''xml diff, transform, etc''|>XmlProcessing|
-|''Emulating a web services client''|>WebServicesClient|
+|''An HTTP client''|^HttpClient|
+|''A web services client''|>WebServicesClient|
 |''Mocking one or more web services''|>MockWebServices|
 |''Recording web services''|>RecordWebServicesDocs|
 |''Running a shell/command''|>ShellFixture|
@@ -23,10 +24,10 @@ It depends on jdk1.6 for ''com.sun.net.httpserver.*'' for Http servers.
 ^CheckFolderRunner
 
 !*> paths and defines
-#!path ../bin
-!path lib/fitlibraryweb.jar
-!path fitlibrary.jar
-#!path ../../fitlibrary/bin
+!path ../bin
+#!path lib/fitlibraryweb.jar
+#!path fitlibrary.jar
+!path ../../fitlibrary/bin
 !path lib/*.jar
 !define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
 !define REGRACE_LINK {false}

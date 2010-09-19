@@ -17,6 +17,10 @@ orange</textarea>
 
 |''text of''|//textarea[@id="withNoValue"]|''is''|RED|
 
+|''with''|//textarea[@id="withNoValue"]|''set text''|RED\nGREEN\nBLUE|
+
+|''text of''|//textarea[@id="withNoValue"]|''is''|RED GREEN BLUE|
+
 |''with''|//textarea[@id="withNoValue"]|''set text''|mauve|
 
 |''text of''|//textarea[@id="withNoValue"]|''is''|mauve|

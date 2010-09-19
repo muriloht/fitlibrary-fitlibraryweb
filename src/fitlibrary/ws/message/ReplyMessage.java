@@ -5,14 +5,13 @@
 */
 package fitlibrary.ws.message;
 
-import java.util.Map;
 
 public class ReplyMessage extends Message {
-	public ReplyMessage(int responseCode, Map<String, String> headerMap, String contents) {
-		super(responseCode,headerMap,contents);
+	public ReplyMessage(int responseCode, String contents) {
+		super(responseCode,contents);
 	}
-	public ReplyMessage(Map<String, String> headerMap, String contents) {
-		this(200,headerMap,contents);
+	public ReplyMessage(String contents) {
+		this(200,contents);
 	}
 	@Override
 	public boolean isOK() {

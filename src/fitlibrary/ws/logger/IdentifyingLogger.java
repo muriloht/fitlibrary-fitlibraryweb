@@ -15,15 +15,19 @@ public class IdentifyingLogger implements Logger {
 		this.logger = logger;
 		this.name = name+": ";
 	}
+	@Override
 	public void error(String s) {
 		logger.error(name+s);
 	}
+	@Override
 	public void log(String s) {
 		logger.log(name+s);
 	}
+	@Override
 	public void responded(String context, HttpMessage request, HttpMessage response, int portNo) {
 		logger.responded(context,request,response,portNo);
 	}
+	@Override
 	public void unused(int portNo, String expected) {
 		logger.unused(portNo,expected);
 	}

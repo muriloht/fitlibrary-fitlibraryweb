@@ -18,12 +18,15 @@ public class RepeatingTerm extends AbstractTerm {
 		this.term = term;
 		term.setComposite(this);
 	}
+	@Override
 	public boolean available() {
 		return true;
 	}
+	@Override
 	public void logUnused(int portNo, Logger logger) {
 		// It's never unused
 	}
+	@Override
 	public Responder matchRequest(HttpMessage request) throws IOException {
 		return term.matchRequest(request);
 	}

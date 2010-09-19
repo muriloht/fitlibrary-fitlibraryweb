@@ -1,6 +1,0 @@
-|''mock on port''|8081|
-|''response''|out|
-
-|''to''|http://localhost:8081/service|''post''|anything|'''is'''|out|
-
-|''close''|

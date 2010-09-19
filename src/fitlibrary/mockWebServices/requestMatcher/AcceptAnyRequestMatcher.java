@@ -10,18 +10,23 @@ import java.io.IOException;
 import fitlibrary.ws.message.HttpMessage;
 
 public class AcceptAnyRequestMatcher implements RequestMatcher {
+	@Override
 	public String getExpected() {
 		return "Any request";
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 		return true;
 	}
+	@Override
 	public RequestMatcher and(RequestMatcher requestMatcher) {
 		return requestMatcher;
 	}
+	@Override
 	public RequestMatcher or(RequestMatcher requestMatcher) {
 		return requestMatcher;
 	}
+	@Override
 	public RequestMatcher not() {
 		return new NotRequestMatcher(this);
 	}

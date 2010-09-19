@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,6 +23,7 @@ import com.thoughtworks.selenium.Selenium;
 
 import fit.Parse;
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.log.FixturingLogger;
 import fitlibrary.runResults.TestResults;
 import fitlibrary.spider.component.Frame;
 import fitlibrary.spider.component.Page;
@@ -43,6 +45,8 @@ import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
 
 public abstract class AbstractSpiderFixture extends DoTraverse {
+	@SuppressWarnings("unused")
+	private static Logger logger = FixturingLogger.getLogger(SpiderFixture.class);
 	private static final String CHECKING_TIMEOUT = "checking";
 	protected Finder finder;
 	private SpiderFixture spiderFixture;
@@ -279,9 +283,11 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 			}
 		}
 		ensureBecomes(new PollForWithError() {
+			@Override
 			public boolean matches() {
 				return element.isSelected() == select;
 			}
+			@Override
 			public String error() {
 				return "Not selected correctly";
 			}
@@ -438,6 +444,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public WebElement findElement(final String locator) {
 		try {
 			return ensureNoException(new PollForNoException<WebElement>() {
+				@Override
 				public WebElement act() {
 					return finder.findElement(locator);
 				}

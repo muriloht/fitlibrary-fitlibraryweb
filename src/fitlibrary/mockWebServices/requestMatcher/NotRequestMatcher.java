@@ -15,9 +15,11 @@ public class NotRequestMatcher extends FussyRequestMatcher {
 	public NotRequestMatcher(RequestMatcher matcher) {
 		this.matcher = matcher;
 	}
+	@Override
 	public String getExpected() {
 		return "not "+matcher.getExpected();
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 		return !matcher.match(request);
 	}

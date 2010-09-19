@@ -8,7 +8,6 @@ package fitlibrary.ws.server;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.util.Map;
 
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -20,10 +19,10 @@ import fitlibrary.ws.message.PostMessage;
 import fitlibrary.ws.message.ReplyMessage;
 
 public class HttpServerOnPort extends AbstractHttpServer {
-	protected final RealWebService webService;
+	protected final WebService webService;
 	protected final int portNo;
 
-	public HttpServerOnPort(int portNo, RealWebService webService, Logger logger) throws IOException {
+	public HttpServerOnPort(int portNo, WebService webService, Logger logger) throws IOException {
 		super(new IdentifyingLogger(logger,"server@"+portNo));
 		this.portNo = portNo;
 		this.webService = webService;
@@ -33,22 +32,23 @@ public class HttpServerOnPort extends AbstractHttpServer {
 		server.start();
 	}
 	public class MyHandler extends AbstractHttpHandler {
+		@Override
 		public void handle(HttpExchange exchange) throws IOException {
 			PostMessage request = handleRequest(exchange);
-			ReplyMessage response = webService.post(request);
-			logger.responded("", request, response,portNo);
-			handleResponse(exchange, response);
+//			ReplyMessage response = webService.post(request);
+//			logger.responded("", request, response,portNo);
+//			handleResponse(exchange, response);
 		}
 		private void handleResponse(HttpExchange exchange, ReplyMessage response) throws IOException {
 			Headers responseHeaders = exchange.getResponseHeaders();
-			Map<String, String> headerMap = response.getHeaderMap();
-			for (String key : headerMap.keySet()) {
-				if (!ignoreHeader(key)) {
-					String value = headerMap.get(key);
-					responseHeaders.set(key,value);
-					logger.log("Added header into reply: "+key+" : "+value);
-				}
-			}
+//			Map<String, String> headerMap = response.getHeaderMap();
+//			for (String key : headerMap.keySet()) {
+//				if (!ignoreHeader(key)) {
+//					String value = headerMap.get(key);
+//					responseHeaders.set(key,value);
+//					logger.log("Added header into reply: "+key+" : "+value);
+//				}
+//			}
 			exchange.sendResponseHeaders(response.getResultCode(), response.getContents().length());
 			OutputStream os = exchange.getResponseBody();
 			os.write(response.getContents().getBytes());

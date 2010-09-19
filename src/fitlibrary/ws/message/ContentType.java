@@ -6,22 +6,24 @@
 package fitlibrary.ws.message;
 
 public enum ContentType { 
-	XML("text/xml","UTF-8"), 
-	PLAIN("text/plain","utf-8");
-	private final String type;
+	SOAP11("text/xml","utf-8"), 
+	SOAP12("application/soap+xml","utf-8"), 
+	PLAIN("application/x-www-form-urlencoded","utf-8"),
+	INVALID("","");
+	private final String contentType;
 	private final String charset;
 
 	private ContentType(String type, String charset) {
-		this.type = type;
+		this.contentType = type;
 		this.charset  = charset;
 	}
-	public String getType() {
-		return type;
+	public String getContentType() {
+		return contentType;
 	}
 	public String getCharset() {
 		return charset;
 	}
 	public String getWholeType() {
-		return type+";charset="+charset;
+		return contentType+";charset="+charset;
 	}
 }

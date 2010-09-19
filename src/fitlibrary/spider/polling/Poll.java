@@ -5,10 +5,13 @@
 */
 package fitlibrary.spider.polling;
 
+import org.apache.log4j.Logger;
+
 import fitlibrary.exception.FitLibraryException;
-import fitlibrary.log.Log;
+import fitlibrary.log.FixturingLogger;
 
 public class Poll {
+	static Logger logger = FixturingLogger.getLogger(Poll.class);
 	protected static final long MIN_SLEEP = 2;
 	protected static final long MAX_SLEEP = 10;
 	protected static final long DIV_SLEEP = 50;
@@ -33,6 +36,7 @@ public class Poll {
 				return true;
 			sleep(timeout);
 		}
+		timeOutTrace();
 		return false;
 	}
 	public boolean ensureMatchesNoException(PollForMatches poll) {
@@ -45,6 +49,7 @@ public class Poll {
 			}
 			sleep(timeout);
 		}
+		timeOutTrace();
 		return false;
 	}
 	public <T> T ensureNoException(PollForNoException<T> poll) throws Exception {
@@ -52,7 +57,7 @@ public class Poll {
 			try {
 				return poll.act();
 			} catch (Exception e) {
-				Log.debug(this,"exception caught: "+e);
+				logger.trace("Exception caught: "+e);
 				if (timedOut()) {
 					throw e;
 				}
@@ -75,5 +80,8 @@ public class Poll {
 	}
 	private static long now() {
 		return System.currentTimeMillis();
+	}
+	private void timeOutTrace() {
+		logger.trace("Timed out after "+(now() - start)+" milliseconds");
 	}
 }

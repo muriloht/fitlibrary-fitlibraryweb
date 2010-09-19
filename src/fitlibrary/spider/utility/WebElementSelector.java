@@ -47,12 +47,14 @@ public class WebElementSelector extends DoTraverse {
 	}
 	public void textIs(final String s) {
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				return element.getText().equals(s);
 			}});
 	}
 	public void textContains(final String s) {
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				return element.getText().contains(s);
 			}});
@@ -60,18 +62,21 @@ public class WebElementSelector extends DoTraverse {
 	public void textMatches(final String pattern) {
 		final Pattern compiled = Pattern.compile(".*"+pattern+".*",Pattern.DOTALL);
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				return compiled.matcher(element.getText()).matches();
 			}});
 	}
 	public void attributeIs(final String attribute, final String s) {
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				return s.equals(element.getAttribute(attribute));
 			}});
 	}
 	public void attributeContains(final String attribute, final String s) {
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				String value = element.getAttribute(attribute);
 				return value != null && value.contains(s);
@@ -80,6 +85,7 @@ public class WebElementSelector extends DoTraverse {
 	public void attributeMatches(final String attribute, String pattern) {
 		final Pattern compiled = Pattern.compile(".*"+pattern+".*",Pattern.DOTALL);
 		filter(new Filter() {
+			@Override
 			public boolean select(WebElement element) {
 				String value = element.getAttribute(attribute);
 				return value != null && compiled.matcher(value).matches();

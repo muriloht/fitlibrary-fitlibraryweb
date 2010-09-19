@@ -19,6 +19,7 @@ public class ProxyConnectionCreator implements ConnectionCreator {
 		if (address.isUnresolved())
 			throw new IOException("Proxy is unresolved: "+proxyUrl+":"+portNo);
 	}
+	@Override
 	public URLConnection openConnection(URL url) throws IOException {
 		Proxy proxy = new Proxy(Proxy.Type.HTTP,address);
 		return url.openConnection(proxy);

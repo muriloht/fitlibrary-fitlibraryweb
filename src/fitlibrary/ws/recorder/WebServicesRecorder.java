@@ -10,42 +10,47 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import fitlibrary.ws.logger.DisplayingLogger;
-import fitlibrary.ws.logger.Logger;
-import fitlibrary.ws.server.HttpServerOnPort;
-import fitlibrary.ws.server.RealWebService;
+import org.apache.log4j.Logger;
+
+import fitlibrary.log.FixturingLogger;
+import fitlibrary.server.ProxyServer;
+import fitlibrary.server.Recorder;
+import fitlibrary.server.UriMapper;
 
 public class WebServicesRecorder {
+	static Logger logger = FixturingLogger.getLogger(WebServicesRecorder.class);
+
 	public WebServicesRecorder(String propertyFileName, String resultsFolderName) throws IOException {
 		Properties properties = readProperties(propertyFileName);
-		Logger logger = pickLogger(resultsFolderName);
-		createRecorders(properties,logger);
+		createRecorders(properties,resultsFolderName);
 	}
-	private Logger pickLogger(String resultsFolderName) {
-		DisplayingLogger displayingLogger = new DisplayingLogger();
-//		displayingLogger.beQuiet();
-		return new RecordToFilesLogger(resultsFolderName,displayingLogger);
-	}
-	private void createRecorders(Properties properties,Logger logger) throws IOException {
-		System.out.println();
+	private void createRecorders(Properties properties, String resultsFolderName) throws IOException {
 		for (int i = 1; i < 10000; i++) {
 			Object localPort = properties.get("localPort"+i);
 			Object hostUrl = properties.get("ws"+i);
 			if (localPort == null || hostUrl == null) {
 				if (i == 1) {
 					System.err.println("At least one port must be defined in the property file");
+					logger.error("At least one port must be defined in the property file");
 					return;
 				}
 				break;
 			}
 			int localPortNo = Integer.parseInt(localPort.toString());
-			createWebServicesRecorder(localPortNo, hostUrl.toString(), logger);
+			createWebServicesRecorder(localPortNo, hostUrl.toString(),resultsFolderName);
 		}
 	}
-	private void createWebServicesRecorder(int localPortNo, String wsUrl, Logger logger) throws IOException {
-		RealWebService webServiceQuote = new RealWebService(wsUrl,logger);
-		System.out.println("Recording on port "+localPortNo+" through to "+wsUrl);
-		new HttpServerOnPort(localPortNo,webServiceQuote,logger);
+	@SuppressWarnings("unused")
+	private void createWebServicesRecorder(int localPortNo, final String wsUrl, String resultsFolderName) throws IOException {
+		Recorder fileRecorder = new FileRecorder(localPortNo,resultsFolderName);
+		UriMapper mapper = new UriMapper(){
+			@Override
+			public String map(String uri) {
+				return wsUrl;
+			}
+		};
+		logger.trace("Starting (Mapped)ProxyServer for recording on port "+localPortNo+" -> "+wsUrl);
+		new ProxyServer(localPortNo,mapper,fileRecorder);
 	}
 	private Properties readProperties(String fileName) throws IOException {
 		Properties properties = new Properties();
@@ -54,7 +59,7 @@ public class WebServicesRecorder {
 		reader.close();
 		return properties;
 	}
-
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
 			System.err.println("Usage: fitlibrary.ws.recorder.WebServicesRecorder propertyFileName resultsFolderName");

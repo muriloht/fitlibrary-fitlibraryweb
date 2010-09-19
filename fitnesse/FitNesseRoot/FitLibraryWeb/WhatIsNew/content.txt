@@ -1,20 +1,24 @@
+!2 17 September 2010
+#
+ * WebServicesClient:
+  * Now distinguish between soap1.1 and soap1.2
+  * Added specs that test the client against a local web services server
+  * Added specs that test the client with a proxy against a local web services server
+  * Changed the implementation to use httpClient 
+#
 !2 12 August 2010
 #
-Changes:
-
  * SpiderFixture:
   * Added ability to check whether an element is visible or not
   * Extended tutorial to cover visibility
 #
 !2 5 August 2010
 #
-Changes:
-
  * SpiderFixture:
   * A substantial tutorial on SpiderFixture has been included
   * The specs related to handling delays have been expanded
 
  * PdfDocument:
-  * PdfDocument has been revised to handle a wider range of PDFs. 
+  * PdfDocument has been revised to handle a wider range of PDFs.
   * Documentation of what is does has been expanded.
   * It uses a more recent release of pdfbox

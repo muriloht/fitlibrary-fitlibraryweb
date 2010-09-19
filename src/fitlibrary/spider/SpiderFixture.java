@@ -179,6 +179,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		return htmlUnitDriver;
 	}
 	class WebDriverFinder implements Finder {
+		@Override
 		public WebElement findElement(String locator) {
 			if (locator.startsWith("id="))
 				return findElement(By.id(locator.substring(3)));
@@ -192,12 +193,15 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				return findElement(By.xpath(locator));
 			return findElement(By.id(locator));
 		}
+		@Override
 		public WebElement findElement(By by) {
 			return webDriver().findElement(by);
 		}
+		@Override
 		public List<WebElement> findElements(String locator) {
 			return webDriver().findElements(By.xpath(locator));
 		}
+		@Override
 		public WebElement findOption(String locator, String option,
 				AbstractSpiderFixture abstractSpiderFixture) {
 			return abstractSpiderFixture.findElement(locator

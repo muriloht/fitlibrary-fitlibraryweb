@@ -5,6 +5,7 @@
 */
 package fitlibrary.ws;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,8 @@ import org.custommonkey.xmlunit.XMLUnit;
 
 import fitlibrary.mockWebServices.MockingWebServices;
 import fitlibrary.mockWebServices.logger.MockLogger;
-import fitlibrary.mockWebServices.transactionFixture.SoapTransactionFixture;
+import fitlibrary.mockWebServices.transactionFixture.Soap11TransactionFixture;
+import fitlibrary.mockWebServices.transactionFixture.Soap12TransactionFixture;
 import fitlibrary.mockWebServices.transactionFixture.TextTransactionFixture;
 import fitlibrary.traverse.workflow.DoTraverse;
 
@@ -21,18 +23,30 @@ public class MockWebServicesFixture extends DoTraverse {
 	protected MockingWebServices mockingWebServices = new MockingWebServices();
 	protected Map<String,String> nameSpaceMap = new HashMap<String,String>();
 
-	public TextTransactionFixture mockOnPort(int port) {
+	public TextTransactionFixture mockPlainTextOnPort(int port) {
 		return new TextTransactionFixture(port,mockingWebServices);
 	}
-	public SoapTransactionFixture mockSoapOnPort(int port) {
-		return new SoapTransactionFixture(port,mockingWebServices);
+	public Soap11TransactionFixture mockSoapOnPort(int port) {
+		showAfterTable("Deprecated: use |''mock soap11 on port''|"+port+"| instead");
+		return mockSoap11OnPort(port);
+	}
+	public Soap11TransactionFixture mockSoap11OnPort(int port) {
+		return new Soap11TransactionFixture(port,mockingWebServices);
+	}
+	public Soap12TransactionFixture mockSoap12OnPort(int port) {
+		return new Soap12TransactionFixture(port,mockingWebServices);
 	}
 	public void nameSpace(String prefix) {
 	    nameSpaceMap.put(prefix,"urn:"+prefix);
 	    XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(nameSpaceMap));
 	}
-	public boolean close() {
+	public boolean close() throws IOException {
 		MockLogger logger = mockingWebServices.close(100);
+		showAfterTable(logger.report());
+		return !logger.hasErrors();
+	}
+	public boolean runFor(int milliseconds) throws IOException {
+		MockLogger logger = mockingWebServices.close(milliseconds);
 		showAfterTable(logger.report());
 		return !logger.hasErrors();
 	}

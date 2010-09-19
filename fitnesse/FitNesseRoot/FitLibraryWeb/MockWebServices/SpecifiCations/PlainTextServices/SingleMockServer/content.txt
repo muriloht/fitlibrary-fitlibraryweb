@@ -1,0 +1,10 @@
+|''mock plain text on port''|8081|
+|''matches URL''|/ws|
+|''matches request''|i.n|
+|''response''|out|
+
+|''start logging''|
+
+|''to''|http://localhost:8081/ws|''post text''|inn|'''is'''|out|
+
+|''run for''|200|

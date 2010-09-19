@@ -20,11 +20,10 @@ import java.util.Map;
 import org.junit.Test;
 
 public class TestGreaseMonkeyDefinedActionLister {
-	private Map<File, List<String>> fakeFilesAndContent = new HashMap<File, List<String>>();
+	Map<File, List<String>> fakeFilesAndContent = new HashMap<File, List<String>>();
 	
 	File fakeLocatioWillNotBeUsed = new File("c:\\zzzzzzz");
 	
-	@SuppressWarnings("unchecked")
 	public GreaseMonkeyDefinedActionLister createListerWithFakeFilesAndContent() {
 		GreaseMonkeyDefinedActionLister lister = new GreaseMonkeyDefinedActionLister() {
 
@@ -33,6 +32,7 @@ public class TestGreaseMonkeyDefinedActionLister {
 				return fakeFilesAndContent.keySet().iterator();
 			}
 			
+			@SuppressWarnings("rawtypes")
 			@Override
 			protected Iterator createLineListerForFile(File file) throws IOException {
 				return fakeFilesAndContent.get(file).iterator();

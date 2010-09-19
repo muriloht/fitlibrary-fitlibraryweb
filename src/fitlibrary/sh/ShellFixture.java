@@ -63,6 +63,7 @@ public class ShellFixture extends InteractiveFixture {
 	}
 	public void waitToFinish(final long timeout) throws InterruptedException {
 		new Thread(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Thread.sleep(timeout);

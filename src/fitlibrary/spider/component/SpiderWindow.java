@@ -26,9 +26,11 @@ public class SpiderWindow extends SpiderComponent {
 		try {
 			spiderFixture.click(locator);
 			spiderFixture.ensureBecomes(new PollForWithError(){
+				@Override
 				public String error() {
 					return "No new window appeared";
 				}
+				@Override
 				public boolean matches() {
 					return windowHandles().size() > windowHandles.size();
 				}

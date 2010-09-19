@@ -42,6 +42,7 @@ public class QueueLinesFromStream implements Runnable {
 				return line;
 		}
 	}
+	@Override
 	public void run() {
 		while (true) {
 			String line;

@@ -1,0 +1,5 @@
+|!3 ^PlainTextServices|''Specifications for mocking plain text web services''|
+|!3 >Soap11Mocking|''Specifications for mocking SOAP 1.1 web services''|
+|!3 >Soap12Mocking|''Specifications for mocking SOAP 1.2 web services''|
+
+^MockingBothSoap

@@ -18,9 +18,11 @@ public class XPathMatcher extends FussyRequestMatcher {
 		this.xpath = xpath;
 		this.expected = expected.trim();
 	}
+	@Override
 	public String getExpected() {
 		return xpath+" expected to be '"+expected+"'";
 	}
+	@Override
 	public boolean match(HttpMessage request) throws IOException {
 //		System.out.println("Try XPathMatcher.match() to "+getExpected());
 		String contents = fixNameSpace(request.getContents());
