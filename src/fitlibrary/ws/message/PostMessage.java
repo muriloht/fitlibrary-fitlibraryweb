@@ -5,7 +5,6 @@
 */
 package fitlibrary.ws.message;
 
-
 public class PostMessage extends Message {
 	private final String uri;
 	private final ContentType type;

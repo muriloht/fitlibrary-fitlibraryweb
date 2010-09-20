@@ -5,7 +5,6 @@
 */
 package fitlibrary.ws.message;
 
-
 public abstract class Message implements HttpMessage {
 	private String contents;
 	private int resultCode;
