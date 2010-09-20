@@ -13,8 +13,8 @@ import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.ws.client.WebService;
 import fitlibrary.ws.message.ContentType;
-import fitlibrary.ws.server.WebService;
 import fitlibrary.ws.soap.Soap;
 
 public class WebServicesClientFixture extends WebService {

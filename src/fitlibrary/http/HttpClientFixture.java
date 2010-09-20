@@ -5,7 +5,7 @@
 
 package fitlibrary.http;
 
-import fitlibrary.ws.server.HttpClientService;
+import fitlibrary.ws.client.HttpClientService;
 
 public class HttpClientFixture extends HttpClientService {
 	public void httpPostToWithContentTypeAndContentEncoding(String url, String contents, String contentType, String contentEncoding) {
