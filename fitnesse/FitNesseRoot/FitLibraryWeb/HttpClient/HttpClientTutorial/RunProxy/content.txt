@@ -4,6 +4,9 @@ It closes down after the given period in seconds.
 
 !|fitlibrary.server.ProxyServerFixture|
 
+|''with fixturing logger''|
+|''level''|ALL|
+
 |''start proxy server on port''|5555|
 
 |''stop proxy server after''|60|''seconds''|

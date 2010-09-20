@@ -1,3 +1,5 @@
+!|fitlibrary.ws.WebServicesClientFixture|
+
 |''proxy url''|localhost|''with port''|5555|
 
 |''add named''| server|!-fitlibrary.server.WebServerForTestingFixture-!|

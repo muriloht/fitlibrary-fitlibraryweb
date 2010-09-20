@@ -7,13 +7,13 @@ FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrar
 |!3 Description|!3 Tool|!3 Tutorial/Docs|!3 Specification/Example|
 |''Web testing, through a variety of browsers''|>SpiderFixture|[[Spider Tutorial][^SpiderFixture.SpiderTutorial]]|[[Spider Specifications][^SpiderFixture.SpecifySpiderFixture]]|
 |''xml diff, transform, etc''|>XmlProcessing||[[XML Examples][>XmlProcessing]]|
-|''An HTTP client''|^HttpClient|[[HTTP Client Tutorial][^HttpClient.HttpClientTutorial]]|[[HTTP Client Specifications][^HttpClient.SpecifiCations]]|
-|''A web services client''|>WebServicesClient||[[Specifications for plain text, soap11, soap12 web service calls][^WebServicesClient.SpecifiCations]]|
-|''Mocking one or more web services''|>MockWebServices||Specifications: [[plain text][^MockWebServices.SpecifiCations.PlainTextServices]], [[soap11][^MockWebServices.SpecifiCations.Soap11Mocking]], [[soap12][^MockWebServices.SpecifiCations.Soap12Mocking]], [[raw soap][^MockWebServices.SpecifiCations.FullSoapMocking]]|
+|''A web services client''|>WebServicesClient|[[Web Services Client Tutorial][.FitLibraryWeb.WebServicesClient.WebServicesTutorial]]|[[Specifications for plain text, soap11, soap12 web service calls][^WebServicesClient.SpecifiCations]]|
+|''Mocking one or more web services''|>MockWebServices|[[Docs][.FitLibraryWeb.MockWebServices.MockWebServicesDocs]]|Specifications: [[plain text][^MockWebServices.SpecifiCations.PlainTextServices]], [[soap11][^MockWebServices.SpecifiCations.Soap11Mocking]], [[soap12][^MockWebServices.SpecifiCations.Soap12Mocking]], [[raw soap][^MockWebServices.SpecifiCations.FullSoapMocking]]|
 |''Recording web services''|>RecordWebServicesDocs|||
+|''An HTTP client, for testing at the HTTP level''|^HttpClient|[[HTTP Client Tutorial][^HttpClient.HttpClientTutorial]]|[[HTTP Client Specifications][^HttpClient.SpecifiCations]]|
 |''Running a shell/command''|>ShellFixture|[[Docs][>ShellFixture]]|[[Example][^ShellFixture.JavaExample]]|
 |''Using templates (for xmls, etc)''|>TemplateFixture|[[Docs][^TemplateFixture.TemplateFixtureDocs]]|[[Specifications][^TemplateFixture]]|
-|''Creating arbitrary dates''|>CreateDate|[[Docs][>CreateDate]]|[[Example][>CreateDate]]|
+|''Creating arbitrary dates''|>CreateDate|[[Docs][>CreateDate]]|[[Detailed Examples][>CreateDate]]|
 |''Database access (a ''!-DoFixture-! ''wrapper for dbfit)''|>DatabaseFixtures|[[Docs][>DatabaseFixtures]]||
 |''Checking the contents of email''|>ElectronicMail|[[Docs][>ElectronicMail]]||
 |''Checking the contents of a PDF''|>PdfDocument|[[Docs][>PdfDocument]]|[[Example][^PdfDocument.RunningExample]]|

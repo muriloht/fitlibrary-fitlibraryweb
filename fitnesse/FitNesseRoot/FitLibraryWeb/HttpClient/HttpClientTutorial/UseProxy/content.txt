@@ -30,7 +30,7 @@ When first run, this storytest gives a "''Connection to http://localhost:5555 re
 #
 ----!3 7. Running the Proxy Server
 #
-Let's now run a proxy server for it to talk to: open [[this page][RunProxy]].
+Let's now run a proxy server for it to talk to: open [[this page][RunProxy]] in (yet) another browser window.
 
 Notice that both the proxy server and the file server need to be running for this storytest to pass.
 

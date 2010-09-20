@@ -1,10 +1,17 @@
 !2 17 September 2010
 #
+ * HttpClient:
+  * Added specs that test the client against a local file server
+  * Added specs that test the client with a proxy server
+  * Changed the implementation to use httpClient 4.0
+  * Added tutorial: .FitLibraryWeb.HttpClient.HttpClientTutorial
+
  * WebServicesClient:
   * Now distinguish between soap1.1 and soap1.2
   * Added specs that test the client against a local web services server
   * Added specs that test the client with a proxy against a local web services server
   * Changed the implementation to use httpComponents 4.0
+  * Added tutorial: .FitLibraryWeb.WebServicesClient.WebServicesTutorial
 #
 !2 12 August 2010
 #

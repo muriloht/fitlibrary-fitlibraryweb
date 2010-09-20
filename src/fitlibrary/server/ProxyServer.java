@@ -8,12 +8,8 @@ package fitlibrary.server;
 import java.io.IOException;
 
 import org.apache.http.protocol.HttpRequestHandlerRegistry;
-import org.apache.log4j.Logger;
-
-import fitlibrary.log.FixturingLogger;
 
 public class ProxyServer extends HttpServer {
-	static Logger logger2 = FixturingLogger.getLogger(ProxyServer.class);
 	private UriMapper uriMapper;
 	private Recorder recorder;
 
@@ -25,7 +21,6 @@ public class ProxyServer extends HttpServer {
 		this.uriMapper = uriMapper;
 		this.recorder = recorder;
 		start();
-		logger2.trace("Started on port "+portNumber);
 	}
 	@Override
 	protected void register(HttpRequestHandlerRegistry reqistry) {
