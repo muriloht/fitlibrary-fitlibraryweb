@@ -80,11 +80,11 @@ public abstract class HttpServer {
 		this.id = id+portNo;
 	}
 	public void start() throws IOException {
+		logger.trace("Started on port "+portNo);
 		running = true;
 		thread = new RequestListenerThread(portNo);
         thread.setDaemon(false);
         thread.start();
-		logger.trace("Started on port "+portNo);
 	}
 	public void stop() throws IOException {
 		if (!running)

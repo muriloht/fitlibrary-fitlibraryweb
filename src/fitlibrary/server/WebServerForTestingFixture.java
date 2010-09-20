@@ -22,6 +22,10 @@ public class WebServerForTestingFixture {
 	public void startLogging() {
 		Logger.getRootLogger().setLevel(Level.ALL);
 	}
+	public boolean stopTestingServerAfterSeconds(long seconds) throws IOException, InterruptedException {
+		Thread.sleep(seconds*1000);
+		return stopTestingServer();
+	}
 	public boolean stopTestingServer() throws IOException {
 		if (server == null)
 			throw new FitLibraryException("Server is not running");

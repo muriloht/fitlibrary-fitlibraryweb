@@ -7,6 +7,7 @@ For further examples, see the MockWebServices
 For some simple specifications, see ^SpecifyWs (these make use of mock web services, as discussed at <FitLibraryWeb.MockWebServices).
 
 ^SpecifiCations
+^WebServicesTutorial
 
 #
 !3 Commands

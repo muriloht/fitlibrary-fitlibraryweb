@@ -49,7 +49,7 @@ public class HttpFileHandler extends AbstractHttpRequestHandler  {
         }
         String fileName = URLDecoder.decode(target,"utf-8");
 		final File file = new File(docRoot,fileName);
-        if (!file.exists())
+        if (!file.exists() || attemptToEscapeDirectory(file))
         	errorInHtmlH1(response,HttpStatus.SC_NOT_FOUND,
         			"File "+file.getPath()+" not found in "+docRoot.getPath());
         else if (!file.canRead() || file.isDirectory())
@@ -57,13 +57,17 @@ public class HttpFileHandler extends AbstractHttpRequestHandler  {
         			"Access denied: File is a directory or cannot be read: "+file.getPath());
         else {
             response.setStatusCode(HttpStatus.SC_OK);
-            FileEntity body = new FileEntity(file, mime(fileName));
+            String contentType = mime(fileName)+"; charset=UTF-8";
+    		logger.trace("Reply Content-type: "+contentType);
+			FileEntity body = new FileEntity(file, contentType);
             response.setEntity(body);
             logger.trace("Serving file " + file.getPath());
         }
     }
+	private boolean attemptToEscapeDirectory(File file) {
+		return !file.getAbsolutePath().startsWith(docRoot.getAbsolutePath());
+	}
 	private String mime(String fileName) {
-		logger.debug(new MimetypesFileTypeMap().getContentType(fileName));
 		return new MimetypesFileTypeMap().getContentType(fileName);
 	}
 }

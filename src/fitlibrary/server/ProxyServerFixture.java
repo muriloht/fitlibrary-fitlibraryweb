@@ -16,6 +16,10 @@ public class ProxyServerFixture {
 		this.server = new ProxyServer(portNumber);
 		return true;
 	}
+	public boolean stopProxyServerAfterSeconds(long seconds) throws IOException, InterruptedException {
+		Thread.sleep(seconds*1000);
+		return stopProxyServer();
+	}
 	public boolean stopProxyServer() throws IOException {
 		if (server == null)
 			throw new FitLibraryException("Proxy is not started");

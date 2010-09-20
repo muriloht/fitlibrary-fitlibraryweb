@@ -7,20 +7,21 @@
 }
 !define exists {|''xpath''|//xpath|''exists in''|<first><xml/></first>|
 }
-!define in {|''xpath''|//first|''in''|<first>red</first>|''is''|red|
+!define in {|''xpath''|//first|''in''|<first>red</first>|'''is'''|red|
 }
 !define match {|''xpath''|//first|''in''|<first>red</first>|''matches''|r.d|
 }
 *!
 !3 Xml Processing
-|^XmlSameAs|''Checks the two lots of xml are the same''|${sameAs}|
-|^XmlSameAsWithNameSpace|''Checks the two lots of xml are the same''|''but where name spaces are used''|
-|^XmlSimilarTo|''Checks the two lots of xml are the same''|${similarTo}|
-|>TransformWith|''Transforms the given xml with the xslt''|${transform}|
-|>XpathExistsIn|''Checks for the existence of the element referenced by the xpath expression''|${exists}|
-|>XpathInIs|''Checks the value of the evaluated xpath expression''|${in}|
-|>XpathInMatches|''Checks if value of the evaluated xpath expression matches the regular expression''|${match}|
-|>VariousErrorMessage|''Show various error messages when things go wrong''|
+|!3 Action|!3 Description|!3 Example|
+|[[''xml same as''][^XmlSameAs]]|''Checks the two lots of xml are the same''|${sameAs}|
+|[[''xml same as'' (with name space)][^XmlSameAsWithNameSpace]]|''Checks the two lots of xml are the same, but where name spaces are used''|
+|[[''xml similar to''][^XmlSimilarTo]]|''Checks the two lots of xml are the same''|${similarTo}|
+|[[''transform with''][>TransformWith]]|''Transforms the given xml with the xslt''|${transform}|
+|[[''xpath exists in''][>XpathExistsIn]]|''Checks for the existence of the element referenced by the xpath expression''|${exists}|
+|[[''xpath in'' '''is'''][>XpathInIs]]|''Checks the value of the evaluated xpath expression''|${in}|
+|[[''xpath in'' '''matches'''][>XpathInMatches]]|''Checks if value of the evaluated xpath expression matches the regular expression''|${match}|
+|[[various error message][>VariousErrorMessage]]|''Show various error messages when things go wrong''|
 #
 !3 Implementation
 #

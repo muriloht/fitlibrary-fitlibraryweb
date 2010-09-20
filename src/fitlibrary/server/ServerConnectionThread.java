@@ -36,11 +36,11 @@ public class ServerConnectionThread extends Thread {
     @Override
 	public void run() {
     	NDC.push("in: "+ipAddress);
-    	logger2.debug("Started");
+    	logger2.trace("Started");
         HttpContext context = new BasicHttpContext(null);
         try {
             while (!Thread.interrupted() && this.conn.isOpen()) {
-            	logger2.debug("Handle request");
+//            	logger2.trace("Handle request");
                 this.httpservice.handleRequest(this.conn, context);
             }
         } catch (ConnectionClosedException ex) {

@@ -22,6 +22,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.AbstractHttpMessage;
 import org.apache.log4j.Logger;
+import org.apache.log4j.NDC;
 
 import fit.Fixture;
 import fitlibrary.SubsetFixture;
@@ -31,11 +32,16 @@ import fitlibrary.xml.XmlDoFixture;
 
 public class HttpClientService extends XmlDoFixture {
 	static Logger logger = FixturingLogger.getLogger(HttpClientService.class);
+	static int INSTANCES = 0;
 	protected HttpClient client = new DefaultHttpClient();
 	private Header[] headers = new Header[0];
 	protected String reply = "";
 	protected String replyContentType = "";
 
+	public HttpClientService() {
+		if (INSTANCES > 0)
+			NDC.push("#"+INSTANCES++);
+	}
 	public boolean proxyUrlWithPort(String proxyHost, int proxyPortNo) {
 		HttpHost proxy = new HttpHost(proxyHost, proxyPortNo, "http");
 		client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
@@ -51,9 +57,11 @@ public class HttpClientService extends XmlDoFixture {
 		try {
 			handleHeaders(client.execute(head));
 		} catch (IOException e) {
+			logger.trace("HEAD failed");
 			head.abort();
 			throw new FitLibraryException(e.getMessage());
 		} catch (FitLibraryException e) {
+			logger.trace("HEAD failed");
 			head.abort();
 			throw e;
 		} finally {
@@ -67,9 +75,11 @@ public class HttpClientService extends XmlDoFixture {
 		try {
 			handleReply(client.execute(get));
 		} catch (IOException e) {
+			logger.trace("GET failed");
 			get.abort();
 			throw new FitLibraryException(e.getMessage());
 		} catch (FitLibraryException e) {
+			logger.trace("GET failed");
 			get.abort();
 			throw e;
 		} finally {
@@ -101,7 +111,6 @@ public class HttpClientService extends XmlDoFixture {
 		}
 	}
 	private void setHost(AbstractHttpMessage msg, String url) {
-		logger.debug("Host url = '"+url+"'");
 		int start = url.indexOf("//")+2;
 		int end = url.indexOf("/",start);
 		if (end < 0)
