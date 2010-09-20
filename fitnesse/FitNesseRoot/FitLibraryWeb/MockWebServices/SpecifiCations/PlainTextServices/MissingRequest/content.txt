@@ -6,4 +6,4 @@
 
 |'''reject'''|''to''|http://localhost:8081/ws|''post text''|in two|
 
-|''close with errors''|'''is'''|1|
+|''close with errors''|>=|1|

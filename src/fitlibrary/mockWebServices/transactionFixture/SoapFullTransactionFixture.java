@@ -15,26 +15,21 @@ import fitlibrary.mockWebServices.requestMatcher.NotRequestMatcher;
 import fitlibrary.mockWebServices.requestMatcher.XPathMatcher;
 import fitlibrary.mockWebServices.requestMatcher.XmlRequestMatcher;
 import fitlibrary.ws.message.ContentType;
-import fitlibrary.ws.soap.Soap;
 
-public class Soap12TransactionFixture extends AbstractTransactionFixture {
-	public Soap12TransactionFixture(int port, MockingWebServices mockingWebServices) {
-		super(ContentType.SOAP12,port,mockingWebServices);
+public class SoapFullTransactionFixture extends AbstractTransactionFixture {
+	public SoapFullTransactionFixture(ContentType contentType, int port, MockingWebServices mockingWebServices) {
+		super(contentType,port,mockingWebServices);
 	}
 	public void matchesRequest(String xml) {
-		requestMatcher = requestMatcher.and(new XmlRequestMatcher(Soap.wrap12(xml)));
+		requestMatcher = requestMatcher.and(new XmlRequestMatcher(xml));
 	}
 	public void matchesRequestFromFile(String fileName) throws IOException {
 		matchesRequest(FileUtils.readFileToString(new File(fileName),"utf-8"));
 	}
 	public void notMatchesRequest(String xml) {
-		requestMatcher = requestMatcher.and(new NotRequestMatcher(new XmlRequestMatcher(Soap.wrap12(xml))));
+		requestMatcher = requestMatcher.and(new NotRequestMatcher(new XmlRequestMatcher(xml)));
 	}
 	public void xpathIs(String xpath, String value) {
 		requestMatcher = requestMatcher.and(new XPathMatcher(xpath,value));
-	}
-	@Override
-	protected String wrapContents(String responseString) {
-		return Soap.wrap12(responseString);
 	}
 }

@@ -23,6 +23,7 @@ import fitlibrary.mockWebServices.responder.Responder;
 import fitlibrary.mockWebServices.term.LeafTerm;
 import fitlibrary.mockWebServices.term.RepeatingTerm;
 import fitlibrary.mockWebServices.term.SequentialTerm;
+import fitlibrary.ws.message.ContentType;
 
 // Pass the Term across to the MockingWebServices on tearDown().
 public abstract class AbstractTransactionFixture extends DoFixture {
@@ -32,8 +33,10 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 	protected List<Responder> responders = new ArrayList<Responder>();
 	protected SequentialTerm sequentialTerm = new SequentialTerm();
 	private boolean insertAtEnd = true;
+	private ContentType responseContentType;
 
-	public AbstractTransactionFixture(int port, MockingWebServices mockingWebServices) {
+	public AbstractTransactionFixture(ContentType responseContentType, int port, MockingWebServices mockingWebServices) {
+		this.responseContentType = responseContentType;
 		this.port = port;
 		this.mockingWebServices = mockingWebServices;
 	}
@@ -41,9 +44,11 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 		requestMatcher = requestMatcher.and(new UriRequestMatcher(url));
 	}
 	public void response(String responseString) {
-		LiteralResponder responder = new LiteralResponder(responseString);
-		responder.setContentIsXml(isXml());
+		LiteralResponder responder = new LiteralResponder(wrapContents(responseString),responseContentType);
 		responders.add(responder);
+	}
+	protected String wrapContents(String responseString) {
+		return responseString;
 	}
 	public void then() {
 		addToSequence();
@@ -58,8 +63,7 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 		reset();
 	}
 	public void responseFromFile(String fileName) {
-		FileResponder responder = new FileResponder(fileName);
-		responder.setContentIsXml(isXml());
+		FileResponder responder = new FileResponder(fileName,responseContentType);
 		responders.add(responder);
 	}
 	public void responsesFromFolder(String folderName) {
@@ -73,12 +77,9 @@ public abstract class AbstractTransactionFixture extends DoFixture {
 				responseFromFile(folderName+"/"+fileName);
 	}
 	public void responseCodeWith(int resultCode, String contents) { 
-		LiteralResponder responder = new LiteralResponder(resultCode,contents);
-		responder.setContentIsXml(isXml());
+		LiteralResponder responder = new LiteralResponder(resultCode,contents,responseContentType);
 		responders.add(responder);
 	}
-	protected abstract boolean isXml();
-
 	public void tearDown() throws Exception {
 		addToSequence();
 		mockingWebServices.or(port,sequentialTerm,insertAtEnd);

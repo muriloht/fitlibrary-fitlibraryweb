@@ -5,4 +5,4 @@
 
 |'''reject'''|''to''|http://localhost:8081/ws|''post text''|wrong|
 
-|''close with errors''|'''is'''|2|
+|''close with errors''|>=|1|

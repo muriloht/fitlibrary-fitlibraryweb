@@ -5,4 +5,4 @@
 
 |'''reject'''|''to''|http://localhost:8081/service|''post text''|in|
 
-|''close with errors''|'''is'''|2|
+|''close with errors''|>=|2|

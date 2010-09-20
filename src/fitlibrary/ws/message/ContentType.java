@@ -6,6 +6,7 @@
 package fitlibrary.ws.message;
 
 public enum ContentType { 
+	XML("text/xml","utf-8"), 
 	SOAP11("text/xml","utf-8"), 
 	SOAP12("application/soap+xml","utf-8"), 
 	PLAIN("application/x-www-form-urlencoded","utf-8"),

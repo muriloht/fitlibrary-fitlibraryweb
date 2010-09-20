@@ -31,7 +31,7 @@ import fitlibrary.ws.message.PostMessage;
 import fitlibrary.ws.soap.Soap;
 
 public class MockWebServiceHandler extends AbstractHttpRequestHandler {
-	static Logger logger2 = FixturingLogger.getLogger(MockWebServiceHandler.class);
+	private static Logger logger = FixturingLogger.getLogger(MockWebServiceHandler.class);
 	private final OrTerm term;
 	private MockLogger logging;
 	private int portNo;
@@ -45,7 +45,7 @@ public class MockWebServiceHandler extends AbstractHttpRequestHandler {
 	@Override
 	public void handle(HttpRequest request, HttpResponse response, HttpContext context)
 			throws HttpException, IOException {
-		logger2.debug("handle()");
+		logger.debug("handle()");
 		String method = request.getRequestLine().getMethod().toUpperCase(Locale.ENGLISH);
 		if (!method.equals("POST")) {
 			throw new MethodNotSupportedException(method
@@ -56,21 +56,22 @@ public class MockWebServiceHandler extends AbstractHttpRequestHandler {
 			return;
 		}
 		String uri = request.getRequestLine().getUri();
-		logger2.trace("uri: "+uri);
+		logger.trace("uri: "+uri);
 		HttpEntity entity = ((HttpEntityEnclosingRequest) request).getEntity();
 		String contentType = entity.getContentType().getValue();
-		logger2.trace("Content type: "+contentType);
+		logger.trace("Content type: "+contentType);
 		call(uri,response, entity);
 	}
 	private void call(String uri, HttpResponse response, HttpEntity entity) throws IOException {
 		String requestContent = EntityUtils.toString(entity);
-		logger2.trace("Incoming content: " + requestContent);
+		logger.trace("Incoming content: " + requestContent);
 		Message request = new PostMessage(uri,requestContent,Soap.decodedType(entity.getContentType().getValue()));
 		Responder responder = term.matchRequest(request);
-		logger2.trace("Responder result code: " + responder.getResultCode());
-		logger2.trace("Responder: " + responder.getContents());
 		logging.responded("Port "+portNo,request,responder,portNo);
-		EntityTemplate body = makeBody(responder.getContents(),"text/xml; charset=UTF-8");
+		logger.trace("Responder result code: " + responder.getResultCode());
+		logger.trace("Responder Content-Type: " + responder.getContentType());
+		logger.trace("Responder: " + responder.getContents());
+		EntityTemplate body = makeBody(responder.getContents(),responder.getContentType());
 		response.setEntity(body);
 		response.setStatusCode(responder.getResultCode());
 	}

@@ -6,4 +6,6 @@
 
 |''to''|http://localhost:8081/service|''post ${soap}''|<request b="b" a="a">in</request>|'''is'''|<response>out</response>|
 
+|''reply content type''|'''is'''|${replyContentType}|
+
 |''close''|

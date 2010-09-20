@@ -21,13 +21,14 @@ import fitlibrary.mockWebServices.responder.LiteralResponder;
 import fitlibrary.mockWebServices.responder.Responder;
 import fitlibrary.mockWebServices.term.RepeatingTerm;
 import fitlibrary.mockWebServices.term.Term;
+import fitlibrary.ws.message.ContentType;
 import fitlibrary.ws.message.Message;
 import fitlibrary.ws.message.ReplyMessage;
 
 @RunWith(JMock.class)
 public class TestRepeatingTerm {
 	final Mockery context = new JUnit4Mockery();
-	final static Responder SOME = new LiteralResponder("aa");
+	final static Responder SOME = new LiteralResponder("aa",ContentType.PLAIN);
 	final Term t1 = context.mock(Term.class,"term1");
 	final Message request = msg("request");
 	final MockLogger logger = context.mock(MockLogger.class);

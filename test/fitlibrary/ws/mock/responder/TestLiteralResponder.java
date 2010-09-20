@@ -11,9 +11,10 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import fitlibrary.mockWebServices.responder.LiteralResponder;
+import fitlibrary.ws.message.ContentType;
 
 public class TestLiteralResponder {
-	final LiteralResponder literalResponder = new LiteralResponder("aa");
+	final LiteralResponder literalResponder = new LiteralResponder("aa",ContentType.PLAIN);
 	
 	@Test public void responseReturnsSameString() {
 		assertThat(literalResponder.getContents(), equalTo("aa"));

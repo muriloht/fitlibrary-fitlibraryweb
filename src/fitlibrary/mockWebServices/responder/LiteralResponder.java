@@ -5,14 +5,17 @@
 */
 package fitlibrary.mockWebServices.responder;
 
+import fitlibrary.ws.message.ContentType;
+
 public class LiteralResponder extends SimpleResponder {
 	private String response;
 
-	public LiteralResponder(String response) {
+	public LiteralResponder(String response, ContentType contentType) {
+		super(contentType);
 		this.response = response;
 	}
-	public LiteralResponder(int resultCode, String contents) {
-		super(resultCode);
+	public LiteralResponder(int resultCode, String contents, ContentType contentType) {
+		super(resultCode,contentType);
 		this.response = contents;
 	}
 	@Override

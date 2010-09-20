@@ -34,6 +34,7 @@ public class HttpClientService extends XmlDoFixture {
 	protected HttpClient client = new DefaultHttpClient();
 	private Header[] headers = new Header[0];
 	protected String reply = "";
+	protected String replyContentType = "";
 
 	public boolean proxyUrlWithPort(String proxyHost, int proxyPortNo) {
 		HttpHost proxy = new HttpHost(proxyHost, proxyPortNo, "http");
@@ -76,7 +77,8 @@ public class HttpClientService extends XmlDoFixture {
 		}
 	}
 	public void httpPost(String url, String contents, String contentType, String contentEncoding) {
-		logger.trace("Try POST "+url);
+		logger.trace("Start POST "+url+" with content-type "+contentType+" "+contentEncoding);
+		logger.trace("POST "+contents);
 		HttpPost post = new HttpPost(url);
 		setHost(post, url);
 		addExtraHeadersToPost(post);
@@ -87,9 +89,11 @@ public class HttpClientService extends XmlDoFixture {
 			post.setEntity(entity);
 			handleReply(client.execute(post));
 		} catch (IOException e) {
+			logger.trace("POST failed");
 			post.abort();
 			throw new FitLibraryException("Problem: "+e.getMessage());
 		} catch (FitLibraryException e) {
+			logger.trace("POST failed");
 			post.abort();
 			throw e;
 		} finally {
@@ -116,6 +120,9 @@ public class HttpClientService extends XmlDoFixture {
 	public String getReply() {
 		return reply;
 	}
+	public String getReplyContentType() {
+		return replyContentType;
+	}
 	public String getReplyEscaped() {
 		return Fixture.escape(reply).replaceAll("\n", "<br/>");
 	}
@@ -126,12 +133,16 @@ public class HttpClientService extends XmlDoFixture {
 		HttpEntity entity = response.getEntity();
 		if (entity == null || contentTypeHeader == null) {
 			logger.error("No data returned in response");
+			replyContentType = "failed";
 			throw new FitLibraryException("No data returned");
 		}
-		if (canTreatAsText(contentTypeHeader.getValue()))
+		replyContentType = contentTypeHeader.getValue();
+		if (canTreatAsText(replyContentType)) {
 			reply = IOUtils.toString(entity.getContent());
-		else
-			throw new FitLibraryException("The data is not text, it has Content-type: "+contentTypeHeader.getValue());
+			logger.trace("Reply of "+contentTypeHeader.getName()+": "+replyContentType);
+			logger.trace("Reply: "+reply);
+		} else
+			throw new FitLibraryException("The data is not text, it has Content-type: "+replyContentType);
 		entity.consumeContent();
 	}
 	private void handleHeaders(HttpResponse response) {
@@ -141,7 +152,8 @@ public class HttpClientService extends XmlDoFixture {
 			throw new FitLibraryException("Received Status code = "+statusLine.getStatusCode()+": "+statusLine.getReasonPhrase());
 	}
 	private boolean canTreatAsText(String value) {
-		return value.contains("text/plain") || value.contains("text/html") || value.contains("text/xml");
+		return value.contains("text/plain") || value.contains("text/html")
+			|| value.contains("text/xml") || value.contains("application/soap+xml");
 	}
 	public String xpathInResponse(String xPathExpression) {
 		return xpathIn(xPathExpression, reply);

@@ -14,11 +14,12 @@ import fitlibrary.mockWebServices.MockingWebServices;
 import fitlibrary.mockWebServices.requestMatcher.NotRequestMatcher;
 import fitlibrary.mockWebServices.requestMatcher.XPathMatcher;
 import fitlibrary.mockWebServices.requestMatcher.XmlRequestMatcher;
+import fitlibrary.ws.message.ContentType;
 import fitlibrary.ws.soap.Soap;
 
 public class Soap11TransactionFixture extends AbstractTransactionFixture {
 	public Soap11TransactionFixture(int port, MockingWebServices mockingWebServices) {
-		super(port,mockingWebServices);
+		super(ContentType.SOAP11,port,mockingWebServices);
 	}
 	public void matchesRequest(String xml) {
 		requestMatcher = requestMatcher.and(new XmlRequestMatcher(Soap.wrap11(xml)));
@@ -33,7 +34,7 @@ public class Soap11TransactionFixture extends AbstractTransactionFixture {
 		requestMatcher = requestMatcher.and(new XPathMatcher(xpath,value));
 	}
 	@Override
-	protected boolean isXml() {
-		return true;
+	protected String wrapContents(String responseString) {
+		return Soap.wrap11(responseString);
 	}
 }

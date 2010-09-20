@@ -34,6 +34,14 @@ public class WebServicesClientFixture extends WebService {
 		showAfterTable("Deprecated: use |''to''|"+url+"|''post soap11''|"+xmlOut+"| instead");
 		return toPostSoap11(url,xmlOut);
 	}
+	public String toAsPostFullSoap(String url, ContentType contentType, String xmlOut) {
+		try {
+			reply = postHttp(url, xmlOut,contentType).trim();
+			return reply;
+		} catch (Exception e) {
+			throw new FitLibraryException(e.getMessage());
+		}
+	}
 	public String toPostSoap11(String url, String xmlOut) {
 		try {
 			reply = Soap.unwrap11(postHttp(url, Soap.wrap11(xmlOut), ContentType.SOAP11)).trim();

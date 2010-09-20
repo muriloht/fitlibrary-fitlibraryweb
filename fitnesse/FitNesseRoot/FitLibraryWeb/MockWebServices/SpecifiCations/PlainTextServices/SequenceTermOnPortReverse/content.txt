@@ -13,4 +13,4 @@
 
 |''to''|http://localhost:8082/ws|''post text''|in|'''is'''|out|
 
-|''close with errors''|'''is'''|2|
+|''close with errors''|>=|1|

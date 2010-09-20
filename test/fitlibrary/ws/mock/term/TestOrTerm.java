@@ -22,6 +22,7 @@ import fitlibrary.mockWebServices.responder.Responder;
 import fitlibrary.mockWebServices.term.CompositeTerm;
 import fitlibrary.mockWebServices.term.OrTerm;
 import fitlibrary.mockWebServices.term.Term;
+import fitlibrary.ws.message.ContentType;
 import fitlibrary.ws.message.Message;
 import fitlibrary.ws.message.ReplyMessage;
 
@@ -29,7 +30,7 @@ import fitlibrary.ws.message.ReplyMessage;
 public class TestOrTerm {
 	final Mockery context = new JUnit4Mockery();
 	final static Responder ERROR = ErrorResponder.create();
-	final static Responder SOME = new LiteralResponder("aa");
+	final static Responder SOME = new LiteralResponder("aa",ContentType.PLAIN);
 	final Term t1 = context.mock(Term.class,"term1");
 	final Term t2 = context.mock(Term.class,"term2");
 	final Message request = msg("request");

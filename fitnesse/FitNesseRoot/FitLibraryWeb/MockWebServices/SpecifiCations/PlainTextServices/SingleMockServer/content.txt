@@ -7,4 +7,6 @@
 
 |''to''|http://localhost:8081/ws|''post text''|inn|'''is'''|out|
 
-|''run for''|200|
+|''reply content type''|'''is'''|text/xml;charset=utf-8|
+
+|''close after''|200|

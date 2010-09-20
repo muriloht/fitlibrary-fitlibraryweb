@@ -5,18 +5,21 @@
 */
 package fitlibrary.mockWebServices.responder;
 
-import java.util.HashMap;
-import java.util.Map;
+import fitlibrary.ws.message.ContentType;
 
 public abstract class SimpleResponder implements Responder {
-	private boolean contentIsXml;
+	private ContentType contentType;
 	private int resultCode = 200;
 	
-	public SimpleResponder() {
-		this(200);
-	}
-	public SimpleResponder(int resultCode) {
+	public SimpleResponder(int resultCode, ContentType contentType) {
 		this.resultCode = resultCode;
+		this.contentType = contentType;
+	}
+	public SimpleResponder(ContentType contentType) {
+		this(200,contentType);
+	}
+	public SimpleResponder() {
+		this(ContentType.INVALID);
 	}
 	@Override
 	public String getUri() {
@@ -26,17 +29,9 @@ public abstract class SimpleResponder implements Responder {
 	public String contentsOf(String line) {
 		return line;
 	}
-	public void setContentIsXml(boolean contentIsXml) {
-		this.contentIsXml = contentIsXml;
-	}
 	@Override
-	public Map<String, String> getHeaders() {
-		HashMap<String, String> hashMap = new HashMap<String, String>();
-		if (contentIsXml) {
-			hashMap.put("Content-Type", "text/xml;charset-UTF-8");
-		}
-		hashMap.put("Server", "MockingServer");
-		return hashMap;
+	public String getContentType() {
+		return contentType.getWholeType();
 	}
 	@Override
 	public int getResultCode() {

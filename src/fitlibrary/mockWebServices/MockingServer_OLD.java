@@ -8,8 +8,11 @@ package fitlibrary.mockWebServices;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.util.Map;
 import java.util.concurrent.Executors;
+
+import com.sun.net.httpserver.Headers;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpServer;
 
 import fitlibrary.mockWebServices.responder.Responder;
 import fitlibrary.mockWebServices.term.OrTerm;
@@ -17,10 +20,6 @@ import fitlibrary.mockWebServices.term.Term;
 import fitlibrary.ws.logger.Logger;
 import fitlibrary.ws.message.Message;
 import fitlibrary.ws.server.AbstractHttpServer;
-
-import com.sun.net.httpserver.Headers;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpServer;
 
 public class MockingServer_OLD extends AbstractHttpServer {
 	protected final OrTerm term = new OrTerm();
@@ -53,10 +52,10 @@ public class MockingServer_OLD extends AbstractHttpServer {
 		}
 		private void handleResponse(HttpExchange exchange, Responder responder) throws IOException {
 			Headers responseHeaders = exchange.getResponseHeaders();
-			Map<String,String> header = responder.getHeaders();
-			for (String key : header.keySet()) {
-				responseHeaders.set(key, header.get(key));
-			}
+//			Map<String,String> header = responder.getHeaders();
+//			for (String key : header.keySet()) {
+//				responseHeaders.set(key, header.get(key));
+//			}
 			exchange.sendResponseHeaders(responder.getResultCode(), responder.getContents().length());
 			OutputStream os = exchange.getResponseBody();
 			os.write(responder.getContents().getBytes());

@@ -46,6 +46,7 @@ public class WebServiceHandler extends AbstractHttpRequestHandler {
 			callPlainPost(response, entity);
 			break;
 		case SOAP11:
+		case XML:
 			callSoap(response,entity,Soap.HEADER11,Soap.TRAILER11);
 			break;
 		case SOAP12:

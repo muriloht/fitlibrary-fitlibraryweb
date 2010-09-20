@@ -6,5 +6,5 @@
 
 |'''reject'''|''to''|http://localhost:8081/service|''post ${soap}''|<request b="b">in</request>|
 
-|''close with errors''|'''is'''|2|
+|''close with errors''|>=|2|
 

@@ -24,6 +24,7 @@ import fitlibrary.mockWebServices.term.CompositeTerm;
 import fitlibrary.mockWebServices.term.LeafTerm;
 import fitlibrary.mockWebServices.term.SequentialTerm;
 import fitlibrary.mockWebServices.term.Term;
+import fitlibrary.ws.message.ContentType;
 import fitlibrary.ws.message.Message;
 import fitlibrary.ws.message.ReplyMessage;
 
@@ -31,7 +32,7 @@ import fitlibrary.ws.message.ReplyMessage;
 public class TestLeafTerm {
 	final Mockery context = new JUnit4Mockery();
 	final RequestMatcher matcher = context.mock(RequestMatcher.class);
-	final Responder responder = new LiteralResponder("aa");
+	final Responder responder = new LiteralResponder("aa",ContentType.PLAIN);
 	final Message request = msg("request");
 	final Term t1 = new LeafTerm(matcher,responder);
 	final Term t2 = context.mock(Term.class,"term2");

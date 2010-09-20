@@ -4,7 +4,7 @@
   * Now distinguish between soap1.1 and soap1.2
   * Added specs that test the client against a local web services server
   * Added specs that test the client with a proxy against a local web services server
-  * Changed the implementation to use httpClient 
+  * Changed the implementation to use httpComponents 4.0
 #
 !2 12 August 2010
 #

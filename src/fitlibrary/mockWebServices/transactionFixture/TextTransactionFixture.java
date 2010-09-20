@@ -15,10 +15,11 @@ import fitlibrary.mockWebServices.MockingWebServices;
 import fitlibrary.mockWebServices.requestMatcher.EqualsRequestMatcher;
 import fitlibrary.mockWebServices.requestMatcher.NotRequestMatcher;
 import fitlibrary.mockWebServices.requestMatcher.PatternRequestMatcher;
+import fitlibrary.ws.message.ContentType;
 
 public class TextTransactionFixture extends AbstractTransactionFixture {
 	public TextTransactionFixture(int port, MockingWebServices mockingWebServices) {
-		super(port,mockingWebServices);
+		super(ContentType.XML,port,mockingWebServices);
 	}
 	public void matchesRequest(String pattern) {
 		requestMatcher = requestMatcher.and(new PatternRequestMatcher(pattern));
@@ -34,9 +35,5 @@ public class TextTransactionFixture extends AbstractTransactionFixture {
 	}
 	public void notMatchesRequest(String pattern) {
 		requestMatcher = requestMatcher.and(new NotRequestMatcher(new PatternRequestMatcher(pattern)));
-	}
-	@Override
-	protected boolean isXml() {
-		return false;
 	}
 }

@@ -11,11 +11,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import fitlibrary.exception.FitLibraryException;
+import fitlibrary.ws.message.ContentType;
 
 public class FileResponder extends SimpleResponder {
 	private String fileName;
 	
-	public FileResponder(String fileName) {
+	public FileResponder(String fileName, ContentType responseContentType) {
+		super(responseContentType);
 		this.fileName = fileName;
 		if (!new File(fileName).exists())
 			throw new FitLibraryException("File doesn't exist: "+fileName);
