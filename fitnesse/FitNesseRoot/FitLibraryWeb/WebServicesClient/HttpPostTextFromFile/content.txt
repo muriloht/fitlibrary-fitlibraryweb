@@ -1,7 +1,9 @@
-|''file''|Fahrenheit33.txt|
+!|fitlibrary.ws.WebServicesClientFixture|
+
+|''relative file''|soap/Fahrenheit33.txt|
 |''write''|Fahrenheit=33|
 
-|'''show'''|''post text''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''from file''|Fahrenheit33.txt|
+|'''show'''|''to''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''post text from relative file''|soap/Fahrenheit33.txt|
 
 |''xml in response same as''|<string>0.555555555555556</string>|
 
@@ -9,5 +11,5 @@
 
 |''xpath''|string|''in response''|'''matches'''|.*56|
 
-|''file''|Fahrenheit33.txt|
+|''relative file''|soap/Fahrenheit33.txt|
 |delete|

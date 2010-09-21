@@ -2,7 +2,7 @@
 #
 In many organisations, it's necessary to access external web sites through a proxy.
 
- * Then the proxy will be configured in your browser. 
+ * Then the proxy will be configured in your browser.
  * If it's an authenticating proxy, you may have to log in.
 
 If you're testing, and need to go through a proxy, ''!-WebServicesClientFixture -!'' can be configured to use a specified proxy.

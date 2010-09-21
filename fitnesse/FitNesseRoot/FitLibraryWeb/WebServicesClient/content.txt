@@ -1,16 +1,22 @@
-!3 Examples
+!*< xml
+!define soap11 ({{{<?xml version='1.0' encoding='utf-8'?>
+<soap:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:soap='http://schemas.xmlsoap.org/soap/envelope/'>
+<soap:Body>}}})
+!define endSoap11 ({{{</soap:Body></soap:Envelope>}}})
+
+!define soap12 ({{{<?xml version='1.0' encoding='utf-8'?>
+<soap12:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap12='http://www.w3.org/2003/05/soap-envelope'>
+<soap12:Body>}}})
+!define endSoap12 ({{{</soap12:Body></soap12:Envelope>}}})
+*!
+!3 1. Examples, Tutorial and Specifications
 #
-For examples, see ^HttpPostText and ^HttpPostTextFromFile.
-
-For further examples, see the MockWebServices
-
-For some simple specifications, see ^SpecifyWs (these make use of mock web services, as discussed at <FitLibraryWeb.MockWebServices).
-
-^SpecifiCations
-^WebServicesTutorial
-
+|!3 For:|!3 See:|
+|''Examples''|^HttpPostText, ^HttpPostTextFromFile|
+|''A tutorial on calling web services''| ^WebServicesTutorial|
+|''Specifications''| ^SpecifiCations|
 #
-!3 Commands
+----!3 2. Commands
 #
  * To start it:
 
@@ -20,25 +26,28 @@ For some simple specifications, see ^SpecifyWs (these make use of mock web servi
 
 |''proxy url''|http://proxy|''with port''|8099|
 
- * To post a web service call with XML (such as SOAP):
+ * To post a web service call with plain text, soap1.1, soap1.2, or ''raw'' soap:
 
-|''post''|http://localhost:8081|''with''|<in>one</in>|
+|''to''|http://localhost:8093/ws|''post text''|count=100|
+|''to''|http://localhost:8093/ws|''post soap11''|<Count>100</Count>|
+|''to''|http://localhost:8093/ws|''post soap12''|<Count>100</Count>|
+|''to''|http://localhost:8093/ws|''as''|SOAP11|''post full soap''|${soap11}<Count>100</Count>${endSoap11}|
 
- * To post the call and check the response:
+''Raw soap'' contains all the soap wrappers, unlike with soap1.1 and soap1.2, where the soap wrappers are added and remove automatically.
 
-|''post''|http://localhost:8081|''with''|<in>one</in>|'''is'''|<out>two</out>|
+ * To post a web service call with plain text, soap1.1, soap1.2, or ''raw'' soap from a file:
 
- * To post xml from a file:
+|''to''|http://localhost:8093/ws|''post text from file''|ws.txt|
+|''to''|http://localhost:8093/ws|''post soap11 from file''|ws.xml|
+|''to''|http://localhost:8093/ws|''post soap12 from file''|ws.xml|
+|''to''|http://localhost:8093/ws|''as''|SOAP11|''post full soap from file''|soap/test.xml|
 
-|''post soap''|http://localhost:8081|''from file''|a/b.xml|'''is'''|<out>two</out>|
+ * To post a web service call with plain text, soap1.1, soap1.2, or ''raw'' soap from a ''relative'' file (ie, relative to the ''!-FitNesseRoot/files-!'' directory):
 
- * To post plain text (ie, not XML):
-
-|''post text''|http://localhost:8081|''with''|Fahrenheit=33|'''is'''|<string>0.555555555555556</string>|
-
- * To post plain text from a file:
-
-|''post text''|http://localhost:8081|from file''|a/b.txt|'''is'''|<string>0.555555555555556</string>|
+|''to''|http://localhost:8093/ws|''post text from relative file''|ws.txt|
+|''to''|http://localhost:8093/ws|''post soap11 from relative file''|ws.xml|
+|''to''|http://localhost:8093/ws|''post soap12 from relative file''|ws.xml|
+|''to''|http://localhost:8093/ws|''as''|SOAP11|''post full soap from relative file''|soap/test.xml|
 
  * To use an xpath to pull information out of the last response:
 
@@ -51,9 +60,8 @@ For some simple specifications, see ^SpecifyWs (these make use of mock web servi
  * To XML diff the last response against expected XML:
 
 |''xml in response same as''|<a><b>B</b></a>|
-
 #
-!3 Implementation
+----!3 Implementation
 #
 This is based on the apache open-source system ''!-HttpClient-!''.
 

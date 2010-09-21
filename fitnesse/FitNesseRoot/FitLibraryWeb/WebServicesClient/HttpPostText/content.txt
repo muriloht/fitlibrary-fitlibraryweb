@@ -1,4 +1,6 @@
-|''post text''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''with''|Fahrenheit=33|
+!|fitlibrary.ws.WebServicesClientFixture|
+
+|''to''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''post text''|Fahrenheit=33|
 
 |''xml in response same as''|<string>0.555555555555556</string>|
 

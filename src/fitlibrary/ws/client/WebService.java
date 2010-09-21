@@ -7,7 +7,6 @@ package fitlibrary.ws.client;
 
 import org.apache.http.client.methods.HttpPost;
 
-
 public class WebService extends HttpClientService {
 	@Override
 	protected void addExtraHeadersToPost(HttpPost post) {

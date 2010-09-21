@@ -1,8 +1,0 @@
-!|fitlibrary.SelectFixture|
-
-|''add''|!-fitlibrary.ws.WebServicesClientFixture-!|''as''|client|
-
-|''add''|!-fitlibrary.mockWebServices.specify.SpecifyWebServiceServers-!|''as''|server|
-
-|''select''|server|
-
