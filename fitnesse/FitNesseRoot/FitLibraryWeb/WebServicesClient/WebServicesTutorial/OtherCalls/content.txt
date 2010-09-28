@@ -27,7 +27,7 @@ As before, you need to run the web service server on [[this page][RunWebServiceS
 #
 ----!3 7. Using soap1.2
 #
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
 |''to''|http://localhost:8093/ws|''post soap12''|<Count>100</Count>|
 

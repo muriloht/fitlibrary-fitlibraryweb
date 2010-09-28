@@ -7,7 +7,7 @@ It uses '''Joda Time''': see http://joda-time.sourcefoge.net/
 !3 today
 By default, the date is today's date, of the form "d MMM yyyy":
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''create variable''|date|
 
 |'''show'''|''get''|@{date}|
@@ -16,7 +16,7 @@ The ''create variable'' row specifies the variable to create.
 ----!3 In the past
 Let's go back in time:
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''-''|2|''years''|
 |''+''|2|''months''|
 |''create variable''|past|
@@ -26,7 +26,7 @@ Let's go back in time:
  * In general, we can go back/forward in ''years'', ''months'', ''days'' and ''minutes''.
  * The ''create variable'' row has to be after altering the date/time
 ----!3 In the future
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''+''|2|''months''|
 |''create variable''|future|
 
@@ -34,7 +34,7 @@ Let's go back in time:
 ----!3 Date Format
 We can specify the date format for one or more variables, picking out different aspects of a date/time (eg, for selecting from a pull-down in a web browser):
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''create variable''|day#|''with format''|d|
 |''create variable''|day00#|''with format''|dd|
 |''create variable''|month#|''with format''|M|
@@ -50,12 +50,12 @@ Here the variables all apply to the same date (see the complex example below for
   * "h:mma" formats it as a 12-hour clock with AM/PM.
   * For possible date/time formats, see ''help'' below.
 ----!3 Format for day of the week (Monday, etc)
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''create variable''|dayOfWeek|''with format''|EEEE|
 
 |'''show'''|''get''|@{dayOfWeek}|
 ----!3 Time zone selection
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''time zone''|America/Los_Angeles|
 |''create variable''|us-date|
 
@@ -65,14 +65,14 @@ See ''help'' below for possible time zones
 ----!3 Upper case month name
 In the following we pick a particular date for today so that these examples continue to work (in NZ only). The ''pick date time'' row is intended for testing only.
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''pick date time''|1243987143111|
 |''to upper''|
 |''create variable''|DATE|''with format''|EEEE d MMM yyy H:mm|
 
 |''get''|@{DATE}|'''is'''|WEDNESDAY 3 JUN 2009 11:59|
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''pick date time''|1243987143111|
 |''time zone''|Pacific/Auckland|
 |''+''|30|''days''|
@@ -85,7 +85,7 @@ In the following we pick a particular date for today so that these examples cont
 ----!3 Selecting the day of the week required
 We can specify the day of the week required.
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''pick date time''|1243987143111|
 |''+''|1|''years''|
 |''+''|3|''weeks''|
@@ -96,7 +96,7 @@ We can specify the day of the week required.
 
 Any day of the week can be selected. The date is moved forward into the future and backwards into the past to the right day.
 ----!3 Last day of the month
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''pick date time''|1243987143111|
 |''time zone''|America/Los_Angeles|
 |''+''|2|''months''|
@@ -109,7 +109,7 @@ Any day of the week can be selected. The date is moved forward into the future a
 |''get''|@{plus1}|'''is'''|Tuesday 1 September|
 
 ----!3 Start with an existing date
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''date is''|3 June 2009|''using''|d MMMM YYYY|
 |''+''|2|''months''|
 |''last day of month''|
@@ -118,7 +118,7 @@ Any day of the week can be selected. The date is moved forward into the future a
 |''get''|@{end-of-month}|'''is'''|Monday 31 August|
 
 ----!3 A crazy example, showing how that the ordering of the rows is important
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''pick date time''|1243987143111|
 |''time zone''|America/Los_Angeles|
 |''+''|2|''months''|
@@ -137,5 +137,5 @@ Notice that:
 ----!3 Help information
 For the possible date/time formats and possible time zones, run the test and expand the logs that are added after the table below:
 
-|!-fitlibrary.date.CreateDate-!|
+|''with date''|
 |''help''|

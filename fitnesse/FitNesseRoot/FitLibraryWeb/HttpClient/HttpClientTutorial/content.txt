@@ -8,7 +8,7 @@ Run '''Test''':
  * That's because there is no server running on port 8093. We'll fix that shortly, in #3 below.
  * However, if you already have a server running on port 8093, you may get a response! See #2 below for how to fix that.
 
-!|fitlibrary.http.HttpClientFixture|
+|''with http client''|
 
  * Request a page from the given port on localhost (ie on the current machine):
 

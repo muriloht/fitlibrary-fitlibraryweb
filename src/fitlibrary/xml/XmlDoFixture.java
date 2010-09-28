@@ -58,30 +58,11 @@ public class XmlDoFixture extends DoTraverse {
 			throw new FitLibraryException("invalid xpath");
 		}
 	}
-	public String xpathIn(String xPathExpression, String xmlInitial) {
-		String xml = xmlInitial;
-		xml = removeEmptyNameSpace(xml,"'");
-		xml = removeEmptyNameSpace(xml,"\"");
+	public String xpathIn(String xPathExpression, String xml) {
 		try {
 			return xpathEngine().evaluate(xPathExpression, doc(xml));
 		} catch (XpathException e) {
 			throw new FitLibraryException("invalid xpath");
-		}
-	}
-	// Need to get rid of it because it messes up xpath processing
-	// See www.xml.com/pub/a/2004/02/25/quanda.html for an explanation
-	private String removeEmptyNameSpace(String xmlInitial, String quote) {
-		String xml = xmlInitial;
-		while (true) {
-			int start = xml.indexOf(" xmlns="+quote);
-			if (start < 0)
-				return xml;
-			if (start >= 0) {
-				int end = xml.indexOf(quote,start+ " xmlns=".length()+1);
-				if (end < 0)
-					return xml;
-				xml = xml.substring(0,start)+xml.substring(end+1);
-			}
 		}
 	}
 	public String transformWith(String xml, String xslt) {
@@ -111,9 +92,30 @@ public class XmlDoFixture extends DoTraverse {
 	}
 	private static Document doc(String xml) {
 		try {
-			return XMLUnit.buildControlDocument(xml);
+			return XMLUnit.buildControlDocument(removeEmptyNameSpace(xml));
 		} catch (Exception e) {
 			throw new FitLibraryException(e.getMessage());
+		}
+	}
+	private static String removeEmptyNameSpace(String xmlInitial) {
+		String xml = xmlInitial;
+		xml = removeEmptyNameSpace(xml,"'");
+		return removeEmptyNameSpace(xml,"\"");
+	}
+	// Need to get rid of it because it messes up xpath processing
+	// See www.xml.com/pub/a/2004/02/25/quanda.html for an explanation
+	private static String removeEmptyNameSpace(String xmlInitial, String quote) {
+		String xml = xmlInitial;
+		while (true) {
+			int start = xml.indexOf(" xmlns="+quote);
+			if (start < 0)
+				return xml;
+			if (start >= 0) {
+				int end = xml.indexOf(quote,start+ " xmlns=".length()+1);
+				if (end < 0)
+					return xml;
+				xml = xml.substring(0,start)+xml.substring(end+1);
+			}
 		}
 	}
 	private XpathEngine xpathEngine() {

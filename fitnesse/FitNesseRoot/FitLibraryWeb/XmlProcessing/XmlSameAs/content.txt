@@ -6,6 +6,7 @@
  A
 </a>}}})
 *!
+|''with xml''|
 
 |''xml''|<a>A</a>|''same as''|${xml}|
 |''xml''|<a>A</a>|''same as''|<a>A</a>|

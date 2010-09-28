@@ -8,7 +8,7 @@ Let's mock a soap1.1 web service that returns the available stock count for a sp
 
 For a start, we'll ignore the details of the request and simply specify the response.
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''response''|<count>44</count>|

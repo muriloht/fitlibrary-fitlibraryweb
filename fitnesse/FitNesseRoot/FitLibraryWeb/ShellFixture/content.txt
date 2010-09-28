@@ -1,6 +1,6 @@
 !2 A fixture for running local commands through a shell
 #
-This a variation of a fixture available with ''!-FitNesse-!''. However, as ''!-FitLibrary's-!'' select fixture allows for multiple fixtures running at once, this fixture assumes a single shell command.
+This a variation of a fixture available with ''!-FitNesse-!''. However, as ''!-FitLibrary-!'' allows for multiple fixtures running at once, this handles a single shell command.
 
 >JavaExample
 
@@ -8,6 +8,8 @@ This a variation of a fixture available with ''!-FitNesse-!''. However, as ''!-F
 ----!3 Starting and Finishing
 #
  * To start a shell command and wait for it to finish:
+
+|''with shell''|
 
 |''synchronously''|java -help|
 

@@ -1,13 +1,13 @@
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
 |''add named''| second |!-fitlibrary.server.WebServerForTestingFixture-!|
 
-|''start file server on port''|8093|''at directory''|!-FitNesseRoot-!|
+|''start file server on port''|8094|''at directory''|!-FitNesseRoot-!|
 
 |''relative file''|soap/test.xml|
 |''write''|<Count>100</Count>|
 
-|''to''|http://localhost:8093/ws|''post soap11 from relative file''|soap/test.xml|
+|''to''|http://localhost:8094/ws|''post soap11 from relative file''|soap/test.xml|
 
 |'''show'''|''headers''|
 

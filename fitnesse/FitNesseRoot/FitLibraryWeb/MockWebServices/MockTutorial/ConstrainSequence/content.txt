@@ -2,7 +2,7 @@
 #
 If we really want to constrain the order of the requests for oranges and apples, we can do that within a single table.
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''xpath''|//countOf|''is''|Oranges|

@@ -1,7 +1,7 @@
 !3 7. Alternative requests
 So far, we've assumed that we're only interested in a specific request. What if we want to provide counts for apples and oranges? We can do that with two table, as follows:
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''xpath''|//countOf|''is''|Oranges|

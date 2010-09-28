@@ -12,7 +12,7 @@ The web service server need to be running for this storytest to pass. Once that'
 #
 This calls a web service. We pass it a number and it returns the number with one added to it.
 
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
  * Here we specify the url for the web service, the version of soap, and the xml contents.
   * The given xml contents is automatically wrapped with a standard soap1.1 xml wrapper before being sent

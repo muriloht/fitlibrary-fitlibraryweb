@@ -1,6 +1,6 @@
-!|fitlibrary.http.HttpClientFixture|
+|''with http client''|
 
-|''proxy url''|localhost|''with port''|5555|
+|''proxy url''|localhost|''with port''|5557|
 
 |''add named''| server|!-fitlibrary.server.WebServerForTestingFixture-!|
 
@@ -8,11 +8,11 @@
 
 |''start logging''|
 
-|''start proxy server on port''|5555|
+|''start proxy server on port''|5557|
 
-|''start file server on port''|8093|''at directory''|!-FitNesseRoot-!|
+|''start file server on port''|8096|''at directory''|!-FitNesseRoot-!|
 
-|''http head''|http://localhost:8093/files/handlingWindows.html|
+|''http head''|http://localhost:8096/files/handlingWindows.html|
 
 |'''show'''|''headers''|
 

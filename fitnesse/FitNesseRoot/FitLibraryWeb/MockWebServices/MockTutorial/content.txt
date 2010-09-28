@@ -20,4 +20,3 @@ We start simply, and build up to more complex scenarios in the following pages.
 #
 Let's look at our first example [[on this page][^SimplyRespond]].
 
-|!contents|

@@ -4,7 +4,7 @@ When run, this storytest gives the error "''Received Status code = 404: Not Foun
 
 Remember to run the server on [[this page][<HttpClientTutorial.RunFileServer]] if you get a "''Connection refused''" error.
 
-!|fitlibrary.http.HttpClientFixture|
+|''with http client''|
 
  * Request an unknown page:
 

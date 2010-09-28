@@ -1,6 +1,6 @@
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
-|''proxy url''|localhost|''with port''|5555|
+|''proxy url''|localhost|''with port''|5556|
 
 |''add named''| server|!-fitlibrary.server.WebServerForTestingFixture-!|
 
@@ -8,11 +8,11 @@
 
 |''start logging''|
 
-|''start proxy server on port''|5555|
+|''start proxy server on port''|5556|
 
-|''start file server on port''|8093|''at directory''|!-FitNesseRoot-!|
+|''start file server on port''|8094|''at directory''|!-FitNesseRoot-!|
 
-|''post text''|http://localhost:8093/ws|''with''|count=100|
+|''post text''|http://localhost:8094/ws|''with''|count=100|
 
 |''headers include''|
 |''name''|''value''|

@@ -16,7 +16,7 @@ If you're testing, and need to go through a proxy, httpClient can be configured 
 #
 When first run, this storytest gives a "''Connection to http://localhost:5555 refused''" error as the proxy server is not running.
 
-!|fitlibrary.http.HttpClientFixture|
+|''with http client''|
 
 |''proxy url''|localhost|''with port''|5555|
 

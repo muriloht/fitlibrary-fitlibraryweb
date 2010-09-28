@@ -1,3 +1,5 @@
+|''with xml''|
+
 |''xpath''|/a|''exists in ''|<a><b>A</b></a>|
 
 |''xpath''|/a/b|''exists in ''|<a><b>A</b></a>|

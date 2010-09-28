@@ -1,4 +1,4 @@
-!|fitlibrary.sh.ShellFixture|
+|''with shell''|
 
 |''synchronously''|java -help|
 

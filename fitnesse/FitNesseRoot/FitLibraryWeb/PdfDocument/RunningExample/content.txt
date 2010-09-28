@@ -2,7 +2,7 @@ Here's the pdf file that this storytest looks at: http://files/pdf/eg.pdf.
 
  * It's worth reading this as it is a document that discusses the issues in accessing text from PDFs.
 
-|!-fitlibrary.pdf.PDFDocument-!|
+|''with PDF''|
 
 |''open''|pdf/eg.pdf|
 

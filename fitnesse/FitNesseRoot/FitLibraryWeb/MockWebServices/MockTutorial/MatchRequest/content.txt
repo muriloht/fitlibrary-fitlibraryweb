@@ -2,7 +2,7 @@
 #
 Let's extend the second table, as follow:
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''xpath''|//countOf|''is''|Oranges|
@@ -16,7 +16,7 @@ Now, the response of 44 will only be sent if the request exactly matches "orange
 
 If the request doesn't match, an error (404) is returned:
 
- * Try running ApplesCall with it.
+ * Try running ApplesCall with it to see this error.
 #
 !3 6. Next
 #

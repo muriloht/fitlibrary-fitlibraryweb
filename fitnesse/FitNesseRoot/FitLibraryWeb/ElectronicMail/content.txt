@@ -2,7 +2,7 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 #
 !2 Example:
 #
-|!-fitlibrary.ElectronicMail-!|
+|''with email''|
 |''connect using host''|imapper|''and protocol''|imap|''with user name''|testGig|''and password''|ssap|
 |''open folder''|INBOX|
 |''wait up to''|100|''seconds for message to arrive''|
@@ -17,7 +17,7 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 #
  * Access e-mail:
 
-!|fitlibrary.ElectronicMail|
+|''with email''|
 
  * Connect to a server:
 

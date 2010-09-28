@@ -1,4 +1,4 @@
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
 |''to''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''post text''|Fahrenheit=33|
 

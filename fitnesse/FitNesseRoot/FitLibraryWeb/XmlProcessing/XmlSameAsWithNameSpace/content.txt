@@ -6,6 +6,7 @@
  A
 </a>}}})
 *!
+|''with xml''|
 
  * If name spaces are used in ''same as'', they need to be declared first:
 

@@ -31,6 +31,8 @@ A
 </xsl:stylesheet>
 )
 *!
+|''with xml''|
+
 |''xml''|<a>A</a>|''same as''|<a>B</a>|
 
 |''xml''|<a id="1">A</a>|''same as''|<a id="2">A</a>|

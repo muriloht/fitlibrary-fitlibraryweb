@@ -1,4 +1,4 @@
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
 |''relative file''|soap/Fahrenheit33.txt|
 |''write''|Fahrenheit=33|

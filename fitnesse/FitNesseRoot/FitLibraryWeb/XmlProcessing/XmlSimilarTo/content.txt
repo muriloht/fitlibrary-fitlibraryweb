@@ -7,6 +7,7 @@
 </a>
 )
 *!
+|''with xml''|
 
 |''xml''|<a>A</a>|''similar to''|<a>A</a>|
 |''xml''|${xml}|''similar to''|${xml}|

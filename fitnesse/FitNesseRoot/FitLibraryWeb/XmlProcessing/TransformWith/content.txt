@@ -14,5 +14,6 @@
 </xsl:stylesheet>
 )
 *!
+|''with xml''|
 
 |''transform''|${xml}|''with''|${xsl}|'''is'''|<manor/>|

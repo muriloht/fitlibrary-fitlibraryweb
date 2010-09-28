@@ -1,7 +1,7 @@
 !3 6. A Sequence of Responses for a Request
 We can handle a sequence of requests for the stock count for oranges, where the count may change on each request. We extend the second table, as follows:
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''xpath''|//countOf|''is''|Oranges|

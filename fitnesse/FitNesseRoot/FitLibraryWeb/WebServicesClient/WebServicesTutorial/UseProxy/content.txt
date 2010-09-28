@@ -5,7 +5,7 @@ In many organisations, it's necessary to access external web sites through a pro
  * Then the proxy will be configured in your browser.
  * If it's an authenticating proxy, you may have to log in.
 
-If you're testing, and need to go through a proxy, ''!-WebServicesClientFixture -!'' can be configured to use a specified proxy.
+If you're testing, and need to go through a proxy, the ''web services client'' can be configured to use a specified proxy.
 
  * In this example, we configure it to use a local proxy on port 5555.
  * In your tests, you'd configure it to your own proxy.
@@ -23,7 +23,7 @@ Run the web service server on [[this page][RunWebServiceServer]].
 #
 !3 4. An example
 #
-!|fitlibrary.ws.WebServicesClientFixture|
+|''with web services client''|
 
  * Turn on logging of the underlying fixtures:
 

@@ -1,7 +1,7 @@
 !3 9. Repeating a response
 What if we want the last reponse to be repeated, any number of times. Eg, once the count of oranges gets to 0, it stays at that count:
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''xpath''|//countOf|''is''|Oranges|

@@ -1,3 +1,5 @@
+|''with xml''|
+
 |''xpath''|//b|''in''|<a><b>xyz</b></a>|''is''|xyz|
 
 |''xpath''|//b|''in''|<a><b>xyz</b></a>|'''is'''|xyz|

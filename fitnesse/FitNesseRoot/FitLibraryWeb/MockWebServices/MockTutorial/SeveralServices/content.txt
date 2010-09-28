@@ -3,7 +3,7 @@
 !3 10. Several services on the same port
 Where there are several web services on the same port, we can distinguish between them. For example:
 
-!|fitlibrary.ws.MockWebServicesFixture|
+|''with mock web services''|
 
 |''mock soap11 on port''|8081|
 |''matches URL''|/stockCount|

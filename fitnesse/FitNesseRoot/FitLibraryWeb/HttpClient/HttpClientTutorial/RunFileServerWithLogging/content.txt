@@ -1,10 +1,10 @@
 !3 With Logging
 #
-This runs a file server on port 8094 with logging enabled.
+This runs a file server on port 8092 with logging enabled.
 #
 !3 Running
 #
-This runs a file server on local port 8094 when you run it as a '''Test'''.
+This runs a file server on local port 8092 when you run it as a '''Test'''.
 
 It closes down after the given period in seconds.
 
@@ -12,8 +12,9 @@ It closes down after the given period in seconds.
 
 |''with fixturing logger''|
 |''level''|ALL|
+|''show after''|true|
 
-|''start file server on port''|8094|''at directory''|!-FitNesseRoot-!|
+|''start file server on port''|8092|''at directory''|!-FitNesseRoot-!|
 
 |''stop testing server after''|10|''seconds''|
 
