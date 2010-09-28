@@ -1,0 +1,3 @@
+!|fitlibrary.mockWebServices.specify.SpecifyWebServiceServers|
+
+|''add named''| web services client|!-fitlibrary.ws.WebServicesClientFixture-!|

@@ -26,7 +26,7 @@ public class TestClockedLogger {
 
 	@Test public void initialState() {
 		assertThat(clockedLogger.hasErrors(), equalTo(false));
-		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 0\n\n"));
+		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 0\n"));
 	}
 	@Test public void error() {
 		context.checking(new Expectations() {{
@@ -34,7 +34,7 @@ public class TestClockedLogger {
 	    }});
 		clockedLogger.error("ERR");
 		assertThat(clockedLogger.hasErrors(), equalTo(true));
-		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 1\nUnused = 0\n\n12:34 Error: ERR\n"));
+		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 1\nUnused = 0\n12:34 Error: ERR\n"));
 	}
 	@Test public void unused() {
 		context.checking(new Expectations() {{
@@ -42,7 +42,7 @@ public class TestClockedLogger {
 	    }});
 		clockedLogger.unused(1,"ERR");
 		assertThat(clockedLogger.hasErrors(), equalTo(true));
-		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 1\n\n12:34 Unused on 1: ERR\n"));
+		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 1\n12:34 Unused on 1: ERR\n"));
 	}
 	@Test public void log() {
 		context.checking(new Expectations() {{
@@ -50,7 +50,7 @@ public class TestClockedLogger {
 		}});
 		clockedLogger.log("LOG");
 		assertThat(clockedLogger.hasErrors(), equalTo(false));
-		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 0\n\n12:34 LOG\n"));
+		assertThat(clockedLogger.report(), equalTo("Requests = 0\nErrors = 0\nUnused = 0\n12:34 LOG\n"));
 	}
 	@Test public void errorsAndLogs() {
 		context.checking(new Expectations() {{
@@ -65,7 +65,7 @@ public class TestClockedLogger {
 		clockedLogger.log("FROG");
 		assertThat(clockedLogger.hasErrors(), equalTo(true));
 		assertThat(clockedLogger.report(), equalTo(
-				"Requests = 0\nErrors = 2\nUnused = 0\n\n"+
+				"Requests = 0\nErrors = 2\nUnused = 0\n"+
 				"12:34 Error: ERR\n"+
 				"12:36 LOG\n"+
 				"12:38 Error: WHOOPS\n"+
