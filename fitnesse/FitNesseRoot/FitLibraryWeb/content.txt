@@ -23,10 +23,10 @@ FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrar
 ^CheckFolderRunner
 
 !*> paths and defines
-!path ../bin
-#!path lib/fitlibraryweb.jar
-#!path fitlibrary.jar
-!path ../../fitlibrary/bin
+#!path ../bin
+!path lib/fitlibraryweb.jar
+!path fitlibrary.jar
+#!path ../../fitlibrary/bin
 !path lib/*.jar
 !define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
 !define REGRACE_LINK {false}

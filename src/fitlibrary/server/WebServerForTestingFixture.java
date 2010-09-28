@@ -20,7 +20,6 @@ public class WebServerForTestingFixture {
 		return true;
 	}
 	public void startLogging() {
-//		System.err.println("WebServerForTestingFixture.startLogging()");
 		Logger.getRootLogger().setLevel(Level.ALL);
 	}
 	public boolean stopTestingServerAfterSeconds(long seconds) throws IOException, InterruptedException {
