@@ -25,11 +25,11 @@ public class MockingServer extends HttpServer {
 		super(portNo,"mock");
 		this.logging = logging;
 		start();
-		logger.debug("Started on "+portNo);
+		logger.trace("Started on "+portNo);
 	}
 	@Override
 	protected void register(HttpRequestHandlerRegistry reqistry) {
-		logger.debug("Registered");
+		logger.trace("Registered");
 		reqistry.register("*", new MockWebServiceHandler(portNo,term,logging));
 	}
 	public void or(Term term2, boolean insertAtEnd) {

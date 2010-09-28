@@ -46,6 +46,9 @@ public class MockWebServicesFixture extends DoTraverse {
 		showAfterTable(logger.report());
 		return !logger.hasErrors();
 	}
+	public boolean closeAfterSeconds(int seconds) throws IOException {
+		return closeAfter(seconds*1000);
+	}
 	public boolean closeAfter(int milliseconds) throws IOException {
 		MockLogger logger = mockingWebServices.close(milliseconds);
 		showAfterTable(logger.report());

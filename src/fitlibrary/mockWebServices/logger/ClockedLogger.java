@@ -49,7 +49,7 @@ public class ClockedLogger implements MockLogger {
 		return 	"Requests = "+requests+
 				"\nErrors = "+(errorCount-unusedCount)+
 				"\nUnused = "+unusedCount+
-				"\n\n"+
+				"\n"+
 				logs.toString();
 	}
 	private void logError(String s) {
@@ -60,7 +60,7 @@ public class ClockedLogger implements MockLogger {
 	public void responded(String context, HttpMessage request, HttpMessage response, int portNo) {
 		requests ++;
 		String contents = response.getContents().trim();
-		String firstLine = clock.dateTime()+" Received on "+context+": '"+Fixture.escape(request.getContents())+"'. ";
+		String firstLine = "\n-----\n"+clock.dateTime()+" Received on "+context+": '"+Fixture.escape(request.getContents())+"'. ";
 		String secondLine = "Replied with: "+response.getResultCode()+" '" + escape(contents) + "'\n";
 		String lineBreak = "";
 		if (firstLine.length() > 20)

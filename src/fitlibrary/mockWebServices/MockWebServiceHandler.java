@@ -45,7 +45,6 @@ public class MockWebServiceHandler extends AbstractHttpRequestHandler {
 	@Override
 	public void handle(HttpRequest request, HttpResponse response, HttpContext context)
 			throws HttpException, IOException {
-		logger.debug("handle()");
 		String method = request.getRequestLine().getMethod().toUpperCase(Locale.ENGLISH);
 		if (!method.equals("POST")) {
 			throw new MethodNotSupportedException(method

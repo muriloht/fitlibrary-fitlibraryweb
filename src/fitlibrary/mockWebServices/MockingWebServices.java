@@ -30,7 +30,7 @@ public class MockingWebServices {
 	public MockingWebServices(Clock clock) {
 		logging = new ClockedLogger(clock);
 		Logger.getRootLogger().setLevel(Level.ALL);
-		logger.debug("Started MockingWebServices");
+		logger.trace("Started MockingWebServices");
 	}
 	public MockLogger close(int timeout) throws IOException {
 		sleep(timeout);
@@ -44,14 +44,14 @@ public class MockingWebServices {
 		servers.clear();
 	}
 	public void or(int portNo, Term term, boolean insertAtEnd) throws IOException {
-		logger.debug("or "+term);
+		logger.trace("or "+term);
 		MockingServer server = servers.get(new Integer(portNo));
 		if (server == null) {
 			server = new MockingServer(portNo,logging);
 			servers.put(new Integer(portNo),server);
 		}
 		server.or(term,insertAtEnd);
-		logger.debug(portNo+" with "+server.getTerm());
+		logger.trace(portNo+" with "+server.getTerm());
 	}
 	private void sleep(int timeout) {
 		try {

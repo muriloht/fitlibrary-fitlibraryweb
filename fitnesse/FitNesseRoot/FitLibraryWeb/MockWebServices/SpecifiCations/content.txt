@@ -4,3 +4,4 @@
 |!3 >FullSoapMocking|''Specification for mocking soap and providing full soap headers (eg, to include security information)''|
 
 ^MockingBothSoap -- ignore this, it's used for both soap11 and soap12 specs above
+^SetUp
