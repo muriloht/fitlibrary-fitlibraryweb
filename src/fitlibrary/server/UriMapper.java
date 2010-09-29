@@ -6,5 +6,5 @@
 package fitlibrary.server;
 
 public interface UriMapper {
-	String map(String uri);
+	String map(String uri, String path);
 }

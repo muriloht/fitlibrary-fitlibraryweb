@@ -8,6 +8,8 @@ package fitlibrary.ws.recorder;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -19,12 +21,13 @@ import fitlibrary.server.UriMapper;
 
 public class WebServicesRecorder {
 	static Logger logger = FixturingLogger.getLogger(WebServicesRecorder.class);
+	private List<ProxyServer> servers = new ArrayList<ProxyServer>();
 
-	public WebServicesRecorder(String propertyFileName, String resultsFolderName) throws IOException {
+	public WebServicesRecorder(String propertyFileName, String resultsFolderName, String soapVersion, RecordingFolderSelector recordingFolderSelector) throws IOException {
 		Properties properties = readProperties(propertyFileName);
-		createRecorders(properties,resultsFolderName);
+		createRecorders(properties,resultsFolderName,soapVersion,recordingFolderSelector);
 	}
-	private void createRecorders(Properties properties, String resultsFolderName) throws IOException {
+	private void createRecorders(Properties properties, String resultsFolderName, String soapVersion, RecordingFolderSelector recordingFolderSelector) throws IOException {
 		for (int i = 1; i < 10000; i++) {
 			Object localPort = properties.get("localPort"+i);
 			Object hostUrl = properties.get("ws"+i);
@@ -37,20 +40,19 @@ public class WebServicesRecorder {
 				break;
 			}
 			int localPortNo = Integer.parseInt(localPort.toString());
-			createWebServicesRecorder(localPortNo, hostUrl.toString(),resultsFolderName);
+			createWebServicesRecorder(localPortNo, hostUrl.toString(),resultsFolderName,soapVersion,recordingFolderSelector);
 		}
 	}
-	@SuppressWarnings("unused")
-	private void createWebServicesRecorder(int localPortNo, final String wsUrl, String resultsFolderName) throws IOException {
-		Recorder fileRecorder = new FileRecorder(localPortNo,resultsFolderName);
+	private void createWebServicesRecorder(int localPortNo, final String wsUrl, String resultsFolderName, String soapVersion, RecordingFolderSelector recordingFolderSelector) throws IOException {
+		Recorder fileRecorder = new FileRecorder(localPortNo,resultsFolderName,soapVersion,recordingFolderSelector);
 		UriMapper mapper = new UriMapper(){
 			@Override
-			public String map(String uri) {
-				return wsUrl;
+			public String map(String uri, String path) {
+				return wsUrl+path;
 			}
 		};
 		logger.trace("Starting (Mapped)ProxyServer for recording on port "+localPortNo+" -> "+wsUrl);
-		new ProxyServer(localPortNo,mapper,fileRecorder);
+		servers.add(new ProxyServer(localPortNo,mapper,fileRecorder));
 	}
 	private Properties readProperties(String fileName) throws IOException {
 		Properties properties = new Properties();
@@ -59,12 +61,19 @@ public class WebServicesRecorder {
 		reader.close();
 		return properties;
 	}
-	@SuppressWarnings("unused")
 	public static void main(String[] args) throws IOException {
-		if (args.length != 2) {
-			System.err.println("Usage: fitlibrary.ws.recorder.WebServicesRecorder propertyFileName resultsFolderName");
+		if (args.length != 2 && args.length != 3) {
+			System.err.println("Usage: fitlibrary.ws.recorder.WebServicesRecorder propertyFileName resultsFolderName [soapVersion]\n"+
+					"where the optional soapVersion is SOAP11 or SOAP12 (by default it's SOAP11");
 			return;
 		}
-		new WebServicesRecorder(args[0],args[1]);
+		String soapVersion = args.length == 3 ? args[2] : "SOAP11";
+		@SuppressWarnings("unused")
+		WebServicesRecorder webServicesRecorder = new WebServicesRecorder(args[0],args[1],soapVersion,new UniqueRecordingFolderSelector());
+	}
+	public void stop() throws IOException {
+		for (ProxyServer server: servers)
+			server.stop();
+		servers.clear();
 	}
 }

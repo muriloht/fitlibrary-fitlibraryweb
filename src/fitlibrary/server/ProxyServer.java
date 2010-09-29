@@ -33,7 +33,7 @@ public class ProxyServer extends HttpServer {
 	
 	static class NonMapper implements UriMapper {
 		@Override
-		public String map(String uri) {
+		public String map(String uri, String path) {
 			return uri;
 		}
 	}

@@ -1,9 +1,13 @@
 bin
 fitnesse/FitNesseRoot/ErrorLogs
-fitnesse/FitNesseRoot/files/testResults
+fitnesse/FitNesseRoot/files/images/screenDump*.*
 fitnesse/FitNesseRoot/files/soap
+fitnesse/FitNesseRoot/files/testResults
 fitnesse/FitNesseRoot/files/*.html
 fitnesse/FitNesseRoot/RecentChanges
+fitnesse/lib/fitlibraryWeb.jar
+fitnesse/lib/src/fitlibraryWebSrc.zip
+fitnesse/logForFitLibrary.txt
 folderRunner/reports
 folderRunner/tests/files/css
 folderRunner/tests/files/images

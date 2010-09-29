@@ -8,8 +8,6 @@ package fitlibrary.ws.recorder;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.commons.io.IOUtils;
@@ -25,11 +23,13 @@ public class FileRecorder implements Recorder {
 	private final int localPortNo;
 	private final File resultsFolder;
 	private final AtomicInteger count = new AtomicInteger(0);
+	private final String soapVersion;
 
-	public FileRecorder(int localPortNo, String resultsFolderName) {
+	public FileRecorder(int localPortNo, String resultsFolderName, String soapVersion, RecordingFolderSelector recordingFolderSelector) {
 		this.localPortNo = localPortNo;
+		this.soapVersion = soapVersion;
 		File folder = new File(resultsFolderName);
-		resultsFolder = new File(folder,selectFileName(formattedDateTime()));
+		resultsFolder = new File(folder,recordingFolderSelector.selectFileName());
 		resultsFolder.mkdirs();
 	}
 	@Override
@@ -45,14 +45,14 @@ public class FileRecorder implements Recorder {
 			s.append("!*> diry\n"+
 				"!define diry (!-"+resultsFolder.getAbsolutePath()+"-!)\n"+
 				"*!\n\n"+
-				"|!-fitlibrary.ws.MockWebServicesFixture-!|\n\n"+
-				"|mock soap on port|"+localPortNo+"|\n");
+				"|'''also run'''|''with mock web services''|\n\n"+
+				"|''mock full soap as''|"+soapVersion+"|''on port''|"+localPortNo+"|\n");
 		else
-			s.append("|then|\n");
+			s.append("|''then''|\n");
 		s.append(
-			"|matches URL|!-"+uri+"-!|\n"+
-			"|matches request from file|${diry}/!-"+fileName+"/"+REQUEST_FILENAME+"-!|\n"+
-			"|response from file|${diry}/!-"+fileName+"/"+RESPONSE_FILENAME+"-!|\n");
+			"|''matches URL''|!-"+uri+"-!|\n"+
+			"|''matches request from file''|${diry}/!-"+fileName+"/"+REQUEST_FILENAME+"-!|\n"+
+			"|''response from file''|${diry}/!-"+fileName+"/"+RESPONSE_FILENAME+"-!|\n");
 		writeFile(resultsFolder, "storytest"+localPortNo+".txt", s.toString());
 	}
 	private void writeFile(File diry, String fileName, String msg) {
@@ -64,20 +64,5 @@ public class FileRecorder implements Recorder {
 		} catch (IOException e) {
 			logger.error("Problem writing file: "+e);
 		}
-	}
-	private static String selectFileName(String fileName) {
-		String fullFileName = fileName;
-		if (new File(fullFileName).exists()) {
-			for (int i = 1; i < 10000; i++) {
-				String logFileName = fileName+"-"+i;
-				if (!new File(logFileName).exists()) {
-					return logFileName;
-				}
-			}
-		}
-		return fullFileName;
-	}
-	private static String formattedDateTime() {
-		return new SimpleDateFormat("yyyy-MM-dd_HH-mm").format(new Date());
 	}
 }

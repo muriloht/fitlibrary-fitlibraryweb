@@ -48,12 +48,14 @@ public class RecordingProxyHandler implements HttpRequestHandler {
 	public void handle(HttpRequest request, HttpResponse response, HttpContext context)
 			throws IOException {
 		try {
-			String uri = uriMapper.map(request.getRequestLine().getUri());
-			logger.trace("uri: "+uri);
-			logger.trace("Request: "+request.getRequestLine());
+			RequestLine requestLine = request.getRequestLine();
+			logger.trace("Request: "+requestLine);
+			String path = extractPath(requestLine.toString());
+			String uri = uriMapper.map(requestLine.getUri(),path);
+			logger.trace("Request uri: "+uri);
 			String host = request.getFirstHeader("Host").getValue();
 			
-			switch(decodeMethod(request.getRequestLine())) {
+			switch(decodeMethod(requestLine)) {
 			case GET:
 				httpGet(response, uri, host);
 				return;
@@ -72,6 +74,15 @@ public class RecordingProxyHandler implements HttpRequestHandler {
 			logger.error(e.getMessage());
 			throw e;
 		}
+	}
+	private String extractPath(String requestLine) {
+		int start = requestLine.indexOf(" ");
+		if (start < 0)
+			return "/";
+		int end = requestLine.indexOf(" ",start+1);
+		if (end < 0)
+			return "/";
+		return requestLine.substring(start+1,end);
 	}
 	private void httpHead(HttpResponse response, String uri, String host) throws IOException {
 		HttpHead head = new HttpHead(uri);

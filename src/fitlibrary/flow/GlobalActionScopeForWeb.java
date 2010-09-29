@@ -4,24 +4,15 @@ import fitlibrary.date.CreateDate;
 import fitlibrary.email.ElectronicMail;
 import fitlibrary.http.HttpClientFixture;
 import fitlibrary.pdf.PDFDocument;
-import fitlibrary.runtime.RuntimeContextInternal;
+import fitlibrary.server.ProxyServerFixture;
+import fitlibrary.server.WebServerForTestingFixture;
 import fitlibrary.sh.ShellFixture;
-import fitlibrary.traverse.RuntimeContextual;
 import fitlibrary.ws.MockWebServicesFixture;
 import fitlibrary.ws.WebServicesClientFixture;
+import fitlibrary.ws.recorder.RecordingWebServicesFixture;
 import fitlibrary.xml.XmlDoFixture;
 
-public class GlobalActionScopeForWeb implements RuntimeContextual {
-	private RuntimeContextInternal runtimeContext;
-
-	@Override
-	public void setRuntimeContext(RuntimeContextInternal runtime) {
-		this.runtimeContext = runtime;
-	}
-	@Override
-	public Object getSystemUnderTest() {
-		return null;
-	}
+public class GlobalActionScopeForWeb {
 	public WebServicesClientFixture withWebServicesClient() {
 		return new WebServicesClientFixture();
 	}
@@ -45,5 +36,14 @@ public class GlobalActionScopeForWeb implements RuntimeContextual {
 	}
 	public MockWebServicesFixture withMockWebServices() {
 		return new MockWebServicesFixture();
+	}
+	public RecordingWebServicesFixture withRecordingWebServices() {
+		return new RecordingWebServicesFixture();
+	}
+	public WebServerForTestingFixture withWebServerForTesting() {
+		return new WebServerForTestingFixture();
+	}
+	public ProxyServerFixture withProxyServerForTesting() {
+		return new ProxyServerFixture();
 	}
 }
