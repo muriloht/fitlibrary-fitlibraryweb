@@ -11,10 +11,10 @@
 *!
 !3 1. Examples, Tutorial and Specifications
 #
-|!3 For:|!3 See:|
-|''Examples''|^HttpPostText, ^HttpPostTextFromFile|
-|''A tutorial on calling web services''| ^WebServicesTutorial|
-|''Specifications''| ^SpecifiCations|
+|!3 See:|
+|[[''Examples''][^WebServicesExamples]]|
+|[[''A tutorial on calling web services''][^WebServicesTutorial]]|
+|[[''Specifications''][^SpecifiCations]]|
 #
 ----!3 2. Commands
 #
