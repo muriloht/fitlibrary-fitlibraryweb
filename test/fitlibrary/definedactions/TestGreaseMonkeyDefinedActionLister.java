@@ -12,15 +12,15 @@ import static org.junit.Assert.assertThat;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
 
 public class TestGreaseMonkeyDefinedActionLister {
-	Map<File, List<String>> fakeFilesAndContent = new HashMap<File, List<String>>();
+	Map<File, List<String>> fakeFilesAndContent = new LinkedHashMap<File, List<String>>();
 	
 	File fakeLocatioWillNotBeUsed = new File("c:\\zzzzzzz");
 	
