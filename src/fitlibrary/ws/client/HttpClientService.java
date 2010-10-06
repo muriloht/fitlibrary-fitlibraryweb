@@ -31,7 +31,7 @@ import fitlibrary.log.FixturingLogger;
 import fitlibrary.xml.XmlDoFixture;
 
 public class HttpClientService extends XmlDoFixture {
-	static Logger logger = FixturingLogger.getLogger(HttpClientService.class);
+	private static Logger logger = FixturingLogger.getLogger(HttpClientService.class);
 	static int INSTANCES = 0;
 	protected HttpClient client = new DefaultHttpClient();
 	private Header[] headers = new Header[0];
@@ -97,7 +97,9 @@ public class HttpClientService extends XmlDoFixture {
 			entity.setContentType(contentType);
 			entity.setContentEncoding(contentEncoding);
 			post.setEntity(entity);
-			handleReply(client.execute(post));
+			logger.trace("POST executing");
+			HttpResponse execute = client.execute(post);
+			handleReply(execute);
 		} catch (IOException e) {
 			logger.trace("POST failed");
 			post.abort();

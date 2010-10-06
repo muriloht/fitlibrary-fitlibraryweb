@@ -8,8 +8,12 @@ package fitlibrary.ws.client;
 import org.apache.http.client.methods.HttpPost;
 
 public class WebService extends HttpClientService {
+//	private static Logger logger = FixturingLogger.getLogger(WebService.class);
+
 	@Override
 	protected void addExtraHeadersToPost(HttpPost post) {
-		post.setHeader("SOAPAction","\"http://tempuri.org\"");
+//		String value = "\"http://tempuri.org/CelsiusToFahrenheit\"";
+//		post.setHeader("SOAPAction",value);
+//		logger.trace("Add header: 'SOAPAction: "+value);
 	}
 }

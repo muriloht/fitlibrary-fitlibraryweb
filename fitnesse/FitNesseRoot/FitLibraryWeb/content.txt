@@ -1,6 +1,6 @@
 !*< paths and defines
-#!path ../bin
-!path lib/fitlibraryweb.jar
+!path ../bin
+#!path lib/fitlibraryweb.jar
 !path fitlibrary.jar
 #!path ../../fitlibrary/bin
 !path lib/*.jar

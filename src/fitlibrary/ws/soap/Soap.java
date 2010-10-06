@@ -32,7 +32,7 @@ public class Soap {
 		return unwrap(response, "<soap:Body>", "</soap:Body>");
 	}
 	public static String unwrap12(String response) {
-		return unwrap(response, "<soap12:Body>", "</soap12:Body>");
+		return unwrap11(unwrap(response, "<soap12:Body>", "</soap12:Body>"));
 	}
 
 	private static String unwrap(String response, String header, String trailer) {

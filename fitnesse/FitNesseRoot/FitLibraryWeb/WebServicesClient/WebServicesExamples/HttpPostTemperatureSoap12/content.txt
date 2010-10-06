@@ -1,7 +1,7 @@
 |''with web services client''|
 
-|''to''|http://www.w3schools.com/webservices/tempconvert.asmx/FahrenheitToCelsius|''post soap12''|!-<CelsiusToFahrenheit><Celsius>100</Celsius></CelsiusToFahrenheit>-!|
+!|to|http://www.w3schools.com/webservices/tempconvert.asmx|post soap12|<CelsiusToFahrenheit xmlns="http://tempuri.org/"><Celsius>100</Celsius></CelsiusToFahrenheit>|
 
-|''xml in response same as''|<string>0.555555555555556</string>|
+!|xml in response same as|<CelsiusToFahrenheitResponse xmlns="http://tempuri.org/"><CelsiusToFahrenheitResult>212</CelsiusToFahrenheitResult></CelsiusToFahrenheitResponse>|
 
 |''xpath''|!-//CelsiusToFahrenheitResult-!|''in response''|'''is'''|212|
