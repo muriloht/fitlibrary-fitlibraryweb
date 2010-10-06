@@ -10,23 +10,25 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import fitlibrary.runResults.TestResults;
+import fitlibrary.server.WebServerForTesting;
 import fitlibrary.spider.SpiderFixture;
 import fitlibrary.table.Row;
 import fitlibrary.utility.StringUtility;
 
 public class SpecifySpiderFixture extends SpiderFixture {
 	private String testFileName;
-	private int portNo = 80;
+	private int portNo;
+	private WebServerForTesting webServer;
 	
-	public SpecifySpiderFixture() {
-		//
+	public SpecifySpiderFixture() throws IOException {
+		this(80);
 	}
-	public SpecifySpiderFixture(int portNo) {
+	public SpecifySpiderFixture(int portNo) throws IOException {
 		this.portNo = portNo;
+		webServer = new WebServerForTesting(portNo,"FitNesseRoot");
 	}
-	public boolean saveHtmlInForPort(String testingFileName, int port) {
+	public boolean saveHtmlIn(String testingFileName) {
 		this.testFileName = testingFileName;
-		this.portNo = port;
 		return true;
 	}
 	@SuppressWarnings("unused")
@@ -41,7 +43,6 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		s = StringUtility.replaceString(s,"\\r","\r");
 		s = StringUtility.replaceString(s,"\\t","\t");
 		writeFile(FITNESSE_DIFFERENCES.getLocalFile(testFileName).getFile(),s);
-//		writeFile(new File("FitNesseRoot/files/"+testFileName), s);
 		selectInitialWindow();
 		getUrl("http://localhost:"+portNo+"/files/"+testFileName);
 		return true;
@@ -67,5 +68,14 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		writeFile(FITNESSE_DIFFERENCES.getLocalFile(fileName2).getFile(),html);
 //		writeFile(new File("FitNesseRoot/files/"+fileName2), html);
 		return true;
+	}
+	@Override
+	public void shutDown() throws IOException {
+		super.shutDown();
+		webServer.stop();
+	}
+	@Override
+	public void tearDown() throws IOException {
+		shutDown();
 	}
 }

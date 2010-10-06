@@ -9,23 +9,14 @@ import fitlibrary.spider.SpiderFixture;
 import fitlibrary.suite.SuiteFixture;
 
 public class SpecifySpiderSuite extends SuiteFixture {
-	SpecifySpiderFixture spider;
+	private int portNo;
 	
-	public boolean startSpiderOnPortWith(int portNo, String driver) {
+	public boolean startSpiderOnPortWith(int portNumber, String driver) {
+		this.portNo = portNumber;
 		setDynamicVariable(SpiderFixture.WEB_DRIVER_VARIABLE_NAME,driver);
-		spider = new SpecifySpiderFixture(portNo);
-		return true;
-	}
-	public boolean startSpider() {
-		spider = new SpecifySpiderFixture();
 		return true;
 	}
 	public SpecifySpiderFixture spider() throws Exception {
-		spider.restart();
-		return new SpecifySpiderFixture();
-	}
-	public boolean shutDownSpider() {
-		spider.shutDown();
-		return true;
+		return new SpecifySpiderFixture(portNo);
 	}
 }

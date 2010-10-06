@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import org.apache.http.protocol.HttpRequestHandlerRegistry;
 
-
 public class WebServerForTesting extends HttpServer {
 	private String docroot;
 	

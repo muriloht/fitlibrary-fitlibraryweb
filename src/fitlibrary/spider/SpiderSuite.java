@@ -5,6 +5,8 @@
 */
 package fitlibrary.spider;
 
+import java.io.IOException;
+
 import fitlibrary.DefineAction;
 import fitlibrary.suite.SuiteFixture;
 
@@ -24,7 +26,7 @@ public class SpiderSuite extends SuiteFixture {
 		spider.restart();
 		return spider;
 	}
-	public boolean shutDownSpider() {
+	public boolean shutDownSpider() throws IOException {
 		spider.shutDown();
 		return true;
 	}

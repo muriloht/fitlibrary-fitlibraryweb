@@ -5,7 +5,7 @@
 |''firefox profile''|layout.spellcheckDefault|''as integer''|0|
 |''firefox profile''|browser.formfill.enable|''as boolean''|false|
 
-|''save html in''|test.html|''for port''|${FITNESSE_PORT}|
+|''save html in''|test.html|
 
 |''zero report counts''|
 

@@ -4,6 +4,8 @@ Can be firefox, htmlunit, ie.
 *!
 !|fitlibrary.spider.specify.SpecifySpiderSuite|
 
-|''start spider on port''|${FITNESSE_PORT}|''with''| ${driver} |
+ * The following port number has to be available; it can't be the same as the ''!-FitNesse-!'' port.
+
+|''start spider on port''|8998|''with''| ${driver} |
 
 |''select or''| ${driver} |

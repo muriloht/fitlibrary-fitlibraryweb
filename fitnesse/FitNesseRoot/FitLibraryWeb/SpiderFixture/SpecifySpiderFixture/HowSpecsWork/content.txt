@@ -40,5 +40,5 @@ Each ''!-SpiderFixture-!'' storytest/spec runs within a suite.
  . This action also automatically does a ''get url'' on that page, so that subsequent actions can work from there.
 !3 Handling tables
 The html that's given in such a storytest can't contain the following tags because they are interpreted by ''!-FitLibrary-!'', giving odd errors:{{{<table>...</table>}}}
-So instead we use:{{{<t-table >...</t-table >}}} and these are tranlsated before writing to the file.
+So instead we use:{{{<t-table >...</t-table >}}} and these are translated before writing to the file.
 

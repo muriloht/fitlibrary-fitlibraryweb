@@ -5,6 +5,7 @@
 */
 package fitlibrary.spider;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -83,7 +84,8 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	}
 	
 	// --------- SHUT DOWN: ---------
-	public void shutDown() {
+	@SuppressWarnings("unused")
+	public void shutDown() throws IOException {
 		spiderFixture.tearDownDriver();
 	}
 	public void shutDownWithScreenDumpOnFailure() {

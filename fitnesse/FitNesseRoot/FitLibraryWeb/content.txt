@@ -1,6 +1,6 @@
 !*< paths and defines
-!path ../bin
-#!path lib/fitlibraryweb.jar
+#!path ../bin
+!path lib/fitlibraryweb.jar
 !path fitlibrary.jar
 #!path ../../fitlibrary/bin
 !path lib/*.jar
@@ -24,7 +24,7 @@ FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrar
 |''An HTTP client, for testing at the HTTP level''|^HttpClient|[[HTTP Client Tutorial][^HttpClient.HttpClientTutorial]]|[[HTTP Client Specifications][^HttpClient.SpecifiCations]]|
 |''Running a shell/command''|>ShellFixture|[[Docs][>ShellFixture]]|[[Example][^ShellFixture.JavaExample]]|
 |''Using templates (for xmls, etc)''|>TemplateFixture|[[Docs][^TemplateFixture.TemplateFixtureDocs]]|[[Specifications][^TemplateFixture]]|
-|''Creating arbitrary dates''|>CreateDate|[[Docs][>CreateDate]]|[[Detailed Examples][>CreateDate]]|
+|''Creating arbitrary dates''|>CreateDate|[[Docs][>CreateDate]]|[[Detailed Examples][>CreateDate.DetailedExample]]|
 |''Database access (a ''!-DoFixture-! ''wrapper for dbfit)''|>DatabaseFixtures|[[Docs][>DatabaseFixtures]]||
 |''Checking the contents of email''|>ElectronicMail|[[Docs][>ElectronicMail]]||
 |''Checking the contents of a PDF''|>PdfDocument|[[Docs][>PdfDocument]]|[[Example][^PdfDocument.RunningExample]]|

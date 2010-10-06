@@ -115,17 +115,19 @@
 		</java>
 	</target>
 
-	<target name="batch-run-spider-specifications">
-	        <echo message="FitNesse has to be running first on port ${port}" />
+	<target name="batch-run-all">
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
-	</target>
-
-	<target name="batch-run-xml-specifications">
 		<batch-run suite="FitLibraryWeb.XmlProcessing" />
-	</target>
-
-	<target name="batch-run-template-specifications">
-		<batch-run suite="FitLibraryWeb.TemplateFixtureg" />
+		<batch-run suite="FitLibraryWeb.WebServicesClient.SpecifiCations" />
+		<batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.PlainTextServices" />
+		<batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.Soap11Mocking" />
+		<batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.Soap12Mocking" />
+		<batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.FullSoapMocking" />
+		<batch-run suite="FitLibraryWeb.HttpClient.SpecifiCations" />
+		<batch-run suite="FitLibraryWeb.ShellFixture" />
+		<batch-run suite="FitLibraryWeb.TemplateFixture" />
+		<batch-run suite="FitLibraryWeb.CreateDate" />
+		<batch-run suite="FitLibraryWeb.PdfDocument" />
 	</target>
 
 	<target name="restful-run-spider-specifications">
