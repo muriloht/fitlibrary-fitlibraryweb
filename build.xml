@@ -56,7 +56,6 @@
 	</target>
 
 	<target name="junit" description="run the junit tests">
-
 		<junit fork="yes" dir="${home}" showoutput="yes" printsummary="false" outputtoformatters="true">
 			<formatter type="brief" useFile="false" />
 			<classpath>
@@ -70,6 +69,7 @@
 					<include name="**/*.jar" />
 				</fileset>
 			</classpath>
+			<formatter type="xml" if="output-junit-to-xml"/>
 			<batchtest fork="yes" haltonfailure="yes" haltonerror="yes" filtertrace="no">
 				<fileset dir="${test.src}">
 					<include name="**/Test*.java" />
@@ -77,7 +77,6 @@
 
 			</batchtest>
 		</junit>
-
 	</target>
 
 	<target name="start-fitnesse">
@@ -134,6 +133,10 @@
 		<restful-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
 	</target>
 
+	<target name="delete-batch-runner-results-dir">
+		<delete dir="${results-dir}"/>
+	</target>
+	
 	<macrodef name="restful-run">
 		<attribute name="suite" />
 		<sequential>
