@@ -1,5 +1,5 @@
 <project name="FitLibraryWeb" default="jar" basedir=".">
-	<property name="home" value="." />
+	<property name="home" value="${basedir}" />
 	<property name="lib" value="${home}/fitnesse/lib" />
 	<property name="src" value="${home}/src" />
 	<property name="bin" value="${home}/bin" />
@@ -8,7 +8,7 @@
 	<property name="port" value="8990" />
 
 	<!-- batch runner properties -->
-	<property name="showpassesinreport" value="showpasses" />	<!-- true or false -->
+	<property name="showpassesinreport" value="false" />	
 	<property name="results-dir" value="${home}/runnerResults" />
 	<property name="timeout" value="600000" />
 	<!-- 10 mins default timeout -->
@@ -158,6 +158,7 @@
 		<attribute name="timeout" default="600000" />
 		<!-- 10 mins default timeout -->
 		<sequential>
+			<echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
 			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="${fitnesse.dir}" timeout="@{timeout}" failonerror="true">
 				<arg value="-suiteName"/>     <arg value="@{suite}" />
 				<arg value="-fitNesseDiry"/>  <arg value="." />
