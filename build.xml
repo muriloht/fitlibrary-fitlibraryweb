@@ -114,6 +114,10 @@
 		</java>
 	</target>
 
+	<target name="batch-run-spider-specifications">
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
+	</target>
+	
 	<target name="batch-run-all">
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
 		<batch-run suite="FitLibraryWeb.XmlProcessing" />
