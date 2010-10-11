@@ -3,10 +3,11 @@
 |^SpiderWithFirefox|8997|
 |^SpiderWithIe|8996|
 
-|^SpiderSpecsShared|''These are the specs that are shared by the browser-sepecific specifications above''|
+|^SpiderSpecsShared|''These are the specs that are shared by the browser-specific specifications above''|
 #
 !2 Note
  * See ^HowSpecsWork
+
 >SpecSetUp
 >SuiteSetUp
 >TearDown
