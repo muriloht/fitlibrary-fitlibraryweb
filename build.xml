@@ -10,7 +10,7 @@
 	<!-- batch runner properties -->
 	<property name="showpassesinreport" value="false" />	
 	<property name="results-dir" value="${home}/runnerResults" />
-	<property name="timeout" value="600000" />
+	<property name="timeout" value="1200000" />
 	<!-- 10 mins default timeout -->
 
 	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibraryWeb jar file in local FitNesseServer directory" />
@@ -115,11 +115,16 @@
 	</target>
 
 	<target name="batch-run-spider-specifications">
-		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
+	</target>
+	
+	<target name="batch-run-spider-specifications-firefox">
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" />
 	</target>
 	
 	<target name="batch-run-all">
-		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" />
 		<batch-run suite="FitLibraryWeb.XmlProcessing" />
 		<batch-run suite="FitLibraryWeb.WebServicesClient.SpecifiCations" />
 		<batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.PlainTextServices" />
@@ -155,8 +160,8 @@
 
 	<macrodef name="batch-run">
 		<attribute name="suite" />
-		<attribute name="timeout" default="600000" />
-		<!-- 10 mins default timeout -->
+		<attribute name="timeout" default="1200000" />
+		<!-- 20 mins default timeout -->
 		<sequential>
 			<echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
 			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="${fitnesse.dir}" timeout="@{timeout}" failonerror="true">

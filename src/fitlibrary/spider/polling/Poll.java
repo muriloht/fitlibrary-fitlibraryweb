@@ -53,11 +53,14 @@ public class Poll {
 		return false;
 	}
 	public <T> T ensureNoException(PollForNoException<T> poll) throws Exception {
+		boolean loggedError = false;
 		while (true) {
 			try {
 				return poll.act();
 			} catch (Exception e) {
-				logger.trace("Exception caught: "+e);
+				if (!loggedError)
+					logger.trace("Exception caught: "+e);
+				loggedError = true;
 				if (timedOut()) {
 					throw e;
 				}

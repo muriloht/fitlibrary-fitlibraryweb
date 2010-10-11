@@ -17,18 +17,20 @@ import fitlibrary.utility.StringUtility;
 
 public class SpecifySpiderFixture extends SpiderFixture {
 	private String testFileName;
-	private int portNo;
-	private WebServerForTesting webServer;
+	private final int portNo;
+	private final String driverName;
+	private final WebServerForTesting webServer;
 	
 	public SpecifySpiderFixture() throws IOException {
-		this(80);
+		this(8096,"htmlUnit");
 	}
-	public SpecifySpiderFixture(int portNo) throws IOException {
+	public SpecifySpiderFixture(int portNo, String driverName) throws IOException {
 		this.portNo = portNo;
+		this.driverName = driverName;
 		webServer = new WebServerForTesting(portNo,"FitNesseRoot");
 	}
 	public boolean saveHtmlIn(String testingFileName) {
-		this.testFileName = testingFileName;
+		this.testFileName = driverName+"/"+testingFileName;
 		return true;
 	}
 	@SuppressWarnings("unused")
@@ -65,7 +67,7 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		if (split.length > 1)
 			throw new RuntimeException("fix");
 		String fileName2 = split[split.length-1];
-		writeFile(FITNESSE_DIFFERENCES.getLocalFile(fileName2).getFile(),html);
+		writeFile(FITNESSE_DIFFERENCES.getLocalFile(driverName+"/"+fileName2).getFile(),html);
 //		writeFile(new File("FitNesseRoot/files/"+fileName2), html);
 		return true;
 	}
@@ -75,7 +77,8 @@ public class SpecifySpiderFixture extends SpiderFixture {
 		webServer.stop();
 	}
 	@Override
-	public void tearDown() throws IOException {
+	public void tearDown() throws Exception {
 		shutDown();
+		Thread.sleep(50);
 	}
 }

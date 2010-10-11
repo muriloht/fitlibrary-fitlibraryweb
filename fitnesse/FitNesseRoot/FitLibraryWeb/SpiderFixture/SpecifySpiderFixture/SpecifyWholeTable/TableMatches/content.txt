@@ -1,7 +1,0 @@
-|''keywords''|htmlunit,firefox,ie|
-
-!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyWholeTable.SpecSetUp
-
-|''table values''|//table|
-|red|green|
-|yellow|blue|

@@ -1,0 +1,11 @@
+|''keywords''|htmlunit,firefox,ie|
+
+!include -c <SpecifyFrames.SpecSetUp
+
+|''frame by name''|green|
+
+|''page contains text''|greening|
+
+|''default frame''|
+
+|''page contains text''|reddening|

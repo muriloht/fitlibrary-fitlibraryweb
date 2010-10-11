@@ -1,11 +1,11 @@
-!*< def
-!define driver {htmlunit}
-Can be firefox, htmlunit, ie.
-*!
 !|fitlibrary.spider.specify.SpecifySpiderSuite|
 
- * The following port number has to be available; it can't be the same as the ''!-FitNesse-!'' port.
+ * The following driver can be firefox, htmlunit, ie.
+ * The following port number has to be a port that is currently unused. So it can't be the same as the ''!-FitNesse-!'' port.
 
-|''start spider on port''|8998|''with''| ${driver} |
+|'''set'''|webDriver.driver|''to''|htmlunit|
+|'''set'''|serverPort|''to''|8998|
 
-|''select or''| ${driver} |
+|''start spider on port''|@{serverPort}|''with''| @{webDriver.driver} |
+
+|''select or''| @{webDriver.driver} |

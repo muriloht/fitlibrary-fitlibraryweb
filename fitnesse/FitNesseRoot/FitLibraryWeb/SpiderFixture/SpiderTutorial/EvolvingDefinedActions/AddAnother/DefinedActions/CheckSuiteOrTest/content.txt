@@ -16,7 +16,11 @@ Notice that we want to keep the "domain language" used in storytests simple, so 
 ----
 |''check test''|test|''passes''|
 
-|''check suite''|@{test}|''at''| |''with link''|Test|''passes''|
+|''check test''|@{test}|''at''| |''passes''|
+----
+|''check test''|test|''at''|prefix|''passes''|
+
+|''check suite''|@{test}|''at''|@{prefix}|''with link''|Test|''passes''|
 ----
 |''check suite''|suite|''at''|prefix|''with link''|suiteOrTest|''passes''|
 

@@ -32,6 +32,6 @@ The last action checks that the element is visible.
 #
 !1 Next
 #
-That's the end of the tutorial.  See [[Wrap Up][<SpiderTutorial.WrapUp]] for a wrap up.
+That's the end of the tutorial.  See [[Wrap Up][<SpiderTutorial.WrapUp]] for a summary, etc.
 
 

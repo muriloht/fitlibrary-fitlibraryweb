@@ -16,7 +16,7 @@ If you run this test, you'll also see that "''stop watches''" have been added to
 
 |''check suite''|!-XmlProcessing-!|''passes''|
 
-|''check test''|!-CreateDate-!|''passes''|
+|''check test''|!-DetailedExample-!|''at''|!-CreateDate.-!|''passes''|
 
 !2 Evolution
 

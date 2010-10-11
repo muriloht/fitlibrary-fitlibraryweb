@@ -8,7 +8,7 @@ So we'll introduce a new ''defined action'', called ''check suite at passes'' th
 
 |''check suite''|!-XmlProcessing-!|''passes''|
 
-|''check suite''|!-SpecifySpiderFixture-!|''at''|!-SpiderFixture.-!|''passes''|
+|''check suite''|!-SpecifyRadio-!|''at''|!-SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.-!|''passes''|
 
 That all works. But if we look at the second and third ''defined action'', they look rather similar.
 
