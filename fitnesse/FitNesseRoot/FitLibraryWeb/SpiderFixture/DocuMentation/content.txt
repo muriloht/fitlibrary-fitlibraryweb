@@ -33,7 +33,7 @@ where the driver is "firefox" or "htmlunit". For details of managing Firefox pro
 ----
 |!3 ^CommandUserGuide|''A user guide to ''!-SpiderFixture-!'' actions''|
 
-----!3 Restart Driver ([[spec][<FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecifyZzRestartWith]])
+----!3 Restart Driver ([[spec][.FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyZzRestartWith]])
 To restart spider with a different driver (carrying cookies across):
 
 |''restart with''|firefox|

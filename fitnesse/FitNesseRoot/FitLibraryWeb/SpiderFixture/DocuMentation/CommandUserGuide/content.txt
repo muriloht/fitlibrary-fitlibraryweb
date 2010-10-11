@@ -1,18 +1,18 @@
 !*****> Page traversal: Get url, click, back, forward, title, url, poll url
 
- * Get the given url ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyGetUrl]]):
+ * Get the given url ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyGetUrl]]):
 
 |''get url''|http://localhost/SpiderFixture|
 
- * Click on the link identified by an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyClick]]):
+ * Click on the link identified by an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyClick]]):
 
 |''click''|//a[@id="link12"]|
 
- * Click on the link identified by the name of the link ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyClickOnNamedLink.SpecifyNamedLink]]):
+ * Click on the link identified by the name of the link ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyClickOnNamedLink.SpecifyNamedLink]]):
 
 |''click on named link''|link name|
 
- * Click on the link identified by substring of the name of the link ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyClickOnNamedLink.SpecifyPartiallyNamedLink]]):
+ * Click on the link identified by substring of the name of the link ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyClickOnNamedLink.SpecifyPartiallyNamedLink]]):
 
 |''click on partially named link''|link name|
 
@@ -22,27 +22,27 @@
 
 Note that if a click leads to a popup window being open, it's best to explicitly select that window (See the ''Windows'' section below).
 
- * Back button ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyBackAndForward]]):
+ * Back button ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyBackAndForward]]):
 
 |''back''|
 
- * Forward button ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyBackAndForward]]):
+ * Forward button ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyBackAndForward]]):
 
 |''forward''|
 
- * Refresh current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyRefresh]]):
+ * Refresh current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyRefresh]]):
 
 |''refresh page''|
 
- * Check title of current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyTitleIs]]):
+ * Check title of current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTitleIs]]):
 
 |''title''|'''is'''|!-SpiderFixture-!|
 
- * Check url of current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyUrlIs]]):
+ * Check url of current page ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyUrlIs]]):
 
 |''url''|'''is'''|http://localhost/SpiderFixture|
 
- * Poll a Url until some condition is satisfied ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPollUrl]]):
+ * Poll a Url until some condition is satisfied ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyPollUrl]]):
 
 |'''poll url'''|http://localhost:${FITNESSE_PORT}/files/test.html|'''until'''|''element''|//p[@name="pp"]|''exists''|
 
@@ -54,7 +54,7 @@ Note that if a click leads to a popup window being open, it's best to explicitly
 #
 !*****> Form Submit
 
- * Submit the form identified by an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyFormSubmit]]):
+ * Submit the form identified by an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyFormSubmit]]):
 
 |''submit''|//form|
 
@@ -66,29 +66,29 @@ Note that if a click leads to a popup window being open, it's best to explicitly
 #
 !*****> Checking and changing text
 
- * Check (exactly) the text of a text area, input text, or any element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyTextOf]]):
+ * Check (exactly) the text of a text area, input text, or any element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTextOf]]):
 
 |''text of''|//textarea[@id="address"]|'''is'''|some text|
 |''text of''|//input[@id="withValue"]	|'''is'''|some other text|
 |''text of''|//div[@id="ision"]|'''is'''|some more text|
 
- * Check text of a text area, input text, or any element against a pattern ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyTextOfMatches]]):
+ * Check text of a text area, input text, or any element against a pattern ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTextOfMatches]]):
 
 |''text of''|//textarea[@id="address"]|'''matches'''|some .* pattern|
 
- * Check the plain text of a text area, etc, ignoring whitespace, tags, etc ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPlainTextOf]], [[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPlainTextOfMatches]]):
+ * Check the plain text of a text area, etc, ignoring whitespace, tags, etc ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyPlainTextOf]], [[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyPlainTextOfMatches]]):
 
 |''plain text of''|//input[@id="withSpaces"]|''is''|red green|
 
- * Check the text preserve inner tags ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyInnerHtmlOf]]):
+ * Check the text preserve inner tags ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyInnerHtmlOf]]):
 
 |''inner html of''|//tt[@id="withTag"]|''is''|yellow <b>orange</b>|
 
- * Change text of text area or input text ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyWithSetText]]):
+ * Change text of text area or input text ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWithSetText]]):
 
 |''with''|//input[@id="firstName"]|''set text''|John|
 
- * Add text to a text area or input text ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyWithAddText]]):
+ * Add text to a text area or input text ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWithAddText]]):
 
 |''with''|//input[@id="firstName"]|''add text''|.|
 
@@ -98,11 +98,11 @@ Note that any text changes are (optionally) verified to have occurred (see AutoC
 #
 !*****> Matching text anywhere in the page
 
- * Check whether some text (or a pattern) occurs anywhere in the source of the page (includes the html)  ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPageContainsText]]).
+ * Check whether some text (or a pattern) occurs anywhere in the source of the page (includes the html)  ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyPageContainsText]]).
 
 |''page source''|'''contains'''|spread|
 
- * Matching with a pattern ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyPageContainsRegularExpression]]):
+ * Matching with a pattern ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyPageContainsRegularExpression]]):
 
 |''page source''|'''matches'''|spag*ti|
 
@@ -118,7 +118,7 @@ To use special characters, such as !-|-! in regular expressions, escape the char
 #
 !*****> Checkbox and radio button
 
-([[checkbox spec][<SpiderFixture.SpecifySpiderFixture.SpecifyCheckbox]], [[radio spec][<SpiderFixture.SpecifySpiderFixture.SpecifyRadio]])
+([[checkbox spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyCheckbox]], [[radio spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyRadio]])
 
  * Is a checkbox or radio button checked/selected?
 
@@ -142,7 +142,7 @@ Note that checkbox changes are (optionally) verified to have occurred (see AutoC
 #
 !*****> Select options
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifySelect]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifySelect]])
 
 Note that select changes are (optionally) verified to have occurred (see .#changes).
 
@@ -158,7 +158,7 @@ Note that select changes are (optionally) verified to have occurred (see .#chang
 
 |''with''|//select[@name="colour"]|''select option at''|4|
 
- * optionally select a specific option by name ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyOptionallySelect]]):
+ * optionally select a specific option by name ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyOptionallySelect]]):
 
 The action is ignored if the option is blank.
 
@@ -189,7 +189,7 @@ Note that any select changes are (optionally) verified to have occurred (see Aut
 #
 !*****> Multi-select options
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyMultiSelect]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyMultiSelect]])
 
  * check the current options of a multi select (in order):
 
@@ -213,27 +213,27 @@ Note that multi-select changes are (optionally) verified to have occurred (see .
 #
 !*****> General elements: existence, value, attributes and count
 
- * Does a given element exist on the page? ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyElementExists]])
+ * Does a given element exist on the page? ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyElementExists]])
 
 |''element''|//input[@name='save']|''exists''|
 
- * Does a given element not exist on the page? (This will show an error if the xpath is incorrectly formed)  ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyElementDoesNotExist]]):
+ * Does a given element not exist on the page? (This will show an error if the xpath is incorrectly formed)  ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyElementDoesNotExist]]):
 
 |''element''|//input[@name='save']|''does not exist''|
 
- * Check the value of an element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyElementValue]]):
+ * Check the value of an element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyElementValue]]):
 
 |''element value''|//div//div|'''is'''|current|
 
- * Check an attribute value of an element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyElementAttributes]]):
+ * Check an attribute value of an element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyElementAttributes]]):
 
 |''attribute''|symphony|''of''|//div//beethoven|'''is'''|fourth|
 
- * Count of elements matching an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyElementCount]]):
+ * Count of elements matching an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyElementCount]]):
 
 |''count of''|//p[@id="p"]|''is''|3|
 
- * Checking the attribute value (or text) for a set of children of some type under some element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyTheAttributeOfChildrenOfTypeOfElement]]):
+ * Checking the attribute value (or text) for a set of children of some type under some element ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTheAttributeOfChildrenOfTypeOfElement]]):
 
 |''attribute''|text|''of children of type''|li|''of''|//ul|'''is'''|a,b,c|
 |''attribute''|name|''of children of type''|option|''of''|//select|'''is'''|n1,n2|
@@ -242,7 +242,7 @@ Note that multi-select changes are (optionally) verified to have occurred (see .
 #
 !*****> Applying commands to elements under a selected element
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyWithinContext]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWithinContext]])
 
  * It can be convenient to select an element, such as a table row, and then have subsequent actions apply within that element. For example, the second row of the following action accesses within the first cell of the html table selected:
 
@@ -267,7 +267,7 @@ Note that multi-select changes are (optionally) verified to have occurred (see .
 #
 !*****> Finding an element by (partially) matching on its attributes
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyFindElement]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyFindElement]])
 
 Sometimes it's very difficult to select an element by xpath, or the xpath is very fragile to minor structural changes to the elements of the page. So we provide a way of selecting an element based on (partially) matching attributes and/or text of the element.
 
@@ -292,7 +292,7 @@ Any rows after the ''select'' row then operate on that selected element (as disc
 #
 !*****> Tables
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyWholeTable]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWholeTable]])
 
  * Check the text in a whole table:
 
@@ -301,7 +301,7 @@ Any rows after the ''select'' row then operate on that selected element (as disc
 |John|First St|
 |Tony|Second St|
 
- * An element of a table can be accessed directly with an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyTableParts]]). For example, the following accesses the textarea in the second cell of the second row:
+ * An element of a table can be accessed directly with an xpath ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTableParts]]). For example, the following accesses the textarea in the second cell of the second row:
 
 |''text of''|//table//tr[2]//td[2]//textarea|'''is'''|green|
 ----
@@ -309,7 +309,7 @@ Any rows after the ''select'' row then operate on that selected element (as disc
 #
 !*****> Frames
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyFrames]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyFrames]])
 
 The first frame !-(#0)-! of a frameset is selected automatically. The current title and url are of that first frame, rather than of the loaded html containing the frameset.
 
@@ -329,7 +329,7 @@ The first frame !-(#0)-! of a frameset is selected automatically. The current ti
 #
 !*****> iFrames
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyIframes]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyIframes]])
 
  * Select iframe by number (zero-based). This limits the html elements to those that are in the selected iframe.
 
@@ -347,7 +347,7 @@ The first frame !-(#0)-! of a frameset is selected automatically. The current ti
 #
 !*****> Windows
 
-([[spec][<SpiderFixture.SpecifySpiderFixture.SpecifyWindows]])
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWindows]])
 
  * To select a named window:
 
@@ -472,7 +472,7 @@ Given this, the page is checked for the given regular expression in the followin
 
 If the page matches the regular expression, the text of the given xpath element is shown in the report. If there is no xpath given or no matching element, the whole page is shown (as plain text, not as rendered html).
 
-([[specs][<SpiderFixture.SpecifySpiderFixture.SpecifyGeneralErrorChecking.SpecifyError]])
+([[specs][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyGeneralErrorChecking.SpecifyError]])
 ----
 **********!
 #
