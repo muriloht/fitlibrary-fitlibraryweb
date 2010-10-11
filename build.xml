@@ -114,7 +114,7 @@
 		</java>
 	</target>
 
-	<target name="batch-run-spider-specifications">
+	<target name="batch-run-spider-specifications-htmlunit">
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
 	</target>
 	
