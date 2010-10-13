@@ -36,7 +36,7 @@ public class WebElementIdentifier {
 	private String addAttributes() {
 		comma = "";
 		StringBuilder s = new StringBuilder();
-		addUnless(s,"name",element.getElementName(),tag);
+		addUnless(s,"name",element.getTagName(),tag);
 		addAttribute(s, "id");
 		
 		String attributes = 

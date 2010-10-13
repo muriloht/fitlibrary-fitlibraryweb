@@ -213,7 +213,7 @@ public class SeleniumWebElement implements WebElement, SearchContext, FindsById,
 		return locator.startsWith("link=");
 	}
 	@Override
-	public String getElementName() {
+	public String getTagName() {
 		notYetImplemented();
 		return null;
 	}
