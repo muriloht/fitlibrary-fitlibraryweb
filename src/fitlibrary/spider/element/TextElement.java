@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebElement;
 
+import com.sun.corba.se.pept.transport.ContactInfo;
+
 import fit.Parse;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.MultiLineMatchFixture;
@@ -93,7 +95,14 @@ public class TextElement extends SpiderElement {
 	private String collectText(WebElement element, boolean trim) {
 		String value = element.getText();
 		if (value == null || "".equals(value.trim())) {
-			value = element.getValue();
+			try {
+				value = element.getValue();
+			} catch(UnsupportedOperationException uso) {
+				// re throw unless exception is about missing value attribute then we just handle gracefully..
+				if (!uso.getMessage().contains("Element does not have a value attribute")) {
+					throw uso; 
+				}
+			} 
 		}
 		if (value == null) {
 			value = "";
