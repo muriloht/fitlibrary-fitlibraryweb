@@ -3,14 +3,12 @@
 <p name="pp" value="ppp">bla</p>}}})
 *!
 
-|''keywords''|firefox|
+|''keywords''||
 
 !2 Currently no longer available in any browser we support: firefox, htmlunit and ie.
 !2 For an explanation see:  http://code.google.com/p/selenium/wiki/XpathInWebDriver
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
-
-|use firefox profile|Debug|
 
 |''with html''|${html}|
 
