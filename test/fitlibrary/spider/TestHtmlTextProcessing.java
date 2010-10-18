@@ -25,7 +25,7 @@ public class TestHtmlTextProcessing
 	}
 	@Test
 	public void breakIsRemoved() {
-		Assert.assertEquals("a b",HtmlTextUtility.brToSpace("a<br>b"));
+		Assert.assertEquals("a b c d",HtmlTextUtility.brToSpace("a<br>b<br/>c<br />d"));
 	}
 	@Test
 	public void crAndLfRemoved() {
@@ -39,7 +39,6 @@ public class TestHtmlTextProcessing
     public void unicodeNonBreakingSpaceTospace()  {
         String converted = HtmlTextUtility.nonBreakingSpaceToSpace("hello\u00A0world\u00A0.");
 		assertEquals("hello world .",converted);
-        assertEquals(32, converted.getBytes()[5]);
     }
 	@Test
 	public void spacesToSingleSpace() {
