@@ -64,8 +64,7 @@ public class TextElement extends SpiderElement {
 			}
 			@Override
 			public String error() {
-				return "Text wasn't changed correctly, it's '"
-						+ element.getText() + "'";
+				return "Text wasn't changed correctly, it's "+(element.getText().length() >0 ? "'"+element.getText()+"'" : "empty");
 			}
 		});
 		return true;
