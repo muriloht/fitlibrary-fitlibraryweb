@@ -5,6 +5,8 @@
 */
 package fitlibrary.spider;
 
+import static org.junit.Assert.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -33,6 +35,12 @@ public class TestHtmlTextProcessing
 	public void nonBreakingSpaceToSpace() {
 		Assert.assertEquals("a ba b",HtmlTextUtility.nonBreakingSpaceToSpace("a&nbsp;ba&nbsp;b"));
 	}
+	@Test
+    public void unicodeNonBreakingSpaceTospace()  {
+        String converted = HtmlTextUtility.nonBreakingSpaceToSpace("hello\u00A0world\u00A0.");
+		assertEquals("hello world .",converted);
+        assertEquals(32, converted.getBytes()[5]);
+    }
 	@Test
 	public void spacesToSingleSpace() {
 		Assert.assertEquals("a b c",HtmlTextUtility.spacesToSingleSpace("a    b  c"));
