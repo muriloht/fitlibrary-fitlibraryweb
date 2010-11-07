@@ -161,7 +161,7 @@
 
 	<macrodef name="batch-run">
 		<attribute name="suite" />
-		<attribute name="timeout" default="1200000" />
+		<attribute name="timeout" default="1800000" />
 		<!-- 20 mins default timeout -->
 		<sequential>
 			<echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
