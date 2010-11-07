@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.WebElement;
 
-import com.sun.corba.se.pept.transport.ContactInfo;
-
 import fit.Parse;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.MultiLineMatchFixture;
@@ -107,9 +105,8 @@ public class TextElement extends SpiderElement {
 			value = "";
 		}
 		if (trim) {
-			value = crLfRemoved(
-					spacesToSingleSpace(nonBreakingSpaceToSpace(tabToSpace(brToSpace(value)))))
-					.trim();
+			value = spacesToSingleSpace(crLfToSpace(nonBreakingSpaceToSpace(
+					tabToSpace(brToSpace(value))))).trim();
 		}
 		return Parse.unescape(value);
 	}
@@ -156,8 +153,8 @@ public class TextElement extends SpiderElement {
 		m.appendTail(sb);
 		return sb.toString();
 	}
-	public static String crLfRemoved(String s) {
-		return s.replaceAll("\\r?\\n", "");
+	public static String crLfToSpace(String s) {
+		return s.replaceAll("\\r?\\n", " ");
 	}
 	public static String spacesToSingleSpace(String s) {
 		return s.replaceAll("\\s{2,}", " ");
