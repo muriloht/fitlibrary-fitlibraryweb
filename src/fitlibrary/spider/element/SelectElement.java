@@ -29,7 +29,9 @@ public class SelectElement extends SpiderElement {
 		List<WebElement> childrenOf = childrenOf(locator, "option");
 		for (WebElement option : childrenOf)
 			if (option.isSelected()) {
-				return option.getValue();
+				String value = option.getValue();
+				
+				return (value == null || value.length()==0) ? option.getText() : value;
 			}
 		return "";
 	}
@@ -118,6 +120,8 @@ public class SelectElement extends SpiderElement {
 				List<WebElement> childrenOf = childrenOf(locator, "option");
 				for (WebElement optionElement : childrenOf) {
 					String value = optionElement.getValue();
+					if (value == null || value.length()==0)
+						value = optionElement.getText();
 					if (value != null && value.equalsIgnoreCase(option)) {
 						if (select != optionElement.isSelected()) {
 							if (select) {
@@ -126,7 +130,7 @@ public class SelectElement extends SpiderElement {
 								optionElement.toggle();
 							}
 						}
-						return true;
+						return optionElement.isSelected() == select;
 					}
 				}
 				return false;
