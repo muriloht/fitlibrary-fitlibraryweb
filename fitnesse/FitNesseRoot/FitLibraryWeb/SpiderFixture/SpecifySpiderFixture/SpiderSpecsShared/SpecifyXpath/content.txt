@@ -4,6 +4,4 @@
 ^ByNameWithIe
 ^ByPositionAndId
 
->InvalidXpathInHtmlUnit
-^InvalidXpathInFireFox
-^InvalidXpathInIe
+^InvalidXpath
