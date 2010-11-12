@@ -14,4 +14,4 @@
 
 |''element''|//input[@id="bad|''does not exist''|
 
-|''expected test results''|3|''right''|0|''wrong''|0|''ignored''|0|''exceptions''|
+|''expected test results''|4|''right''|0|''wrong''|0|''ignored''|0|''exceptions''|
