@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.internal.FindsById;
 import org.openqa.selenium.internal.FindsByLinkText;
@@ -20,7 +19,7 @@ import com.thoughtworks.selenium.Selenium;
 
 import fitlibrary.exception.FitLibraryException;
 
-public class SeleniumWebElement implements WebElement, SearchContext, FindsById, FindsByLinkText, 
+public class SeleniumWebElement implements WebElement, FindsById, FindsByLinkText, 
 						FindsByXPath, FindsByName {
 	private final Selenium selenium;
 	private final String locator;
