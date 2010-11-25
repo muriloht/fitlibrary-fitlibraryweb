@@ -5,6 +5,8 @@
 */
 package fitlibrary.spider;
 
+import static org.junit.Assert.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -23,7 +25,7 @@ public class TestHtmlTextProcessing
 	}
 	@Test
 	public void breakIsRemoved() {
-		Assert.assertEquals("a b",HtmlTextUtility.brToSpace("a<br>b"));
+		Assert.assertEquals("a b c d",HtmlTextUtility.brToSpace("a<br>b<br/>c<br />d"));
 	}
 	@Test
 	public void crAndLfRemoved() {
@@ -33,6 +35,11 @@ public class TestHtmlTextProcessing
 	public void nonBreakingSpaceToSpace() {
 		Assert.assertEquals("a ba b",HtmlTextUtility.nonBreakingSpaceToSpace("a&nbsp;ba&nbsp;b"));
 	}
+	@Test
+    public void unicodeNonBreakingSpaceTospace()  {
+        String converted = HtmlTextUtility.nonBreakingSpaceToSpace("hello\u00A0world\u00A0.");
+		assertEquals("hello world .",converted);
+    }
 	@Test
 	public void spacesToSingleSpace() {
 		Assert.assertEquals("a b c",HtmlTextUtility.spacesToSingleSpace("a    b  c"));

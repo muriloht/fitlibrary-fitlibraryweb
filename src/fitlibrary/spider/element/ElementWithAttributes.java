@@ -50,9 +50,9 @@ public class ElementWithAttributes extends SpiderElement {
 				try {
 					finder().findElement(locator);
 					return false;
-				} catch (NoSuchElementException e) {
+				} catch (Exception e) {
 					return true;
-				}
+				} 
 			}
 		});
 	}

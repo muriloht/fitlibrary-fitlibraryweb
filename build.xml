@@ -6,6 +6,7 @@
 	<property name="test.src" value="${home}/test" />
 	<property name="fitnesse.dir" value="${home}/fitnesse" />
 	<property name="port" value="8990" />
+	<property name="batch-run-retries" value="0" />
 
 	<!-- batch runner properties -->
 	<property name="showpassesinreport" value="false" />	
@@ -160,7 +161,7 @@
 
 	<macrodef name="batch-run">
 		<attribute name="suite" />
-		<attribute name="timeout" default="1200000" />
+		<attribute name="timeout" default="1800000" />
 		<!-- 20 mins default timeout -->
 		<sequential>
 			<echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
@@ -170,6 +171,7 @@
 				<arg value="-resultsDiry"/>   <arg value="${results-dir}" />
 				<arg value="-showPasses"/>    <arg value="${showpassesinreport}" />
 				<arg value="-port"/>          <arg value="${port}" />
+				<arg value="-retries"/>       <arg value="${batch-run-retries}" />
 
 				<classpath>
 					<pathelement location="${fitnesse.dir}/fitnesse.jar" />

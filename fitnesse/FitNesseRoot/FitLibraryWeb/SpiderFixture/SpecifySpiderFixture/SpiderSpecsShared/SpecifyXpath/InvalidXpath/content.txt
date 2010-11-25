@@ -4,9 +4,7 @@
 <p name="pp">bla</p>}}})
 *!
 
- * Firefox hangs with an invalid xpath
-
-|''keywords''|htmlunit|
+|''keywords''|htmlunit,firefox,ie|
 
 !include <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -14,5 +12,5 @@
 
 |''element''|//input[@id="bad|''does not exist''|
 
-|''expected test results''|1|''right''|0|''wrong''|0|''ignored''|1|''exceptions''|
+|''expected test results''|3|''right''|0|''wrong''|0|''ignored''|0|''exceptions''|
 

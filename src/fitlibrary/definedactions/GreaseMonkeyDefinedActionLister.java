@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
 import fitlibrary.DoFixture;
+import fitlibrary.exception.FitLibraryException;
 import fitlibrary.log.FixturingLogger;
 
 public class GreaseMonkeyDefinedActionLister extends DoFixture {
@@ -124,8 +125,13 @@ public class GreaseMonkeyDefinedActionLister extends DoFixture {
 
 	private String convertFilePathToFitnesseLink(File file) {
 		String path = file.getPath();
-		path = path.substring(path.indexOf("FitNesseRoot") + 13, path
-				.indexOf("\\content.txt"));
+		int indexOfFitNesseRoot = path.indexOf("FitNesseRoot");
+		int indexOfContent = path.indexOf("\\content.txt");
+		
+		if (indexOfContent == -1 || indexOfFitNesseRoot == -1)
+			throw new FitLibraryException("Cannot find either FitNesseRoot or content.txt in file path ["+path+"].");
+			
+		path = path.substring(indexOfFitNesseRoot + 13, indexOfContent);
 		path = path.replace('\\', '.');
 		path = "/" + path;
 		return path;

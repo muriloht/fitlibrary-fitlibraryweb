@@ -3,9 +3,10 @@
 <input type="checkbox" id="changing" onchange="javascript:document.title='Hanging'">Changing</input>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|firefox|
 
 !2 Not supported in IE
+!2 !-Not supported in HtmlUnit since version 2.8 -- see HtmlUnit bug #3018437-!
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

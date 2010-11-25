@@ -62,8 +62,7 @@ public class TextElement extends SpiderElement {
 			}
 			@Override
 			public String error() {
-				return "Text wasn't changed correctly, it's '"
-						+ element.getText() + "'";
+				return "Text wasn't changed correctly, it's "+(element.getText().length() >0 ? "'"+element.getText()+"'" : "empty");
 			}
 		});
 		return true;
@@ -93,15 +92,21 @@ public class TextElement extends SpiderElement {
 	private String collectText(WebElement element, boolean trim) {
 		String value = element.getText();
 		if (value == null || "".equals(value.trim())) {
-			value = element.getValue();
+			try {
+				value = element.getValue();
+			} catch(UnsupportedOperationException uso) {
+				// re throw unless exception is about missing value attribute then we just handle gracefully..
+				if (!uso.getMessage().contains("Element does not have a value attribute")) {
+					throw uso; 
+				}
+			} 
 		}
 		if (value == null) {
 			value = "";
 		}
 		if (trim) {
-			value = crLfRemoved(
-					spacesToSingleSpace(nonBreakingSpaceToSpace(tabToSpace(brToSpace(value)))))
-					.trim();
+			value = spacesToSingleSpace(crLfToSpace(nonBreakingSpaceToSpace(
+					tabToSpace(brToSpace(value))))).trim();
 		}
 		return Parse.unescape(value);
 	}
@@ -148,8 +153,8 @@ public class TextElement extends SpiderElement {
 		m.appendTail(sb);
 		return sb.toString();
 	}
-	public static String crLfRemoved(String s) {
-		return s.replaceAll("\\r?\\n", "");
+	public static String crLfToSpace(String s) {
+		return s.replaceAll("\\r?\\n", " ");
 	}
 	public static String spacesToSingleSpace(String s) {
 		return s.replaceAll("\\s{2,}", " ");

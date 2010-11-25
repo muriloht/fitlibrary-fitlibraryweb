@@ -119,6 +119,16 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 			public void setSpeed(Speed speed) {
 				selenium.setSpeed(""+speed.getTimeOut());
 			}
+			@Override
+			public Cookie getCookieNamed(String name) {
+				notYetImplemented();
+				return null;
+			}
+			@Override
+			public Timeouts timeouts() {
+				notYetImplemented();
+				return null;
+			}
 		};
 	}
 	@Override
