@@ -130,7 +130,7 @@ public class SelectElement extends SpiderElement {
 								optionElement.toggle();
 							}
 						}
-						return optionElement.isSelected() == select;
+						return true;
 					}
 				}
 				return false;
