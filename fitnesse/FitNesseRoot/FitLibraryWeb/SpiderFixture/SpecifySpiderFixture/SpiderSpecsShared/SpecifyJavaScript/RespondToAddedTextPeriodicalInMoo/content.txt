@@ -6,7 +6,7 @@ function updateCounts() ^@(
   $('123').set('html','123');
 ^@)
 window.addEvent('domready', function() ^@(
-  updateCounts.periodical(100);
+  updateCounts.periodical(50);
 ^@));
 </script>
 
