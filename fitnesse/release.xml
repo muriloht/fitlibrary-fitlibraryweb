@@ -23,7 +23,6 @@
 		<echo message="This assumes that a build of the jar has already been carried out!"/>
 		<copy todir="${release}/fitnesse">
 			<fileset dir="${here}">
-				<include name="fitlibrary.jar" />
 				<include name="runFitNesseDirectlyForWeb.bat" />
 			</fileset>
 		</copy>
@@ -45,6 +44,9 @@
 
 		<copy todir="${release}">
 			<fileset file="../releaseWebREAD-ME.html" />
+		</copy>
+		<copy tofile="${release}/web-build.xml">
+			<fileset file="../build.xml" />
 		</copy>
 		<copy todir="${release}/folderRunner">
 			<fileset dir="../folderRunner" />

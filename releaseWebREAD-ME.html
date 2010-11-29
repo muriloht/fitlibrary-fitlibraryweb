@@ -7,17 +7,17 @@
 
 <h1><i>FitLibraryWeb For FitNesse</i></h1>
 
-This contains the first release of <i>FitLibraryWeb</i> for <i>FitNesse</i> users. It is based on Java 6. 
+This version works with FitNesse 20101101, but some parts do not work with earlier versions of FitNesse.
 
 <h2>Installing <i>FitLibraryWeb</i></h2>
 <p>
 Before <i>FitLibraryWeb</i> can be used, you need <i>FitNesse</i> and <i>FitLibrary</i> to be installed:
-   <ul><li>If you need to, install <i>FitNesse20090818</i> by following the instructions on the FitNesse web site.
+   <ul><li>If you need to, install <i>FitNesse 20101101</i> by following the instructions on the FitNesse web site.
        <li>However, if you've already been using that version of FitNesse, ensure you have a backup copy before you proceed.
-       <li>If you haven't already done so, install <i>FitLibrary20091020</i> on to the new image of FitNesse by following the instructions with that release.
+       <li>If you haven't already done so, install the latest <i>FitLibrary</i> on to the new image of FitNesse by following the instructions with that release.
    </ul>
 
-Now you can install <i>FiLibraryWeb</i>
+Now you can install <i>FitLibraryWeb</i>
 
 <ul>
 	<li>Drop the contents of folder <i>fitnesse</i> inside this <i>FitLibraryWeb</i> release onto the folder of your existing <i>FitNesse</i> system. That will copy the folders and files into the corresponding places in the <i>FitNese</i> release, so they are available throught <i>FitNesse</i>.
@@ -45,62 +45,33 @@ The <i>fitnesse</i> directory within the <i>FitLibrary</i> release contains the 
     FitNesseRoot
         files
             mootools-1.2.3-core-nc.js -- Used in a specification for SpiderFixture
+            popupWhite.html and various other html files that are used in SpiderFixture tutorials and specs.
+            pdf
+                eg.pdf -- an example pdf, used in the PdfDocument documentation and example
+                eg.doc -- the text used to create eg.pdf using OpenOffice
          FitLibraryWeb
             -- Pages for the various parts of FitLibraryWeb: documentation and specifications
+            ChexckFolderRunner
             CreateDate
             DatabaseFixtures
             ElectronicMail
+            HttpClient
             MockWebServices
             PdfDocument
-            RecordWebServicesDocs
+            RecordWebServices
             ShellFixture
             SpiderFixture
             TemplateFixture
             WebServicesClient
+            WhatIsNew
             XmlProcessing
-     lib
-        -- Extra jars that are needed
-        commons-beanutils-bean-collections-1.8.0.jar
-        commons-beanutils-core-1.8.0.jar
-        commons-beanutils.jar
-        commons-codec-1.3.jar
-        commons-collections-3.2.1.jar
-        commons-httpclient-3.1.jar
-        commons-io-1.4.jar
-        commons-lang-2.4.jar
-        commons-logging-1.1.1.jar
-        commons-net-1.4.1.jar
-        cssparser-0.9.5.jar
-        dbfit.jar
-        ezmorph-1.0.6.jar
-        fitlibraryWeb.jar
-        fontbox-0.8.0-incubating.jar
-        htmlunit-2.4.jar
-        htmlunit-core-js-2.4.jar
-        imap.jar
-        joda-time-1.6.jar
-        json-20080701.jar
-        json-lib-2.3-jdk15.jar
-        junit-4.4.jar
-        log4j-1.2.14.jar
-        mail.jar
-        nekohtml-1.9.11.jar
-        pdfbox-0.8.0-incubating.jar
-        sac-1.3.jar
-        selenium-java-client-driver.jar
-        serializer-2.7.1.jar
-        src
-        velocity-1.6.2.jar
-        webdriver-all.jar
-        xalan-2.7.1.jar
-        xbean.jar
-        xercesImpl-2.8.1.jar
-        xml-apis-1.3.04.jar
-        xmlpublic.jar
+     lib  -- Extra jars that are needed
+        apache-mime4j-0.6.jar
+        ...
         xmlunit-1.2.jar
         src
-           -- source code for FitLibraryWeb
-           fitLibraryWebSrc.jar -- source code for FitLibraryWeb
+           fitLibrarySrc.zip -- source code for FitLibraryWeb
+           fitLibraryWebSrc.zip -- source code for FitLibraryWeb
 </pre>
 
 
@@ -117,7 +88,7 @@ Any suggestions for improvements in this release approach are most welcome.
 <br/><br/>
 Rick Mugridge, <a href="http://www.RimuResearch.com">http://www.RimuResearch.com</a>.
 <br/>
-October 2009<br/>
+November 2010<br/>
 
 </body>
 </html>

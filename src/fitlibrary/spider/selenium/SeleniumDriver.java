@@ -18,7 +18,6 @@ import java.util.Stack;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.Speed;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +32,7 @@ import com.thoughtworks.selenium.Selenium;
 import fitlibrary.exception.FitLibraryException;
 
 public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText, 
-								FindsByXPath, FindsByName, SearchContext {
+								FindsByXPath, FindsByName {
 	protected Selenium selenium;
 	protected Stack<String> forwards = new Stack<String>();
 	
@@ -207,11 +206,11 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 	}
 	@Override
 	public WebElement findElement(By by) {
-		return by.findElement((SearchContext)this);
+		return by.findElement(this);
 	}
 	@Override
 	public List<WebElement> findElements(By by) {
-		return by.findElements((SearchContext)this);
+		return by.findElements(this);
 	}
 	@Override
 	public WebElement findElementById(String id) {

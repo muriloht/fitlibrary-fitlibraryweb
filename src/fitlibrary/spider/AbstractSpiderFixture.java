@@ -84,6 +84,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	}
 	
 	// --------- SHUT DOWN: ---------
+	@SuppressWarnings("unused")
 	public void shutDown() throws IOException {
 		spiderFixture.tearDownDriver();
 	}

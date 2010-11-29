@@ -1,5 +1,8 @@
-!2 17 September 2010
+!2 November 2010
 #
+ * SpiderFixture:
+  * Upgraded to ''!-WebDriver-!'' a6
+
  * HttpClient:
   * Added specs that test the client against a local file server
   * Added specs that test the client with a proxy server

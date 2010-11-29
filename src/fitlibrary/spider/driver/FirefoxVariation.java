@@ -40,12 +40,14 @@ public class FirefoxVariation extends DriverVariation {
 		}
 		return result;
 	}
+	@SuppressWarnings("deprecation")
 	@Override
 	public void screenDump() {
 		LocalFile file = pngFile();
 		firefoxDriver.saveScreenshot(file.getFile());
 		spiderFixture.showAfterTable(file.htmlImageLink());
 	}
+	@SuppressWarnings("deprecation")
 	@Override
 	public void screenDump(String fileName) {
 		LocalFile file = pngFile(fileName);

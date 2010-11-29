@@ -38,7 +38,7 @@ Note that firefox and htmlUnit seem to be process the javascript delay different
 
 |''text of''|in|'''is'''|green|
 
-|''stop watch''|<|150|
+|''stop watch''|<|200|
 
 |'''show'''|''stop watch''|
 
