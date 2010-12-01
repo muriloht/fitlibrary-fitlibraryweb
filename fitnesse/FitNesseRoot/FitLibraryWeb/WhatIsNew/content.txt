@@ -1,4 +1,4 @@
-!2 November 2010
+!2 1 December 2010
 #
  * SpiderFixture:
   * Upgraded to ''!-WebDriver-!'' a6

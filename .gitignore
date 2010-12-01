@@ -15,6 +15,7 @@ folderRunner/reports
 folderRunner/tests/files/css
 folderRunner/tests/files/images
 PDFBox.log
+release
 runnerResults
 testPropertyFile.txt
 velocity.log

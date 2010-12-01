@@ -7,14 +7,110 @@
 	<property name="fitnesse.dir" value="${home}/fitnesse" />
 	<property name="port" value="8990" />
 	<property name="batch-run-retries" value="0" />
-
 	<!-- batch runner properties -->
 	<property name="showpassesinreport" value="false" />	
 	<property name="results-dir" value="${home}/runnerResults" />
-	<property name="timeout" value="1200000" />
-	<!-- 10 mins default timeout -->
+	<property name="timeout" value="1200000" /> <!-- 10 mins default timeout -->
+	<!-- release properties -->
+	<property name="releases.dir" value="${home}/release" />
+        <tstamp prefix="start"/>
+	<property name="release.now.dir" value="${releases.dir}/FitLibraryWeb" />
+	<property name="release.zip.file" value="${releases.dir}/FitLibraryWeb.zip" />
+	<!-- release checking properties -->
+	<property name="release.copy" value="${releases.dir}/FL_Temp" />
+	<property name="release.fitnesse-copy" value="${release.copy}/FitNesseCopy" />
+	<property name="release.unzip" value="${release.copy}/Unzip" />
+	<property name="release.testResults" value="${release.copy}/TestResults" />
+	<property name="fitlibrary.dir" value="../fitlibrary" />
 
-	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibraryWeb jar file in local FitNesseServer directory" />
+	<target name="release-check" depends="fresh-fitnesse, combine-release">
+		<batch-run-non-spider-macro runDirectory="${release.fitnesse-copy}" resultsDirectory="${release.testResults}" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" runDirectory="${release.fitnesse-copy}" resultsDirectory="${release.testResults}" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" runDirectory="${release.fitnesse-copy}" resultsDirectory="${release.testResults}" />
+	</target>
+
+	<target name="combine-release">
+		<mkdir dir="${release.fitnesse-copy}/lib" />
+		<mkdir dir="${release.unzip}" />
+		<unzip src="${release.zip.file}" dest="${release.unzip}"/>
+		<copy todir="${release.fitnesse-copy}">
+			<fileset dir="${fitlibrary.dir}/fitnesse">
+				<include name="fitlibrary.jar" />
+				<include name="*.properties" />
+			</fileset>
+		</copy>
+		<move todir="${release.fitnesse-copy}/lib">
+			<fileset dir="${release.unzip}/fitnesse/lib">
+				<include name="*.jar" />
+			</fileset>
+		</move>
+		<move todir="${release.fitnesse-copy}/FitNesseRoot/files">
+			<fileset dir="${release.unzip}/fitnesse/FitNesseRoot/files"/>
+		</move>
+		<move todir="${release.fitnesse-copy}/FitNesseRoot/FitLibraryWeb">
+			<fileset dir="${release.unzip}/fitnesse/FitNesseRoot/FitLibraryWeb" />
+		</move>
+		<copy todir="${release.copy}/folderRunner">
+			<fileset dir="${release.unzip}/folderRunner" />
+		</copy>
+		<delete dir="${release.unzip}" />
+	</target>
+
+	<target name="fresh-fitnesse">
+		<delete dir="${release.copy}"/>
+		<mkdir dir="${release.fitnesse-copy}"/>
+		<copy todir="${release.fitnesse-copy}">
+			<fileset file="fitnesse/fitnesse.jar" />
+		</copy>
+		<java jar="${release.fitnesse-copy}/fitnesse.jar" dir="${release.fitnesse-copy}" fork="true">
+			<arg value="-i" />
+		</java>
+	</target>
+
+	<target name="create-release-zip">
+		<echo message="Creating release at ${release.now.dir}" />
+		<mkdir dir="${releases.dir}" />
+		<delete file="${release.zip.file}"/>
+		<delete dir="${release.now.dir}" />
+		<mkdir dir="${release.now.dir}" />
+		<copy todir="${release.now.dir}">
+			<fileset file="build.xml" />
+			<fileset file="releaseWebREAD-ME.html" />
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/lib">
+			<fileset dir="fitnesse/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/lib/src">
+			<fileset dir="fitnesse/lib/src">
+				<include name="*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files">
+			<fileset dir="fitnesse/FitNesseRoot/files">
+				<include name="mootools-1.2.3-core-nc.js" />
+				<include name="*.html" />
+                        </fileset>
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/pdf">
+			<fileset dir="fitnesse/FitNesseRoot/files/pdf" />
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap">
+			<fileset dir="fitnesse/FitNesseRoot/files/soap" />
+		</copy>
+		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/FitLibraryWeb">
+			<fileset dir="fitnesse/FitNesseRoot/FitLibraryWeb" />
+		</copy>
+
+		<copy todir="${release.now.dir}/folderRunner">
+			<fileset dir="folderRunner" />
+		</copy>
+		<zip basedir="${release.now.dir}" destfile="${release.zip.file}"/>
+		<delete dir="${release.now.dir}"/>
+	</target>
+
+	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibraryWeb jar"/>
 
 	<target name="jar-no-test" depends="clean, compile">
 		<echo message="Create FitLibraryWeb jar file in local FitNesse" />
@@ -139,6 +235,29 @@
 		<batch-run suite="FitLibraryWeb.PdfDocument" />
 	</target>
 
+	<target name="batch-run-non-spider">
+		<batch-run-non-spider-macro />
+	</target>
+	
+	<macrodef name="batch-run-non-spider-macro">
+		<attribute name="runDirectory" default="${fitnesse.dir}"/>
+		<attribute name="resultsDirectory" default="${results-dir}"/>
+		<sequential>
+		   <batch-run suite="FitLibraryWeb.XmlProcessing" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.WebServicesClient.SpecifiCations" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.PlainTextServices" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.Soap11Mocking" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.Soap12Mocking" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.MockWebServices.SpecifiCations.FullSoapMocking" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.HttpClient.SpecifiCations" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.ShellFixture" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.TemplateFixture" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.CreateDate" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		   <batch-run suite="FitLibraryWeb.PdfDocument" runDirectory="@{runDirectory}" resultsDirectory="@{resultsDirectory}" />
+		</sequential>
+	</macrodef>
+
+
 	<target name="restful-run-spider-specifications">
 		<restful-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture" />
 	</target>
@@ -161,14 +280,16 @@
 
 	<macrodef name="batch-run">
 		<attribute name="suite" />
-		<attribute name="timeout" default="1800000" />
-		<!-- 20 mins default timeout -->
+		<attribute name="timeout" default="1800000" /> <!-- 20 mins default timeout -->
+		<attribute name="runDirectory" default="${fitnesse.dir}"/> <!-- 10 mins default timeout -->
+		<attribute name="resultsDirectory" default="${results-dir}"/> <!-- 10 mins default timeout -->
 		<sequential>
-			<echo message="Batch run of @{suite} with fitnesse at ${fitnesse.dir} and results at ${results-dir}" />
-			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="${fitnesse.dir}" timeout="@{timeout}" failonerror="true">
+			<echo message="Batch run of @{suite} with fitnesse at @{runDirectory} and results at @{resultsDirectory}" />
+			<java classname="fitlibrary.batch.FitLibraryRunner" fork="true" dir="@{runDirectory}"
+			      timeout="@{timeout}" failonerror="true">
 				<arg value="-suiteName"/>     <arg value="@{suite}" />
 				<arg value="-fitNesseDiry"/>  <arg value="." />
-				<arg value="-resultsDiry"/>   <arg value="${results-dir}" />
+				<arg value="-resultsDiry"/>   <arg value="@{resultsDirectory}" />
 				<arg value="-showPasses"/>    <arg value="${showpassesinreport}" />
 				<arg value="-port"/>          <arg value="${port}" />
 				<arg value="-retries"/>       <arg value="${batch-run-retries}" />
