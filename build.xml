@@ -24,7 +24,8 @@
 	<property name="fitlibrary.dir" value="../fitlibrary" />
 	<!-- final release properties -->
 	<property name="release.version" value="${start.DSTAMP}" />
-	<property name="final.release.zip" value="${releases.dir}/FitLibraryWeb${release.version}.zip" />
+	<property name="final.release.dir" value="${releases.dir}" />
+	<property name="final.release.zip" value="${final.release.dir}/FitLibraryWeb${release.version}.zip" />
 
 	<target name="final-release">
 		<move file="${release.zip.file}"
