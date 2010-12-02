@@ -104,7 +104,9 @@
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/pdf">
 			<fileset dir="fitnesse/FitNesseRoot/files/pdf" />
 		</copy>
-		<mkdir dir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap" />
+		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap">
+			<fileset dir="fitnesse/FitNesseRoot/files/soap" />
+		</copy>
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/FitLibraryWeb">
 			<fileset dir="fitnesse/FitNesseRoot/FitLibraryWeb" />
 		</copy>
