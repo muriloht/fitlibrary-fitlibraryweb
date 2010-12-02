@@ -22,6 +22,14 @@
 	<property name="release.unzip" value="${release.copy}/Unzip" />
 	<property name="release.testResults" value="${release.copy}/TestResults" />
 	<property name="fitlibrary.dir" value="../fitlibrary" />
+	<!-- final release properties -->
+	<property name="release.version" value="${start.DSTAMP}" />
+	<property name="final.release.zip" value="${releases.dir}/FitLibraryWeb${release.version}.zip" />
+
+	<target name="final-release">
+		<move file="${release.zip.file}"
+		      tofile="${final.release.zip}"/>
+	</target>
 
 	<target name="release-check" depends="fresh-fitnesse, combine-release">
 		<batch-run-non-spider-macro runDirectory="${release.fitnesse-copy}" resultsDirectory="${release.testResults}" />
@@ -96,9 +104,7 @@
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/pdf">
 			<fileset dir="fitnesse/FitNesseRoot/files/pdf" />
 		</copy>
-		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap">
-			<fileset dir="fitnesse/FitNesseRoot/files/soap" />
-		</copy>
+		<mkdir dir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap" />
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/FitLibraryWeb">
 			<fileset dir="fitnesse/FitNesseRoot/FitLibraryWeb" />
 		</copy>
