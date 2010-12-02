@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head><title>Handling Windows</title>
+</head>
+
+<body>
+<h1>Handling Windows</h1>
+
+<a href='popupRed.html' id='accessRed' target='window with red'>Access Red Window (not as a popup)</a>
+<p>
+<input type='button' id='popupBlue' value='Pop Up Blue Window'
+       onclick="javascript:window.open('popupBlue.html', 'window with blue', 'width=400,height=200,scrollbars=yes')" />
+
+<p>
+<input type='button' id='popupWhite' value='Pop Up White Window without window name'
+       onclick="javascript:window.open('popupWhite.html', '', 'width=400,height=200,scrollbars=yes')" />
+
+</body></html>

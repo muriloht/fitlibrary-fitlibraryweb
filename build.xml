@@ -217,6 +217,12 @@
 		</java>
 	</target>
 
+	<target name="batch-run-specifications">
+		<batch-run-non-spider-macro />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" />
+	</target>
+
 	<target name="batch-run-spider-specifications-htmlunit">
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
 	</target>

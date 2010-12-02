@@ -6,7 +6,6 @@ fitnesse/FitNesseRoot/files/ie
 fitnesse/FitNesseRoot/files/images/screenDump*.*
 fitnesse/FitNesseRoot/files/soap
 fitnesse/FitNesseRoot/files/testResults
-fitnesse/FitNesseRoot/files/*.html
 fitnesse/FitNesseRoot/RecentChanges
 fitnesse/lib/fitlibraryWeb.jar
 fitnesse/lib/src/fitlibraryWebSrc.zip

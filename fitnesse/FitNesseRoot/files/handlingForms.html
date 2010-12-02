@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head><title>Handling Forms</title>
+</head>
+
+<body>
+<h1>Handling Forms</h1>
+
+<p>
+<form name="customer" method="get" action="handlingTables.html">
+<table>
+<tr><td>Name:</td><td><input id='name' type="text" value="name" id="txt"/></td></tr>
+<tr><td>Address:</td><td><textarea id='address'></textarea></td></tr>
+<tr><td>Password:</td><td><input type='password' id='passwd'></td></tr>
+<tr><td>Send Spam:</td><td><input type='checkbox' id='spam'></td></tr>
+<tr><td>Delay:</td><td><input type="radio" value="0" id='0' checked name="delay" />0
+    <input type="radio" value="100" id='100' name="delay" />100
+    <input type="radio" value="1000" id='1000' name="delay" />1000
+    <input type="radio" value="5000" id='5000' name="delay" />5,000 milliseconds</td></tr>
+<tr><td>Customer Type: </td><td><select id='type'><option>Business</option><option>Private</option></select></td></tr>
+<tr><td>Interests: </td><td><select id='interests' multiple='yes'><option>Business</option><option>Holidays</option></select></td></tr>
+<tr><td></td><td><input type="submit" id="submit" value="OK"/></td></tr>
+</table>
+</form>
+
+</body></html>
