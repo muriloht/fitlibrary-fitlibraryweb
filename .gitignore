@@ -9,6 +9,7 @@ fitnesse/FitNesseRoot/RecentChanges
 fitnesse/lib/fitlibraryWeb.jar
 fitnesse/lib/src/fitlibraryWebSrc.zip
 fitnesse/logForFitLibrary.txt
+fitnesse/velocity.log
 folderRunner/reports
 folderRunner/tests/files/css
 folderRunner/tests/files/images
@@ -16,4 +17,3 @@ PDFBox.log
 release
 runnerResults
 testPropertyFile.txt
-velocity.log
