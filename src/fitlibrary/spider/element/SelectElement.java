@@ -120,8 +120,8 @@ public class SelectElement extends SpiderElement {
 				List<WebElement> childrenOf = childrenOf(locator, "option");
 				for (WebElement optionElement : childrenOf) {
 					String value = optionElement.getValue();
-					if (value == null || value.length()==0)
-						value = optionElement.getText();
+					if ((value == null || value.length()==0)&& option.length()>0) 
+                        value = optionElement.getText();
 					if (value != null && value.equalsIgnoreCase(option)) {
 						if (select != optionElement.isSelected()) {
 							if (select) {

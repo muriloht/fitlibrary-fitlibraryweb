@@ -39,6 +39,20 @@
 
 |''option of''|colour|''is''| VIOLET |
 
+* Can select empty option
+
+|''with''|colour|''select option''||
+
+|''option of''|colour|''is''||
+
 * select by text
 
 |''with''|colour|''select text''| Pink |
+
+|''option of''|colour|''is''|punk|
+
+* Can select empty option with text
+
+|''with''|colour|''select text''||
+
+|''option of''|colour|''is''||
