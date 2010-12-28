@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Speed;
@@ -201,6 +202,16 @@ public class SeleniumDriver implements WebDriver, FindsById, FindsByLinkText,
 				selenium.waitForPopUp(windowName,"100");
 				selenium.selectWindow(windowName);
 				return SeleniumDriver.this;
+			}
+			@Override
+			public WebDriver frame(WebElement frameElement) {
+				notYetImplemented();
+				return null;
+			}
+			@Override
+			public Alert alert() {
+				notYetImplemented();
+				return null;
 			}
 		};
 	}
