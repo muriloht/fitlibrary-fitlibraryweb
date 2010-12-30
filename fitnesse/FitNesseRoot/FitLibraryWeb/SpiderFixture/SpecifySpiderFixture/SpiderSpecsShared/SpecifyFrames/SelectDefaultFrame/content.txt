@@ -4,8 +4,8 @@
 
 |''frame by name''|green|
 
-|''page contains text''|greening|
+|''page source''|contains|greening|
 
 |''default frame''|
 
-|''page contains text''|reddening|
+|''page source''|contains|reddening|

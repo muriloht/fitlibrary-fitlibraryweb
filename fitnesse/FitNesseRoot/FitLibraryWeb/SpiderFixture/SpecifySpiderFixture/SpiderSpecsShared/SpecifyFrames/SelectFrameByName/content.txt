@@ -4,9 +4,9 @@
 
 |''frame by name''|red|
 
-|''page contains text''|reddening|
+|''page source''|contains|reddening|
 
 |''frame by name''|green|
 
-|''page contains text''|greening|
+|''page source''|contains|greening|
 

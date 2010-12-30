@@ -16,7 +16,7 @@
 
 |'''not'''|''element''|//h1[@id='noResultsTitle']|''exists''|
 
-|''page contains text''|Fit|
+|''page source''|contains|Fit|
 
 |''with''|//input[@title='Search for']|''set text''|asdasdasdasdasdasd|
 

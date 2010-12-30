@@ -16,7 +16,7 @@ homing}}})
 
 |''with html''|${html}|
 
-|''page contains text''|homing|
+|''page source''|contains|homing|
 
 |show|windows|
 
@@ -32,7 +32,7 @@ homing}}})
 
 |show|windows|
 
-|''page contains text''|homing|
+|''page source''|contains|homing|
 
 |''title''|'''is'''|From|
 
@@ -40,6 +40,6 @@ homing}}})
 
 |show|windows|
 
-|''page contains text''|othering|
+|''page source''|contains|othering|
 
 |''text of''|//title|'''is'''|To Here|

@@ -16,7 +16,7 @@
 
 |''url''|'''is'''|http://www.google.co.nz/search?hl=en&q=djhasdaksdasd&btnG=Google+Search&meta=|
 
-|''page contains text''|djhasdaksdasd|
+|''page source''|contains|djhasdaksdasd|
 
 |''with''|//input[@name="q"]|''set text''|air new zealand|
 
