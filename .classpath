@@ -30,7 +30,7 @@
 	<classpathentry kind="lib" path="fitnesse/lib/xml-apis-1.3.04.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/xmlunit-1.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.0b1.jar" sourcepath="fitnesse/lib/src/selenium-java-2.0b1-srcs.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.0b2.jar" sourcepath="fitnesse/lib/src/selenium-java-2.0b2-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
