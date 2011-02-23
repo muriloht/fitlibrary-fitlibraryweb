@@ -12,7 +12,7 @@ public class Frame extends SpiderComponent {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
 			@Override
 			public boolean matches() {
-				webDriver().switchTo().frame(frameNo);
+				webDriver().switchTo().defaultContent().switchTo().frame(frameNo);
 				return true;
 			}
 		});
@@ -24,7 +24,12 @@ public class Frame extends SpiderComponent {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
 			@Override
 			public boolean matches() {
-				webDriver().switchTo().frame(frameName);
+				webDriver().switchTo().defaultContent();
+				
+				// WebDriver has removed the notion of separating nested frame names by . but we still support it
+				for (String framesubname: frameName.split("\\.")) {
+					webDriver().switchTo().frame(framesubname);
+				}
 				return true;
 			}
 		});
@@ -32,6 +37,7 @@ public class Frame extends SpiderComponent {
 			return true;
 		throw problem("Unavailable", frameName, frameName);
 	}
+	
 	public boolean defaultFrame() {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
 			@Override

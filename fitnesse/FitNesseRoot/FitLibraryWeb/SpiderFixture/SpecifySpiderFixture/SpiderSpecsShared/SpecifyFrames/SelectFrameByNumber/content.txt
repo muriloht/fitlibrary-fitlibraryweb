@@ -2,9 +2,11 @@
 
 !include -c <SpecifyFrames.SpecSetUp
 
- * With a frameset, the first frame is selected automatically.
- * The current title and url are of that first frame, rather than of the loaded html containing the frameset.
-|''url''|'''matches'''|.*/red.html|
+ * With a frameset, the first frame is '''not''' selected automatically.
+ * The current title and url are of the loaded html containing the frameset.
+|''url''|'''matches'''|.*/test.html|
+
+|''frame''|0|
 
 |''page source''|contains|reddening|
 
