@@ -69,11 +69,9 @@ public class SelectElement extends SpiderElement {
 			final WebElement webElement = childrenOf(locator, "option").get(index);
 			webElement.setSelected();
 			ensureBecomes(new PollForWithError() {
-				@Override
 				public boolean matches() {
 					return webElement.isSelected();
 				}
-				@Override
 				public String error() {
 					return "Not selected correctly";
 				}

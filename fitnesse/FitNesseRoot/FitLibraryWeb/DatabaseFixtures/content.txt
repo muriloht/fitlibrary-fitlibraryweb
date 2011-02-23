@@ -7,7 +7,7 @@ Here's an example with MySQL. For access to an Oracle database, use ''!-fitlibra
 ----!3 1. Connect to the database
 !|fitlibrary.database.MySql|
 
-|''connect''|localhost|''with''|rick|''and password''|past|''to''|myDB|
+|''connect''|localhost|''with user''|rick|''and password''|past|''to''|myDB|
 
 where ''localhost'' is a host, instance or service name, ''rick'' is the user, ''past'' is the password, and ''myDB'' is the database SID.
 
