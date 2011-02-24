@@ -18,7 +18,7 @@ public class Frame extends SpiderComponent {
 		});
 		if (matches)
 			return true;
-		throw problem("Unavailable", "" + frameNo, "" + frameNo);
+		throw problem("Unavailable", "" + frameNo);
 	}
 	public boolean frameByName(final String frameName) {
 		boolean matches = ensureMatchesNoException(new PollForMatches() {
@@ -35,7 +35,7 @@ public class Frame extends SpiderComponent {
 		});
 		if (matches)
 			return true;
-		throw problem("Unavailable", frameName, frameName);
+		throw problem("Unavailable", frameName);
 	}
 	
 	public boolean defaultFrame() {

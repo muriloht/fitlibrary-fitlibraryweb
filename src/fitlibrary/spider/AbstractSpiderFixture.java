@@ -44,6 +44,7 @@ import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.WebElementSelector;
 import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
+import fitlibrary.traverse.workflow.StopWatch;
 
 public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SuppressWarnings("unused")
@@ -452,18 +453,13 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 				}
 			});
 		} catch (NoSuchElementException ex) {
-			throw problem("Unavailable", locator, locator);
+			throw problem("No such element", locator);
 		} catch (Exception ex) {
-			throw problem("Unknown xpath (" + ex.getMessage() + ")", locator,
-					locator);
+			throw problem("Unknown xpath (" + ex.getMessage() + ")", locator);
 		}
 	}
-	public FitLibraryException problem(String message, String expected,
-			String resolvedExpected) {
-		if (expected.equals(resolvedExpected)) {
-			return new FitLibraryException(message + atShortUrl());
-		}
-		return new FitLibraryException(message + ": '" + resolvedExpected + "'"
+	public FitLibraryException problem(String problemDescription, String details) {
+		return new FitLibraryException(problemDescription + ": '" + details + "'"
 				+ atShortUrl());
 	}
 	private String atShortUrl() {

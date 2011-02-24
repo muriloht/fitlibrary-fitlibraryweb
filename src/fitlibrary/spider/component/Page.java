@@ -23,7 +23,7 @@ public class Page extends SpiderComponent {
 			webDriver().get(url);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw problem(e.toString(), url, url);
+			throw problem(e.toString(), url);
 		}
 		driverVariation().checkTitleOfNewPage(url);
 		return true;

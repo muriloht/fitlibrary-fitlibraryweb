@@ -16,7 +16,7 @@ public class LinkAndFormElement extends SpiderElement {
 		} catch (FitLibraryException e) {
 			throw e;
 		} catch (RuntimeException e) {
-			throw problem(e.toString(), locator, locator);
+			throw problem(e.toString(), locator);
 		}
 	}
 	public boolean clickAndSelectResultingWindow(String locator) {

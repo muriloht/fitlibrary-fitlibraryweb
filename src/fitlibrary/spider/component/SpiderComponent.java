@@ -26,8 +26,8 @@ public abstract class SpiderComponent {
 	protected boolean ensureMatchesNoException(PollForMatches poll) {
 		return spiderFixture.ensureMatchesNoException(poll);
 	}
-	protected FitLibraryException problem(String message, String expected, String resolvedExpected) {
-		return spiderFixture.problem(message, expected, resolvedExpected);
+	protected FitLibraryException problem(String message, String details) {
+		return spiderFixture.problem(message, details);
 	}
 	protected void showAfterTable(String s) {
 		spiderFixture.showAfterTable(s);

@@ -25,7 +25,7 @@ public class FirefoxVariation extends DriverVariation {
 			public Boolean act() {
 				if (spiderFixture.getTitle() != null)
 					return true;
-				throw spiderFixture.problem("Unable to access",url,url);
+				throw spiderFixture.problem("Unable to access",url);
 			}
 		});
 	}

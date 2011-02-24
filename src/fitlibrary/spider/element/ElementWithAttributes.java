@@ -39,7 +39,7 @@ public class ElementWithAttributes extends SpiderElement {
 		} catch (NoSuchElementException ex) {
 			return false;
 		} catch (Exception ex) {
-			throw problem("Unknown xpath", locator, locator);
+			throw problem("Unknown xpath", locator);
 		}
 	}
 	public boolean elementDoesNotExist(final String locator) {
