@@ -29,8 +29,6 @@ import fitlibrary.spider.component.TextInPage;
 import fitlibrary.spider.driver.DriverVariation;
 import fitlibrary.spider.driver.FirefoxVariation;
 import fitlibrary.spider.driver.HtmlUnitVariation;
-import fitlibrary.spider.driver.SeleniumVariation;
-import fitlibrary.spider.selenium.SeleniumDriver;
 
 public class SpiderFixture extends AbstractSpiderFixture {
 	public static final String WEB_DRIVER_VARIABLE_NAME = "webDriver.driver";
@@ -105,11 +103,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 					"htmlunit").toString();
 			if ("htmlunit".equals(driver))
 				webDriver = htmlUnitDriver();
-			else if ("selenium".equals(driver)) {
-				SeleniumDriver seleniumDriver = seleniumDriver();
-				webDriver = seleniumDriver;
-				setSystemUnderTest(seleniumDriver.getSelenium());
-			} else if ("firefox".equals(driver))
+			else if ("firefox".equals(driver))
 				webDriver = fireFoxDriver();
 			else if ("ie".equals(driver))
 				webDriver = new InternetExplorerDriver();
@@ -144,17 +138,6 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		if (shutDownAutomatically && webDriver != null)
 			webDriver.quit();
 		webDriver = null;
-	}
-	// Override to configure differently
-	protected SeleniumDriver seleniumDriver() {
-		String host = "localhost";
-		int portNo = 4444;
-		String browserStartCommand = "*iehta";
-		String browserURL = "http://localhost";
-		SeleniumDriver seleniumDriver = new SeleniumDriver(host, portNo,
-				browserStartCommand, browserURL);
-		driverVariation = new SeleniumVariation(this, seleniumDriver);
-		return seleniumDriver;
 	}
 	// Override to configure differently, such as with a Firefox profile
 	protected FirefoxDriver fireFoxDriver() {

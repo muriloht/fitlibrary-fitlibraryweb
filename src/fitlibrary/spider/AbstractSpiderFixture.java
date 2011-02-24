@@ -20,8 +20,6 @@ import org.openqa.selenium.Speed;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import com.thoughtworks.selenium.Selenium;
-
 import fit.Parse;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.log.FixturingLogger;
@@ -39,12 +37,10 @@ import fitlibrary.spider.polling.Poll;
 import fitlibrary.spider.polling.PollForMatches;
 import fitlibrary.spider.polling.PollForNoException;
 import fitlibrary.spider.polling.PollForWithError;
-import fitlibrary.spider.selenium.SeleniumWebElement;
 import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.WebElementSelector;
 import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
-import fitlibrary.traverse.workflow.StopWatch;
 
 public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SuppressWarnings("unused")
@@ -415,12 +411,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 					try {
 						WebElement webElement = cellElement.findElement(By.xpath(rowLocator));
 						if (webElement != null) {
-							if (isSelenium()) {
-								if (selenium().isElementPresent(
-										((SeleniumWebElement) webElement).getLocator()))
-									return spiderElementFixture(rowElement);
-							} else
-								return spiderElementFixture(rowElement);
+							return spiderElementFixture(rowElement);
 						}
 					} catch (NoSuchElementException ex) {
 						//
@@ -508,12 +499,5 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	}
 	public <T> T ensureNoException(PollForNoException<T> poll) throws Exception {
 		return new Poll(getTimeout(CHECKING_TIMEOUT)).ensureNoException(poll);
-	}
-	public boolean isSelenium() {
-		Object systemUnderTest = spiderFixture.getSystemUnderTest();
-		return systemUnderTest != null && systemUnderTest instanceof Selenium;
-	}
-	public Selenium selenium() {
-		return (Selenium) spiderFixture.getSystemUnderTest();
 	}
 }

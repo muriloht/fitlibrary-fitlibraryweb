@@ -5,8 +5,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.thoughtworks.selenium.Selenium;
-
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.Finder;
@@ -39,12 +37,6 @@ public abstract class SpiderElement {
 	}
 	public <T> T ensureNoException(PollForNoException<T> poll) throws Exception {
 		return spiderFixture.ensureNoException(poll);
-	}
-	protected boolean isSelenium() {
-		return spiderFixture.isSelenium();
-	}
-	protected Selenium selenium() {
-		return spiderFixture.selenium();
 	}
 	protected FitLibraryException problem(String message, String details) {
 		return spiderFixture.problem(message, details);
