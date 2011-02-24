@@ -17,9 +17,11 @@ onclick="javascript:${to}"/>
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
+|shutdown browser automatically|false|
+
 Note that firefox and htmlUnit seem to be process the javascript delay differently
 
-|''checking timeout''|70|
+|''checking timeout''|500|
 
 |''start stop watch''|
 
@@ -38,7 +40,7 @@ Note that firefox and htmlUnit seem to be process the javascript delay different
 
 |''text of''|in|'''is'''|green|
 
-|''stop watch''|<|200|
+|''stop watch''|<|300|
 
 |'''show'''|''stop watch''|
 
