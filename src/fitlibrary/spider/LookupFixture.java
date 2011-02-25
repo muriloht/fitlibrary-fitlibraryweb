@@ -35,11 +35,14 @@ public class LookupFixture extends Traverse {
 			matchOn[i] = true;
 			header[i] = headerRow.text(i, this);
 			if (header[i].endsWith("?")) {
-				header[1] = header[1].substring(0,header[1].length()-1);
+				header[i] = header[i].substring(0,header[i].length()-1);
 				matchOn[i] = false;
-				return true;
 			}
 		}
+		for (boolean b: matchOn) {
+			if (b) return true;
+		}
+		
 		return false;
 	}
 	private boolean matchInTable(Table table, int headerRowSize) {
@@ -55,10 +58,14 @@ public class LookupFixture extends Traverse {
 		return false;
 	}
 	private boolean matchRow(Row row) {
+		System.out.println("matchRow");
 		for (int cell = 0; cell < row.size(); cell++) {
-			String regEx = row.text(0,this);
-			if (matchOn[cell] && !Pattern.compile(".*"+regEx+".*",Pattern.DOTALL).matcher(header[cell]).matches())
-					return false;
+			String regEx = row.text(cell,this);
+			if (matchOn[cell] && !Pattern.compile(".*"+regEx+".*",Pattern.DOTALL).matcher(header[cell]).matches()) {
+				System.out.println("regEx "+regEx+" matchOn "+matchOn[cell]+" header "+header[cell]+" = false - bye");
+				return false;
+			}
+			System.out.println("regEx "+regEx+" matchOn "+matchOn[cell]+" header "+header[cell]+" = true");
 		}
 		return true;
 	}
