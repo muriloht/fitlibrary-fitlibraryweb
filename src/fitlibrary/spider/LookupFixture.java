@@ -21,9 +21,9 @@ public class LookupFixture extends Traverse {
 	public Object interpretAfterFirstRow(Table table, TestResults testResults) {
 		Row headerRow = table.at(1);
 		int headerRowSize = headerRow.size();
-		boolean aLookup = analyseHeaders(headerRow, headerRowSize);
-		if (!aLookup)
-			throw new FitLibraryException("No header with '?'");
+		
+		analyseHeaders(headerRow, headerRowSize);
+			
 		if (!matchInTable(table, headerRowSize))
 			table.at(0).at(0).error(testResults, "No match");
 		return null;
@@ -31,19 +31,21 @@ public class LookupFixture extends Traverse {
 	private boolean analyseHeaders(Row headerRow, int headerRowSize) {
 		header = new String[headerRowSize];
 		matchOn = new boolean[headerRowSize];
+		boolean atLeastOneSetVariableHeaderFound = false;
 		for (int i = 0; i < headerRowSize; i++) {
 			matchOn[i] = true;
 			header[i] = headerRow.text(i, this);
 			if (header[i].endsWith("?")) {
 				header[i] = header[i].substring(0,header[i].length()-1);
 				matchOn[i] = false;
+				atLeastOneSetVariableHeaderFound = true;
 			}
 		}
-		for (boolean b: matchOn) {
-			if (b) return true;
-		}
 		
-		return false;
+		if (atLeastOneSetVariableHeaderFound)
+			return true;
+		
+		throw new FitLibraryException("No header with '?'");
 	}
 	private boolean matchInTable(Table table, int headerRowSize) {
 		for (int rowNo = 2; rowNo < table.size(); rowNo++) {
@@ -58,14 +60,11 @@ public class LookupFixture extends Traverse {
 		return false;
 	}
 	private boolean matchRow(Row row) {
-		System.out.println("matchRow");
 		for (int cell = 0; cell < row.size(); cell++) {
 			String regEx = row.text(cell,this);
 			if (matchOn[cell] && !Pattern.compile(".*"+regEx+".*",Pattern.DOTALL).matcher(header[cell]).matches()) {
-				System.out.println("regEx "+regEx+" matchOn "+matchOn[cell]+" header "+header[cell]+" = false - bye");
 				return false;
 			}
-			System.out.println("regEx "+regEx+" matchOn "+matchOn[cell]+" header "+header[cell]+" = true");
 		}
 		return true;
 	}
