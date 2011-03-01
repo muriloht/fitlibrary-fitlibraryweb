@@ -1,10 +1,12 @@
-!|fitlibrary.spider.SpiderFixture|
+|''with spider''|
+
+|''help''|
 
 |''get url''|http://www.google.co.nz|
 
 |''title''|'''is'''|Google|
 
-|''url''|'''is'''|http://www.google.co.nz|
+|''url''|'''is'''|http://www.google.co.nz/|
 
 |''page source''|'''contains'''|Search|
 
@@ -14,7 +16,7 @@
 
 |''title''|'''becomes'''|djhasdaksdasd - Google Search|
 
-|''url''|'''is'''|http://www.google.co.nz/search?hl=en&q=djhasdaksdasd&btnG=Google+Search&meta=|
+|''url''|'''contains'''|&q=djhasdaksdasd|
 
 |''page source''|contains|djhasdaksdasd|
 
@@ -24,5 +26,5 @@
 
 |''title''|'''is'''|air new zealand - Google Search|
 
-|''page contains regular expression''|New.*Zealand|
+|''page source''|'''eventually matches'''|New.*Zealand|
 

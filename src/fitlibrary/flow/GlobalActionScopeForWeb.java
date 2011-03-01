@@ -7,6 +7,7 @@ import fitlibrary.pdf.PDFDocument;
 import fitlibrary.server.ProxyServerFixture;
 import fitlibrary.server.WebServerForTestingFixture;
 import fitlibrary.sh.ShellFixture;
+import fitlibrary.spider.SpiderFixture;
 import fitlibrary.ws.MockWebServicesFixture;
 import fitlibrary.ws.WebServicesClientFixture;
 import fitlibrary.ws.recorder.RecordingWebServicesFixture;
@@ -25,7 +26,7 @@ public class GlobalActionScopeForWeb {
 	public CreateDate withDate() {
 		return new CreateDate();
 	}
-	public PDFDocument withPDF() {
+	public PDFDocument withPdf() {
 		return new PDFDocument();
 	}
 	public ElectronicMail withEmail() {
@@ -45,5 +46,8 @@ public class GlobalActionScopeForWeb {
 	}
 	public ProxyServerFixture withProxyServerForTesting() {
 		return new ProxyServerFixture();
+	}
+	public SpiderFixture withSpider() {
+		return new SpiderFixture();
 	}
 }

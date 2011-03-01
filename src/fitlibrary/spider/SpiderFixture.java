@@ -20,6 +20,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 
+import fitlibrary.annotation.ShowSelectedActions;
+import fitlibrary.annotation.SimpleAction;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.flex.FlexSpiderFixture;
 import fitlibrary.spider.component.Frame;
@@ -30,6 +32,7 @@ import fitlibrary.spider.driver.DriverVariation;
 import fitlibrary.spider.driver.FirefoxVariation;
 import fitlibrary.spider.driver.HtmlUnitVariation;
 
+@ShowSelectedActions
 public class SpiderFixture extends AbstractSpiderFixture {
 	public static final String WEB_DRIVER_VARIABLE_NAME = "webDriver.driver";
 	protected WebDriver webDriver = null;
@@ -52,10 +55,14 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	public FlexSpiderFixture flex() {
 		return new FlexSpiderFixture(webDriver());
 	}
+	@SimpleAction(wiki="|''<i>start spider with</i>''|browser name|",
+			tooltip="Select the browser as one of htmlunit, firefox, or ie.")
 	public boolean startSpiderWith(String theDriver) {
 		setDynamicVariable("webDriver.driver", theDriver);
 		return true;
 	}
+	@SimpleAction(wiki="|''<i>use firefox profile</i>''|profile name|",
+			tooltip="When running with firefox, select the profile to use.")
 	public boolean useFirefoxProfile(String profileName) {
 		firefoxProfile = new ProfilesIni().getProfile(profileName);
 		if (firefoxProfile == null) {
@@ -64,26 +71,34 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return true;
 	}
+	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as string</i>''|string value|",
+			tooltip="Set the value of a string-based firefox profile key.")
 	public void firefoxProfileAsString(String key, String value) {
 		firefoxProfile.setPreference(key, value);
 	}
+	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as integer</i>''|integer value|",
+			tooltip="Set the value of a integer-based firefox profile key.")
 	public void firefoxProfileAsInteger(String key, int value) {
 		firefoxProfile.setPreference(key, value);
 	}
+	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as boolean</i>''|boolean value|",
+			tooltip="Set the value of a boolean-based firefox profile key.")
 	public void firefoxProfileAsBoolean(String key, boolean value) {
 		firefoxProfile.setPreference(key, value);
 	}
 	// PROXY
+	@SimpleAction(wiki="|''<i>proxy</i>''|host|''<i>with port</i>''|port number|",
+			tooltip="Set the host and port of the proxy server to use.")
 	public void proxyWithPort(String host, int port) {
 		this.proxyHost = host;
 		this.proxyPort = port;
-		// firefoxProfileAs("", host);
-		// firefoxProfileAs("", port+"");
 	}
 	// RESTART
 	public void restart() throws Exception {
 		tearDownDriver();
 	}
+	@SimpleAction(wiki="|''<i>restart with</i>''|browser|",
+			tooltip="Start spider afresh on the current page with the same cookies, using the selected browser.\nThe browser is one of htmlunit, firefox, ie.")
 	public void restartWith(String driver) {
 		Set<Cookie> cookies = webDriver().manage().getCookies();
 		String currentUrl = webDriver().getCurrentUrl();
@@ -113,7 +128,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				throw new FitLibraryException(
 						"Need to specify property '"
 								+ WEB_DRIVER_VARIABLE_NAME
-								+ "' as 'htmlunit', 'firefox', 'selenium', 'safari', or 'ie'");
+								+ "' as 'htmlunit', 'firefox', or 'ie'"); // 'safari', 
 			spiderWindow.setInitialWindow();
 		}
 		return webDriver;
@@ -127,6 +142,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	// private WebDriver safariDriver() {
 	// return new SafariDriver();
 	// }
+	@SimpleAction(wiki="|''<i>shut down browser automatically</i>''|true or false|",
+			tooltip="" +
+					"When true, the browser shuts down automatically at the end of the storytest.\nTrue by default.\nMake this false is you want to view the browser after the storytest finishes.")
 	public void shutdownBrowserAutomatically(
 			boolean shutDownBrowserAutomatically) {
 		this.shutDownAutomatically = shutDownBrowserAutomatically;
