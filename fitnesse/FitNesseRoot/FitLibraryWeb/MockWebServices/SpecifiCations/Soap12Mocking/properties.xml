@@ -2,15 +2,15 @@
 <properties>
 	<Edit/>
 	<Files/>
-	<Help/>
+	<Help></Help>
 	<Properties/>
 	<RecentChanges/>
 	<Refactor/>
 	<Search/>
 	<Suite/>
-	<Suites/>
+	<Suites></Suites>
 	<SymbolicLinks>
-		<SoapMocking>MockingBothSoap</SoapMocking>
+		<SoapMocking>MockingSoapShared</SoapMocking>
 	</SymbolicLinks>
 	<Versions/>
 	<WhereUsed/>
