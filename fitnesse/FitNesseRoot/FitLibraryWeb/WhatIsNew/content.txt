@@ -1,3 +1,8 @@
+!2 1 March 2011
+#
+ * Upgraded Spider to Selenium 2.0b2.
+ * Added |help| for Spider
+#
 !2 3 December 2010
 #
  * Added some missing files that are needed for the specs
