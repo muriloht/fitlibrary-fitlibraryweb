@@ -19,7 +19,7 @@ Here's a >RunningExample
 #
  * Start checking PDF:
 
-|''with pdf''|
+|''with PDF''|
 
  * Open a PDF file:
 

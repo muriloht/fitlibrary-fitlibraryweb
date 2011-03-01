@@ -21,4 +21,8 @@ public class SpecifySpiderSuite extends SuiteFixture {
 	public SpecifySpiderFixture spider() throws Exception {
 		return new SpecifySpiderFixture(portNo,driver);
 	}
+	public void shutDownWithScreenDumpOnFailure() { 
+		// Added to avoid an error due to a bug in 
+		// FitNesse that applies TearDown to SuiteSetUp (3 March 2011)
+	}
 }

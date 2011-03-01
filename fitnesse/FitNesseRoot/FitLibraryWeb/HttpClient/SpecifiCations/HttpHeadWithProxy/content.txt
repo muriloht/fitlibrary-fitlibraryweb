@@ -2,9 +2,9 @@
 
 |''proxy url''|localhost|''with port''|5557|
 
-|''add named''| server|!-fitlibrary.server.WebServerForTestingFixture-!|
+|'''also run'''|''with web server for testing''|
 
-|''add named''| proxy server|!-fitlibrary.server.ProxyServerFixture-!|
+|'''also run'''|''with proxy server for testing''|
 
 |''start logging''|
 

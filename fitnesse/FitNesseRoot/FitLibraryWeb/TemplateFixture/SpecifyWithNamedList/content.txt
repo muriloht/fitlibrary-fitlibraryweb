@@ -1,4 +1,4 @@
-!**> def
+!**< def
 !define file ({{{<bla>
 !-#foreach( $a in $list )-!
      <t>$a.name</t>

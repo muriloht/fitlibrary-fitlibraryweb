@@ -1,6 +1,7 @@
-!2 1 March 2011
+!2 2 March 2011
 #
  * Upgraded Spider to Selenium 2.0b2.
+ * Extended lookup table. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyLookup
  * Added |help| for Spider
 #
 !2 3 December 2010
