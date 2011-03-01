@@ -20,6 +20,6 @@ ${fn}{
 
 |''click''|ok|
 
-|''page contains text''|match|
+|''page source''|contains|match|
 
 |''page contains regular expression''|.*match.*ine|

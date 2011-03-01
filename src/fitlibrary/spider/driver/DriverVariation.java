@@ -25,7 +25,7 @@ public class DriverVariation {
 	}
 	public void checkTitleOfNewPage(String url) throws Exception {
 		if (spiderFixture.getTitle() == null)
-			throw spiderFixture.problem("Unable to access",url,url);
+			throw spiderFixture.problem("Unable to access",url);
 	}
 	public void screenDump() {
 		spiderFixture.showAfterTable(spiderFixture.pageSource());

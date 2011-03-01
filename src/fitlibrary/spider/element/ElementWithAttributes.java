@@ -19,15 +19,6 @@ public class ElementWithAttributes extends SpiderElement {
 		super(spiderFixture);
 	}
 	public boolean elementExists(final String locator) {
-		if (isSelenium()) {
-			return ensureMatches(new PollForMatches() {
-				@Override
-				public boolean matches() {
-					return selenium().isElementPresent(locator);
-				}
-
-			});
-		}
 		try {
 			ensureNoException(new PollForNoException<WebElement>() {
 				@Override
@@ -39,7 +30,7 @@ public class ElementWithAttributes extends SpiderElement {
 		} catch (NoSuchElementException ex) {
 			return false;
 		} catch (Exception ex) {
-			throw problem("Unknown xpath", locator, locator);
+			throw problem("Unknown xpath", locator);
 		}
 	}
 	public boolean elementDoesNotExist(final String locator) {
@@ -68,20 +59,13 @@ public class ElementWithAttributes extends SpiderElement {
 	}
 	public boolean attributeOfExists(final String attributeName,
 			final String locator) {
-		try {
-			return ensureMatches(new PollForMatches() {
-				@Override
-				public boolean matches() {
-					String attribute = findElement(locator).getAttribute(attributeName);
-					return attribute != null && !attribute.isEmpty();
-				}
-			});
-		} catch (RuntimeException e) {
-			if (isSelenium()) {
-				return true;
+		return ensureMatches(new PollForMatches() {
+			@Override
+			public boolean matches() {
+				String attribute = findElement(locator).getAttribute(attributeName);
+				return attribute != null && !attribute.isEmpty();
 			}
-			throw e;
-		}
+		});
 	}
 	public String withCssPropertyOf(String locator, String property) {
 		WebElement element = findElement(locator);
@@ -93,9 +77,6 @@ public class ElementWithAttributes extends SpiderElement {
 		return rendered.getValueOfCssProperty(property);
 	}
 	public int countOf(String locator) {
-		if (isSelenium()) {
-			return selenium().getXpathCount(locator).intValue();
-		}
 		return finder().findElements(locator).size();
 	}
 	public List<String> attributeOfChildrenOfTypeOf(String attribute,

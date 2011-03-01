@@ -2,10 +2,14 @@
 
 !include -c <SpecifyFrames.SpecSetUp
 
+
 |''frame by name''|green|
 
-|''page contains text''|greening|
+|''url''|'''does not match'''|.*/test.html|
+
+|''page source''|contains|greening|
 
 |''default frame''|
 
-|''page contains text''|reddening|
+|''url''|'''matches'''|.*/test.html|
+

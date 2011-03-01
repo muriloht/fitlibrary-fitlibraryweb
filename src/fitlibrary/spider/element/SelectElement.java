@@ -1,7 +1,6 @@
 package fitlibrary.spider.element;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -19,13 +18,6 @@ public class SelectElement extends SpiderElement {
 		super(spiderFixture);
 	}
 	public String optionOf(String locator) {
-		if (isSelenium()) {
-			String result = selenium().getSelectedValue(locator);
-			if (result.equals("")) {
-				result = selenium().getSelectedLabel(locator);
-			}
-			return result;
-		}
 		List<WebElement> childrenOf = childrenOf(locator, "option");
 		for (WebElement option : childrenOf)
 			if (option.isSelected()) {
@@ -36,9 +28,6 @@ public class SelectElement extends SpiderElement {
 		return "";
 	}
 	public List<String> optionListOf(String locator) {
-		if (isSelenium()) {
-			return Arrays.asList(selenium().getSelectedValues(locator));
-		}
 		List<String> result = new ArrayList<String>();
 		for (WebElement option : childrenOf(locator, "option")) {
 			if (option.isSelected()) {
@@ -82,32 +71,13 @@ public class SelectElement extends SpiderElement {
 		}
 	}
 	public boolean withAddSelection(String locator, String option) {
-		if (isSelenium()) {
-			try {
-				selenium().addSelection(locator, "value=" + option);
-			} catch (Exception e) {
-				selenium().addSelection(locator, "label=" + option);
-			}
-			return true;
-		}
 		return selectOption(locator, option, true);
 	}
 	public boolean withRemoveSelection(String locator, String option) {
-		if (isSelenium()) {
-			try {
-				selenium().removeSelection(locator, "value=" + option);
-			} catch (Exception e) {
-				selenium().removeSelection(locator, "label=" + option);
-			}
-			return true;
-		}
 		return selectOption(locator, option, false);
 	}
 	private boolean selectOption(final String locator, final String option,
 			final boolean select) {
-		if (isSelenium()) {
-			return selectOptionInSelenium(locator, option);
-		}
 		return selectOptionThroughChildren(locator, option, select);
 	}
 	private boolean selectOptionThroughChildren(final String locator,
@@ -150,19 +120,7 @@ public class SelectElement extends SpiderElement {
 			}
 		});
 	}
-	private boolean selectOptionInSelenium(final String locator,
-			final String option) {
-		try {
-			selenium().select(locator, "value=" + option);
-		} catch (Exception e) {
-			selenium().select(locator, "label=" + option);
-		}
-		return true;
-	}
 	public List<String> optionValues(String locator) {
-		if (isSelenium()) {
-			return Arrays.asList(selenium().getSelectOptions(locator));
-		}
 		List<String> nameList = new ArrayList<String>();
 		List<WebElement> options = options(locator);
 		for (WebElement option : options) {

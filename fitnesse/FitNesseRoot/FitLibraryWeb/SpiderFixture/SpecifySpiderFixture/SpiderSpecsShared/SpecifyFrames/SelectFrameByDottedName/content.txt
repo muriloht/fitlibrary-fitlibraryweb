@@ -6,4 +6,4 @@
 
 |''frame by name''|through.r|
 
-|''page contains text''|reddening|
+|''page source''|contains|reddening|

@@ -45,7 +45,7 @@ public class SpiderWindow extends SpiderComponent {
 		} catch (FitLibraryException e) {
 			throw e;
 		} catch (RuntimeException e) {
-			throw spiderFixture.problem(e.toString(),locator,locator);
+			throw spiderFixture.problem(e.toString(),locator);
 		}
 	}
 	public boolean selectInitialWindow() {

@@ -26,7 +26,7 @@ homing}}})
 
 |show|windows|
 
-|''page contains text''|othering|
+|''page source''|contains|othering|
 
 |close|
 
@@ -38,6 +38,6 @@ homing}}})
 
 |show|windows|
 
-|''page contains text''|homing|
+|''page source''|contains|homing|
 
 |''text of''|//title|'''is'''|From|

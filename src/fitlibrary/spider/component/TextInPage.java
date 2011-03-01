@@ -24,7 +24,7 @@ public class TextInPage extends SpiderComponent {
 					+ deprecate("<i>page source</i>", "<b>contains</b>", text));
 			return match;
 		} catch (NullPointerException e) {
-			throw problem("Unavailable", text, text);
+			throw problem("Unavailable", text);
 		}
 	}
 	private String deprecate(String... ss) {
@@ -49,7 +49,7 @@ public class TextInPage extends SpiderComponent {
 							"<b>eventually matches</b>", text));
 			return ensureMatches;
 		} catch (NullPointerException e) {
-			throw problem("Unavailable", text, text);
+			throw problem("Unavailable", text);
 		}
 	}
 	public boolean pageContainsRegularExpression(final String regEx) {

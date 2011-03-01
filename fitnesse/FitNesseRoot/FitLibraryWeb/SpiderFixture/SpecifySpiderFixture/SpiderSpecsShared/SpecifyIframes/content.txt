@@ -5,5 +5,4 @@
 ^SelectionFails
 ^SelectByXpath
 ^SelectById
-^SelectChangesTitleInHtmlUnit
-^SelectDoesNotChangeTitleInFirefox
+^SelectDoesNotChangeTitle
