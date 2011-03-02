@@ -2,13 +2,13 @@
 !define to {setTimeout('addInput()', 20)}
 !define fn {function addInput()}
 !define body {  document.getElementById("t").innerHTML = "<td id='d'>green</td>";}
-!define html ({{{<script type="text/javascript">
-${fn}{
-  ${body}
+!define html [{{{<script type="text/javascript">
+function addInput(){
+   document.getElementById("t").innerHTML = "<td id='d'>green</td>";
 }
 </script>
-<input type="button" id="ok" value="OK" onclick="javascript:${to}"/>
-<t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}})
+<input type="button" id="ok" value="OK" onclick="javascript:setTimeout('addInput()', 20)"/>
+<t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}}]
 *!
 |''keywords''|firefox|
 

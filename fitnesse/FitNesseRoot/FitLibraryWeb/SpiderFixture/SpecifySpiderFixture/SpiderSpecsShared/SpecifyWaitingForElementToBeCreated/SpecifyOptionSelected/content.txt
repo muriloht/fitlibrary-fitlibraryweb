@@ -2,15 +2,15 @@
 !define to {setTimeout('addInput()', 50)}
 !define fn {function addInput()}
 !define body {  document.getElementById("22").innerHTML += "<option id ='blue'>Blue</option>";}
-!define html ({{{<script type="text/javascript">
-${fn}{
-  ${body}
+!define html [{{{<script type="text/javascript">
+function addInput(){
+   document.getElementById("22").innerHTML += "<option id ='blue'>Blue</option>";
 }
 </script>
 <input type="button" id="ok" value="OK"
-onclick="javascript:${to}"/>
+onclick="javascript:setTimeout('addInput()', 50)"/>
 
-<select id='22'></select>}}})
+<select id='22'></select>}}}]
 *!
 
 |''keywords''|firefox|
