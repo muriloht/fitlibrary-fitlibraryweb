@@ -1,17 +1,14 @@
 !*< def
-!define to {setTimeout('change()', 50)}
-!define fn {function change()}
-!define body {  document.getElementById("22").value='green';}
-!define html ({{{<head><title>A title</title>
+!define html [{{{<head><title>A title</title>
 <script type="text/javascript">
-${fn}{
-  ${body}
+function change(){
+   document.getElementById("22").value='green';
 }
 </script>
 </head>
 <input type="checkbox" id="checked"
-onclick="javascript:${to}">Option</input>
-<input type="text" id="22" value="red"/>}}})
+onclick="javascript:setTimeout('change()', 50)">Option</input>
+<input type="text" id="22" value="red"/>}}}]
 *!
 
 |''keywords''|htmlunit,firefox|

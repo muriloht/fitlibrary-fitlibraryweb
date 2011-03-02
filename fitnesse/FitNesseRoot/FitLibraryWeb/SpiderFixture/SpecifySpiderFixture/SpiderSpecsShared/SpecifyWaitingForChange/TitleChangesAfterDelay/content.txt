@@ -1,16 +1,14 @@
 !*< def
-!define to {setTimeout('change()', 50)}
-!define fn {function change()}
-!define body {  document.title='New Title';}
-!define html ({{{<head><title>A title</title>
+!define html [{{{<head><title>A title</title>
 <script type="text/javascript">
-${fn}{
-  ${body}
+function change(){
+   document.title='New Title';
 }
 </script>
 </head>
 <input type="checkbox" id="checked"
-onclick="javascript:${to}">Option</input>}}})
+onclick="javascript:setTimeout('change()', 50)">Option</input>}}}
+]
 *!
 
 |''keywords''|htmlunit,firefox,ie|

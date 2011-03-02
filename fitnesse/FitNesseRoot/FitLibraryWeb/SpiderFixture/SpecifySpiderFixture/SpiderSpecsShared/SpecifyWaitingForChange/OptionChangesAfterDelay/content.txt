@@ -1,16 +1,13 @@
 !*< def
-!define to {setTimeout('addInput()', 50)}
-!define fn {function addInput()}
-!define body {  document.getElementById("22").selectedIndex = 1;}
-!define html ({{{<script type="text/javascript">
-${fn}{
-  ${body}
+!define html [{{{<script type="text/javascript">
+function addInput(){
+  document.getElementById("22").selectedIndex = 1;
 }
 </script>
 <input type="button" id="ok" value="OK"
-onclick="javascript:${to}"/>
+onclick="javascript:setTimeout('addInput()', 50)"/>
 
-<select id='22'><option id ='blue'>Blue</option><option id ='red'>Red</option></select>}}})
+<select id='22'><option id ='blue'>Blue</option><option id ='red'>Red</option></select>}}}]
 *!
 
 |''keywords''|htmlunit,firefox|

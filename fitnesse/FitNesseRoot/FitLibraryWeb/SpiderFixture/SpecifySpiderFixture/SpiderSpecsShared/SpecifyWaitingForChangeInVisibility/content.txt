@@ -1,53 +1,37 @@
 !*< def
-!define on {setTimeout('makeVisible()', 50)}
-!define makeVisible {function makeVisible()}
-!define body {  document.getElementById("pp").style.display='block';}
-
-!define off {setTimeout('makeInvisible()', 50)}
-!define makeInvisible {function makeInvisible()}
-!define body2 {  document.getElementById("pp").style.display='none';}
-
-!define unhide {setTimeout('unhide()', 50)}
-!define unhidden {function unhide()}
-!define body3 {  document.getElementById("pp2").style.visibility='visible';}
-
-!define hide {setTimeout('hide()', 50)}
-!define hidden {function hide()}
-!define body4 {  document.getElementById("pp2").style. visibility ='hidden';}
-
-!define html ({{{<script type="text/javascript">
-${makeVisible}{
-  ${body}
+!define html [{{{<script type="text/javascript">
+function makeVisible(){
+  document.getElementById("pp").style.display='block';
 }
-${makeInvisible}{
-  ${body2}
+function makeInvisible(){
+  document.getElementById("pp").style.display='none';
 }
-${unhidden}{
-  ${body3}
+function unhide(){
+  document.getElementById("pp2").style.visibility='visible';
 }
-${hidden}{
-  ${body4}
+function hide(){
+  document.getElementById("pp2").style. visibility ='hidden';
 }
 </script>
 <input type="button" id="on" value="ON"
-onclick="javascript:${on}"/>
+onclick="javascript:setTimeout('makeVisible()', 50)"/>
 
 <input type="button" id="off" value="OFF"
-onclick="javascript:${off}"/>
+onclick="javascript:setTimeout('makeInvisible()', 50)"/>
 
 <p id="pp" style="display:none">bla
   <q id='qq'/>
 </p>
 
 <input type="button" id="unhide" value="UNHIDE"
-onclick="javascript:${unhide}"/>
+onclick="javascript:setTimeout('unhide()', 50)"/>
 
 <input type="button" id="hide" value="HIDE"
-onclick="javascript:${hide}"/>
+onclick="javascript:setTimeout('hide()', 50)"/>
 
 <p id="pp2" style="visibility:hidden">bla
   <q id='qq2'/>
-</p>}}})
+</p>}}}]
 *!
 
 |''keywords''|htmlunit|

@@ -1,15 +1,12 @@
 !*< def
-!define to {setTimeout('addInput()', 50)}
-!define fn {function addInput()}
-!define body {  document.getElementById("22").innerHTML += "A match in time saves nine";}
-!define html ({{{<script type="text/javascript">
-${fn}{
-  ${body}
+!define html [{{{<script type="text/javascript">
+function addInput(){
+   document.getElementById("22").innerHTML += "A match in time saves nine";
 }
 </script>
-<input type="button" id="ok" value="OK" onclick="javascript:${to}"/>
+<input type="button" id="ok" value="OK" onclick="javascript:setTimeout('addInput()', 50)"/>
 
-<div id='22'>.</div>}}})
+<div id='22'>.</div>}}}]
 *!
 
 |''keywords''|htmlunit,firefox,ie|
