@@ -1,1 +1,5 @@
-<bla>#foreach( $a in $list )     <t>$a.name</t>  #end</bla>
+<bla>
+  #foreach( $a in $list )
+     <t>$a.name</t>
+  #end
+</bla>

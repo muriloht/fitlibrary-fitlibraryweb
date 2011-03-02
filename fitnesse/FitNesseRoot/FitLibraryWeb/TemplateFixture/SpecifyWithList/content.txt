@@ -1,6 +1,6 @@
 !**< def
 !define file ({{{<bla>
-!-#foreach( $a in $list )-!
+  #foreach( $a in $list )
      <t>$a</t>
   #end
 </bla>
