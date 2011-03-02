@@ -1,20 +1,20 @@
 !*< def
-!define html {<head><script type='text/javascript' src='../mootools-1.2.3-core-nc.js'></script>
+!define html [<head><script type='text/javascript' src='../mootools-1.2.3-core-nc.js'></script>
 
 <script type='text/javascript'>
-function updateCounts() ^@(
+function updateCounts() {
   $('123').set('html','123');
-^@)
-window.addEvent('domready', function() ^@(
+}
+window.addEvent('domready', function() {
   updateCounts.periodical(50);
-^@));
+});
 </script>
 
 </head><body>
 <div class="1"><div class="2"><div id="seatsleft">one<span id="123"><img src="stuff" height="16" width="16" alt="loading" style="display: inline; margin: 0 0 -3px 0;"/></span>
 two
 </div></div></div>
-}
+]
 *!
 
 |''keywords''|firefox,htmlunit|
