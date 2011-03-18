@@ -28,6 +28,7 @@ import fitlibrary.annotation.SimpleAction;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.log.FixturingLogger;
 import fitlibrary.runResults.TestResults;
+import fitlibrary.spider.component.Alert;
 import fitlibrary.spider.component.Frame;
 import fitlibrary.spider.component.Page;
 import fitlibrary.spider.component.SpiderWindow;
@@ -506,6 +507,26 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 		return true;
 	}
 	
+	// --------- ALERT ACCESS ---------
+	@NullaryAction(tooltip="Dismiss a pop-up javascript alert, if the alert is a confirm alert will dismiss without accepting.")
+	public boolean dismissAlert() {
+		return alert().dismissAlert();
+	}
+	@NullaryAction(tooltip="Dismiss a pop-up javascript alert, if the alert is a confirm alert the alert will be accepted.")
+	public boolean acceptAlert() {
+		return alert().acceptAlert();
+	}
+	@NullaryAction(tooltip="Get the text message from within a pop-up javascript alert.")
+	public String getAlertMessage() {
+		return alert().getAlertMessage();
+	}
+	@NullaryAction(tooltip="Enter text into a prompt style javascript pop-up alert.")
+	public boolean enterAlertText(String text) {
+		return alert().enterAlertText(text);
+	}
+	private Alert alert() {
+		return spiderFixture.getAlert();
+	}
 	// --------- SCREEN DUMP ---------
 	@NullaryAction(tooltip="Take a screen dump and insert the result in the report, if the browser supports it.")
 	public void screenDump() {

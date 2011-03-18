@@ -11,7 +11,7 @@
 |>SpecifyTextOf|''Check the text of a text field, text area, etc''|
 |^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
 |>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
-|>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved.''|
+|>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved''|
 |^SpecifyPlainTextOfMatches|''Pattern match for text generally.''|
 |^SpecifyMultiLineTextMatches|''Where matching is applied to each of the lines''|
 |^SpecifyWithSetText||
@@ -112,7 +112,11 @@
 |^SpecifyWaitingForChange|''An element, etc is changed by Javascript after a delay''|
 |^SpecifyWaitingForChangeInVisibility|''The visibility of an element is changed by Javascript after a delay''|
 |^SpecifyPollUrl|''Polling a url until a condition is met''|
-|^SpecifyJavaScript|
+|^SpecifyJavaScript|''Java with DOMs that have javascript, or executing java script directly''|
+#
+!3 Pop-up Alerts
+#
+|^SpecifyAlert|''Interact with javascript pop-up alerts''|
 #
 !3 Finding an element which lacks a suitable locator for xpath
 #

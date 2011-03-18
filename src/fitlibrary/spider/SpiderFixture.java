@@ -25,6 +25,7 @@ import fitlibrary.annotation.SimpleAction;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.flex.FlexSpiderFixture;
 import fitlibrary.spider.component.Frame;
+import fitlibrary.spider.component.Alert;
 import fitlibrary.spider.component.Page;
 import fitlibrary.spider.component.SpiderWindow;
 import fitlibrary.spider.component.TextInPage;
@@ -43,6 +44,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	private boolean shutDownAutomatically = true;
 	private Page page = new Page(this);
 	private Frame frame = new Frame(this);
+	private Alert alert = new Alert(this);
 	private TextInPage textInPage = new TextInPage(this);
 
 	public SpiderFixture() {
@@ -227,6 +229,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	}
 	public Frame getFrame() {
 		return frame;
+	}
+	public Alert getAlert() {
+		return alert;
 	}
 	public TextInPage getTextInPage() {
 		return textInPage;

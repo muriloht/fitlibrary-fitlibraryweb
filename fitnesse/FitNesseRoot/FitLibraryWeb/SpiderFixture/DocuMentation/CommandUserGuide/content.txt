@@ -345,6 +345,28 @@ The first frame !-(#0)-! of a frameset is selected automatically. The current ti
 ----
 **********!
 #
+!*****> Alerts
+
+([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyAlert]])
+
+* To close a pop-up Alert with cancel:
+
+|''dismiss alert'|
+
+ * To accept a confirmation Alert:
+
+|''accept alert''|
+
+* To check the text of an Alert:
+
+|''alert message''|is|Close Me!|
+
+ * To Enter text into a prompt alert:
+
+|''enter alert text''|Hello World!|
+----
+**********!
+#
 !*****> Windows
 
 ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWindows]])

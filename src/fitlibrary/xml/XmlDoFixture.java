@@ -35,9 +35,12 @@ public class XmlDoFixture extends DoTraverse {
 		nameSpace("");
 	}
 	public void nameSpace(String prefix) {
-	    nameSpaceMap.put(prefix,"urn:"+prefix);
-	    XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(nameSpaceMap));
+		nameSpacePrefixUri(prefix,"urn:"+prefix);
 	}
+	public void nameSpacePrefixUri(String prefix, String namespaceUrn) {
+        nameSpaceMap.put(prefix, namespaceUrn);
+        XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(nameSpaceMap));
+    }
 	public boolean xmlSameAs(String actualXml, String expectedXml) {
 		Diff diff = diff(actualXml, expectedXml);
 		if (diff.identical())
