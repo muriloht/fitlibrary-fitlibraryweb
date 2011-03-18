@@ -26,8 +26,6 @@ document.title=title;
 
 |''click''|popalert|
 
-|shutdown browser automatically|false|
-
 |alert message|is|Enter title:|
 
 |enter alert text|New Title!!|
