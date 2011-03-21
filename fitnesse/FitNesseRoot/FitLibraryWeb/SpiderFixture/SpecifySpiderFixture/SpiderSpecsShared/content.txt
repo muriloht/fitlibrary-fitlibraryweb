@@ -12,6 +12,7 @@
 |^SpecifyTextOfMatches|''Pattern match the text of a text field, text area, etc''|
 |>SpecifyPlainTextOf|''Check for text generally. Tags and white space are removed''|
 |>SpecifyInnerHtmlOf|''Check the verbatim text of any element or field. Any html tags within this text are preserved''|
+|>SpecifyTextOfElementOnly|''Check the verbatim text of an element, ignoring any text that would be rendered by any inner html''|
 |^SpecifyPlainTextOfMatches|''Pattern match for text generally.''|
 |^SpecifyMultiLineTextMatches|''Where matching is applied to each of the lines''|
 |^SpecifyWithSetText||

@@ -84,6 +84,10 @@ Note that if a click leads to a popup window being open, it's best to explicitly
 
 |''inner html of''|//tt[@id="withTag"]|''is''|yellow <b>orange</b>|
 
+ * Check the text and prune inner tags' content ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyTextOfElementOnly]]):
+
+|''text of element only''|//tt[@id="withTag"]|''is''|yellow|
+
  * Change text of text area or input text ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWithSetText]]):
 
 |''with''|//input[@id="firstName"]|''set text''|John|

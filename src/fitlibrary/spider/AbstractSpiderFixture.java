@@ -94,7 +94,6 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	}
 	
 	// --------- SHUT DOWN: ---------
-	@SuppressWarnings("unused")
 	public void shutDown() throws IOException {
 		spiderFixture.tearDownDriver();
 	}
@@ -289,6 +288,12 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 			tooltip="Return the html that's enclosed by the given web element.")
 	public String innerHtmlOf(String locator) {
 		return textElement.innerHtmlOf(locator);
+	}
+	@SimpleAction(wiki="|''<i>text of element only</i>''|xpath, id or other locator|",
+			tooltip="Return only the text that is in the identified element, no text of any inner html will be returned\n."+
+			        "This should return the text that an xpath ''//div/text()'' would return as opposed to ''//div/.'' that the browser will normally render (and is returned by '''text of'''.")
+	public String textOfElementOnly(String locator) {
+		return textElement.textOfElementOnly(locator);
 	}
 	// --------- GENERAL ELEMENTS: EXISTENCE, ATTRIBUTES, VALUES, TEXT, COUNT ---------
 	@SimpleAction(wiki="|''<i>element exists</i>''|xpath, id or other locator|",

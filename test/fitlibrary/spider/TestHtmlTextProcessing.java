@@ -48,4 +48,54 @@ public class TestHtmlTextProcessing
 	public void tabToSpace() {
 		Assert.assertEquals("a b c",HtmlTextUtility.tabToSpace("a\tb\tc"));
 	}
+	@Test
+	public void removeInnerHtmlWhenEmptyContent() {
+		assertEquals("", HtmlTextUtility.removeInnerHtml(""));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenNoInnerHtml() {
+		assertEquals("foo", HtmlTextUtility.removeInnerHtml("foo"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenSimpleInnerHtml() {
+		assertEquals("foo", HtmlTextUtility.removeInnerHtml("foo<span>bar</span>"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenTextOnBothSidesOfInnerHtml() {
+		assertEquals("foobaz", HtmlTextUtility.removeInnerHtml("foo<span>bar</span>baz"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenUpperCase() {
+		assertEquals("foobaz", HtmlTextUtility.removeInnerHtml("foo<SPAN>bar</SPAN>baz"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenOnlyInnerHtml() {
+		assertEquals("", HtmlTextUtility.removeInnerHtml("<span>deleteme</span>"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenComplexInnerHtml() {
+		assertEquals("foobaz",HtmlTextUtility.removeInnerHtml("foo<span>top<div>middle<br><span>bottom</span></div>top2</span>baz"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenTwoBlocksOfInnerHtml() {
+		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<span>me</span>baz"));
+		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<div>me</div>baz"));
+	}
+
+	@Test
+	public void removeInnerHtmlWhenCharsThatLookLikeTagsButArent() {
+		assertEquals("if cat<hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat<hat or hat>cat"));
+	}
+
+	@Test
+	public void removeInnerHtmlWOhenCharsThatLookLikeTagsButArentWithInnerHtml() {
+		assertEquals("if cat <hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat <hat<span>ignore</span> or hat>cat"));
+	}
 }

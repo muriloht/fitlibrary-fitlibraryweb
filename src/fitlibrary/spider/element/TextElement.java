@@ -9,6 +9,7 @@ import fit.Parse;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.MultiLineMatchFixture;
 import fitlibrary.spider.polling.PollForWithError;
+import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.StringUtility;
 
 public class TextElement extends SpiderElement {
@@ -26,6 +27,9 @@ public class TextElement extends SpiderElement {
 		WebElement element = findElement(locator);
 		Object escaped = spiderFixture().executeJavaScriptWith("return arguments[0].innerHTML;", element);
 		return lowerCaseTags(Parse.unescape(escaped.toString()));
+	}
+	public String textOfElementOnly(String locator) {
+		return HtmlTextUtility.removeInnerHtml(innerHtmlOf(locator));
 	}
 	public MultiLineMatchFixture textOfMatchesLines(String locator) {
 		// Doesn't wait for Javascript to alter existing values
