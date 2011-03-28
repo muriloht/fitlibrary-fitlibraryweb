@@ -16,7 +16,6 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.RenderedWebElement;
-import org.openqa.selenium.Speed;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -47,7 +46,6 @@ import fitlibrary.spider.utility.WebElementSelector;
 import fitlibrary.table.Row;
 import fitlibrary.traverse.workflow.DoTraverse;
 
-@SuppressWarnings("deprecation")
 @ShowSelectedActions
 public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SuppressWarnings("unused")
@@ -501,15 +499,6 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@NullaryAction(tooltip="Return a set of cookies, which can be checked in the rest of the table.")
 	public Set<Cookie> cookies() {
 		return webDriver().manage().getCookies();
-	}
-	
-	// --------- MOUSE SPEED ---------
-	public Speed mouseSpeed() {
-		return webDriver().manage().getSpeed();
-	}
-	public boolean makeMouseSpeed(Speed speed) {
-		webDriver().manage().setSpeed(speed);
-		return true;
 	}
 	
 	// --------- ALERT ACCESS ---------
