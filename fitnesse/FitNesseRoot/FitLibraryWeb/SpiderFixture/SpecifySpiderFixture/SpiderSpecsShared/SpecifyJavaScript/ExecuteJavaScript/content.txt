@@ -1,9 +1,9 @@
 !*< def
 !define html ({{{
-  <pre name='me', id='pr'>abc</pre>}}})
+  <div name='me' id='pr'>abc</div>}}})
 *!
 
-|''keywords''|firefox,ie|
+|''keywords''|firefox,ie,htmlunit|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -11,7 +11,7 @@
 
  * The following fails in htmlUnit; it returns "abc abc"
 
-|''text of''|//pre|'''is'''|abc|
+|''text of''|//div|'''is'''|abc|
 
  * The following two pass in htmlUnit:
 
@@ -21,14 +21,14 @@
 
  * But the rest of these fail in htmlUnit (they all access the DOM):
 
-|''execute !-JavaScript-!''| var x=document.getElementsByTagName('pre')[0]; return x.id;|'''is'''|pr|
+|''execute !-JavaScript-!''| var x=document.getElementsByTagName('div')[0]; return x.id;|'''is'''|pr|
 
-|''execute !-JavaScript-!''| var x=document.getElementById("pr"); return x.nodeName;|'''is'''|PRE|
+|''execute !-JavaScript-!''| var x=document.getElementById("pr"); return x.nodeName;|'''is'''|DIV|
 
 |''execute !-JavaScript-!''| var x=document.getElementById("pr"); return x.innerHTML;|'''is'''|abc|
 
 |''execute !-JavaScript-!''| var x=document.getElementById("pr"); x.innerHTML = "xyz"; return x.innerHTML;|'''is'''|xyz|
 
-|''execute !-JavaScript-!''| var x=document.getElementsByTagName("PRE")[0]; x.innerHTML = "ttt"; return x.innerHTML;|'''is'''|ttt|
+|''execute !-JavaScript-!''| var x=document.getElementsByTagName("DIV")[0]; x.innerHTML = "ttt"; return x.innerHTML;|'''is'''|ttt|
 
-|''text of''|//pre|'''is'''|ttt|
+|''text of''|//div|'''is'''|ttt|

@@ -107,13 +107,16 @@
 #
 |>SpecifyZzRestartWith|
 #
-!3 Handling Delays and !-JavaScript-!
+!3 Handling Delays 
 #
 |>SpecifyWaitingForElementToBeCreated|''An element is created by Javascript after a delay''|
 |^SpecifyWaitingForChange|''An element, etc is changed by Javascript after a delay''|
 |^SpecifyWaitingForChangeInVisibility|''The visibility of an element is changed by Javascript after a delay''|
 |^SpecifyPollUrl|''Polling a url until a condition is met''|
-|^SpecifyJavaScript|''Java with DOMs that have javascript, or executing java script directly''|
+#
+!3 !-JavaScript-!
+#
+|^SpecifyJavaScript|''Executing java script directly with parameter and with using found elements as parameters''|
 #
 !3 Pop-up Alerts
 #

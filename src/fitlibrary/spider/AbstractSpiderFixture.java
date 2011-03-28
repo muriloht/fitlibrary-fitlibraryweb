@@ -118,14 +118,17 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 			return expected == false;
 		}
 	}
-	// The following can pass out an element, such as:
-	// executeJavaScriptWith("document.drawSquare(argument[0])",element);
-	// Also see TextElement.innherHtmlOf()
 	@SimpleAction(wiki="|''<i>execute JavaScript</i>''|JavaScript code|''<i>with</>''|web element|",
 			tooltip="Execute the JavaScript code in the browser with the argument and return the result.")
 	public Object executeJavaScriptWith(String script, Object param) {
 		JavascriptExecutor js = (JavascriptExecutor) webDriver();
 		return js.executeScript(script, param);
+	}
+	@SimpleAction(wiki="|''<i>execute JavaScript</i>''|JavaScript code|''<i>with element</>''|xpath, id or other locator|",
+			tooltip="Find a element on the page using the locator specified and then execute the JavaScript code in the browser using the found element as an the argument and return the result.")
+	public Object executeJavaScriptWithElement(String script, String locator) {
+		WebElement element = findElement(locator);
+		return executeJavaScriptWith(script, element);
 	}
 	// --------- PAGE MANAGEMENT: ---------
 	@SimpleAction(wiki="|''<i>get url</i>''|url|",
