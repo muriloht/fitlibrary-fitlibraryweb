@@ -7,22 +7,29 @@ package fitlibrary.spider;
 
 import java.util.List;
 
+import fitlibrary.flow.DoAutoWrapper;
+import fitlibrary.flow.IDoAutoWrapper;
 import fitlibrary.runResults.TestResults;
 import fitlibrary.runResults.TestResultsOnCounts;
 import fitlibrary.table.Row;
 import fitlibrary.table.Table;
 import fitlibrary.table.TableFactory;
-import fitlibrary.traverse.workflow.DoTraverse;
+import fitlibrary.traverse.Traverse;
+import fitlibrary.traverse.workflow.DispatchRowInFlow;
+import fitlibrary.typed.TypedObject;
 
-public class ForEachFixture extends DoTraverse {
+public class ForEachFixture extends Traverse {
 	private Object saveFromZero;
 	private Object saveFromOne;
 	private String iteratorName;
 	private List<String> list;
-
+	protected IDoAutoWrapper doAutoWrapper = new DoAutoWrapper(this);
+	protected final DispatchRowInFlow dispatchRowInFlow;
+	
 	public ForEachFixture(String iteratorName, List<String> list) {
 		this.iteratorName = iteratorName;
 		this.list = list;
+		this.dispatchRowInFlow = new DispatchRowInFlow(this, false);
 	}
 	@Override
 	public Object interpretAfterFirstRow(Table table, TestResults testResults) {
@@ -40,7 +47,7 @@ public class ForEachFixture extends DoTraverse {
 			if (subTestResults.problems())
 				problems = true;
 			Row newRow = table.newRow();
-			newRow.add(TableFactory.cell("note"));
+			//newRow.add(TableFactory.cell("note"));
 			newRow.add(TableFactory.cell(TableFactory.tables(TableFactory.table(copyOfRow))));
 		}
 		if (saveFromZero != null)
@@ -50,6 +57,12 @@ public class ForEachFixture extends DoTraverse {
 		table.at(1).at(0).passOrFail(testResults, !problems);
 		return null;
 	}
+	private TypedObject interpretRow(Row row, TestResults testResults) {
+    	return doAutoWrapper.wrap(interpretRowBeforeWrapping(row,testResults));
+    }
+    final public TypedObject interpretRowBeforeWrapping(Row row, TestResults testResults) {
+    	return dispatchRowInFlow.interpretRow(row, testResults);
+    }
 	private Row copyRow(Row callRow) {
 		Row row = TableFactory.row();
 		for (int i = 0; i < callRow.size(); i++)

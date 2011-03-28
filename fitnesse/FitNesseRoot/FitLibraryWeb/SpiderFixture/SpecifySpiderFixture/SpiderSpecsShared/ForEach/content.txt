@@ -1,2 +1,3 @@
-|^TestSucceed|
+^CallingFixtureMethods
+^CallingDefinedActions
 
