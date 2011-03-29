@@ -10,7 +10,7 @@ public class HtmlTextUtility {
 	private static final Pattern HTML_TAG_PATTERN = Pattern.compile("<([a-z,A-Z]*)>"); 
 
 	public static String brToSpace(String s) {
-		return s.replaceAll("<br\\s?\\/?>", " ");
+		return s.replaceAll("<(br|BR)\\s?\\/?>", " ");
 	}
 	public static String crLfRemoved(String s) {
 		return s.replaceAll("\\r?\\n", "");

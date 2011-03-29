@@ -28,6 +28,10 @@ public class TestHtmlTextProcessing
 		Assert.assertEquals("a b c d",HtmlTextUtility.brToSpace("a<br>b<br/>c<br />d"));
 	}
 	@Test
+	public void breakIsRemovedWhenUpperCase() {
+		Assert.assertEquals("a b c d",HtmlTextUtility.brToSpace("a<BR>b<BR/>c<BR />d"));
+	}
+	@Test
 	public void crAndLfRemoved() {
 		Assert.assertEquals("abb",HtmlTextUtility.crLfRemoved("a\r\nb\nb"));
 	}

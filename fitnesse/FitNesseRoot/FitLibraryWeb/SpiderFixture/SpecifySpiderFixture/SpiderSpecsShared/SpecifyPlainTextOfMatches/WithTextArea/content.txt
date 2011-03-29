@@ -10,9 +10,7 @@ orange</textarea>
   <textarea id="withMultiTextBR">yellow<br/>orange</textarea>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported in IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

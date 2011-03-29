@@ -10,9 +10,7 @@ The option is only selected if it is non-blank and if the xpath element is found
 
 This allows for web actions that only apply in some circumstances.
 
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported by IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

@@ -3,13 +3,11 @@
    <option value="a">A</option>
    <option value="b">B</option>
 </select>
-<dv id="divv"/>
+<div id="divv"/>
 }
 *!
 
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported by IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -19,4 +17,4 @@
 
 |''option of''|//select|''is''|b|
 
-|''text of''|//dv|''is''|b|
+|''text of''|//div|''is''|b|

@@ -2,12 +2,13 @@
 <properties>
 	<Edit/>
 	<Files/>
-	<Help/>
+	<Help></Help>
 	<Properties/>
 	<RecentChanges/>
 	<Refactor/>
 	<Search/>
-	<Suites/>
+	<Suites></Suites>
+	<Test/>
 	<Versions/>
 	<WhereUsed/>
 	<saveId>1245896882058</saveId>

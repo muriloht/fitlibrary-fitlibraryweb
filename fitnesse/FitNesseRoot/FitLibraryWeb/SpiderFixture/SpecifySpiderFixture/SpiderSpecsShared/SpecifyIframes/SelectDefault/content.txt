@@ -1,27 +1,25 @@
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported by IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <SpecifyIframes.SpecSetUp
 
-|''text of''|//dv[@id='d1']|'''is'''|white one|
-|'''not'''|''element''|//dv[@id='dr']|''exists''|
-|'''not'''|''element''|//dv[@id='dg']|''exists''|
+|''text of''|//div[@id='d1']|'''is'''|white one|
+|'''not'''|''element''|//div[@id='dr']|''exists''|
+|'''not'''|''element''|//div[@id='dg']|''exists''|
 
 |''frame by name''|green|
 
-|'''not'''|''element''|//dv[@id='d1']|''exists''|
-|'''not'''|''element''|//dv[@id='dr']|''exists''|
-|''text of''|//dv[@id='dg']|'''is'''|greening |
+|'''not'''|''element''|//div[@id='d1']|''exists''|
+|'''not'''|''element''|//div[@id='dr']|''exists''|
+|''text of''|//div[@id='dg']|'''is'''|greening |
 
 |''default frame''|
 
-|''text of''|//dv[@id='d1']|'''is'''|white one|
-|'''not'''|''element''|//dv[@id='dr']|''exists''|
-|'''not'''|''element''|//dv[@id='dg']|''exists''|
+|''text of''|//div[@id='d1']|'''is'''|white one|
+|'''not'''|''element''|//div[@id='dr']|''exists''|
+|'''not'''|''element''|//div[@id='dg']|''exists''|
 
 |''frame''|0|
 
-|'''not'''|''element''|//dv[@id='d1']|''exists''|
-|'''not'''|''element''|//dv[@id='dg']|''exists''|
-|''text of''|//dv[@id='dr']|'''is'''|reddening|
+|'''not'''|''element''|//div[@id='d1']|''exists''|
+|'''not'''|''element''|//div[@id='dg']|''exists''|
+|''text of''|//div[@id='dr']|'''is'''|reddening|

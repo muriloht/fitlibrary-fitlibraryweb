@@ -1,6 +1,4 @@
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported by IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <SpecifyIframes.SpecSetUp
 #
@@ -8,6 +6,6 @@
 #
 |''frame by name''|redId|
 
-|'''not'''|''element''|//dv[@id='d1']|''exists''|
-|'''not'''|''element''|//dv[@id='dg']|''exists''|
-|''text of''|//dv[@id='dr']|'''is'''|reddening|
+|'''not'''|''element''|//div[@id='d1']|''exists''|
+|'''not'''|''element''|//div[@id='dg']|''exists''|
+|''text of''|//div[@id='dr']|'''is'''|reddening|

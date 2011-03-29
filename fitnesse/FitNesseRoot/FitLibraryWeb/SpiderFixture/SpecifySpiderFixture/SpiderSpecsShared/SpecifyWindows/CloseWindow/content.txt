@@ -8,8 +8,8 @@
 <a title="Mr Sir" href="third.html">Link2</a> }}})
 *!
 
-|''keywords''|firefox,htmlunit|
-!2 Htmlunit fails when using close()
+|''keywords''|firefox,htmlunit,ie|
+
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
 |''make file''|other.html|''from''|${target}|

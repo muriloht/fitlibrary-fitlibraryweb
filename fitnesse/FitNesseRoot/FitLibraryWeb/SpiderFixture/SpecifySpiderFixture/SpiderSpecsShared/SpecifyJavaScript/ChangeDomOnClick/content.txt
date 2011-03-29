@@ -4,9 +4,7 @@
 }
 *!
 
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported by IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

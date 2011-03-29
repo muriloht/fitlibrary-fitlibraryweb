@@ -8,9 +8,7 @@
 <b>lines</b>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
-
-!2 Not supported with IE
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
