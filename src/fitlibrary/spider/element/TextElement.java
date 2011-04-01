@@ -1,8 +1,5 @@
 package fitlibrary.spider.element;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.openqa.selenium.WebElement;
 
 import fit.Parse;
@@ -21,12 +18,12 @@ public class TextElement extends SpiderElement {
 		return collectText(findElement(locator));
 	}
 	public String plainTextOf(String locator) {
-		return tagless(collectText(findElement(locator), true));
+		return HtmlTextUtility.tagless(collectText(findElement(locator), true));
 	}
 	public String innerHtmlOf(String locator) {
 		WebElement element = findElement(locator);
 		Object escaped = spiderFixture().executeJavaScriptWith("return arguments[0].innerHTML;", element);
-		return lowerCaseTags(Parse.unescape(escaped.toString()));
+		return HtmlTextUtility.lowerCaseTags(Parse.unescape(escaped.toString()));
 	}
 	public String textOfElementOnly(String locator) {
 		return HtmlTextUtility.removeInnerHtml(innerHtmlOf(locator));
@@ -109,13 +106,10 @@ public class TextElement extends SpiderElement {
 			value = "";
 		}
 		if (trim) {
-			value = spacesToSingleSpace(crLfToSpace(nonBreakingSpaceToSpace(
-					tabToSpace(brToSpace(value))))).trim();
+			value = spacesToSingleSpace(crLfToSpace(HtmlTextUtility.nonBreakingSpaceToSpace(
+					tabToSpace(HtmlTextUtility.brToSpace(value))))).trim();
 		}
 		return Parse.unescape(value);
-	}
-	public static String brToSpace(String s) {
-		return s.replaceAll("<br\\/?>", " ");
 	}
 	protected static String whiteSpace(String s) {
 		return StringUtility.replaceAll(s, "\\n", "\n").replaceAll("\\t", "\t");
@@ -123,48 +117,11 @@ public class TextElement extends SpiderElement {
 	protected static String NLandTABasSpace(String s) {
 		return StringUtility.replaceAll(s, "\\n", " ").replaceAll("\\t", " ");
 	}
-	private String tagless(String text) {
-		String s = text;
-		while (true) {
-			int pos = s.indexOf("  ");
-			if (pos < 0) {
-				break;
-			}
-			s = s.substring(0, pos) + s.substring(pos + 1);
-		}
-		while (true) {
-			int pos = s.indexOf("<");
-			if (pos < 0) {
-				break;
-			}
-			int endPos = s.indexOf(">", pos);
-			if (endPos < 0) {
-				break;
-			}
-			s = s.substring(0, pos) + s.substring(endPos + 1);
-		}
-		return s;
-	}
-	private String lowerCaseTags(String html) {
-		Pattern patt = Pattern.compile("(</?[A-Z]+/?>)", Pattern.DOTALL);
-		Matcher m = patt.matcher(html);
-		StringBuffer sb = new StringBuffer(html.length());
-		while (m.find()) {
-			String text = m.group(1);
-			text = text.toLowerCase();
-			m.appendReplacement(sb, Matcher.quoteReplacement(text));
-		}
-		m.appendTail(sb);
-		return sb.toString();
-	}
 	public static String crLfToSpace(String s) {
 		return s.replaceAll("\\r?\\n", " ");
 	}
 	public static String spacesToSingleSpace(String s) {
 		return s.replaceAll("\\s{2,}", " ");
-	}
-	public static String nonBreakingSpaceToSpace(String s) {
-		return s.replaceAll("\\&nbsp\\;", " ");
 	}
 	public static String tabToSpace(String s) {
 		return s.replaceAll("\\t", " ");

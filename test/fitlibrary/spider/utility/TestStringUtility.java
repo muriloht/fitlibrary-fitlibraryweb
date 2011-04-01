@@ -3,7 +3,7 @@
  * Kindly donated by Air New Zealand in October 2009.
  * Released under the terms of the GNU General Public License version 2 or later.
 */
-package fitlibrary.spider;
+package fitlibrary.spider.utility;
 
 import org.junit.Assert;
 import org.junit.Test;

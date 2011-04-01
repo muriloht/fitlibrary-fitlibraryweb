@@ -3,7 +3,7 @@
  * Kindly donated by Air New Zealand in October 2009.
  * Released under the terms of the GNU General Public License version 2 or later.
 */
-package fitlibrary.spider;
+package fitlibrary.spider.utility;
 
 import static org.junit.Assert.*;
 
@@ -13,7 +13,7 @@ import org.junit.Test;
 import fit.Fixture;
 import fitlibrary.spider.utility.HtmlTextUtility;
 
-public class TestHtmlTextProcessing
+public class TestHtmlTextUtility
 {
 	@Test
 	public void tagIsEscaped() {
@@ -46,60 +46,99 @@ public class TestHtmlTextProcessing
     }
 	@Test
 	public void spacesToSingleSpace() {
-		Assert.assertEquals("a b c",HtmlTextUtility.spacesToSingleSpace("a    b  c"));
+		assertEquals("a b c",HtmlTextUtility.spacesToSingleSpace("a    b  c"));
 	}
 	@Test
 	public void tabToSpace() {
-		Assert.assertEquals("a b c",HtmlTextUtility.tabToSpace("a\tb\tc"));
+		assertEquals("a b c",HtmlTextUtility.tabToSpace("a\tb\tc"));
+	}
+	@Test
+	public void lowerCaseTagsWhenNoText() {
+		assertEquals("", HtmlTextUtility.lowerCaseTags(""));
+	}
+	@Test
+	public void lowerCaseTagsWhenNoTags() {
+		assertEquals("DO NOT TOUCH ME", HtmlTextUtility.lowerCaseTags("DO NOT TOUCH ME"));
+	}
+	@Test
+	public void lowerCaseTagsWhenTagOnly() {
+		assertEquals("<table>", HtmlTextUtility.lowerCaseTags("<TABLE>"));
+	}
+	@Test
+	public void lowerCaseTagsWithNumbers() {
+		assertEquals("<h1>", HtmlTextUtility.lowerCaseTags("<H1>"));
+	}
+	@Test
+	public void lowerCaseClosingTag() {
+		assertEquals("</table>", HtmlTextUtility.lowerCaseTags("</TABLE>"));
+	}
+	@Test
+	public void lowerCaseTagsWhenMultipleTagsAndText() {
+		assertEquals("left<div><span>text<div>more</div>some</span></div>right.", HtmlTextUtility.lowerCaseTags("left<DIV><SPAN>text<div>more</div>some</SPAN></DIV>right."));
 	}
 	@Test
 	public void removeInnerHtmlWhenEmptyContent() {
 		assertEquals("", HtmlTextUtility.removeInnerHtml(""));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenNoInnerHtml() {
 		assertEquals("foo", HtmlTextUtility.removeInnerHtml("foo"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenSimpleInnerHtml() {
 		assertEquals("foo", HtmlTextUtility.removeInnerHtml("foo<span>bar</span>"));
 	}
-
+	@Test
+	public void removeInnerHtmlWhenTagsHaveNumbers() {
+		assertEquals("bigtext", HtmlTextUtility.removeInnerHtml("big<h4>small</h4>text"));
+	}
 	@Test
 	public void removeInnerHtmlWhenTextOnBothSidesOfInnerHtml() {
 		assertEquals("foobaz", HtmlTextUtility.removeInnerHtml("foo<span>bar</span>baz"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenUpperCase() {
 		assertEquals("foobaz", HtmlTextUtility.removeInnerHtml("foo<SPAN>bar</SPAN>baz"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenOnlyInnerHtml() {
 		assertEquals("", HtmlTextUtility.removeInnerHtml("<span>deleteme</span>"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenComplexInnerHtml() {
 		assertEquals("foobaz",HtmlTextUtility.removeInnerHtml("foo<span>top<div>middle<br><span>bottom</span></div>top2</span>baz"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenTwoBlocksOfInnerHtml() {
 		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<span>me</span>baz"));
 		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<div>me</div>baz"));
 	}
-
 	@Test
 	public void removeInnerHtmlWhenCharsThatLookLikeTagsButArent() {
 		assertEquals("if cat<hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat<hat or hat>cat"));
 	}
-
 	@Test
 	public void removeInnerHtmlWOhenCharsThatLookLikeTagsButArentWithInnerHtml() {
 		assertEquals("if cat <hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat <hat<span>ignore</span> or hat>cat"));
+	}
+	@Test
+	public void taglessWhenEmptyStringReturnsEmptyString() {
+		assertEquals("", HtmlTextUtility.tagless(""));
+	}
+	@Test
+	public void taglessWhenNoTagsJustReturnsText() {
+		assertEquals("no TEXT here", HtmlTextUtility.tagless("no TEXT here"));
+	}
+	@Test
+	public void taglessWhenOnlyTheTagReturnsEmptyString() {
+		assertEquals("", HtmlTextUtility.tagless("<br>"));
+	}
+	@Test
+	public void taglessWhenTagsAndTextREturnsOnlyTheText() {
+		assertEquals("big small italic text", HtmlTextUtility.tagless("big <h4>small</h4><i> italic</i> text"));
+	}
+	@Test
+	public void taglessWhenTextLooksLikeTagsButItIsnt() {
+		assertEquals("big small italic text", HtmlTextUtility.tagless("big <h4>small</h4><i> italic</i> text"));
 	}
 }

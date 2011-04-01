@@ -7,7 +7,7 @@ import fitlibrary.exception.FitLibraryException;
 
 public class HtmlTextUtility {
 	private static final String UNICODE_NON_BREAKING_SPACE = "\u00A0";
-	private static final Pattern HTML_TAG_PATTERN = Pattern.compile("<([a-z,A-Z]*)>"); 
+	private static final Pattern HTML_TAG_PATTERN = Pattern.compile("<([a-z,A-Z,0-9]*)>"); 
 
 	public static String brToSpace(String s) {
 		return s.replaceAll("<(br|BR)\\s?\\/?>", " ");
@@ -23,6 +23,18 @@ public class HtmlTextUtility {
 	}
 	public static String tabToSpace(String s) {
 		return s.replaceAll("\\t", " ");
+	}
+	public static String lowerCaseTags(String html) {
+		Pattern patt = Pattern.compile("(</?[A-Z,0-9]+/?>)", Pattern.DOTALL);
+		Matcher m = patt.matcher(html);
+		StringBuffer sb = new StringBuffer(html.length());
+		while (m.find()) {
+			String text = m.group(1);
+			text = text.toLowerCase();
+			m.appendReplacement(sb, Matcher.quoteReplacement(text));
+		}
+		m.appendTail(sb);
+		return sb.toString();
 	}
 	public static String removeInnerHtml(String stringWithInnerHtml) {
 		for (;;) {
@@ -64,5 +76,27 @@ public class HtmlTextUtility {
 			throw new FitLibraryException("Expected closing tag: "+closingTag+" in content "+htmltoRemoveFrom);
 			
 		return leftHandSideOfHtmlToKeep+htmltoRemoveFrom.substring(indexOfClosing+closingTag.length());
+	}
+	public static String tagless(String text) {
+		String s = text;
+		while (true) {
+			int pos = s.indexOf("  ");
+			if (pos < 0) {
+				break;
+			}
+			s = s.substring(0, pos) + s.substring(pos + 1);
+		}
+		while (true) {
+			int pos = s.indexOf("<");
+			if (pos < 0) {
+				break;
+			}
+			int endPos = s.indexOf(">", pos);
+			if (endPos < 0) {
+				break;
+			}
+			s = s.substring(0, pos) + s.substring(endPos + 1);
+		}
+		return s;
 	}
 }
