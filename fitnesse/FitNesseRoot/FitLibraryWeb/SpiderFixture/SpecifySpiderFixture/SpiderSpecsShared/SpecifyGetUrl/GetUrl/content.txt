@@ -10,6 +10,9 @@
 
 |''with html''|${html}|
 
+|help|
+
+
 |''get url''|http://localhost:@{serverPort}/files/@{webDriver.driver}/test.html|
 
 |''title''|'''is'''|A title|

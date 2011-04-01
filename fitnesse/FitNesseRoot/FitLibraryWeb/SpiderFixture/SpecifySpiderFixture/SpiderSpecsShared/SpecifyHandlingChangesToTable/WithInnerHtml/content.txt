@@ -8,7 +8,7 @@ function addInput(){
 }
 </script>
 <input type="button" id="ok" value="OK" onclick="javascript:setTimeout('addInput()', 20)"/>
-<t-table><tr id="t"><td id="e">cell</td></tr></t-table>}}}]
+<table><tr id="t"><td id="e">cell</td></tr></table>}}}]
 *!
 |''keywords''|firefox|
 

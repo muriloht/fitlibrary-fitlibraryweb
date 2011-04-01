@@ -1,10 +1,9 @@
 !*< def
 !define html ({{{<input type="text" id="in"/>
-<div id="divv">
-  <q id='q1'/>
+<div id="divv">visble div
+  <span id='q1'>visible span</span>
 </div>
-<p name="pp" style="display:none">bla
-  <q id='q2'/>
+<p name="pp" style="display:none">invisble p<span id='q2'>invisbile span</span>
 </p>}}})
 *!
 
@@ -27,3 +26,4 @@
  * The following will succeed if it's not visible OR if the xpath is incorrect, so better to use ''invisible'':
 
 |'''not'''|''element''|//input[@id="missing"]|''visible''|
+

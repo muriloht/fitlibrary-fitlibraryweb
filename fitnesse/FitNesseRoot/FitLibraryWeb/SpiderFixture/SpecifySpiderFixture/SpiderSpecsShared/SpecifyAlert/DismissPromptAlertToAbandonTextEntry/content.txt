@@ -17,7 +17,7 @@ document.title=title;
 
 '''Prompt Alerts can also be dismissed, Spider Fixture will can do that:'''
 
-|''keywords''|firefox|
+|''keywords''|firefox,ie|
 
 '''Note: This specification actually works in IE too, however I'm not sure how to automatically switch off the pop script blocking which seems to block script alerts which stop it working.'''
 
@@ -26,8 +26,6 @@ document.title=title;
 |''with html''|${html}|
 
 |''click''|popalert|
-
-|alert message|is|Enter title:|
 
 |enter alert text|New Title!!|
 

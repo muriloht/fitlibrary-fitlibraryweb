@@ -4,7 +4,7 @@
 }
 *!
 
-|''keywords''|htmlunit,firefox,ie|
+|''keywords''|htmlunit,firefox|
 
 !2 Not supported by IE
 
