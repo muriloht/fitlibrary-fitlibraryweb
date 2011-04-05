@@ -73,6 +73,12 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return true;
 	}
+	@SimpleAction(wiki="|''<i>use native events</i>''|boolean value|",
+			tooltip="Switch native events mode on / off - currently only available in firefox.")
+	public void useNativeEventsInFirefox(boolean enableNativeEvents) {
+        firefoxProfile.setEnableNativeEvents(enableNativeEvents);
+
+    }
 	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as string</i>''|string value|",
 			tooltip="Set the value of a string-based firefox profile key.")
 	public void firefoxProfileAsString(String key, String value) {
