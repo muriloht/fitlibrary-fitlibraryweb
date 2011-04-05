@@ -116,7 +116,7 @@
 #
 !3 !-JavaScript-!
 #
-|^SpecifyJavaScript|''Executing java script directly with parameter and with using found elements as parameters''|
+|^SpecifyJavaScript|''Responding to !-JavaScript-! DOM changes. Executing java script directly, with a parameter and with using found elements as parameters''|
 #
 !3 Pop-up Alerts
 #

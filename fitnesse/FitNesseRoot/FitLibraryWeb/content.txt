@@ -30,7 +30,6 @@ FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrar
 |''Checking the contents of a PDF''|>PdfDocument|[[Docs][>PdfDocument]]|[[Example][^PdfDocument.RunningExample]]|
 
 |!2 ^WhatIsNew|
-|!2 ^ThingsToDo|
 
 ^CheckFolderRunner
 
