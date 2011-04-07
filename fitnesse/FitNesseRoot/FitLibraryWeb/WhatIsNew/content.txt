@@ -1,7 +1,7 @@
 !2 5 April 2011
 #
  * SpiderFixture:
-  * Upgraded Spider to Selenium 2.0b2.
+  * Upgraded Spider to Selenium 2.0b3
   * Improved support for Internet Explorer, many of the specification now re-enable to show they work with Internet Explorer
   * Add support for interacting with pop Alert() dialogs. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyAlert
   * Added new fixture method 'execute !-JavaScript with element' which locates an element and passes to !-JavaScript-! as a parameter. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyJavaScript.ExecuteJavaScript
