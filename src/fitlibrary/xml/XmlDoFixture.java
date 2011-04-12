@@ -9,6 +9,7 @@ import javax.xml.transform.TransformerException;
 
 import org.custommonkey.xmlunit.DetailedDiff;
 import org.custommonkey.xmlunit.Diff;
+import org.custommonkey.xmlunit.ElementNameAndTextQualifier;
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.Transform;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -49,6 +50,7 @@ public class XmlDoFixture extends DoTraverse {
 	}
 	public boolean xmlSimilarTo(String actualXml, String expectedXml) {
 		Diff diff = diff(actualXml, expectedXml);
+		diff.overrideElementQualifier(new ElementNameAndTextQualifier());
 		if (diff.similar())
 			return true;
 		return mismatch(diff);

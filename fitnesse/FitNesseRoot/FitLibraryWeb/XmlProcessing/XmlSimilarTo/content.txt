@@ -17,9 +17,13 @@
 
 |''xml''|<a id1="1" id2="2">A</a>|''similar to''|<a id2="2" id1="1">A</a>|
 
- * This is the difference from ''same as'':
+ * This is the same xml that fails in the ''same as'' specification:
 
 |''xml''|<a><b>1</b><c>2</c></a>|''similar to''|<a><c>2</c><b>1</b></a>|
+
+ * Similar to will work with repeating nodes of same name but in different order:
+
+|''xml''|<a><b>1</b><b>2</b></a>|''similar to''|<a><b>2</b><b>1</b></a>|
 
  * Even if name spaces are used in ''similar to'', they do not need to be declared first:
 

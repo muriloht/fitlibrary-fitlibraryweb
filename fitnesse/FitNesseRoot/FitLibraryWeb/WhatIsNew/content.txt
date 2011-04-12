@@ -1,3 +1,8 @@
+!2 UPCOMING
+
+ * XmlProcessing:
+   * xml 'similar to' comparison now more lenient when it comes to repeating nodes of same name
+
 !2 5 April 2011
 #
  * SpiderFixture:
