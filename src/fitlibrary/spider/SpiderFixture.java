@@ -198,8 +198,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				return findElement(By.linkText(locator.substring(5)));
 			if (locator.startsWith("name="))
 				return findElement(By.name(locator.substring(5)));
-			if (locator.startsWith("//"))
+			if (locator.startsWith("//") || locator.startsWith("(//")) 
 				return findElement(By.xpath(locator));
+			
 			return findElement(By.id(locator));
 		}
 		@Override
