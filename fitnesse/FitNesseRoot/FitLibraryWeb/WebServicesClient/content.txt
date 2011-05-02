@@ -22,7 +22,11 @@
 
 !|fitlibrary.ws.WebServicesClientFixture|
 
- * Specify a proxy (prior to any calls):
+ * To specify that https certificates are to be ignored (prior to any other calls):
+
+|''accept any certificate''|
+
+ * Specify a proxy (prior to any calls other than the one above):
 
 |''proxy url''|http://proxy|''with port''|8099|
 

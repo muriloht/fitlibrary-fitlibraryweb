@@ -33,29 +33,43 @@ import fitlibrary.xml.XmlDoFixture;
 public class HttpClientService extends XmlDoFixture {
 	private static Logger logger = FixturingLogger.getLogger(HttpClientService.class);
 	static int INSTANCES = 0;
-	protected HttpClient client = new DefaultHttpClient();
+	private HttpClient httpClient = null;
 	private Header[] headers = new Header[0];
 	protected String reply = "";
 	protected String replyContentType = "";
+	protected boolean acceptAnyCertificate = false;
 
 	public HttpClientService() {
 		if (INSTANCES > 0)
 			NDC.push("#"+INSTANCES++);
 	}
+	public HttpClient client() {
+		if (httpClient == null) {
+			if (acceptAnyCertificate)
+				httpClient = RelaxedHttpClient.create();
+			else
+				httpClient = new DefaultHttpClient();
+		}
+		return httpClient;
+	}
+	public boolean acceptAnyCertificate() {
+		acceptAnyCertificate = true;
+		return true;
+	}
 	public boolean proxyUrlWithPort(String proxyHost, int proxyPortNo) {
 		HttpHost proxy = new HttpHost(proxyHost, proxyPortNo, "http");
-		client.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
+		client().getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 		return true;
 	}
 	public void timeout(long socketTimeout) {
-		client.getParams().setParameter("http.socket.timeout", socketTimeout);
+		client().getParams().setParameter("http.socket.timeout", socketTimeout);
 	}
 	public void httpHead(String url) {
 		logger.trace("Try HEAD "+url);
 		HttpHead head = new HttpHead(url);
 		setHost(head, url);
 		try {
-			handleHeaders(client.execute(head));
+			handleHeaders(client().execute(head));
 		} catch (IOException e) {
 			logger.trace("HEAD failed");
 			head.abort();
@@ -73,7 +87,7 @@ public class HttpClientService extends XmlDoFixture {
 		HttpGet get = new HttpGet(url);
 		setHost(get, url);
 		try {
-			handleReply(client.execute(get));
+			handleReply(client().execute(get));
 		} catch (IOException e) {
 			logger.trace("GET failed");
 			get.abort();
@@ -98,7 +112,7 @@ public class HttpClientService extends XmlDoFixture {
 			entity.setContentEncoding(contentEncoding);
 			post.setEntity(entity);
 			logger.trace("POST executing");
-			HttpResponse execute = client.execute(post);
+			HttpResponse execute = client().execute(post);
 			handleReply(execute);
 		} catch (IOException e) {
 			logger.trace("POST failed");
