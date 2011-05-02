@@ -1,10 +1,13 @@
 !2 UPCOMING
-
+#
  * SpiderFixture:
   * Fix: '''(//foo//bar/baz)[2]''' style xpaths were not being recognised by spider fixture as valid xpath - making it difficult to select elements in document order. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox.SpecifiCations.SpecifyXpath.ByPosition for further documentation.
 
  * XmlProcessing:
    * xml 'similar to' comparison now more lenient when it comes to repeating nodes of the same name.
+
+ * Web Services Client
+  * Allow for ssl certificates to be ignored with https. Added to docs at .FitLibraryWeb.WebServicesClient; there are no specs.
 
 !2 5 April 2011
 #
