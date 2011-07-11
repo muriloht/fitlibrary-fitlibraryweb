@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.RenderedWebElement;
 import org.openqa.selenium.WebElement;
 
 import fitlibrary.exception.FitLibraryException;
@@ -48,7 +47,7 @@ public class ElementWithAttributes extends SpiderElement {
 		});
 	}
 	public String elementValue(String locator) {
-		return findElement(locator).getValue();
+		return findElement(locator).getAttribute("value");
 	}
 	public String attributeOf(String attributeName, String locator) {
 		String attribute = findElement(locator).getAttribute(attributeName);
@@ -68,13 +67,7 @@ public class ElementWithAttributes extends SpiderElement {
 		});
 	}
 	public String withCssPropertyOf(String locator, String property) {
-		WebElement element = findElement(locator);
-		if (!(element instanceof RenderedWebElement)) {
-			throw new FitLibraryException("Not a rendered element, but is a "
-					+ element.getClass().getName());
-		}
-		RenderedWebElement rendered = (RenderedWebElement) element;
-		return rendered.getValueOfCssProperty(property);
+		return findElement(locator).getCssValue(property);
 	}
 	public int countOf(String locator) {
 		return finder().findElements(locator).size();

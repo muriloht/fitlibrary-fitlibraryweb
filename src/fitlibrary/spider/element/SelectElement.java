@@ -21,7 +21,7 @@ public class SelectElement extends SpiderElement {
 		List<WebElement> childrenOf = childrenOf(locator, "option");
 		for (WebElement option : childrenOf)
 			if (option.isSelected()) {
-				String value = option.getValue();
+				String value = option.getAttribute("value");
 				
 				return (value == null || value.length()==0) ? option.getText() : value;
 			}
@@ -31,7 +31,7 @@ public class SelectElement extends SpiderElement {
 		List<String> result = new ArrayList<String>();
 		for (WebElement option : childrenOf(locator, "option")) {
 			if (option.isSelected()) {
-				result.add(option.getValue());
+				result.add(option.getAttribute("value"));
 			}
 		}
 		return result;
@@ -56,7 +56,7 @@ public class SelectElement extends SpiderElement {
 	public boolean withSelectOptionAt(String locator, int index) {
 		try {
 			final WebElement webElement = childrenOf(locator, "option").get(index);
-			webElement.setSelected();
+			webElement.click();
 			ensureBecomes(new PollForWithError() {
 				public boolean matches() {
 					return webElement.isSelected();
@@ -87,16 +87,12 @@ public class SelectElement extends SpiderElement {
 			public boolean matches() {
 				List<WebElement> childrenOf = childrenOf(locator, "option");
 				for (WebElement optionElement : childrenOf) {
-					String value = optionElement.getValue();
+					String value = optionElement.getAttribute("value");
 					if ((value == null || value.length()==0)&& option.length()>0) 
                         value = optionElement.getText();
 					if (value != null && value.equalsIgnoreCase(option)) {
 						if (select != optionElement.isSelected()) {
-							if (select) {
-								optionElement.setSelected();
-							} else {
-								optionElement.toggle();
-							}
+							optionElement.click();
 						}
 						return true;
 					}
@@ -112,7 +108,7 @@ public class SelectElement extends SpiderElement {
 				for (WebElement optionElement : childrenOf(locator, "option")) {
 					String text = optionElement.getText();
 					if (text != null && text.equalsIgnoreCase(textRequired)) {
-						optionElement.setSelected();
+						optionElement.click();
 						return true;
 					}
 				}
@@ -124,7 +120,7 @@ public class SelectElement extends SpiderElement {
 		List<String> nameList = new ArrayList<String>();
 		List<WebElement> options = options(locator);
 		for (WebElement option : options) {
-			nameList.add(option.getValue());
+			nameList.add(option.getAttribute("value"));
 		}
 		return nameList;
 	}

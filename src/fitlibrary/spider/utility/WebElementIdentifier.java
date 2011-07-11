@@ -70,7 +70,7 @@ public class WebElementIdentifier {
 				for (int i = 1; i < split.length; i++)
 					addUnless(s, split[0],split[i].replace("_", " "));
 		}
-		addUnless(s,"value",element.getValue(),"Submit Query");
+		addUnless(s,"value",element.getAttribute("value"),"Submit Query");
 		addUnless(s,"enabled",""+element.isEnabled(),"true");
 		try {
 			addUnless(s,"selected",""+element.isSelected(),"false");

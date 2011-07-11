@@ -94,7 +94,7 @@ public class TextElement extends SpiderElement {
 		String value = element.getText();
 		if (value == null || "".equals(value.trim())) {
 			try {
-				value = element.getValue();
+				value = element.getAttribute("value");
 			} catch(UnsupportedOperationException uso) {
 				// re throw unless exception is about missing value attribute then we just handle gracefully..
 				if (!uso.getMessage().contains("Element does not have a value attribute")) {

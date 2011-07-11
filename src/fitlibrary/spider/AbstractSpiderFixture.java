@@ -15,7 +15,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.RenderedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -346,7 +345,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SimpleAction(wiki="|''<i>element is visible</i>''|xpath, id or other locator|",
 			tooltip="Returns true if the given web element is displayed (visible to the user).")
 	public boolean elementVisible(String locator) {
-		return ((RenderedWebElement)findElement(locator)).isDisplayed();
+		return findElement(locator).isDisplayed();
 	}
 	@SimpleAction(wiki="|''<i>element invisible</i>''|xpath, id or other locator|",
 			tooltip="Returns true if the given web element is not displayed (invisible to the user).")
@@ -621,7 +620,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	private String collectText(WebElement element, boolean trim) {
 		String value = element.getText();
 		if (value == null || "".equals(value.trim())) {
-			value = element.getValue();
+			value = element.getAttribute("value");
 		}
 		if (value == null) {
 			value = "";
