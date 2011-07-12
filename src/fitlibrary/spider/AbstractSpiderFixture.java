@@ -199,6 +199,10 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public boolean selectWindowWithAs(String xpath, String value) {
 		return window().selectWindowWithAs(xpath, value);
 	}
+	public boolean selectWindowWithContains(String xpath, String value) {
+		return window().selectWindowWithContains(xpath, value);
+	}
+
 	@NullaryAction(tooltip="Selecting the other window, of two.")
 	public boolean selectOtherWindow() {
 		return window().selectOtherWindow();

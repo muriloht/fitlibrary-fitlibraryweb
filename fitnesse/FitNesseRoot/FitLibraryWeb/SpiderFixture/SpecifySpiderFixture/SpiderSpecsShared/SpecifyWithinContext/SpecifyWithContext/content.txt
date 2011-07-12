@@ -31,3 +31,6 @@
 
 |''with''|name=tddd|''do''|
 |''text of''|//input[@id="withValue"]|''is''|yellow|
+
+|''with''|name=tddd|''do''|
+|''element exists''|//input[@id="withValue"]|

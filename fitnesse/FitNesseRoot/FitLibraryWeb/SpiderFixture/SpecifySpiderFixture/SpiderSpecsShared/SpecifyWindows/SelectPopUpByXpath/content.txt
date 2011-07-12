@@ -33,3 +33,17 @@ homing}}}]
 
 |''text of''|//title|'''is'''|To Here|
 
+Switch back:
+
+|''select window with''|//title|''as''|From|
+
+|''page source''|'''does not contain'''|othering|
+
+Can also select window with an xpath containing text by using 'contains' instead of 'as':
+
+|''select window with''|//title|''contains''|To Here|
+
+|''page source''|''contains''|othering|
+
+|''text of''|//title|''is''|To Here|
+

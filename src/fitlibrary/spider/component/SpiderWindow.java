@@ -63,19 +63,39 @@ public class SpiderWindow extends SpiderComponent {
 			return false;
 		}
 	}
-	public boolean selectWindowWithAs(String xpath, String value) {
-		String currentwindow = currentWindow();
-		try {
-			Set<String> windowHandles = windowHandles();
-			for (String name: windowHandles) {
-				webDriver().switchTo().window(name);
-				if (spiderFixture.collectText(spiderFixture.findElement(xpath)).equals(value))
-					return true;
+	public boolean selectWindowWithAs(final String xpath, final String value) {
+		return selectWindowWithMatcher(xpath, new WindowMatches() {
+			public boolean matches(String elementText) {
+				return elementText.equals(value);
 			}
-			webDriver().switchTo().window(currentwindow);
-		} catch (Exception e) {
-			//
+			
+		});
+	}
+	public boolean selectWindowWithContains(final String xpath, final String value) {
+		return selectWindowWithMatcher(xpath, new WindowMatches() {
+			public boolean matches(String elementText) {
+				return elementText.toLowerCase().contains(value.toLowerCase());
+			}
+			
+		});
+	}
+	private interface WindowMatches {
+		boolean matches(String elementText);
+	}
+	private boolean selectWindowWithMatcher(String xpath, WindowMatches matcher) {
+		String currentwindow = currentWindow();
+		Set<String> windowHandles = windowHandles();
+		for (String name : windowHandles) {
+			webDriver().switchTo().window(name);
+			try {
+				if (matcher.matches(spiderFixture.collectText(spiderFixture.findElement(xpath))))
+					return true;
+			} catch (Exception e) {
+				// may not be an error as we might be doing find element in a
+				// window where the element does not exist.
+			}
 		}
+		webDriver().switchTo().window(currentwindow);
 		return false;
 	}
 	public boolean selectOtherWindow() {

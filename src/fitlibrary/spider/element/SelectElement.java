@@ -19,12 +19,13 @@ public class SelectElement extends SpiderElement {
 	}
 	public String optionOf(String locator) {
 		List<WebElement> childrenOf = childrenOf(locator, "option");
-		for (WebElement option : childrenOf)
+		for (WebElement option : childrenOf) {
 			if (option.isSelected()) {
 				String value = option.getAttribute("value");
 				
 				return (value == null || value.length()==0) ? option.getText() : value;
 			}
+		}
 		return "";
 	}
 	public List<String> optionListOf(String locator) {
@@ -56,7 +57,7 @@ public class SelectElement extends SpiderElement {
 	public boolean withSelectOptionAt(String locator, int index) {
 		try {
 			final WebElement webElement = childrenOf(locator, "option").get(index);
-			webElement.click();
+			setSelected(webElement);
 			ensureBecomes(new PollForWithError() {
 				public boolean matches() {
 					return webElement.isSelected();
@@ -92,7 +93,11 @@ public class SelectElement extends SpiderElement {
                         value = optionElement.getText();
 					if (value != null && value.equalsIgnoreCase(option)) {
 						if (select != optionElement.isSelected()) {
-							optionElement.click();
+							if (select) {
+								setSelected(optionElement);
+							} else {
+								toggle(optionElement);
+							}
 						}
 						return true;
 					}
@@ -101,6 +106,14 @@ public class SelectElement extends SpiderElement {
 			}
 		});
 	}
+	private void toggle(WebElement e) {
+		e.click();
+	}
+	private void setSelected(WebElement e) {
+		if (e.isSelected())
+			return;
+		toggle(e);
+	}
 	private boolean selectTextThroughChildren(final String locator, final String textRequired) {
 		return ensureMatches(new PollForMatches() {
 			@Override
@@ -108,7 +121,7 @@ public class SelectElement extends SpiderElement {
 				for (WebElement optionElement : childrenOf(locator, "option")) {
 					String text = optionElement.getText();
 					if (text != null && text.equalsIgnoreCase(textRequired)) {
-						optionElement.click();
+						setSelected(optionElement);
 						return true;
 					}
 				}
