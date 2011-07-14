@@ -35,6 +35,7 @@ import fitlibrary.spider.driver.DriverVariation;
 import fitlibrary.spider.element.ElementWithAttributes;
 import fitlibrary.spider.element.LinkAndFormElement;
 import fitlibrary.spider.element.SelectElement;
+import fitlibrary.spider.element.SpiderWebElement;
 import fitlibrary.spider.element.TextElement;
 import fitlibrary.spider.polling.Poll;
 import fitlibrary.spider.polling.PollForMatches;
@@ -436,10 +437,15 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public List<String> optionValues(String locator) {
 		return selectElement.optionValues(locator);
 	}
+	
 	@SimpleAction(wiki="|''<i>options</i>''|xpath, id or other locator|",
 			tooltip="Returns a list of the elements for the options in the select or multi-select.\nThis list can be checked in the subsequent rows of the table.")
-	public List<WebElement> options(String locator) {
-		return selectElement.options(locator);
+    public List<SpiderWebElement> options(String locator) {
+		List<SpiderWebElement> els = new ArrayList<SpiderWebElement>();
+		for (WebElement webDriversElement: selectElement.options(locator)) {
+			els.add(new SpiderWebElement(webDriversElement));
+		}
+		return els;
 	}
 	
 	// --------- TABLES ---------

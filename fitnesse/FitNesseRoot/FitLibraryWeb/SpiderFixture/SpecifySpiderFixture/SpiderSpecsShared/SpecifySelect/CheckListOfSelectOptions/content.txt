@@ -1,0 +1,30 @@
+!*< def
+!define html ({{{<select id="colour">
+  <option value=""></option>
+  <option selected="selected" value="red">Red</option>
+  <option>Green</option>
+  <option id ='blue'>Blue</option>
+  <option id='black'>Black</option>
+  <option value='yellow'>Yellow</option>
+  <option value='punk'>Pink</option>
+  <OPTION VALUE="VIOLET">Violet</OPTION>
+</select>}}})
+*!
+
+|''keywords''|htmlunit,firefox,ie|
+
+!include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|''with html''|${html}|
+
+|''options''|colour|
+|text|value|selected|
+|||false|
+|Red|red|true|
+|Green|Green|false|
+|Blue|Blue|false|
+|Black|Black|false|
+|Yellow|yellow|false|
+|Pink|punk|false|
+|Violet|VIOLET|false|
+

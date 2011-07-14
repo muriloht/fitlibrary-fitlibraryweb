@@ -17,6 +17,19 @@
 
 |''with html''|${html}|
 
+|''options''|colour|
+|text|value|selected|
+|||false|
+|Red|red|true|
+|Green|Green|false|
+|Blue|Blue|false|
+|Black|Black|false|
+|Yellow|yellow|false|
+|Pink|punk|false|
+|Violet|VIOLET|false|
+
+
+
 |''option of''|colour|''is''|red|
 
 |''with''|colour|''select option''|Black|

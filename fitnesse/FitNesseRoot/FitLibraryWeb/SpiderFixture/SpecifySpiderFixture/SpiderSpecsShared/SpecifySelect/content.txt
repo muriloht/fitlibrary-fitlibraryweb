@@ -2,3 +2,4 @@
 ^SelectWithoutDefault
 ^TwoSelectsOnPage
 ^SelectByIndex
+^CheckListOfSelectOptions
