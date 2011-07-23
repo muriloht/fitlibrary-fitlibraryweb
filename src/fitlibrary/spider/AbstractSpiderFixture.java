@@ -441,11 +441,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SimpleAction(wiki="|''<i>options</i>''|xpath, id or other locator|",
 			tooltip="Returns a list of the elements for the options in the select or multi-select.\nThis list can be checked in the subsequent rows of the table.")
     public List<SpiderWebElement> options(String locator) {
-		List<SpiderWebElement> els = new ArrayList<SpiderWebElement>();
-		for (WebElement webDriversElement: selectElement.options(locator)) {
-			els.add(new SpiderWebElement(webDriversElement));
-		}
-		return els;
+		return selectElement.options(locator);
 	}
 	
 	// --------- TABLES ---------

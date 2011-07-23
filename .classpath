@@ -31,7 +31,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jna-3.3.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.0.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.0.0-srcs.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/guava-r09.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.1.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.1.0-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

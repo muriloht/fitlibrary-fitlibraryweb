@@ -1,30 +1,33 @@
 !*< def
 !define html ({{{<select id="colour">
+  <option>No Value</Option>
   <option value=""></option>
+  <option value="">Orange Something For The Hell Of It</Option>
   <option selected="selected" value="red">Red</option>
   <option>Green</option>
   <option id ='blue'>Blue</option>
   <option id='black'>Black</option>
-  <option value='yellow'>Yellow</option>
-  <option value='punk'>Pink</option>
+  <option value = 'yellow'>Yellow</option>
+  <option id='pink' value='punk'>Pink</option>
   <OPTION VALUE="VIOLET">Violet</OPTION>
 </select>}}})
 *!
-
+ 
 |''keywords''|htmlunit,firefox,ie|
-
+ 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
-
+ 
 |''with html''|${html}|
-
+ 
 |''options''|colour|
 |text|value|selected|
+|No Value||false|
 |||false|
+|Orange Something For The Hell Of It||false|
 |Red|red|true|
-|Green|Green|false|
-|Blue|Blue|false|
-|Black|Black|false|
+|Green||false|
+|Blue||false|
+|Black||false|
 |Yellow|yellow|false|
 |Pink|punk|false|
 |Violet|VIOLET|false|
-

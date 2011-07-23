@@ -1,10 +1,10 @@
 !2 UPCOMING
 #
  * SpiderFixture:
-  * Upgraded Spider the official Selenium 2.0 release.
+  * Upgraded Spider to work with release version of Selenium - v2.1
   * Added new fixture method 'select window with contains' to select windows with a locator containing some text. See bottom of page .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyWindows.SelectPopUpByXpath 
   * Fix: '''(//foo//bar/baz)[2]''' style xpaths were not being recognised by spider fixture as valid xpath - making it difficult to select elements in document order. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyXpath.ByPosition for further documentation.
-
+  * Documented pre-existing 'options' (used on Select elements) fixture method with new Specifiction. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifySelect.CheckListOfSelectOptions Also improved cross browser issues with this method. 
  * XmlProcessing:
    * xml 'similar to' comparison now more lenient when it comes to repeating nodes of the same name.
 

@@ -13,23 +13,30 @@ import util.StringUtil;
 public class SpiderWebElement implements WebElement {
 
 	private final WebElement wrappedElement;
+	private String rawHtmlofParent;
 	
-	public SpiderWebElement(WebElement wrappedElement) {
+	public SpiderWebElement(WebElement wrappedElement, String rawHtmlOfParent) {
 		super();
 		this.wrappedElement = wrappedElement;
+		this.rawHtmlofParent = rawHtmlOfParent;
 	}
 
-	// -- additional methods
+	// -- additional methods (no longer provided by WebElement)
 	
 	public String getValue() {
-		String value = getAttribute("value");
-		
-		// different behaviour in FireFox than HtmlUnit - make HtmlUnit conform to firefox
-		if (StringUtil.isBlank(value)) {
-			return getText();
-		}
-		return value;
-	}
+        String value = getAttribute("value");
+
+        // different behaviour in FireFox than other browsers, FireFox returns the text when value attribute missing other browsers return blank 
+        // make FireFox conform to other browsers
+        if (!StringUtil.isBlank(value) && value.equals(getText())) {
+              if (!rawHtmlofParent.matches("<option.*value=[',\"]"+value+"[',\"].*>"+value+"</option>")) {
+                    return "";
+              }
+        }
+
+        return value;
+
+  }
 	
 	// --- wrapped implementations of WebElement
 	

@@ -131,13 +131,18 @@ public class SelectElement extends SpiderElement {
 	}
 	public List<String> optionValues(String locator) {
 		List<String> nameList = new ArrayList<String>();
-		List<WebElement> options = options(locator);
-		for (WebElement option : options) {
-			nameList.add(option.getAttribute("value"));
+		List<SpiderWebElement> options = options(locator);
+		for (SpiderWebElement option : options) {
+			nameList.add(option.getValue());
 		}
 		return nameList;
 	}
-	public List<WebElement> options(String locator) {
-		return childrenOf(locator, "option");
+	public List<SpiderWebElement> options(String locator) {
+		String rawHtmlOfParent = spiderFixture().innerHtmlOf(locator); 
+		List<SpiderWebElement> elements = new ArrayList<SpiderWebElement>();
+		for (WebElement webDriversElement: childrenOf(locator, "option")) {
+			elements.add(new SpiderWebElement(webDriversElement, rawHtmlOfParent));
+		}
+		return elements;
 	}
 }
