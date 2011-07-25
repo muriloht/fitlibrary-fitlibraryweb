@@ -2,12 +2,15 @@
 !define html ({{{<select id="colour">
   <option>No Value</Option>
   <option value=""></option>
-  <option value="">Orange Something For The Hell Of It</Option>
+  <option value="">Something For The Hell Of It</Option>
   <option selected="selected" value="red">Red</option>
   <option>Green</option>
-  <option id ='blue'>Blue</option>
+  <option id ='blue'>blue</option>
   <option id='black'>Black</option>
   <option value = 'yellow'>Yellow</option>
+  <option value='brown'>brown</option>
+  <option value="purple" id='purple'>purple</option>
+  <option id="orange" value='orange'>orange</option>
   <option id='pink' value='punk'>Pink</option>
   <OPTION VALUE="VIOLET">Violet</OPTION>
 </select>}}})
@@ -23,11 +26,14 @@
 |text|value|selected|
 |No Value||false|
 |||false|
-|Orange Something For The Hell Of It||false|
+|Something For The Hell Of It||false|
 |Red|red|true|
 |Green||false|
-|Blue||false|
+|blue||false|
 |Black||false|
 |Yellow|yellow|false|
+|brown|brown|false|
+|purple|purple|false|
+|orange|orange|false|
 |Pink|punk|false|
 |Violet|VIOLET|false|
