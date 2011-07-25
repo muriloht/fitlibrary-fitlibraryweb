@@ -15,7 +15,7 @@ two
 }
 *!
 
-|''keywords''|firefox,htmlunit,ie|
+|''keywords''|chrome,firefox,htmlunit,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

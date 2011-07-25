@@ -1,6 +1,7 @@
 !2 UPCOMING
 #
  * SpiderFixture:
+  * Now supports Google Chrome as a driver source. see .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome
   * Upgraded Spider to work with release version of Selenium - v2.1
   * Added new fixture method 'select window with contains' to select windows with a locator containing some text. See bottom of page .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyWindows.SelectPopUpByXpath 
   * Fix: '''(//foo//bar/baz)[2]''' style xpaths were not being recognised by spider fixture as valid xpath - making it difficult to select elements in document order. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyXpath.ByPosition for further documentation.

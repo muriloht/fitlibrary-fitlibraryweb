@@ -5,6 +5,7 @@
 */
 package fitlibrary.spider;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -118,25 +121,28 @@ public class SpiderFixture extends AbstractSpiderFixture {
 			webDriver().manage().addCookie(
 					new Cookie(cookie.getName(), cookie.getValue()));
 	}
-	// Override to include a default driver or different drivers
 	@Override
 	public WebDriver webDriver() {
 		if (webDriver == null) {
-			String driver = getDynamicVariable(WEB_DRIVER_VARIABLE_NAME,
-					"htmlunit").toString();
+			String driver = getDynamicVariable(WEB_DRIVER_VARIABLE_NAME,"htmlunit").toString();
+			
 			if ("htmlunit".equals(driver))
 				webDriver = htmlUnitDriver();
 			else if ("firefox".equals(driver))
 				webDriver = fireFoxDriver();
 			else if ("ie".equals(driver))
-				webDriver = new InternetExplorerDriver();
+				webDriver = internetExplorerDriver();
+			else if ("chrome".equals(driver))
+				webDriver = chromeDriver();
+			else // override this in your base class to create your own driver
+				webDriver = unknownDriver(driver);
 			// else if ("safari".equals(driver))
 			// webDriver = safariDriver();
-			else
-				throw new FitLibraryException(
-						"Need to specify property '"
-								+ WEB_DRIVER_VARIABLE_NAME
-								+ "' as 'htmlunit', 'firefox', or 'ie'"); // 'safari', 
+			
+			if (webDriver == null) 
+				throw new FitLibraryException("Need to specify property '"
+								+ WEB_DRIVER_VARIABLE_NAME + "' as 'htmlunit', 'firefox', 'ie' or 'chrome'");  
+			
 			spiderWindow.setInitialWindow();
 		}
 		return webDriver;
@@ -186,6 +192,16 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		driverVariation = new HtmlUnitVariation(this, htmlUnitDriver
 				.getWebClient());
 		return htmlUnitDriver;
+	}
+	protected InternetExplorerDriver internetExplorerDriver() {
+		return new InternetExplorerDriver();
+	}
+	protected ChromeDriver chromeDriver() {
+		return new ChromeDriver();
+	}
+	/** Override this in a base class to create a driver of your own */
+	protected WebDriver unknownDriver(String driverName) {
+		return null;
 	}
 	class WebDriverFinder implements Finder {
 		@Override

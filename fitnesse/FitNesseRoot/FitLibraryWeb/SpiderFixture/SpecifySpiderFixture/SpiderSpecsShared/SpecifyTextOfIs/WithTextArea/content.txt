@@ -8,7 +8,7 @@
 orange</textarea>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|chrome,htmlunit,firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

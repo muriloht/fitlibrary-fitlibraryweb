@@ -13,7 +13,7 @@ onclick="javascript:setTimeout('addInput()', 50)"/>
 <select id='22'></select>}}}]
 *!
 
-|''keywords''|firefox|
+|''keywords''|chrome,firefox|
 
 !2 Not supported in IE
 

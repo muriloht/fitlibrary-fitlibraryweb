@@ -10,7 +10,7 @@
 #
 !1 This storytest sometimes passes and sometimes fails with htmlunit
 #
-|''keywords''|htmlunit|
+|''keywords''|chrome,htmlunit|
 
 !include <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

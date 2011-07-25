@@ -5,7 +5,7 @@
 </div>}}})
 *!
 
-|''keywords''|ie|
+|''keywords''|chrome,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

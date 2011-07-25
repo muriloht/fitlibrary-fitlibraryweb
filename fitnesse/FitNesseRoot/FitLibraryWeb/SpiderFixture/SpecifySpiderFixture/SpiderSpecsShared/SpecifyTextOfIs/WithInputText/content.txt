@@ -6,7 +6,7 @@
 <input type="text" id="withText">green</input>}}})
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|chrome,htmlunit,firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

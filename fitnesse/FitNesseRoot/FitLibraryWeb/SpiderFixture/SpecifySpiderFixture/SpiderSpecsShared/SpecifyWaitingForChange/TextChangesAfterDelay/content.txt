@@ -11,7 +11,7 @@ onclick="javascript:setTimeout('change()', 50)">Option</input>
 <input type="text" id="22" value="red"/>}}}]
 *!
 
-|''keywords''|htmlunit,firefox|
+|''keywords''|chrome,htmlunit,firefox|
 
 !2 Not supported by IE
 

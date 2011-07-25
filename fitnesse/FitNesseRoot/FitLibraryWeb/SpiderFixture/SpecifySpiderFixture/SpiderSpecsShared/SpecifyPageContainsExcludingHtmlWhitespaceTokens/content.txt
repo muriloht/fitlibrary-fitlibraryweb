@@ -8,7 +8,7 @@
 <b>lines</b>}}})
 *!
 
-|''keywords''|htmlunit,firefox,ie|
+|''keywords''|chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

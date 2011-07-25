@@ -3,7 +3,7 @@
   <div name='me' id='pr'>abc</div>}}})
 *!
 
-|''keywords''|firefox,ie,htmlunit|
+|''keywords''|chrome,firefox,ie,htmlunit|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

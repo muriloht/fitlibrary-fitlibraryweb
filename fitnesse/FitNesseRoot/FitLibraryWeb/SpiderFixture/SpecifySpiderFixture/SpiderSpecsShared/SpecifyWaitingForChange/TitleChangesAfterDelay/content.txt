@@ -11,7 +11,7 @@ onclick="javascript:setTimeout('change()', 50)">Option</input>}}}
 ]
 *!
 
-|''keywords''|htmlunit,firefox,ie|
+|''keywords''|chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

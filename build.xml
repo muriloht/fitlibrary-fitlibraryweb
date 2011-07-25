@@ -234,6 +234,10 @@
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" />
 	</target>
 	
+	<target name="batch-run-spider-specifications-chrome">
+		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome" />
+	</target>
+	
 	<target name="batch-run-all">
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit" />
 		<batch-run suite="FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox" />

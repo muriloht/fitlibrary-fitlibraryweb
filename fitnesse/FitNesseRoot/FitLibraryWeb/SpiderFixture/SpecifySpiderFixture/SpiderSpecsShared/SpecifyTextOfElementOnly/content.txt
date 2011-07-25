@@ -11,7 +11,7 @@
 *!
 
 
-|''keywords''|htmlunit,firefox,ie|
+|''keywords''|chrome,htmlunit,firefox,ie|
 
 !include -c <SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

@@ -1,4 +1,4 @@
-|''keywords''|htmlunit,firefox|
+|''keywords''|chrome,htmlunit,firefox|
 
 !2 Not supported in IE
 

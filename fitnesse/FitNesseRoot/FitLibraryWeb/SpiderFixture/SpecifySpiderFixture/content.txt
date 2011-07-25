@@ -1,4 +1,5 @@
 |!3 Spider with different browsers|''On port''|
+|^SpiderWithChrome|8999|
 |^SpiderWithHtmlUnit|8998|
 |^SpiderWithFirefox|8997|
 |^SpiderWithIe|8996|

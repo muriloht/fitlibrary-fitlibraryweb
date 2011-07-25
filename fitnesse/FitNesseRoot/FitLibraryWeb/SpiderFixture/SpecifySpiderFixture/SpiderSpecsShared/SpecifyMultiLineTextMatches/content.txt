@@ -9,7 +9,7 @@
   <span id="withMultiTextBR2">yellow <br/>orange</span>}}})
 *!
 
-|''keywords''|htmlunit,firefox,ie|
+|''keywords''|chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
