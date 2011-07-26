@@ -1,6 +1,7 @@
 !2 UPCOMING
 #
  * SpiderFixture:
+  * Added new locators '''css=''' to use 'css selectors' and '''class=''' to select by class name. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyLocators
   * Now supports Google Chrome as a driver source. see .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome
   * Upgraded Spider to work with release version of Selenium - v2.1
   * Added new fixture method 'select window with contains' to select windows with a locator containing some text. See bottom of page .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyWindows.SelectPopUpByXpath 

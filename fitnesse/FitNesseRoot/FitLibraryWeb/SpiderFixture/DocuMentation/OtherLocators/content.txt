@@ -17,6 +17,16 @@ The locators that may be used are as follows:
 
 |click|link=Go Home|
 
+ * By '''class''' name:
+
+|click|class=bold|
+|click|class=float_left|
+
+* By '''css selector''' - see http://www.w3.org/TR/css3-selectors/#content-selectors . Eg:
+
+|click|css=input#submit|
+
+
 If there is no explicit "=" in the locator:
 
  * '''xpath''' is used if the locator starts with "//"
