@@ -7,7 +7,8 @@
   <div id="upperCaseIrrelevant">yellow<B>orange</B></div>
   <div id="whenOnlyInnerHtml"><span>deleteme</span></div>
   <div id="complexInnerHtml">only<span>top<div>middle<br><span>bottom</span></div>top2</span>this</div>
-  <div id="whenTwoBlocksOfInnerHtml">one<span>delete</span>two<span>me</span>three</div>}}})
+  <div id="whenTwoBlocksOfInnerHtml">one<span>delete</span>two<span>me</span>three</div>
+  <div id="whenAttributes"><div class="iopsm"><span class="bolded">9:15 PM</span> Mon 2nd</div>Los Angeles<br></div>}}})
 *!
 
 
@@ -41,3 +42,5 @@
 |''text of element only''|//div[@id="complexInnerHtml"]|''is''|onlythis|
 
 |''text of element only''|//div[@id="whenTwoBlocksOfInnerHtml"]|''is''|onetwothree|
+
+|''text of element only''|//div[@id="whenAttributes"]|''is''|Los Angeles|

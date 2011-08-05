@@ -1,16 +1,28 @@
 package fitlibrary.spider.utility;
 
+import java.io.StringReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.xerces.dom.DocumentImpl;
+import org.cyberneko.html.parsers.DOMFragmentParser;
+import org.w3c.dom.Document;
+import org.w3c.dom.DocumentFragment;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
+import com.gargoylesoftware.htmlunit.javascript.host.Node;
 
 import fitlibrary.exception.FitLibraryException;
 
 public class HtmlTextUtility {
 	private static final String UNICODE_NON_BREAKING_SPACE = "\u00A0";
-	private static final Pattern HTML_TAG_PATTERN = Pattern.compile("<([a-z,A-Z,0-9]*)>"); 
 
 	public static String brToSpace(String s) {
-		return s.replaceAll("<(br|BR)\\s?\\/?>", " ");
+		return replaceBr(s, " "); 
+	}
+	private static String replaceBr(String stringWithBrTag, String replacement) {
+		return stringWithBrTag.replaceAll("<(br|BR)\\s?\\/?>", " ");
 	}
 	public static String crLfRemoved(String s) {
 		return s.replaceAll("\\r?\\n", "");
@@ -37,45 +49,33 @@ public class HtmlTextUtility {
 		return sb.toString();
 	}
 	public static String removeInnerHtml(String stringWithInnerHtml) {
-		for (;;) {
-			Matcher matcher = HTML_TAG_PATTERN.matcher(stringWithInnerHtml);
+		DOMFragmentParser parser = new DOMFragmentParser();
 
-			if (!matcher.find()) 
-				break;
-			
-			String matchingOpeningTagName = matcher.group(1);
-			stringWithInnerHtml =  recurisiveRemoveTag(matchingOpeningTagName, stringWithInnerHtml);
+		try {
+			// tell the parser we are working only with a fragment for input
+			parser.setFeature("http://cyberneko.org/html/features/document-fragment",true);
+
+			Document document = new DocumentImpl();
+			DocumentFragment fragment = document.createDocumentFragment();
+
+			// parse the document into a fragment
+			parser.parse(new InputSource(new StringReader(stringWithInnerHtml)), fragment);
+
+			// if the fragment has no child nodes then it has not text as the text(s) of this fragment are also nodes
+			if (fragment.hasChildNodes()) {
+				StringBuilder content = new StringBuilder();
+				NodeList childNodesAndFragmentText = fragment.getChildNodes();
+				for (int node = 0; node < childNodesAndFragmentText.getLength(); node++) {
+					if (childNodesAndFragmentText.item(node).getNodeType()==Node.TEXT_NODE) {
+						content.append(childNodesAndFragmentText.item(node).getTextContent());
+					}
+				}
+				return content.toString();
+			}
+			return "";
+		} catch (Exception e) {
+			throw new FitLibraryException(e);
 		}
-		return stringWithInnerHtml;
-	}
-	private static String recurisiveRemoveTag(String tagName, String htmltoRemoveFrom) {
-		String openingTag = "<"+tagName+">";
-		String closingTag = "</"+tagName+">";
-		
-		int indexOfOpening = htmltoRemoveFrom.indexOf(openingTag);
-		
-		if (indexOfOpening == -1)
-			throw new FitLibraryException("Expected opening tag: "+openingTag+" in content "+htmltoRemoveFrom);
-		
-		String leftHandSideOfHtmlToKeep = htmltoRemoveFrom.substring(0, indexOfOpening);
-		
-		htmltoRemoveFrom = htmltoRemoveFrom.substring(indexOfOpening+openingTag.length());
-		
-		int indexOfClosing = htmltoRemoveFrom.indexOf(closingTag);
-		
-		// if there is another identical opening tag before our closing then there is more inner html (and we've matched 
-		// the wrong closing tag) so recursively remove it and reset our indexOfClosing
-		int innerOpeningTagIndex = htmltoRemoveFrom.indexOf(openingTag);
-		if (innerOpeningTagIndex >=0 && innerOpeningTagIndex < indexOfClosing) {
-			String rightSideofHtmlToKeep = recurisiveRemoveTag(tagName, htmltoRemoveFrom);
-			htmltoRemoveFrom = htmltoRemoveFrom.substring(0, indexOfOpening+openingTag.length())+rightSideofHtmlToKeep;
-			indexOfClosing = htmltoRemoveFrom.indexOf(closingTag);
-		}
-		
-		if (indexOfClosing == -1)
-			throw new FitLibraryException("Expected closing tag: "+closingTag+" in content "+htmltoRemoveFrom);
-			
-		return leftHandSideOfHtmlToKeep+htmltoRemoveFrom.substring(indexOfClosing+closingTag.length());
 	}
 	public static String tagless(String text) {
 		String s = text;

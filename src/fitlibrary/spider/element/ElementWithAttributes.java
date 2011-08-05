@@ -85,6 +85,10 @@ public class ElementWithAttributes extends SpiderElement {
 		}
 		return result;
 	}
+	private List<WebElement> childrenOf(String locator, String tag) {
+		return findElement(locator).findElements(By.tagName(tag));
+	}
+
 	public WebElementSelector findElementFromWithTagWhere(String locator,
 			String tag) {
 		// Doesn't wait for Javascript to alter values or descendent elements

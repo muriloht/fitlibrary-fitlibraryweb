@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import fitlibrary.log.FixturingLogger;
 import fitlibrary.spider.AbstractSpiderFixture;
@@ -17,8 +18,14 @@ public class SelectElement extends SpiderElement {
 	public SelectElement(AbstractSpiderFixture spiderFixture) {
 		super(spiderFixture);
 	}
+	private Select webDriverSelect(String locator) {
+		return new Select(findElement(locator));
+	}
+	protected List<WebElement> childrenOf(String locator) {
+		return webDriverSelect(locator).getOptions();
+	}
 	public String optionOf(String locator) {
-		List<WebElement> childrenOf = childrenOf(locator, "option");
+		List<WebElement> childrenOf = childrenOf(locator);
 		for (WebElement option : childrenOf) {
 			if (option.isSelected()) {
 				String value = option.getAttribute("value");
@@ -30,7 +37,7 @@ public class SelectElement extends SpiderElement {
 	}
 	public List<String> optionListOf(String locator) {
 		List<String> result = new ArrayList<String>();
-		for (WebElement option : childrenOf(locator, "option")) {
+		for (WebElement option : childrenOf(locator)) {
 			if (option.isSelected()) {
 				result.add(option.getAttribute("value"));
 			}
@@ -56,7 +63,7 @@ public class SelectElement extends SpiderElement {
 	}
 	public boolean withSelectOptionAt(String locator, int index) {
 		try {
-			final WebElement webElement = childrenOf(locator, "option").get(index);
+			final WebElement webElement = childrenOf(locator).get(index);
 			setSelected(webElement);
 			ensureBecomes(new PollForWithError() {
 				public boolean matches() {
@@ -86,7 +93,7 @@ public class SelectElement extends SpiderElement {
 		return ensureMatches(new PollForMatches() {
 			@Override
 			public boolean matches() {
-				List<WebElement> childrenOf = childrenOf(locator, "option");
+				List<WebElement> childrenOf = childrenOf(locator);
 				for (WebElement optionElement : childrenOf) {
 					String value = optionElement.getAttribute("value");
 					if ((value == null || value.length()==0)&& option.length()>0) 
@@ -118,7 +125,7 @@ public class SelectElement extends SpiderElement {
 		return ensureMatches(new PollForMatches() {
 			@Override
 			public boolean matches() {
-				for (WebElement optionElement : childrenOf(locator, "option")) {
+				for (WebElement optionElement : childrenOf(locator)) {
 					String text = optionElement.getText();
 					if (text != null && text.equalsIgnoreCase(textRequired)) {
 						setSelected(optionElement);
@@ -140,7 +147,7 @@ public class SelectElement extends SpiderElement {
 	public List<SpiderWebElement> options(String locator) {
 		String rawHtmlOfParent = spiderFixture().innerHtmlOf(locator); 
 		List<SpiderWebElement> elements = new ArrayList<SpiderWebElement>();
-		for (WebElement webDriversElement: childrenOf(locator, "option")) {
+		for (WebElement webDriversElement: childrenOf(locator)) {
 			elements.add(new SpiderWebElement(webDriversElement, rawHtmlOfParent));
 		}
 		return elements;

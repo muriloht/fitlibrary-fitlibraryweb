@@ -1,8 +1,5 @@
 package fitlibrary.spider.element;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import fitlibrary.exception.FitLibraryException;
@@ -22,9 +19,6 @@ public abstract class SpiderElement {
 	}
 	protected WebElement findElement(final String locator) {
 		return spiderFixture.findElement(locator);
-	}
-	protected List<WebElement> childrenOf(String locator, String tag) {
-		return findElement(locator).findElements(By.tagName(tag));
 	}
 	public Finder finder() {
 		return spiderFixture.getFinder();

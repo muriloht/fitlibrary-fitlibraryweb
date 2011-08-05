@@ -109,6 +109,10 @@ public class TestHtmlTextUtility
 		assertEquals("foobaz",HtmlTextUtility.removeInnerHtml("foo<span>top<div>middle<br><span>bottom</span></div>top2</span>baz"));
 	}
 	@Test
+	public void whenTagsHaveAttributes() {
+		assertEquals("Los Angeles",HtmlTextUtility.removeInnerHtml("<div class=\"iopsm\"><span class=\"bolded\">9:15 PM</span> Mon 2nd</div>Los Angeles<br>"));
+	}
+	@Test
 	public void removeInnerHtmlWhenTwoBlocksOfInnerHtml() {
 		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<span>me</span>baz"));
 		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<div>me</div>baz"));
