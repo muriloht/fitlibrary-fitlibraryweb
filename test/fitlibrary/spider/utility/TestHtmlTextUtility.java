@@ -118,14 +118,6 @@ public class TestHtmlTextUtility
 		assertEquals("foobarbaz",HtmlTextUtility.removeInnerHtml("foo<span>delete</span>bar<div>me</div>baz"));
 	}
 	@Test
-	public void removeInnerHtmlWhenCharsThatLookLikeTagsButArent() {
-		assertEquals("if cat<hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat<hat or hat>cat"));
-	}
-	@Test
-	public void removeInnerHtmlWOhenCharsThatLookLikeTagsButArentWithInnerHtml() {
-		assertEquals("if cat <hat or hat>cat", HtmlTextUtility.removeInnerHtml("if cat <hat<span>ignore</span> or hat>cat"));
-	}
-	@Test
 	public void taglessWhenEmptyStringReturnsEmptyString() {
 		assertEquals("", HtmlTextUtility.tagless(""));
 	}
