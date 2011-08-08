@@ -7,7 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxWebElement;
+import org.openqa.selenium.ie.InternetExplorerElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 
 import util.StringUtil;
 
@@ -24,21 +25,23 @@ public class SpiderWebElement implements WebElement {
 	}
 
 	// -- additional methods (no longer provided by WebElement)
-	
+
 	public String getValue() {
-        String value = getAttribute("value");
+		String value = getAttribute("value");
 
-        // different behaviour in FireFox than other browsers, FireFox returns the text when value attribute missing other browsers return blank 
-        // make FireFox conform to other browsers
-        if (!StringUtil.isBlank(value) && value.equals(getText()) && (wrappedElement instanceof FirefoxWebElement)) {
-            if (!Pattern.compile(".*<option.*?value=[',\"]"+value+"[',\"].*?>"+value+"</option>.*",Pattern.DOTALL).matcher(rawHtmlofParent).matches()) {
-                return "";
-          }
-        }
+		// different behaviour in FireFox and Chrome than other browsers,
+		// FireFox returns the text when value attribute missing other browsers
+		// return blank
+		if (!StringUtil.isBlank(value) && value.equals(getText()) && 
+			((wrappedElement instanceof RemoteWebElement) && !(wrappedElement instanceof InternetExplorerElement))) {
+			if (!Pattern.compile(".*<option.*?value=[',\"]" + value + "[',\"].*?>" + value + "</option>.*", Pattern.DOTALL).matcher(rawHtmlofParent).matches()) {
+				return "";
+			}
+		}
 
-        return value;
-  }
-	
+		return value;
+	}
+
 	// --- wrapped implementations of WebElement
 	
 	@Override

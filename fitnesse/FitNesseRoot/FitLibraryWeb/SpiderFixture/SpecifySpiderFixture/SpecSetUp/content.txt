@@ -1,10 +1,5 @@
 |''spider''|
 
-|''firefox profile''|app.update.enabled|''as boolean''|false|
-|''firefox profile''|extensions.update.enabled|''as boolean''|false|
-|''firefox profile''|layout.spellcheckDefault|''as integer''|0|
-|''firefox profile''|browser.formfill.enable|''as boolean''|false|
-
 |''save html in''|test.html|
 
 |''zero report counts''|

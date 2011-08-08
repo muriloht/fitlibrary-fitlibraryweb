@@ -9,7 +9,7 @@
 )
 *!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

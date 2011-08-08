@@ -8,7 +8,7 @@
 )
 *!
 
-|''keywords''|chrome,|
+|''keywords''||
 
 !include <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

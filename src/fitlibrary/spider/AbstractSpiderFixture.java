@@ -7,6 +7,7 @@ package fitlibrary.spider;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
@@ -490,7 +491,11 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SimpleAction(wiki="|''<i>add cookie</i>''|name|''<i>with value</i>''|value|",
 			tooltip="Add the cookie.")
 	public boolean addCookieWithValue(String name, String value) {
-		webDriver().manage().addCookie(new Cookie(name, value, ""));
+		Calendar farInFuture = Calendar.getInstance();
+		farInFuture.set(Calendar.YEAR, 3000);
+		
+		// In  Chrome cookie does not seem to create unless we set every field using the built in Builder
+		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").domain("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
 		return true;
 	}
 	@SimpleAction(wiki="|''<i>delete cookie</i>''|name|",
