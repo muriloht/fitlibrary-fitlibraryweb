@@ -137,7 +137,7 @@
 	<target name="compile">
 		<mkdir dir="${bin}" />
 
-		<javac srcdir="${src}" destdir="${bin}">
+		<javac srcdir="${src}" destdir="${bin}" includeantruntime="false">
 			<classpath>
 				<fileset dir="${fitnesse.dir}">
 					<include name="*.jar" />
@@ -147,7 +147,7 @@
 				</fileset>
 			</classpath>
 		</javac>
-		<javac srcdir="${test.src}" destdir="${bin}">
+		<javac srcdir="${test.src}" destdir="${bin}" includeantruntime="false">
 
 			<classpath>
 				<fileset dir="${fitnesse.dir}">
