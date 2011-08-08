@@ -1,9 +1,11 @@
 !2 UPCOMING
 #
  * SpiderFixture:
-  * Added new locators '''css=''' to use 'css selectors' and '''class=''' to select by class name. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyLocators
-  * Now supports Google Chrome as a driver source. see .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome
-  * Upgraded Spider to work with release version of Selenium - v2.1
+  * Added new locators 
+   * Use '''css=''' to use 'css selectors'. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyCssSelectorLocator
+   * Use '''class=''' to select by class name. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyLocators
+  * Now supports Google Chrome as a driver source. See specifications at .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome
+  * Upgraded Spider to work with release version of Selenium - v2.3
   * Added new fixture method 'select window with contains' to select windows with a locator containing some text. See bottom of page .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyWindows.SelectPopUpByXpath 
   * Fix: '''(//foo//bar/baz)[2]''' style xpaths were not being recognised by spider fixture as valid xpath - making it difficult to select elements in document order. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyXpath.ByPosition for further documentation.
   * Documented pre-existing 'options' (used on Select elements) fixture method with new Specifiction. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifySelect.CheckListOfSelectOptions Also improved cross browser issues with this method. 
@@ -11,7 +13,7 @@
    * xml 'similar to' comparison now more lenient when it comes to repeating nodes of the same name.
 
  * Web Services Client
-  * Allow for ssl certificates to be ignored with https. Added to docs at .FitLibraryWeb.WebServicesClient; there are no specs.
+  * Allow for ssl certificates to be ignored with https. Added to docs at .FitLibraryWeb.WebServicesClient
 
 !2 5 April 2011
 #

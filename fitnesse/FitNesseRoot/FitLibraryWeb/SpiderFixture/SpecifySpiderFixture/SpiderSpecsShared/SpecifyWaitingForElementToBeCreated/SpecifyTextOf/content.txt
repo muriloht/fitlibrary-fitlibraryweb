@@ -18,7 +18,7 @@ onclick="javascript:setTimeout('addInput()', 50)"/>
 
 Note that firefox and htmlUnit seem to be process the javascript delay differently
 
-|''checking timeout''|500|
+|''checking timeout''|1000|
 
 |''start stop watch''|
 
@@ -37,7 +37,7 @@ Note that firefox and htmlUnit seem to be process the javascript delay different
 
 |''text of''|in|'''is'''|green|
 
-|''stop watch''|<|300|
+|''stop watch''|<|750|
 
 |'''show'''|''stop watch''|
 

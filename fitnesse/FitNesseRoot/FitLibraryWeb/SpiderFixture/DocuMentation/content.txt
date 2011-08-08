@@ -8,7 +8,7 @@
 !3 Introduction
 ''!-SpiderFixture-!'' is for testing a system through a web user interface. It is a ''!-FitLibrary-!'' fixture layered on top of ''!-WebDriver-!'', which emulates a user viewing and acting through a browser. See http://code.google.com/p/webdriver/ for details of ''!-WebDriver-!''.
 
-''!-WebDriver-!'' itself can drive testing through one of several drivers, include ''htmlUnit'', ''Firefox'', ''IE'', and (soon) ''Google Chrome'' and ''Selenium''. ''!-SpiderFixture-!'' has only been tested with ''htmlUnit'' and ''Firefox''.
+''!-WebDriver-!'' itself can drive testing through one of several drivers, include ''htmlUnit'', ''Firefox'', ''IE'', and ''Google Chrome''.
 
 By using ''!-SpiderFixture-!'', a storytest can get a url, click on a link, make selections and enter data in a form and submit it. It can also check for specific values of elements on the page, such as the value of an input text or a radio button. Any element on a page is identified with a ''locator''.
 
