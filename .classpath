@@ -11,18 +11,12 @@
 	<classpathentry kind="lib" path="fitnesse/lib/dbfit.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/fontbox-1.1.0.jar" sourcepath="C:/cygwin/home/Rick/srcLib/pdfbox-1.1.0-src.zip"/>
 	<classpathentry kind="lib" path="fitnesse/lib/hamcrest-all-1.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.8.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-core-js-2.8.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.0.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.0.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.0.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jmock-2.5.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jmock-junit4-2.5.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/joda-time-1.6.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/junit-4.6.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/log4j-1.2.16.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/mail.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/nekohtml-1.9.14.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/pdfbox-1.1.0.jar" sourcepath="C:/cygwin/home/Rick/srcLib/pdfbox-1.1.0-src.zip"/>
 	<classpathentry kind="lib" path="fitnesse/lib/velocity-1.6.2.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/xercesImpl-2.9.1.jar"/>
@@ -32,6 +26,12 @@
 	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jna-3.3.0.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/guava-r09.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.3.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.3.0-srcs.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.9.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-core-js-2.9.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.1.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.1.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/nekohtml-1.9.15.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.5.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.5.0-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
