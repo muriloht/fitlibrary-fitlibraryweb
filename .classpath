@@ -29,9 +29,9 @@
 	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.9.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-core-js-2.9.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.1.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.1.2.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.1.2.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/nekohtml-1.9.15.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.7.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.7.0-srcs.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.1.3.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.8.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.8.0-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
