@@ -1,4 +1,5 @@
 <project name="FitLibraryWeb" default="jar" basedir=".">
+	<property name="version" value="2.0" />
 	<property name="home" value="${basedir}" />
 	<property name="lib" value="${home}/fitnesse/lib" />
 	<property name="src" value="${home}/src" />
@@ -15,7 +16,7 @@
 	<property name="releases.dir" value="${home}/release" />
         <tstamp prefix="start"/>
 	<property name="release.now.dir" value="${releases.dir}/FitLibraryWeb" />
-	<property name="release.zip.file" value="${releases.dir}/FitLibraryWeb.zip" />
+	<property name="release.zip.file" value="${releases.dir}/fitlibraryweb-${version}.zip" />
 	<!-- release checking properties -->
 	<property name="release.copy" value="${releases.dir}/FL_Temp" />
 	<property name="release.fitnesse-copy" value="${release.copy}/FitNesseCopy" />
@@ -23,9 +24,8 @@
 	<property name="release.testResults" value="${release.copy}/TestResults" />
 	<property name="fitlibrary.dir" value="../fitlibrary" />
 	<!-- final release properties -->
-	<property name="release.version" value="${start.DSTAMP}" />
 	<property name="final.release.dir" value="${releases.dir}" />
-	<property name="final.release.zip" value="${final.release.dir}/FitLibraryWeb${release.version}.zip" />
+	<property name="final.release.zip" value="${final.release.dir}/FitLibraryWeb-${version}.zip" />
 
 	<target name="final-release">
 		<move file="${release.zip.file}"
@@ -44,7 +44,7 @@
 		<unzip src="${release.zip.file}" dest="${release.unzip}"/>
 		<copy todir="${release.fitnesse-copy}">
 			<fileset dir="${fitlibrary.dir}/fitnesse">
-				<include name="fitlibrary.jar" />
+				<include name="fitlibrary-2.0.jar" />
 				<include name="*.properties" />
 			</fileset>
 		</copy>
@@ -122,10 +122,10 @@
 	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibraryWeb jar"/>
 
 	<target name="jar-no-test" depends="clean, compile">
-		<echo message="Create FitLibraryWeb jar file in local FitNesse" />
-		<jar destfile="${lib}/fitlibraryWeb.jar" basedir="bin" />
+		<echo message="Create fitLibraryweb jar file in local FitNesse" />
+		<jar destfile="${lib}/fitlibraryweb-${version}.jar" basedir="bin" />
 		<echo message="Create source zip file" />
-		<zip destfile="${lib}/src/fitlibraryWebSrc.zip">
+		<zip destfile="${lib}/src/fitlibrarywebSrc-${version}.zip">
 			<fileset dir="src" />
 		</zip>
 	</target>
@@ -170,7 +170,7 @@
 
 				</dirset>
 				<pathelement location="${fitnesse.dir}/fitnesse.jar" />
-				<pathelement location="${fitnesse.dir}/fitlibrary.jar" />
+				<pathelement location="${fitnesse.dir}/fitlibrary-2.0.jar" />
 				<fileset dir="${lib}">
 					<include name="**/*.jar" />
 				</fileset>
@@ -315,7 +315,7 @@
 
 				<classpath>
 					<pathelement location="${fitnesse.dir}/fitnesse.jar" />
-					<pathelement location="${fitnesse.dir}/fitlibrary.jar" />
+					<pathelement location="${fitnesse.dir}/fitlibrary-2.0.jar" />
 					<fileset dir="${lib}">
 						<include name="**/*.jar" />
 					</fileset>

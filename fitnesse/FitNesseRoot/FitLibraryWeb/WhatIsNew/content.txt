@@ -1,8 +1,9 @@
 !2 17 October 2011 - fitlibraryweb-2.0.jar
+This upgrade bundles fitlibrary-2.0.jar and a version number has also been added to the to fitlibraryweb jar file. If you upgrading and overwriting older jar files delete the older versions of fitLibrary.jar and fitbraryweb.jar
 
 #
  * SpiderFixture:
-  * Added new locators 
+  * Added new locators: 
    * Use '''css=''' to use 'css selectors'. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyCssSelectorLocator
    * Use '''class=''' to select by class name. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyLocators
   * Now supports Google Chrome as a driver source. See specifications at .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithChrome
@@ -10,7 +11,7 @@
   * Added new fixture method 'select window with contains' to select windows with a locator containing some text. See bottom of page .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyWindows.SelectPopUpByXpath 
   * Fix: '''(//foo//bar/baz)[2]''' style xpaths were not being recognised by spider fixture as valid xpath - making it difficult to select elements in document order. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderSpecsShared.SpecifyXpath.ByPosition for further documentation.
   * Documented pre-existing 'options' (used on Select elements) fixture method with new Specifiction. See .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifySelect.CheckListOfSelectOptions Also improved cross browser issues with this method. 
-  * Added a version number to fitlibraryweb.jar 
+ 
  * XmlProcessing:
    * xml 'similar to' comparison now more lenient when it comes to repeating nodes of the same name.
 

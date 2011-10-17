@@ -8,8 +8,8 @@ fitnesse/FitNesseRoot/files/images/screenDump*.*
 fitnesse/FitNesseRoot/files/soap/response*.*
 fitnesse/FitNesseRoot/files/testResults
 fitnesse/FitNesseRoot/RecentChanges
-fitnesse/lib/fitlibraryWeb.jar
-fitnesse/lib/src/fitlibraryWebSrc.zip
+fitnesse/lib/fitlibraryweb-*.jar
+fitnesse/lib/src/fitlibrarywebSrc-*.zip
 fitnesse/logForFitLibrary.txt
 fitnesse/velocity.log
 fitnesse/chromedriver.log
