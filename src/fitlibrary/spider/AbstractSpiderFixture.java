@@ -495,7 +495,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 		farInFuture.set(Calendar.YEAR, 3000);
 		
 		// In  Chrome cookie does not seem to create unless we set every field using the built in Builder
-		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").domain("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
+		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
 		return true;
 	}
 	@SimpleAction(wiki="|''<i>delete cookie</i>''|name|",
