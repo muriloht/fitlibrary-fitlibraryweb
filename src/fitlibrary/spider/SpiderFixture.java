@@ -172,7 +172,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	// Override to configure differently, such as with a Firefox profile
 	protected FirefoxDriver fireFoxDriver() {
 		FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxProfile);
-		driverVariation = new FirefoxVariation(this, firefoxDriver);
+		driverVariation = new FirefoxVariation(this);
 		return firefoxDriver;
 	}
 	// Override to configure htmlUnit in a different way

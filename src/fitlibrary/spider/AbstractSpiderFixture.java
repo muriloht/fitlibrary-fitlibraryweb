@@ -42,6 +42,7 @@ import fitlibrary.spider.polling.Poll;
 import fitlibrary.spider.polling.PollForMatches;
 import fitlibrary.spider.polling.PollForNoException;
 import fitlibrary.spider.polling.PollForWithError;
+import fitlibrary.spider.polling.PollWithElement;
 import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.WebElementSelector;
 import fitlibrary.table.Row;
@@ -495,7 +496,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 		farInFuture.set(Calendar.YEAR, 3000);
 		
 		// In  Chrome cookie does not seem to create unless we set every field using the built in Builder
-		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
+		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").domain("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
 		return true;
 	}
 	@SimpleAction(wiki="|''<i>delete cookie</i>''|name|",
@@ -593,21 +594,35 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 		return new LookupFixture();
 	}
 	
-	// ------------------- private
-	public WebElement findElement(final String locator) {
-		try {
-			return ensureNoException(new PollForNoException<WebElement>() {
-				@Override
-				public WebElement act() {
-					return finder.findElement(locator);
-				}
-			});
-		} catch (NoSuchElementException ex) {
-			throw problem("No such element", locator);
-		} catch (Exception ex) {
-			throw problem("Unknown xpath (" + ex.getMessage() + ")", locator);
-		}
+	
+	public <T> T findAndAction(final String locator, final PollWithElement<T> action) {
+	  try {
+      return ensureNoException(new PollForNoException<T>() {
+        @Override
+        public T act() {
+          final WebElement element = finder.findElement(locator);
+          return action.act(element);
+        }
+      });
+    } catch (NoSuchElementException ex) {
+      throw problem("No such element", locator);
+    } catch (Exception ex) {
+      throw problem("Unknown xpath (" + ex.getMessage() + ")", locator);
+    }  
 	}
+	
+	public WebElement findElement(final String locator) {
+    PollWithElement<WebElement> action = new PollWithElement<WebElement>()
+    {
+      @Override
+      public WebElement act(WebElement element)
+      {
+        return element;
+      }
+    };
+    return findAndAction(locator, action);
+  }
+	
 	public FitLibraryException problem(String problemDescription, String details) {
 		return new FitLibraryException(problemDescription + ": '" + details + "'"
 				+ atShortUrl());

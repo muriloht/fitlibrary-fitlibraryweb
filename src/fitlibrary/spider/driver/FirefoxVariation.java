@@ -5,18 +5,21 @@
 */
 package fitlibrary.spider.driver;
 
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import fitlibrary.differences.LocalFile;
+import fitlibrary.exception.FitLibraryException;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.polling.PollForNoException;
 
 public class FirefoxVariation extends DriverVariation {
-	private final FirefoxDriver firefoxDriver;
-	
-	public FirefoxVariation(AbstractSpiderFixture spiderFixture, FirefoxDriver firefoxDriver) {
+	public FirefoxVariation(AbstractSpiderFixture spiderFixture) {
 		super(spiderFixture);
-		this.firefoxDriver = firefoxDriver;
 	}
 	@Override
 	public void checkTitleOfNewPage(final String url) throws Exception {
@@ -39,19 +42,5 @@ public class FirefoxVariation extends DriverVariation {
 			// ignore error if there is no initial window
 		}
 		return result;
-	}
-	@SuppressWarnings("deprecation")
-	@Override
-	public void screenDump() {
-		LocalFile file = pngFile();
-		firefoxDriver.saveScreenshot(file.getFile());
-		spiderFixture.showAfterTable(file.htmlImageLink());
-	}
-	@SuppressWarnings("deprecation")
-	@Override
-	public void screenDump(String fileName) {
-		LocalFile file = pngFile(fileName);
-		firefoxDriver.saveScreenshot(file.getFile());
-		spiderFixture.showAfterTable(file.htmlImageLink());
 	}
 }

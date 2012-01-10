@@ -22,4 +22,12 @@ public class HtmlUnitVariation extends DriverVariation {
 		((TopLevelWindow)webClient.getCurrentWindow()).close();
 		return true;
 	}
+	@Override
+	public void screenDump() {
+		spiderFixture.showAfterTable(spiderFixture.pageSource());
+	}
+	@Override
+	public void screenDump(@SuppressWarnings("unused") String fileName) {
+		screenDump();
+	}
 }

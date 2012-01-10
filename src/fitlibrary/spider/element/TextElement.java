@@ -6,6 +6,7 @@ import fit.Parse;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.MultiLineMatchFixture;
 import fitlibrary.spider.polling.PollForWithError;
+import fitlibrary.spider.polling.PollWithElement;
 import fitlibrary.spider.utility.HtmlTextUtility;
 import fitlibrary.spider.utility.StringUtility;
 
@@ -15,14 +16,22 @@ public class TextElement extends SpiderElement {
 		super(spiderFixture);
 	}
 	public String textOf(String locator) {
-		return collectText(findElement(locator));
+		return collectText(locator);
 	}
 	public String plainTextOf(String locator) {
-		return HtmlTextUtility.tagless(collectText(findElement(locator), true));
+		return HtmlTextUtility.tagless(collectText(locator, true));
 	}
 	public String innerHtmlOf(String locator) {
-		WebElement element = findElement(locator);
-		Object escaped = spiderFixture().executeJavaScriptWith("return arguments[0].innerHTML;", element);
+		Object escaped = findAndAction(locator, new PollWithElement<Object>()
+    {
+      @Override
+      public Object act(WebElement element)
+      {
+        return spiderFixture().executeJavaScriptWith("return arguments[0].innerHTML;", element);
+        
+      }
+    });
+		
 		return HtmlTextUtility.lowerCaseTags(Parse.unescape(escaped.toString()));
 	}
 	public String textOfElementOnly(String locator) {
@@ -30,7 +39,7 @@ public class TextElement extends SpiderElement {
 	}
 	public MultiLineMatchFixture textOfMatchesLines(String locator) {
 		// Doesn't wait for Javascript to alter existing values
-		String text = collectText(findElement(locator), false);
+		String text = collectText(locator, false);
 		return new MultiLineMatchFixture(collectTaglessLines(text));
 	}
 	private Object[] collectTaglessLines(String lines) {
@@ -87,21 +96,35 @@ public class TextElement extends SpiderElement {
 		});
 		return true;
 	}
-	public String collectText(WebElement element) {
-		return collectText(element, true);
+	public String collectText(String locator) {
+		return collectText(locator, true);
 	}
-	private String collectText(WebElement element, boolean trim) {
-		String value = element.getText();
-		if (value == null || "".equals(value.trim())) {
-			try {
-				value = element.getAttribute("value");
-			} catch(UnsupportedOperationException uso) {
-				// re throw unless exception is about missing value attribute then we just handle gracefully..
-				if (!uso.getMessage().contains("Element does not have a value attribute")) {
-					throw uso; 
-				}
-			} 
-		}
+	private String collectText(String locator, boolean trim) {
+	  PollWithElement<String> findAndExtractElementText = new PollWithElement<String>()
+    {
+      @Override
+      public String act(WebElement element)
+      {
+        String elementValue = element.getText();
+        
+        if (elementValue == null || "".equals(elementValue.trim())) {
+          try {
+            elementValue = element.getAttribute("value");
+          } catch(UnsupportedOperationException uso) {
+            // re throw unless exception is about missing value attribute then we just handle drop through
+            if (!uso.getMessage().contains("Element does not have a value attribute")) {
+              throw uso; 
+            }
+          } 
+        }
+        
+        return elementValue;
+        
+      }
+    };
+    
+    String value = findAndAction(locator, findAndExtractElementText);
+		
 		if (value == null) {
 			value = "";
 		}

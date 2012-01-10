@@ -5,9 +5,15 @@
 */
 package fitlibrary.spider.driver;
 
+import java.io.IOException;
 import java.util.Random;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 import fitlibrary.differences.LocalFile;
+import fitlibrary.exception.FitLibraryException;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.traverse.Traverse;
 
@@ -27,9 +33,6 @@ public class DriverVariation {
 		if (spiderFixture.getTitle() == null)
 			throw spiderFixture.problem("Unable to access",url);
 	}
-	public void screenDump() {
-		spiderFixture.showAfterTable(spiderFixture.pageSource());
-	}
 	protected LocalFile pngFile() {
 		return pngFile("screenDump"+RANDOM.nextInt());
 	}
@@ -38,10 +41,26 @@ public class DriverVariation {
 		globalFile.mkdirs();
 		return globalFile;
 	}
-	public void screenDump(@SuppressWarnings("unused") String fileName) {
-		screenDump();
-	}
 	public void setScreenDumpDirectory(String diryName) {
 		this.screenDumpDirectoryName  = diryName;
+	}
+	public void screenDump() {
+		LocalFile file = pngFile();
+		saveScreenDumpBytes(file);
+		spiderFixture.showAfterTable(file.htmlImageLink());
+	}
+	public void screenDump(String fileName) {
+		LocalFile file = pngFile(fileName);
+		saveScreenDumpBytes(file);
+		spiderFixture.showAfterTable(file.htmlImageLink());
+	}
+	private void saveScreenDumpBytes(LocalFile file) {
+		byte[] bytes = ((TakesScreenshot) spiderFixture.webDriver())
+				.getScreenshotAs(OutputType.BYTES);
+		try {
+			FileUtils.writeByteArrayToFile(file.getFile(), bytes);
+		} catch (IOException e) {
+			throw new FitLibraryException(e);
+		}
 	}
 }
