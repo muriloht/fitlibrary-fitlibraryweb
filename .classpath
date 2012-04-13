@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="fitnesse/fitnesse.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/dbfit.jar"/>
@@ -25,11 +24,12 @@
 	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.9.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-core-js-2.9.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.1.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.1.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.1.3.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.1.3.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/nekohtml-1.9.15.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.1.3.jar"/>
 	<classpathentry kind="lib" path="fitnesse/fitlibrary-2.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.16.1.jar" sourcepath="fitnesse/lib/src/selenium-java-2.16.1-srcs.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.21.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.21.0-srcs.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
