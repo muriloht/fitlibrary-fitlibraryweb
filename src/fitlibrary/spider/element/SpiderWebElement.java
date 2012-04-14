@@ -7,8 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.ie.InternetExplorerElement;
-import org.openqa.selenium.remote.RemoteWebElement;
 
 import util.StringUtil;
 
@@ -25,16 +23,15 @@ public class SpiderWebElement implements WebElement {
 	}
 
 	// -- additional methods (no longer provided by WebElement)
-
+	
 	public String getValue() {
 		String value = getAttribute("value");
 
-		// different behaviour in FireFox and Chrome than other browsers,
-		// FireFox returns the text when value attribute missing other browsers
-		// return blank
-		if (!StringUtil.isBlank(value) && value.equals(getText()) && 
-			((wrappedElement instanceof RemoteWebElement) && !(wrappedElement instanceof InternetExplorerElement))) {
-			if (!Pattern.compile(".*<option.*?value=[',\"]" + value + "[',\"].*?>" + value + "</option>.*", Pattern.DOTALL).matcher(rawHtmlofParent).matches()) {
+		// WebDriver / Selenium used to often have different behaviour when there was a missing @value attribute. Since 2.21 all implementations now seems standard
+		// (to just return the text()) however SpiderFixture used to always return "" so for historical reasons we want to keep the SpiderFixture behavour. 
+		// This means running a regex in the DOM of the <options> to make sure the @value IS NOT the text() : 
+		if (!StringUtil.isBlank(value) && value.equals(getText())) { 
+			if (!Pattern.compile(".*<option.*?value=[',\"]?" + value + "[',\"]?.*?>" + value + "</option>.*", Pattern.DOTALL).matcher(rawHtmlofParent).matches()) {
 				return "";
 			}
 		}

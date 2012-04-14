@@ -105,9 +105,11 @@
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/pdf">
 			<fileset dir="fitnesse/FitNesseRoot/files/pdf" />
 		</copy>
+		<!--
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/files/soap">
 			<fileset dir="fitnesse/FitNesseRoot/files/soap" />
 		</copy>
+		-->
 		<copy todir="${release.now.dir}/fitnesse/FitNesseRoot/FitLibraryWeb">
 			<fileset dir="fitnesse/FitNesseRoot/FitLibraryWeb" />
 		</copy>
@@ -122,7 +124,13 @@
 	<target name="jar" depends="clean, compile, junit, jar-no-test" description="Create fitlibraryWeb jar"/>
 
 	<target name="jar-no-test" depends="clean, compile">
-		<echo message="Create fitLibraryweb jar file in local FitNesse" />
+		<echo message="Deleting old jar and source zip file versions and creating fitLibraryweb jar and source zip in local FitNesse" />
+		<delete>
+			<fileset dir="${lib}" casesensitive="false">
+				<include name="fitlibraryweb*.jar"/>
+				<include name="/src/fitlibrarywebsrc*.zip"/>
+			</fileset>
+		</delete>
 		<jar destfile="${lib}/fitlibraryweb-${version}.jar" basedir="bin" />
 		<echo message="Create source zip file" />
 		<zip destfile="${lib}/src/fitlibrarywebSrc-${version}.zip">
