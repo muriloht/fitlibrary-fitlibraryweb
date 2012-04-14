@@ -5,15 +5,6 @@
 */
 package fitlibrary.spider.driver;
 
-import java.io.IOException;
-
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
-import fitlibrary.differences.LocalFile;
-import fitlibrary.exception.FitLibraryException;
 import fitlibrary.spider.AbstractSpiderFixture;
 import fitlibrary.spider.polling.PollForNoException;
 

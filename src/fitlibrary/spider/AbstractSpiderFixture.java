@@ -358,7 +358,12 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SimpleAction(wiki="|''<i>element is visible</i>''|xpath, id or other locator|",
 			tooltip="Returns true if the given web element is displayed (visible to the user).")
 	public boolean elementVisible(String locator) {
-		return findElement(locator).isDisplayed();
+		return findAndAction(locator, new PollWithElement<Boolean>() {
+			@Override
+			public Boolean act(WebElement element)
+			{
+				return element.isDisplayed();
+			}});
 	}
 	@SimpleAction(wiki="|''<i>element invisible</i>''|xpath, id or other locator|",
 			tooltip="Returns true if the given web element is not displayed (invisible to the user).")
@@ -370,7 +375,12 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	@SimpleAction(wiki="|''<i>checkbox</i>''|xpath, id or other locator|",
 			tooltip="Returns true if the given checkbox is currently selected.")
 	public boolean checkbox(String locator) {
-		return findElement(locator).isSelected();
+		return findAndAction(locator, new PollWithElement<Boolean>() {
+			@Override
+			public Boolean act(WebElement element)
+			{
+				return element.isSelected();
+			}});
 	}
 	@SimpleAction(wiki="|''<i>with</i>''|xpath, id or other locator|''<i>select</i>''|true or false|",
 			tooltip="Either select (true) or unselect (false) the given checkbox.")
