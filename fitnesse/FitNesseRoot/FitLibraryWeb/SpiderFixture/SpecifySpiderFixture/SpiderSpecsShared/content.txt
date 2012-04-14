@@ -18,6 +18,7 @@
 |^SpecifyWithSetText||
 |^SpecifyOptionallyWithSetText|''Quietly does nothing if the xpath element is missing''|
 |^SpecifyWithAddText||
+|^SpecifyWithSendKey|''Send individual keys and special characters to elements''|
 #
 !3 General Text Anywhere in the Page
 #
@@ -80,7 +81,6 @@
 #
 !3 Screen Dump
 #
- * Only works with htmlunit
 |^SpecifyScreenDump|
 #
 !3 XPath

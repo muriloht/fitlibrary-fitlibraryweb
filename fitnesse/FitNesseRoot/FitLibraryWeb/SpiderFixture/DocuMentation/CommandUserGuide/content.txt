@@ -96,6 +96,10 @@ Note that if a click leads to a popup window being open, it's best to explicitly
 
 |''with''|//input[@id="firstName"]|''add text''|.|
 
+* Send special keys to an element, for full list of keys see ([[spec][<SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.SpecifyWithSendKey]]):
+
+|''with''|aninput|''send key''|SEMICOLON|
+
 Note that any text changes are (optionally) verified to have occurred (see AutoChangeCheck).
 ----
 **********!

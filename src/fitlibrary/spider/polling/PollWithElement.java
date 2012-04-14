@@ -8,5 +8,5 @@ package fitlibrary.spider.polling;
 import org.openqa.selenium.WebElement;
 
 public interface PollWithElement<T> {
-  T act(WebElement element);
+	T act(WebElement element);
 }

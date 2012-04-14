@@ -15,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -286,6 +287,11 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public boolean withSetText(final String locator, final String s) {
 		return textElement.withSetText(locator, s);
 	}
+	@SimpleAction(wiki="|''<i>with</i>''|xpath, id or other locator|''<i>send key</i>''|KEY|",
+			tooltip="Send special keys to an element.")
+	public boolean withSendKey(String locator, final Keys key){
+		return textElement.withSendKey(locator, key);
+	}
 	@SimpleAction(wiki="|''<i>with</i>''|xpath, id or other locator|''<i>add text</i>''|text|",
 			tooltip="Add to the text of the given web element.")
 	public boolean withAddText(final String locator, final String s) {
@@ -496,7 +502,7 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 		farInFuture.set(Calendar.YEAR, 3000);
 		
 		// In  Chrome cookie does not seem to create unless we set every field using the built in Builder
-		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").domain("").isSecure(false).expiresOn(farInFuture.getTime()).build()); 
+		webDriver().manage().addCookie(new Cookie.Builder(name, value).path("").domain(null).isSecure(false).expiresOn(farInFuture.getTime()).build()); 
 		return true;
 	}
 	@SimpleAction(wiki="|''<i>delete cookie</i>''|name|",
@@ -593,36 +599,31 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public LookupFixture lookup() {
 		return new LookupFixture();
 	}
-	
-	
-	public <T> T findAndAction(final String locator, final PollWithElement<T> action) {
-	  try {
-      return ensureNoException(new PollForNoException<T>() {
-        @Override
-        public T act() {
-          final WebElement element = finder.findElement(locator);
-          return action.act(element);
-        }
-      });
-    } catch (NoSuchElementException ex) {
-      throw problem("No such element", locator);
-    } catch (Exception ex) {
-      throw problem("Unknown xpath (" + ex.getMessage() + ")", locator);
-    }  
+	public <T> T findAndAction(final String locator,
+			final PollWithElement<T> action) {
+		try {
+			return ensureNoException(new PollForNoException<T>() {
+				@Override
+				public T act() {
+					final WebElement element = finder.findElement(locator);
+					return action.act(element);
+				}
+			});
+		} catch (NoSuchElementException ex) {
+			throw problem("No such element", locator);
+		} catch (Exception ex) {
+			throw problem("Unknown xpath (" + ex.getMessage() + ")", locator);
+		}
 	}
-	
 	public WebElement findElement(final String locator) {
-    PollWithElement<WebElement> action = new PollWithElement<WebElement>()
-    {
-      @Override
-      public WebElement act(WebElement element)
-      {
-        return element;
-      }
-    };
-    return findAndAction(locator, action);
-  }
-	
+		PollWithElement<WebElement> action = new PollWithElement<WebElement>() {
+			@Override
+			public WebElement act(WebElement element) {
+				return element;
+			}
+		};
+		return findAndAction(locator, action);
+	}
 	public FitLibraryException problem(String problemDescription, String details) {
 		return new FitLibraryException(problemDescription + ": '" + details + "'"
 				+ atShortUrl());
