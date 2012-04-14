@@ -1,5 +1,5 @@
 <project name="FitLibraryWeb" default="jar" basedir=".">
-	<property name="version" value="2.0" />
+	<property name="version" value="2.1" />
 	<property name="home" value="${basedir}" />
 	<property name="lib" value="${home}/fitnesse/lib" />
 	<property name="src" value="${home}/src" />

@@ -5,9 +5,6 @@ Here's some things that we might do:
 
 |Consider adding following functionality to Spider|''As webDriver now has more capability that we could support''|
 |!-RenderedWebElement-!|For dnd, access to css properties, displayed|
-|Alert|For alert accept, dismiss, get and send keys|
-|By|by css selector|
-|Keyboard|Presumably for finer-scale control of key presses?|
 |Mouse|Presumably for finer-scale of mouse|
 |...and others?||
 

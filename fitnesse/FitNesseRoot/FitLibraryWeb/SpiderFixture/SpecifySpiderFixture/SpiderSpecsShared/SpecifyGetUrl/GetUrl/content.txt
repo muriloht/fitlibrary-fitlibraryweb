@@ -10,8 +10,9 @@
 
 |''with html''|${html}|
 
-|help|
+|set|foo|=|9 * (10 / 3)|
 
+|show|get|@{foo}|
 
 |''get url''|http://localhost:@{serverPort}/files/@{webDriver.driver}/test.html|
 
