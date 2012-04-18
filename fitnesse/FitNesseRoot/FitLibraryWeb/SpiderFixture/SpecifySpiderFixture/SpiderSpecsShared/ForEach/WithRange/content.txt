@@ -1,0 +1,30 @@
+This specification shows how to use ''for each'' by specifiying an integer range (like a traditional programming language for loop) rather than providing a series. The values at either end of the range are both inclusive, as shown ranges can loop backwards. 
+
+
+!include -c .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
+
+|set|result|to|0|
+
+|''for each''|index|''between''|1|''and''|5|
+|set|result|to|@{result}@{index}|
+
+|get|@{result}|is|012345|
+
+''Loop range can go backwards''
+
+|set|result|to||
+
+|''for each''|index|''between''|3|''and''|-3|
+|set|result|to|@{result}@{index}|
+
+|get|@{result}|is|3210-1-2-3|
+
+''Accessing indexes works as expected''
+
+|set|indexes|to||
+
+|''for each''|count|''between''|1|''and''|5|
+|set|indexes|to|@{indexes}@{count}=@{fromZero}@{fromOne},|
+
+|get|@{indexes}|is|1=01,2=12,3=23,4=34,5=45,|
+

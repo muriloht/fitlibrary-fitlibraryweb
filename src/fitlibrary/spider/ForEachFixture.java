@@ -5,10 +5,10 @@
 */
 package fitlibrary.spider;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fitlibrary.flow.DoAutoWrapper;
-import fitlibrary.flow.IDoAutoWrapper;
 import fitlibrary.runResults.TestResults;
 import fitlibrary.runResults.TestResultsOnCounts;
 import fitlibrary.table.Row;
@@ -23,7 +23,7 @@ public class ForEachFixture extends Traverse {
 	private Object saveFromOne;
 	private String iteratorName;
 	private List<String> list;
-	protected IDoAutoWrapper doAutoWrapper = new DoAutoWrapper(this);
+	protected final DoAutoWrapper doAutoWrapper = new DoAutoWrapper(this);
 	protected final DispatchRowInFlow dispatchRowInFlow;
 	
 	public ForEachFixture(String iteratorName, List<String> list) {
@@ -31,6 +31,22 @@ public class ForEachFixture extends Traverse {
 		this.list = list;
 		this.dispatchRowInFlow = new DispatchRowInFlow(this, false);
 	}
+	
+	public ForEachFixture(String iteratorName, int start, int end) {
+		this.iteratorName = iteratorName;
+		this.list = new ArrayList<String>();
+		if(end>start){
+			for(int i=start;i<=end;i++){
+				this.list.add(""+i);
+			}
+		}else{
+			for(int i=start;i>=end;i--){
+				this.list.add(""+i);
+			}
+		}
+		this.dispatchRowInFlow = new DispatchRowInFlow(this, false);
+	}
+	
 	@Override
 	public Object interpretAfterFirstRow(Table table, TestResults testResults) {
 		saveFromZero = getDynamicVariable("fromZero");
@@ -47,7 +63,6 @@ public class ForEachFixture extends Traverse {
 			if (subTestResults.problems())
 				problems = true;
 			Row newRow = table.newRow();
-			//newRow.add(TableFactory.cell("note"));
 			newRow.add(TableFactory.cell(TableFactory.tables(TableFactory.table(copyOfRow))));
 		}
 		if (saveFromZero != null)

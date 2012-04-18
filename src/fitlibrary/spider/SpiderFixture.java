@@ -242,6 +242,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	public ForEachFixture forEachIn(String iteratorName, List<String> list) {
 		return new ForEachFixture(iteratorName, list);
 	}
+	public ForEachFixture forEachBetweenAnd(String iteratorName, int seed, int limit){
+	  return new ForEachFixture(iteratorName, seed, limit);
+	}
 	public void clearDriver() {
 		webDriver = null;
 		showAfterTable("Cleared driver");
