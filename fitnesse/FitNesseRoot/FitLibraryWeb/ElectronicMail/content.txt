@@ -35,9 +35,17 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 
 |''select message with subject matching''|Confirmation|
 
+ * Same as above but search backwards through mailbox to find a message by the subject:
+
+|''select last message with subject matching''|Confirmation|
+
  * Check that message body contains some text:
 
 |''check message body contains''|confirmed|
+
+ * Download the entire message content as a file (especially useful if email is formatted as html, can be downloaded and further queried in browser with !-SpiderFixture-!).
+
+|''download message to file''|myfilename.ext|
 
  * Check that the current message has the named attachment:
 

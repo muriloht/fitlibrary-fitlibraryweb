@@ -77,39 +77,39 @@ public class ElectronicMail {
 	}
 
 	public boolean selectMessageWithSubjectMatching(String subjectPart) {
-		selectedMessage = null;
-		Message[] msgs = null;
-		SubjectTerm subjectTerm = new SubjectTerm(subjectPart);
-
-		try {
-			for (int waitingFor = 0; waitingFor < waitTimeSeconds; waitingFor++) {
-				msgs = selectedFolder.getMessages();
-				selectedFolder.fetch(msgs, fetchProfile);
-
-				for (Message message : msgs) {
-					if (message.match(subjectTerm)) {
-						selectedMessage = message;
-						return true;
-					}
-				}
-				sleepForOneSecond();
-			}
-		} catch (MessagingException e) {
-			Log.logAndThrow(e);
-		}
-
-		return false;
+	  AbstractMessageSelecter searchForwardsThroughMessagesUntilFound = new AbstractMessageSelecter(subjectPart) {
+      
+	    Message findMessage(SubjectTerm subjectTerm, Message[] msgs) throws MessagingException {
+        for(Message msg: msgs){
+          if (msg.match(subjectTerm)) {
+            return msg;
+          }
+        }
+        return null;
+      }
+		};
+		
+		return searchForwardsThroughMessagesUntilFound.select();
 	}
+	
+	public boolean selectLastMessageWithSubjectMatching(String subjectPart) {
+	  AbstractMessageSelecter searchBackwardsThroughMessagesUntilFound =  new AbstractMessageSelecter(subjectPart) {
+	    
+	    Message findMessage(SubjectTerm subjectTerm, Message[] msgs) throws MessagingException {
+	      for(int i=msgs.length-1;i>=0;--i){
+	        if (msgs[i].match(subjectTerm)) {
+	          return msgs[i];
+	        }
+	      }
+	      return null;
+	    }
+	  };
+	  
+	  return searchBackwardsThroughMessagesUntilFound.select();
+	}	
 
-	private void sleepForOneSecond() {
-		try {
-			Thread.sleep(1 * 1000);
-		} catch (InterruptedException e) {
-			//
-		}
-	}
-
-	public boolean openFolder(String folderName) {
+	
+  public boolean openFolder(String folderName) {
 		try {
 			selectedFolder = store.getDefaultFolder();
 			selectedFolder = selectedFolder.getFolder(folderName);
@@ -159,9 +159,9 @@ public class ElectronicMail {
 		return null;
 	}
 
-	public boolean downloadAttachmentToFile(String attachmentFileName,
-			String targetFileName) throws IOException, MessagingException {
-		if (selectedMessage == null) {
+	public boolean downloadAttachmentToFile(String attachmentFileName, String targetFileName) throws IOException, MessagingException {
+	  
+	  if (selectedMessage == null) {
 			return false;
 		}
 
@@ -171,12 +171,21 @@ public class ElectronicMail {
 			throw new FileNotFoundException(attachmentFileName);
 		}
 
-		LocalFile globalFile = Traverse.getGlobalFile(targetFileName);
-
-		FileUtils.writeByteArrayToFile(globalFile.getFile(), IOUtils
-				.toByteArray(part.getInputStream()));
-
-		return true;
+		return downloadPartToFile(targetFileName, part);
+	}
+	
+	public boolean downloadMessageToFile(String targetFileName) throws IOException, MessagingException {
+		if (selectedMessage == null) {
+			return false;
+		}
+		
+		return downloadPartToFile(targetFileName, (Part) selectedMessage);
+	}
+	
+	private boolean downloadPartToFile(String targetFileName, Part part) throws IOException, MessagingException {
+	    LocalFile globalFile = Traverse.getGlobalFile(targetFileName);
+	    FileUtils.writeByteArrayToFile(globalFile.getFile(), IOUtils.toByteArray(part.getInputStream()));
+	    return true;
 	}
 
 	public boolean deleteMessage() {
@@ -214,4 +223,46 @@ public class ElectronicMail {
 		super.finalize();
 		disconnect();
 	}
+	
+  abstract class AbstractMessageSelecter   {
+    private String subjectPart;
+
+    abstract Message findMessage(SubjectTerm subjectTerm, Message[] msgs) throws MessagingException;
+
+    public AbstractMessageSelecter(String subjectPart) {
+      this.subjectPart = subjectPart;
+    }
+
+    private void sleepForOneSecond() {
+      try {
+        Thread.sleep(1 * 1000);
+      }
+      catch (InterruptedException e) { }
+    }
+
+    public boolean select() {
+      selectedMessage = null;
+      Message[] msgs = null;
+      SubjectTerm subjectTerm = new SubjectTerm(subjectPart);
+      try {
+        for (int waitingFor = 0; waitingFor < waitTimeSeconds; waitingFor++) {
+          msgs = selectedFolder.getMessages();
+          selectedFolder.fetch(msgs, fetchProfile);
+
+          selectedMessage = findMessage(subjectTerm, msgs);
+
+          if (selectedMessage != null) {
+            return true;
+          }
+
+          sleepForOneSecond();
+        }
+      }
+      catch (MessagingException e) {
+        Log.logAndThrow(e);
+      }
+
+      return false;
+    }
+  }
 }
