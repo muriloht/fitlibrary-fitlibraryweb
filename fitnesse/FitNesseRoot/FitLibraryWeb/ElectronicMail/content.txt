@@ -43,6 +43,10 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 
 |''check message body contains''|confirmed|
 
+ * Provide access to the entire message content (i.e. to assign to variables, match or harvest against)
+
+|''get message content as string''|
+
  * Download the entire message content as a file (especially useful if email is formatted as html, can be downloaded and further queried in browser with !-SpiderFixture-!).
 
 |''download message to file''|myfilename.ext|

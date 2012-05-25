@@ -265,4 +265,9 @@ public class ElectronicMail {
       return false;
     }
   }
+  
+  public String getMessageContentAsString() throws IOException, MessagingException{
+	  byte[] messageContentBytes = IOUtils.toByteArray(this.selectedMessage.getInputStream());
+	  return new String(messageContentBytes);
+  }
 }
