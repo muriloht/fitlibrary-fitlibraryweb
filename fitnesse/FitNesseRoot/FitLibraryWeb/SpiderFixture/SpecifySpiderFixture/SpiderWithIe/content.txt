@@ -1,2 +1,13 @@
 !contents
 
+Selenium now supports a standalone IEDriverServer for Internet Explorer.  For best results download the appropriate driver for your platform from the downloads page at http://code.google.com/p/selenium/downloads/list 
+This driver should be located on your PATH or specify its location via the '''webdriver.ie.driver''' java system property.  
+
+If this driver cannot be found Selenium will revert to its legacy internal server but you will receive warnings, to remove warnings force the use of the legacy server by placing the following command in your test or set up before you open a browser (remove the 'comment'):
+
+|comment|
+|use internet explorer legacy internal server|true|
+
+
+
+

@@ -3,11 +3,11 @@ If you upgrading and overwriting older jar files delete the older versions of fi
 
 #
  * SpiderFixture:
-  * Upgraded to Selenium 2.21 
+  * Upgraded to Selenium 2.23.1 - Selenium now has a new driver server for Internet Explorer for more information see .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithIe
   * textOf, element visible, checkbox and other similar methods are now more tolerant to ajax/lightbox dom changes  
   * screen shots should now work on most platforms
   * Added new fixture method 'with send key' for sending special keys to an element. See specification .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithFirefox.SpecifiCations.SpecifyWithSendKey
-  * Added new version for ''For Each' fixture method that works like a traditional for loop. Contributed by Erik Swart. See specification .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.ForEach.WithRange
+  * Added new version of the 'For Each' fixture method that works like a traditional 'for' loop. Contributed by Erik Swart. See specification .FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpiderWithHtmlUnit.SpecifiCations.ForEach.WithRange
   * Bundled later !-FitNesse-! version (v20111026)
  * ElectronicMail fixture can now download the entire document to a file. Also added new fixture methods for converting message to string and searching for last matching message in mailbox.
  

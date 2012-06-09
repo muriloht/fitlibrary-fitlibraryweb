@@ -8,6 +8,7 @@ package fitlibrary.spider;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 
@@ -38,6 +40,7 @@ import fitlibrary.spider.driver.HtmlUnitVariation;
 public class SpiderFixture extends AbstractSpiderFixture {
 	public static final String WEB_DRIVER_VARIABLE_NAME = "webDriver.driver";
 	protected WebDriver webDriver = null;
+	DesiredCapabilities capabilities = new DesiredCapabilities();
 	private SpiderWindow spiderWindow = new SpiderWindow(this);
 	protected FirefoxProfile firefoxProfile = new FirefoxProfile();
 	protected String proxyHost;
@@ -74,11 +77,15 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return true;
 	}
+	@SimpleAction(wiki="|''<i>use internet explorer legacy internal server for ie</i>''|boolean value|",
+			tooltip="set to true to switch off warnings if you don't have the IEDriverSet on your path or at webdriver.ie.driver system property location.")
+	public void useInternetExplorerLegacyInternalServer(boolean useLegacyServer) {
+        capabilities.setCapability("useLegacyInternalServer", useLegacyServer);
+    }
 	@SimpleAction(wiki="|''<i>use native events</i>''|boolean value|",
 			tooltip="Switch native events mode on / off - currently only available in firefox.")
 	public void useNativeEventsInFirefox(boolean enableNativeEvents) {
         firefoxProfile.setEnableNativeEvents(enableNativeEvents);
-
     }
 	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as string</i>''|string value|",
 			tooltip="Set the value of a string-based firefox profile key.")
@@ -192,7 +199,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		return htmlUnitDriver;
 	}
 	protected InternetExplorerDriver internetExplorerDriver() {
-		return new InternetExplorerDriver();
+		return new InternetExplorerDriver(capabilities);
 	}
 	protected ChromeDriver chromeDriver() {
 		return new ChromeDriver();
