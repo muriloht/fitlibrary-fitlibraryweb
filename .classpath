@@ -6,7 +6,6 @@
 	<classpathentry kind="lib" path="fitnesse/lib/apache-mime4j-0.6.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/dbfit.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/fontbox-1.1.0.jar" sourcepath="C:/cygwin/home/Rick/srcLib/pdfbox-1.1.0-src.zip"/>
 	<classpathentry kind="lib" path="fitnesse/lib/hamcrest-all-1.2.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/jmock-2.5.1.jar"/>
@@ -31,5 +30,7 @@
 	<classpathentry kind="lib" path="fitnesse/fitlibrary-2.0.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.23.1.jar" sourcepath="fitnesse/lib/src/selenium-java-2.23.1-srcs.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/dbunit-2.4.1.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/ojdbc14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
