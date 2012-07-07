@@ -1,3 +1,4 @@
+
 !3 Simple Select
 
 |Query| select 'test'::TEXT as x|

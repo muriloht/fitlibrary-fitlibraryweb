@@ -2,5 +2,5 @@
 
 !|dbfit.PostgresTest|
 
-|Connect using file|DbfitPostgresDBConnection.properties|
+|Connect using file|../dbfitscripts/DbfitPostgresDBConnection.properties|
 

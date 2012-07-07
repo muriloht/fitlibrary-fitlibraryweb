@@ -1,3 +1,12 @@
+!2 UPCOMING - fitlibraryweb-2.2.jar
+
+The DbFit for java source code is now incorporated into FitLibraryWeb
+
+!3 DBFIT TODO
+ * Deprecate the old FLW wrappers
+ * Get the unit tests running in the build
+
+
 !2 UPCOMING - fitlibraryweb-2.1.jar
 If you upgrading and overwriting older jar files delete the older versions of fitLibrary.jar and fitbraryweb.jar and older dependent libraries. 
 

@@ -2,5 +2,5 @@
 
 !|dbfit.MySqlTest|
 
-|Connect using file|MySQLConnection.properties|
+|Connect using file|../dbfitscripts/MySQLConnection.properties|
 
