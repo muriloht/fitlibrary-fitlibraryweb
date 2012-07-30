@@ -16,7 +16,7 @@ NAME VARCHAR(25), CODE VARCHAR(2), USERID_UPDATED VARCHAR(8), TIMESTAMP_UPDATED 
 
 !|TestData|xls|
 |operation|file|schema|table|
-|CLEAN_INSERT|..\..\..\FitNesseRoot\files\data\Testdata.xls|SCHEMA2|COUNTRY|
+|CLEAN_INSERT|.\dbfit\data\Testdata.xls|SCHEMA2|COUNTRY|
 
 !|Query|SELECT * FROM SCHEMA2.COUNTRY|
 |INSTANCE_ID|CODE|NAME|TIMESTAMP_UPDATED|

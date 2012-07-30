@@ -5,6 +5,8 @@ The DbFit for java source code is now incorporated into FitLibraryWeb
 !3 DBFIT TODO
  * Deprecate the old FLW wrappers
  * Get the unit tests running in the build
+ * Go through the documentation and acceptance tests looking for broken links
+ * Upgrade to later versions of drivers and dependancies (POI has a different version to core FitLibrary - update both to latest?)
 
 
 !2 UPCOMING - fitlibraryweb-2.1.jar

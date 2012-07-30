@@ -24,7 +24,7 @@ TIMESTAMP_UPDATED TIMESTAMP
 
 !|TestData|xls|
 |operation|file|schema|
-|CLEAN_INSERT|..\..\..\FitNesseRoot\files\data\Testdata.xls|SCHEMA2|
+|CLEAN_INSERT|.\dbfit\data\Testdata.xls|SCHEMA2|
 
 !|Query|SELECT * FROM SCHEMA2.COUNTRY|
 |INSTANCE_ID|CODE|NAME|TIMESTAMP_UPDATED|
