@@ -1,2 +1,0 @@
-!|dbfit.OracleTest|
-|Connect|localhost:1521|dftest|dftest|XE|

@@ -1,6 +1,8 @@
 !*< paths and defines
+#!path ../bin
 !path lib/fitlibraryweb-2.1.jar
 !path fitlibrary-2.0.jar
+#!path ../../fitlibrary/bin
 !path lib/*.jar
 !define TEST_RUNNER {fitlibrary.suite.FitLibraryServer}
 !define REGRACE_LINK {false}
@@ -26,7 +28,6 @@ FitLibraryWeb depends on ''!-FitLibrary-!'' and is now part of the ''!-FitLibrar
 |''Database access (a ''!-DoFixture-! ''wrapper for dbfit)''|>DatabaseFixtures|[[Docs][>DatabaseFixtures]]||
 |''Checking the contents of email''|>ElectronicMail|[[Docs][>ElectronicMail]]||
 |''Checking the contents of a PDF''|>PdfDocument|[[Docs][>PdfDocument]]|[[Example][^PdfDocument.RunningExample]]|
-|''The full !-DbFit-! fixtures''|>DbFit|||
 
 |!2 ^WhatIsNew|
 

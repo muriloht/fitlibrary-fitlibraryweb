@@ -194,13 +194,11 @@
 	</target>
 
 	<target name="start-fitnesse">
-		<echo message="${fitnesse.dir}"/>
-		<java jar="${fitnesse.dir}/fitnesse.jar" dir="${fitnesse.dir}" fork="true" spawn="false">
+		<java jar="fitnesse.jar" dir="${fitnesse.dir}" fork="true" spawn="true">
 			<arg value="-r" />
 			<arg value="FitNesseRoot" />
 			<arg value="-p" />
 			<arg value="${port}" />
-			<arg value="-o" />
 			<arg value="-e" />
 			<arg value="0" />
 
