@@ -19,7 +19,7 @@
 
 |''click''|one|
 
-|''text of''|//title|'''is'''|From|
+|''title''|'''is'''|From|
 
 |''select window''|Target Window|
 
@@ -29,7 +29,7 @@
 
 |select initial window|
 
-|''text of''|//title|'''is'''|From|
+|''title''|'''is'''|From|
 
 |''click''|//a[@title="Mr Sir"]|
 

@@ -41,4 +41,4 @@ homing}}})
 
 |''page source''|contains|othering|
 
-|''text of''|//title|'''is'''|To Here|
+|''title''|'''is'''|To Here|

@@ -39,4 +39,4 @@ homing}}}]
 
 |''page source''|contains|homing|
 
-|''text of''|//title|'''is'''|From|
+|title|'''is'''|From|
