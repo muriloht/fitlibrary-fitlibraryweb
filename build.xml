@@ -8,6 +8,8 @@
 	<property name="fitnesse.dir" value="${home}/fitnesse" />
 	<property name="port" value="8990" />
 	<property name="batch-run-retries" value="0" />
+	<property name="batch.run.timeout" value="1800000" />
+	
 	<!-- batch runner properties -->
 	<property name="showpassesinreport" value="false" />	
 	<property name="results-dir" value="${home}/runnerResults" />
@@ -308,7 +310,7 @@
 
 	<macrodef name="batch-run">
 		<attribute name="suite" />
-		<attribute name="timeout" default="1800000" /> <!-- 20 mins default timeout -->
+		<attribute name="timeout" default="${batch.run.timeout}" /> <!-- default timeout -->
 		<attribute name="runDirectory" default="${fitnesse.dir}"/> <!-- 10 mins default timeout -->
 		<attribute name="resultsDirectory" default="${results-dir}"/> <!-- 10 mins default timeout -->
 		<sequential>
