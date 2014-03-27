@@ -4,7 +4,6 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="lib" path="fitnesse/fitnesse.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-io-1.4.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/dbfit.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/fontbox-1.1.0.jar" sourcepath="C:/cygwin/home/Rick/srcLib/pdfbox-1.1.0-src.zip"/>
@@ -31,5 +30,6 @@
 	<classpathentry kind="lib" path="fitnesse/lib/xercesImpl-2.10.0.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.40.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.40.0-srcs.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/commons-io-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
