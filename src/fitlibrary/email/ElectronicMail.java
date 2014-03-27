@@ -122,6 +122,16 @@ public class ElectronicMail {
 		return false;
 	}
 
+	public int selectedFolderMessageCount() {
+		try {
+			return selectedFolder.getMessageCount();
+		} catch (MessagingException e) {
+			Log.logAndThrow(e);
+		}
+		// unreachable code
+		return 0;
+	}
+  
 	public boolean hasAttachment(String attachmentFileName) {
 		if (selectedMessage == null) {
 			return false;

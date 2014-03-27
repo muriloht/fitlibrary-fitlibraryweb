@@ -27,6 +27,10 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 
 |''open folder''|INBOX|
 
+ * Check the number of messages in the opened folder
+
+|''selected folder message count''|is|33|
+
  * Delay, waiting for the email to arrive:
 
 |''wait up to''|5|''seconds for message to arrive''|
