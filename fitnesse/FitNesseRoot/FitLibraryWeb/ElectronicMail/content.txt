@@ -31,6 +31,10 @@ The ''!-ElectronicMail-!'' fixture allow for testing that email has been sent.
 
 |''selected folder message count''|is|33|
 
+ * Delete a range of messages
+
+|''delete messages ranged from''|3|''to''|8|
+
  * Delay, waiting for the email to arrive:
 
 |''wait up to''|5|''seconds for message to arrive''|

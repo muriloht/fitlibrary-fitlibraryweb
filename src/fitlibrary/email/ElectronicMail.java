@@ -132,6 +132,21 @@ public class ElectronicMail {
 		return 0;
 	}
   
+	public boolean deleteMessagesRangedFromTo(int startMsg, int endMsg) {
+		try {
+			for (Message message : selectedFolder.getMessages(startMsg, endMsg)) {
+				message.setFlag(Flags.Flag.DELETED, true);
+			}
+
+			selectedFolder.expunge();
+		} catch (javax.mail.MessagingException e) {
+			Log.logAndThrow(e);
+			return false; // unreachable
+		}
+
+		return true;
+	}
+	
 	public boolean hasAttachment(String attachmentFileName) {
 		if (selectedMessage == null) {
 			return false;
