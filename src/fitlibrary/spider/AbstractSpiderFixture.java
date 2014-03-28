@@ -200,11 +200,20 @@ public abstract class AbstractSpiderFixture extends DoTraverse {
 	public boolean selectWindow(String name) {
 		return window().selectWindow(name);
 	}
+	@SimpleAction(wiki="|''<i>select window with</i>''|locator|''<i>as</i>''|expected value|",
+			tooltip="Select a window where the text of the locator matches expected value.")
 	public boolean selectWindowWithAs(String xpath, String value) {
 		return window().selectWindowWithAs(xpath, value);
 	}
+	@SimpleAction(wiki="|''<i>select window with</i>''|locator|''<i>contains</i>''|expected value|",
+			tooltip="Select a window where the text of the locator contains expected value.")
 	public boolean selectWindowWithContains(String xpath, String value) {
 		return window().selectWindowWithContains(xpath, value);
+	}
+	@SimpleAction(wiki="|''<i>select window with title</i>''|expected title|",
+			tooltip="Select a window that has a title matching expected title.")
+	public boolean selectWindowWithTitle(String expectedTitle) {
+		return window().selectWindowWithTitle(expectedTitle);
 	}
 
 	@NullaryAction(tooltip="Selecting the other window, of two.")

@@ -64,31 +64,37 @@ public class SpiderWindow extends SpiderComponent {
 		}
 	}
 	public boolean selectWindowWithAs(final String xpath, final String value) {
-		return selectWindowWithMatcher(xpath, new WindowMatches() {
-			public boolean matches(String elementText) {
-				return elementText.equals(value);
+		return selectWindowWithMatcher(new WindowMatches() {
+			public boolean matches() {
+				return spiderFixture.textOf(xpath).equals(value);
 			}
 			
 		});
 	}
 	public boolean selectWindowWithContains(final String xpath, final String value) {
-		return selectWindowWithMatcher(xpath, new WindowMatches() {
-			public boolean matches(String elementText) {
-				return elementText.toLowerCase().contains(value.toLowerCase());
+		return selectWindowWithMatcher(new WindowMatches() {
+			public boolean matches() {
+				return spiderFixture.textOf(xpath).toLowerCase().contains(value.toLowerCase());
 			}
-			
+		});
+	}
+	public boolean selectWindowWithTitle(final String expectedTitle) {
+		return selectWindowWithMatcher(new WindowMatches() {
+			public boolean matches() {
+				return spiderFixture.getTitle().equals(expectedTitle);
+			}
 		});
 	}
 	private interface WindowMatches {
-		boolean matches(String elementText);
+		boolean matches();
 	}
-	private boolean selectWindowWithMatcher(String xpath, WindowMatches matcher) {
+	private boolean selectWindowWithMatcher(WindowMatches matcher) {
 		String currentwindow = currentWindow();
 		Set<String> windowHandles = windowHandles();
 		for (String name : windowHandles) {
 			webDriver().switchTo().window(name);
 			try {
-				if (matcher.matches(spiderFixture.collectText(spiderFixture.findElement(xpath))))
+				if (matcher.matches())
 					return true;
 			} catch (Exception e) {
 				// may not be an error as we might be doing find element in a

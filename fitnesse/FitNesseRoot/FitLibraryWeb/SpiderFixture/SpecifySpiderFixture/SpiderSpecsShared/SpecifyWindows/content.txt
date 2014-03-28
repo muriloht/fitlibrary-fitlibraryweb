@@ -1,11 +1,12 @@
-^SpecifyWindowThroughTarget
-^ThreeWindows
+>SpecifyWindowThroughTarget
+>ThreeWindows
 >ThreeWindowsWithCloseWithFirefox
-^ThreeWindowsWithCloseWithHtmlUnit
-^CloseWindow
+>ThreeWindowsWithCloseWithHtmlUnit
+>CloseWindow
 >SwitchingBetweenWindowsAndClosingThem
 >SelectOtherWindow
-^SelectPopUpByXpath
-^ClosePopup
+>SelectPopUpByXpath
+>ClosePopup
+>SelectWindowByTitle
 
 
