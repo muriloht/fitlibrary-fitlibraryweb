@@ -219,7 +219,7 @@
 	<target name="stop-fitnesse">
 		<java classname="fitnesse.Shutdown" fork="true">
 			<classpath>
-				<fileset dir=".">
+				<fileset dir="${fitnesse.dir}">
 					<include name="fitnesse.jar" />
 				</fileset>
 			</classpath>
