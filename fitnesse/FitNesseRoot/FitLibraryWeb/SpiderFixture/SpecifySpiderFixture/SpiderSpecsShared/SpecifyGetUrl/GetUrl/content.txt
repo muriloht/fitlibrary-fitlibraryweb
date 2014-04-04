@@ -4,7 +4,7 @@
 </head>}}})
 *!
 
-|''keywords''|htmlunit,firefox,ie,chrome|
+|''keywords''|phantomjs,htmlunit,firefox,ie,chrome|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

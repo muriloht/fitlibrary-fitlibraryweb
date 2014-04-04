@@ -4,6 +4,7 @@ fitnesse/FitNesseRoot/files/firefox
 fitnesse/FitNesseRoot/files/htmlunit
 fitnesse/FitNesseRoot/files/ie
 fitnesse/FitNesseRoot/files/chrome
+fitnesse/FitNesseRoot/files/phantomjs
 fitnesse/FitNesseRoot/files/images/screenDump*.*
 fitnesse/FitNesseRoot/files/soap/response*.*
 fitnesse/FitNesseRoot/files/testResults

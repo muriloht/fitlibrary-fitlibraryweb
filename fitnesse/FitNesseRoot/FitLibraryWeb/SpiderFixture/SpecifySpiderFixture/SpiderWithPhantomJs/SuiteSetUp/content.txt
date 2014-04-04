@@ -1,0 +1,8 @@
+!|fitlibrary.spider.specify.SpecifySpiderSuite|
+
+|'''set'''|webDriver.driver|''to''|phantomjs|
+|'''set'''|serverPort|''to''|8995|
+
+|''start spider on port''|@{serverPort}|''with''| @{webDriver.driver} |
+
+|''select or''| @{webDriver.driver} |

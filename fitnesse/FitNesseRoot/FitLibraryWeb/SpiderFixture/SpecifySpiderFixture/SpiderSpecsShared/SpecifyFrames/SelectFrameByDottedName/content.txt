@@ -1,4 +1,4 @@
-|''keywords''|chrome,htmlunit,firefox|
+|''keywords''|phantomjs,chrome,htmlunit,firefox|
 
 !2 Not supported in IE
 

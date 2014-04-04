@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +19,8 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.gargoylesoftware.htmlunit.WebClient;
@@ -26,8 +29,8 @@ import fitlibrary.annotation.ShowSelectedActions;
 import fitlibrary.annotation.SimpleAction;
 import fitlibrary.exception.FitLibraryException;
 import fitlibrary.flex.FlexSpiderFixture;
-import fitlibrary.spider.component.Frame;
 import fitlibrary.spider.component.Alert;
+import fitlibrary.spider.component.Frame;
 import fitlibrary.spider.component.Page;
 import fitlibrary.spider.component.SpiderWindow;
 import fitlibrary.spider.component.TextInPage;
@@ -42,8 +45,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	DesiredCapabilities capabilities = new DesiredCapabilities();
 	private SpiderWindow spiderWindow = new SpiderWindow(this);
 	protected FirefoxProfile firefoxProfile = new FirefoxProfile();
-	protected String proxyHost;
-	protected int proxyPort;
+	protected Proxy proxy;
 	private boolean shutDownAutomatically = true;
 	private Page page = new Page(this);
 	private Frame frame = new Frame(this);
@@ -105,8 +107,9 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	@SimpleAction(wiki="|''<i>proxy</i>''|host|''<i>with port</i>''|port number|",
 			tooltip="Set the host and port of the proxy server to use.")
 	public void proxyWithPort(String host, int port) {
-		this.proxyHost = host;
-		this.proxyPort = port;
+    	String proxystr = host+":"+port;
+    	this.proxy = new Proxy();
+    	proxy.setHttpProxy(proxystr).setFtpProxy(proxystr).setSslProxy(proxystr);
 	}
 	// RESTART
 	public void restart() throws Exception {
@@ -138,6 +141,8 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				webDriver = internetExplorerDriver();
 			else if ("chrome".equals(driver))
 				webDriver = chromeDriver();
+			else if ("phantomjs".equals(driver))
+				webDriver = phantomJSDriver();
 			else // override this in your base class to create your own driver
 				webDriver = unknownDriver(driver);
 			// else if ("safari".equals(driver))
@@ -151,6 +156,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return webDriver;
 	}
+
 	protected Object getDynamicVariable(String key, String byDefault) {
 		Object dynamicVariable = getDynamicVariable(key);
 		if (dynamicVariable != null)
@@ -190,11 +196,10 @@ public class SpiderFixture extends AbstractSpiderFixture {
 			}
 		}
 		ExtendedHtmlUnitDriver htmlUnitDriver = new ExtendedHtmlUnitDriver();
-		if (proxyHost != null)
-			htmlUnitDriver.setProxy(proxyHost, proxyPort);
+		if (proxy != null)
+			htmlUnitDriver.setProxySettings(proxy);
 		htmlUnitDriver.setJavascriptEnabled(true);
-		driverVariation = new HtmlUnitVariation(this, htmlUnitDriver
-				.getWebClient());
+		driverVariation = new HtmlUnitVariation(this, htmlUnitDriver.getWebClient());
 		return htmlUnitDriver;
 	}
 	protected InternetExplorerDriver internetExplorerDriver() {
@@ -203,6 +208,19 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	protected ChromeDriver chromeDriver() {
 		return new ChromeDriver();
 	}
+	
+	protected WebDriver phantomJSDriver() {
+	    DesiredCapabilities caps = new DesiredCapabilities();
+	    caps.setJavascriptEnabled(true);               
+	    caps.setCapability("takesScreenshot", true);   
+	
+	    if (proxy != null) 
+	    	caps.setCapability(CapabilityType.PROXY, proxy);
+	    
+	    // driver.manage().window().setSize(new Dimension(1280, 1024)); 
+	    return new PhantomJSDriver(caps);
+	}
+	
 	/** Override this in a base class to create a driver of your own */
 	protected WebDriver unknownDriver(String driverName) {
 		return null;

@@ -31,5 +31,6 @@
 	<classpathentry kind="lib" path="fitnesse/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/selenium-java-2.41.0.jar" sourcepath="fitnesse/lib/src/selenium-java-2.41.0-srcs.jar"/>
 	<classpathentry kind="lib" path="fitnesse/lib/commons-io-2.2.jar"/>
+	<classpathentry kind="lib" path="fitnesse/lib/phantomjsdriver-1.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -10,7 +10,7 @@ onclick="javascript:setTimeout('addInput()', 50)"/>
 <select id='22'><option id ='blue'>Blue</option><option id ='red'>Red</option></select>}}}]
 *!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

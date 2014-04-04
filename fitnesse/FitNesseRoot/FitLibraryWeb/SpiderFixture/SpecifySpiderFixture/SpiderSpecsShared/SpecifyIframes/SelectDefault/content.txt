@@ -1,4 +1,4 @@
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <SpecifyIframes.SpecSetUp
 

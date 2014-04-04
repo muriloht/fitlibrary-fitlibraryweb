@@ -9,7 +9,7 @@
 !2 Not supported in IE
 !2 !-Not supported in HtmlUnit since version 2.8 -- see HtmlUnit bug #3018437-!
 
-|''keywords''|chrome,firefox|
+|''keywords''|phantomjs,chrome,firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

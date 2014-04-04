@@ -1,10 +1,10 @@
 !*< def
 !define html ({{{<input type="text" id="in" value="abc", class='c1', enabled='false'/>
-<dvv id="divv"/>
-<p name="pp">bla</p>}}})
+<div id="div"/>
+<a name="A1">appendix 1</a>}}})
 *!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
@@ -12,14 +12,12 @@
 
 |''attribute''|value|''of''|//input[@id="in"]|''is''|abc|
 
-|''attribute''|id|''of''|//dvv[@id="divv"]|''is''|divv|
+|''attribute''|id|''of''|//div[@id="div"]|''is''|div|
 
-|''attribute''|name|''of''|//p|''is''|pp|
+|''attribute''|name|''of''|//a|''is''|A1|
 
-|'''not'''|''attribute''|class|''of''|//p|''exists''|
+|'''not'''|''attribute''|class|''of''|//a|''exists''|
 
-|'''not'''|''attribute''|className|''of''|//p|''exists''|
+|'''not'''|''attribute''|className|''of''|//a|''exists''|
 
-|'''not'''|''attribute''|enabled|''of''|//p|''exists''|
-
-|'''not'''|''attribute''|unknwon|''of''|//p|''exists''|
+|'''not'''|''attribute''|unknwon|''of''|//a|''exists''|

@@ -10,7 +10,7 @@ function addInput(){
 <input type="button" id="ok" value="OK" onclick="javascript:setTimeout('addInput()', 20)"/>
 <table><tr id="t"><td id="e">cell</td></tr></table>}}}]
 *!
-|''keywords''|chrome,firefox|
+|''keywords''|phantomjs,chrome,firefox|
 
 !2 IE and htmlunit can't handle this particular change through javascript
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp

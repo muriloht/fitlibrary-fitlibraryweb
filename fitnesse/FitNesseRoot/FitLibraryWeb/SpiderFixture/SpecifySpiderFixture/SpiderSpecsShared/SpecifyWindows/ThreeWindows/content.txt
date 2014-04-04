@@ -8,7 +8,7 @@
 <a id="two" href="two.html" target="Window Two">Two</a> }}})
 *!
 
-|''keywords''|chrome,htmlunit, firefox|
+|''keywords''|phantomjs,chrome,htmlunit, firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

@@ -12,7 +12,7 @@
 <input name="rad" value="I am not checked" type="radio">Not Checked}}})
 *!
 
-|''keywords''|chrome,firefox|
+|''keywords''|phantomjs,chrome,firefox|
 
 !3 note: Only partially work in IE7 and html unit
 

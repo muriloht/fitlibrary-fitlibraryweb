@@ -7,7 +7,7 @@
 homing}}})
 *!
 
-|''keywords''|chrome,htmlunit, firefox|
+|''keywords''|phantomjs,chrome,htmlunit, firefox|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

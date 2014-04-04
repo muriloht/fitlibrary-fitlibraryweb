@@ -3,7 +3,7 @@
 <form><input id="input3" type="text" onkeypress="$('123').set('html','123');"/></form>
 <div class="1"><div class="2"><div id="seatsleft">one<span id="123"></span><img src="stuff" height="16" width="16" alt="loading" style="display: inline; margin: 0 0 -3px 0;"/></span>
 two
-</div></div></div>
+</div></div></div></body>
 }
 *!
 

@@ -8,7 +8,7 @@ orange</span>
   <span id="withMultiTextBR">yellow<br/>orange</span>}}})
 **!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

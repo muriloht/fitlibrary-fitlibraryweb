@@ -2,7 +2,7 @@
 !define html (<input type="text" id="aninput" value=""/>
 )
 *!
-|''keywords''|firefox,ie|
+|''keywords''|phantomjs,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 Sends special keys to an element - keys allows are:

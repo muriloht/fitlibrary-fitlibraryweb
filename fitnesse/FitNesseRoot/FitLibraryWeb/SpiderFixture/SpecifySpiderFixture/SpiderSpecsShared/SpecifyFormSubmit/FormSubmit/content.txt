@@ -1,5 +1,5 @@
 !*< def
-!define target (<head><title>To here</title></head>
+!define target (<head><title>To here</title></head><body><h1>foo</h1></body>
 )
 !define html (<head><title>Start</title></head>
   <form name="fone" method="get" action="other.html">
@@ -19,4 +19,6 @@
 
 |''submit''|name=fone|
 
-|''title''|'''is'''|To here|
+|page source|contains|foo|
+
+|''title''|'''becomes'''|To here|

@@ -3,6 +3,7 @@
 |^SpiderWithHtmlUnit|8998|
 |^SpiderWithFirefox|8997|
 |^SpiderWithIe|8996|
+|^SpiderWithPhantomJs|8995|
 
 |^SpiderSpecsShared|''These are the specs that are shared by the browser-specific specifications above''|
 #

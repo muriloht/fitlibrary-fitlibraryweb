@@ -14,7 +14,7 @@ function addInput(){
 <table><tr id="t"><td id="e">cell</td></tr></table>}}}]
 *!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 

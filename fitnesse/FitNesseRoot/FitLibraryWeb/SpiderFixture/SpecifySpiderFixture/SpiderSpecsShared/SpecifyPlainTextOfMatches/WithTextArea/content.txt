@@ -10,7 +10,7 @@ orange</textarea>
   <textarea id="withMultiTextBR">yellow<br/>orange</textarea>}}})
 *!
 
-|''keywords''|chrome,htmlunit,firefox,ie|
+|''keywords''|phantomjs,chrome,htmlunit,firefox,ie|
 
 !include -c <FitLibraryWeb.SpiderFixture.SpecifySpiderFixture.SpecSetUp
 
