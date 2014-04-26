@@ -5,6 +5,7 @@
 */
 package fitlibrary.spider;
 
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -42,6 +44,7 @@ import fitlibrary.spider.driver.HtmlUnitVariation;
 public class SpiderFixture extends AbstractSpiderFixture {
 	public static final String WEB_DRIVER_VARIABLE_NAME = "webDriver.driver";
 	protected WebDriver webDriver = null;
+	private ChromeOptions chromeOptions;
 	DesiredCapabilities capabilities = new DesiredCapabilities();
 	private SpiderWindow spiderWindow = new SpiderWindow(this);
 	protected FirefoxProfile firefoxProfile = new FirefoxProfile();
@@ -78,6 +81,15 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return true;
 	}
+	
+	@SimpleAction(wiki="|''<i>use chrome options</i>''|extensionsPath|",
+			tooltip="When running with chrome, configure using extensions crx file at the given path")
+	public void useChromeOptions(String extensionsPath)
+	{
+		chromeOptions = new ChromeOptions();
+		chromeOptions.addExtensions(new File(extensionsPath));
+	}
+	
 	@SimpleAction(wiki="|''<i>use internet explorer legacy internal server for ie</i>''|boolean value|",
 			tooltip="set to true to switch off warnings if you don't have the IEDriverSet on your path or at webdriver.ie.driver system property location.")
 	public void useInternetExplorerLegacyInternalServer(boolean useLegacyServer) {
@@ -213,11 +225,17 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	protected InternetExplorerDriver internetExplorerDriver() {
 		return new InternetExplorerDriver(capabilities);
 	}
-	protected ChromeDriver chromeDriver() {
+	
+	public ChromeDriver chromeDriver() {
 		DesiredCapabilities caps = DesiredCapabilities.chrome();
 		
 		if (proxy != null) {
 			caps.setCapability(CapabilityType.PROXY, proxy);
+		}
+		
+		if (chromeOptions != null)
+		{
+			caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
 		}
 		
 		return new ChromeDriver(caps);
