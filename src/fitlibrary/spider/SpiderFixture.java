@@ -111,6 +111,14 @@ public class SpiderFixture extends AbstractSpiderFixture {
     	this.proxy = new Proxy();
     	proxy.setHttpProxy(proxystr).setFtpProxy(proxystr).setSslProxy(proxystr);
 	}
+	
+	@SimpleAction(wiki="|''<i>autoconfigration url</i>''|url|",
+			tooltip="Configure proxy via autoconfig url i.e. pac file")
+	public void proxyWithAutoconfigUrl(String url) {
+    	this.proxy = new Proxy();
+    	proxy.setProxyAutoconfigUrl(url);
+	}
+	
 	// RESTART
 	public void restart() throws Exception {
 		tearDownDriver();
@@ -206,11 +214,17 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		return new InternetExplorerDriver(capabilities);
 	}
 	protected ChromeDriver chromeDriver() {
-		return new ChromeDriver();
+		DesiredCapabilities caps = DesiredCapabilities.chrome();
+		
+		if (proxy != null) {
+			caps.setCapability(CapabilityType.PROXY, proxy);
+		}
+		
+		return new ChromeDriver(caps);
 	}
 	
 	protected WebDriver phantomJSDriver() {
-	    DesiredCapabilities caps = new DesiredCapabilities();
+	    DesiredCapabilities caps = DesiredCapabilities.phantomjs();
 	    caps.setJavascriptEnabled(true);               
 	    caps.setCapability("takesScreenshot", true);   
 	
