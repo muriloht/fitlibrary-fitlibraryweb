@@ -5,10 +5,12 @@ import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
-import util.StringUtil;
 
 /** Wrapper for WebElement to re-introduce the deprecated getValue() method, this is publicly exposed by fixtures and checked in FittNesse tables so needs to be there as a java method. */
 public class SpiderWebElement implements WebElement {
@@ -30,7 +32,7 @@ public class SpiderWebElement implements WebElement {
 		// WebDriver / Selenium used to often have different behaviour when there was a missing @value attribute. Since 2.21 all implementations now seems standard
 		// (to just return the text()) however SpiderFixture used to always return "" so for historical reasons we want to keep the SpiderFixture behavour. 
 		// This means running a regex in the DOM of the <options> to make sure the @value IS NOT the text() : 
-		if (!StringUtil.isBlank(value) && value.equals(getText())) { 
+		if (!value.isBlank() && value.equals(getText())) { 
 			if (!Pattern.compile(".*<option.*?value=[',\"]?" + value + "[',\"]?.*?>" + value + "</option>.*", Pattern.DOTALL).matcher(rawHtmlofParent).matches()) {
 				return "";
 			}
@@ -99,5 +101,17 @@ public class SpiderWebElement implements WebElement {
 	@Override
 	public String getCssValue(String propertyName) {
 		return wrappedElement.getCssValue(propertyName);
+	}
+
+	@Override
+	public <X> X getScreenshotAs(OutputType<X> arg0) throws WebDriverException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Rectangle getRect() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

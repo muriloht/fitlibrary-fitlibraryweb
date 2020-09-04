@@ -446,7 +446,7 @@ public class FlexSpiderFixture extends DoFixture {
 	}
 	protected WebDriver driver() {
 		if (driver == null)
-			driver = new FirefoxDriver(firefoxProfile);
+			driver = new FirefoxDriver();
 		return driver;
 	}
 	protected JavascriptExecutor js() {

@@ -98,7 +98,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	@SimpleAction(wiki="|''<i>use native events</i>''|boolean value|",
 			tooltip="Switch native events mode on / off - currently only available in firefox.")
 	public void useNativeEventsInFirefox(boolean enableNativeEvents) {
-        firefoxProfile.setEnableNativeEvents(enableNativeEvents);
+       // firefoxProfile.setEnableNativeEvents(enableNativeEvents);
     }
 	@SimpleAction(wiki="|''<i>firefox profile</i>''|key|''<i>as string</i>''|string value|",
 			tooltip="Set the value of a string-based firefox profile key.")
@@ -203,23 +203,18 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	}
 	// Override to configure differently, such as with a Firefox profile
 	protected FirefoxDriver fireFoxDriver() {
-		FirefoxDriver firefoxDriver = new FirefoxDriver(firefoxProfile);
+		FirefoxDriver firefoxDriver = new FirefoxDriver();
 		driverVariation = new FirefoxVariation(this);
 		return firefoxDriver;
 	}
 	// Override to configure htmlUnit in a different way
 	protected HtmlUnitDriver htmlUnitDriver() {
-		class ExtendedHtmlUnitDriver extends HtmlUnitDriver {
-			@Override
-			public WebClient getWebClient() {
-				return super.getWebClient();
-			}
-		}
-		ExtendedHtmlUnitDriver htmlUnitDriver = new ExtendedHtmlUnitDriver();
+		
+		HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
 		if (proxy != null)
 			htmlUnitDriver.setProxySettings(proxy);
 		htmlUnitDriver.setJavascriptEnabled(true);
-		driverVariation = new HtmlUnitVariation(this, htmlUnitDriver.getWebClient());
+		driverVariation = new HtmlUnitVariation(this, new WebClient());
 		return htmlUnitDriver;
 	}
 	protected InternetExplorerDriver internetExplorerDriver() {
