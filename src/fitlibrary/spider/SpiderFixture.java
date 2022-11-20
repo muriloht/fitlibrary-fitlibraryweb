@@ -12,16 +12,18 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Proxy;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.firefox.ProfilesIni;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -81,7 +83,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		}
 		return true;
 	}
-	
+
 	@SimpleAction(wiki="|''<i>use chrome options</i>''|extensionsPath|",
 			tooltip="When running with chrome, configure using extensions crx file at the given path")
 	public void useChromeOptions(String extensionsPath)
@@ -89,7 +91,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		chromeOptions = new ChromeOptions();
 		chromeOptions.addExtensions(new File(extensionsPath));
 	}
-	
+
 	@SimpleAction(wiki="|''<i>use internet explorer legacy internal server for ie</i>''|boolean value|",
 			tooltip="set to true to switch off warnings if you don't have the IEDriverSet on your path or at webdriver.ie.driver system property location.")
 	public void useInternetExplorerLegacyInternalServer(boolean useLegacyServer) {
@@ -123,14 +125,14 @@ public class SpiderFixture extends AbstractSpiderFixture {
     	this.proxy = new Proxy();
     	proxy.setHttpProxy(proxystr).setFtpProxy(proxystr).setSslProxy(proxystr);
 	}
-	
+
 	@SimpleAction(wiki="|''<i>autoconfigration url</i>''|url|",
 			tooltip="Configure proxy via autoconfig url i.e. pac file")
 	public void proxyWithAutoconfigUrl(String url) {
     	this.proxy = new Proxy();
     	proxy.setProxyAutoconfigUrl(url);
 	}
-	
+
 	// RESTART
 	public void restart() throws Exception {
 		tearDownDriver();
@@ -152,7 +154,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	public WebDriver webDriver() {
 		if (webDriver == null) {
 			String driver = getDynamicVariable(WEB_DRIVER_VARIABLE_NAME,"htmlunit").toString();
-			
+
 			if ("htmlunit".equals(driver))
 				webDriver = htmlUnitDriver();
 			else if ("firefox".equals(driver))
@@ -167,11 +169,11 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				webDriver = unknownDriver(driver);
 			// else if ("safari".equals(driver))
 			// webDriver = safariDriver();
-			
-			if (webDriver == null) 
+
+			if (webDriver == null)
 				throw new FitLibraryException("Need to specify property '"
-								+ WEB_DRIVER_VARIABLE_NAME + "' as 'htmlunit', 'firefox', 'ie' or 'chrome'");  
-			
+								+ WEB_DRIVER_VARIABLE_NAME + "' as 'htmlunit', 'firefox', 'ie' or 'chrome'");
+
 			spiderWindow.setInitialWindow();
 		}
 		return webDriver;
@@ -209,7 +211,7 @@ public class SpiderFixture extends AbstractSpiderFixture {
 	}
 	// Override to configure htmlUnit in a different way
 	protected HtmlUnitDriver htmlUnitDriver() {
-		
+
 		HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
 		if (proxy != null)
 			htmlUnitDriver.setProxySettings(proxy);
@@ -218,36 +220,43 @@ public class SpiderFixture extends AbstractSpiderFixture {
 		return htmlUnitDriver;
 	}
 	protected InternetExplorerDriver internetExplorerDriver() {
-		return new InternetExplorerDriver(capabilities);
+		return new InternetExplorerDriver();
 	}
-	
+
 	public ChromeDriver chromeDriver() {
-		DesiredCapabilities caps = DesiredCapabilities.chrome();
-		
-		if (proxy != null) {
-			caps.setCapability(CapabilityType.PROXY, proxy);
-		}
-		
-		if (chromeOptions != null)
+
+		if (chromeOptions == null)
 		{
-			caps.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+			chromeOptions = new ChromeOptions();
+			chromeOptions.addArguments("disable-infobars");
+			chromeOptions.setAcceptInsecureCerts(true);
+			chromeOptions.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
 		}
-		
-		return new ChromeDriver(caps);
+
+		if (proxy != null) {
+			chromeOptions.setProxy(proxy);
+		}
+
+		return new ChromeDriver(chromeOptions);
 	}
-	
+
 	protected WebDriver phantomJSDriver() {
-	    DesiredCapabilities caps = DesiredCapabilities.phantomjs();
-	    caps.setJavascriptEnabled(true);               
-	    caps.setCapability("takesScreenshot", true);   
-	
-	    if (proxy != null) 
-	    	caps.setCapability(CapabilityType.PROXY, proxy);
-	    
-	    // driver.manage().window().setSize(new Dimension(1280, 1024)); 
-	    return new PhantomJSDriver(caps);
+
+		DesiredCapabilities capabilities;
+		capabilities = new DesiredCapabilities();
+		capabilities.setJavascriptEnabled(true);
+		//capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, "drivers/phantomjs.exe");
+		capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_PAGE_SETTINGS_PREFIX,"Y");
+		capabilities.setCapability("phantomjs.page.settings.userAgent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:16.0) Gecko/20121026 Firefox/16.0");
+		capabilities.setCapability("takesScreenshot", true);
+
+	    if (proxy != null)
+	    	capabilities.setCapability(CapabilityType.PROXY, proxy);
+
+	    // driver.manage().window().setSize(new Dimension(1280, 1024));
+	    return new PhantomJSDriver(capabilities);
 	}
-	
+
 	/** Override this in a base class to create a driver of your own */
 	protected WebDriver unknownDriver(String driverName) {
 		return null;
@@ -265,11 +274,11 @@ public class SpiderFixture extends AbstractSpiderFixture {
 				return findElement(By.name(locator.substring(5)));
 			if (locator.startsWith("css="))
 				return findElement(By.cssSelector(locator.substring(4)));
-			if (locator.startsWith("class=")) 
+			if (locator.startsWith("class="))
 				return findElement(By.className(locator.substring(6)));
-			if (locator.startsWith("//") || locator.startsWith("(//")) 
+			if (locator.startsWith("//") || locator.startsWith("(//"))
 				return findElement(By.xpath(locator));
-			
+
 			return findElement(By.id(locator));
 		}
 		@Override

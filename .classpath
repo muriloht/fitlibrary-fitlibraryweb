@@ -2,75 +2,135 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="lib" path="fitnesse/lib/apache-mime4j-0.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/bcprov-jdk15-135.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-beanutils-bean-collections-1.8.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-beanutils-core-1.8.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-beanutils.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-collections-3.2.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-exec-1.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-httpclient-3.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-io-2.4.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-jxpath-1.3.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-lang3-3.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-logging-1.1.3.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/cssparser-0.9.11.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/dbfit.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/derbyclient.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/ezmorph-1.0.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/fontbox-1.1.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/guava-15.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/hamcrest-all-1.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-2.14.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-core-js-2.14.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/htmlunit-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpclient-4.3.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpcore-4.3.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/httpmime-4.3.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/imap.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/jcommander-1.29.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/jmock-2.5.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/jmock-junit4-2.5.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/jna-3.4.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/jna-platform-3.4.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/joda-time-1.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/json-20080701.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/json-lib-2.3-jdk15.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/junit-4.6.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/log4j-1.2.16.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/mail.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/mx4j-tools-3.0.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/mysql-connector-java-5.1.15-bin.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/nekohtml-1.9.20.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/ognl-2.7.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/ojdbc14.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/pdfbox-1.1.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/phantomjsdriver-1.1.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/sac-1.3.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-api.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-chrome-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-edge-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-firefox-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-ie-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-java.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-opera-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-remote-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-safari-driver.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-server.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/selenium-support.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/serializer-2.7.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/servlet-api-2.5-6.1.9.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/velocity-1.6.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/webdriver-opera-v0.5.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/xalan-2.7.1.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/xercesImpl-2.10.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/xercesImpl-2.11.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/xmlunit-1.2.jar"/>
-	<classpathentry kind="lib" path="fitnesse/fitlibrary-2.0.jar"/>
-	<classpathentry kind="lib" path="fitnesse/fitnesse.jar"/>
-	<classpathentry kind="lib" path="fitnesse/lib/javax.activation-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/apache-mime4j-0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/bcprov-jdk15-135.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-beanutils-bean-collections-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-beanutils-core-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-beanutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-codec-1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-jxpath-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-logging-1.1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-net-1.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/cssparser-0.9.11.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/dbfit.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/derbyclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/fontbox-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/htmlunit-2.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/htmlunit-core-js-2.14.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/htmlunit-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/httpclient-4.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/httpcore-4.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/httpmime-4.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/imap.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jna-3.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jna-platform-3.4.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/joda-time-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/json-lib-2.3-jdk15.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/log4j-1.2.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/mx4j-tools-3.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/mysql-connector-java-5.1.15-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/nekohtml-1.9.20.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/ojdbc14.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/pdfbox-1.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/sac-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-chrome-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-edge-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-firefox-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-ie-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/async-http-client-2.12.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/async-http-client-netty-utils-2.12.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/auto-common-1.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/auto-service-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/auto-service-annotations-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/byte-buddy-1.12.18.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/checker-qual-3.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-exec-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-lang3-3.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/commons-text-1.10.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/diffutils-1.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/error_prone_annotations-2.11.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/failsafe-3.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/failureaccess-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/fitbook.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/guava-31.1-jre.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/hamcrest-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/htmllexer-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/htmlparser-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/j2objc-annotations-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jakarta.activation-1.2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jcommander-1.82.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jmock-2.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jmock-junit4-2.12.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/json-20220924.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jsr305-3.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/jtoml-2.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/junit-4.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-buffer-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-codec-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-codec-http-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-codec-socks-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-common-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-handler-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-handler-proxy-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-reactive-streams-2.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-resolver-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-classes-epoll-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-classes-kqueue-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-native-epoll-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-native-kqueue-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/netty-transport-native-unix-common-4.1.84.Final.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/ognl-3.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-api-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-api-logs-1.19.0-alpha.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-context-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-exporter-common-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-exporter-logging-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-common-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-extension-autoconfigure-1.19.0-alpha.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-extension-autoconfigure-spi-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-logs-1.19.0-alpha.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-metrics-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-sdk-trace-1.19.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/opentelemetry-semconv-1.19.0-alpha.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/poi-4.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/reactive-streams-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/rentEz.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-chromium-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-devtools.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-devtools-v105.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-devtools-v107.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-devtools-v85.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-http.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-json.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-manager.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/slf4j-api-2.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/slf4j-api-2.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/slf4j-jdk14-2.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/velocity-engine-core-2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/phantomjsdriver-2.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-opera-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-remote-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-safari-driver.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-support.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/serializer-2.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/servlet-api-2.5-6.1.9.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/xalan-2.7.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/xercesImpl-2.10.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/xercesImpl-2.11.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/xmlunit-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-java.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/selenium-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/fitlibrary-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/fitnesse.jar"/>
+	<classpathentry exported="true" kind="lib" path="fitnesse/lib/javax.activation-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
